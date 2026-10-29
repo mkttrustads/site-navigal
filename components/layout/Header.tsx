@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { primaryNav, quoteCta } from '@/content/site'
 import Button from '@/components/ui/Button'
+import GlobeMark from '@/components/ui/GlobeMark'
 import { cn } from '@/lib/utils'
 
 /**
@@ -48,15 +48,11 @@ export default function Header() {
       </a>
 
       <div className="mx-auto flex max-w-site items-center justify-between gap-6 px-6">
-        <Link href="/" className="shrink-0" aria-label="Navigal home">
-          <Image
-            src="/brand/navigal-logo-white.png"
-            alt="Navigal Trading Solutions Limited"
-            width={809}
-            height={520}
-            priority
-            className={cn('w-auto transition-all duration-300', solid ? 'h-11' : 'h-14')}
-          />
+        {/* Só a esfera, como o monograma no cabeçalho do site Trust Group; a
+            logo completa fica na Hero da Home. Vetor, para ficar nítido no
+            tamanho pequeno, com a faixa de destaque em Azul Marítimo. */}
+        <Link href="/" className="shrink-0" aria-label="Navigal Trading Solutions Limited, home">
+          <GlobeMark tone="dark" className="h-[2.4rem] w-auto sm:h-[2.8rem]" />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-7 xl:flex">

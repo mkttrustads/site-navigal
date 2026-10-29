@@ -41,13 +41,20 @@ export default function HomeHero() {
         initial="hidden"
         animate="visible"
         variants={staggerContainer(0.12, 0.1)}
-        className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-16 pt-40"
+        className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-16 pt-32"
       >
-        <motion.p variants={item} className="eyebrow flex items-center gap-3 text-cobalto-claro">
-          <span aria-hidden="true" className="h-px w-10 bg-cobalto-claro" />
-          Navigal Trading Solutions Limited
-        </motion.p>
-        <motion.h1 variants={item} className="mt-6 max-w-4xl text-balance text-[clamp(2.8rem,6.4vw,5.6rem)] leading-[1.02]">
+        {/* Logo completa na Hero e só a esfera no menu, como no site Trust Group. */}
+        <motion.div variants={item}>
+          <Image
+            src="/brand/navigal-logo-white.png"
+            alt="Navigal Trading Solutions Limited"
+            width={809}
+            height={520}
+            priority
+            className="h-28 w-auto sm:h-36"
+          />
+        </motion.div>
+        <motion.h1 variants={item} className="mt-10 max-w-4xl text-balance text-[clamp(2.4rem,5.2vw,4.6rem)] leading-[1.05]">
           Building reliable connections.
         </motion.h1>
         <motion.p variants={item} className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl">
