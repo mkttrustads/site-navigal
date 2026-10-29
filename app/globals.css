@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Títulos em Figtree negrito (pedido do Marketing — substitui a Baskerville
+     sugerida no Brand Persona). Entrelinha única para todos os títulos. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2b5ea7;
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  /* Numerais de dado alinhados e com largura fixa. */
+  .stat-numeral {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /* Eyebrow: rótulo curto acima dos títulos de seção. */
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+}
+
+/* Mesmo comportamento do site Trust Group: no mobile, títulos e blocos
+   centralizados passam para a esquerda. */
+@media (max-width: 639px) {
+  h1,
+  h2,
+  .text-center:has(> h1),
+  .text-center:has(> h2) {
+    text-align: left !important;
+  }
+  .text-center:not([data-keep-center]):not(li):not(button) {
+    text-align: left !important;
+  }
+  .text-center.items-center:not([data-keep-center]):not(li) {
+    align-items: flex-start !important;
+  }
+}
+
+/* Fluxo nas rotas do mapa (RouteMap): traço curto percorrendo a curva. */
+.route-flow {
+  stroke-dasharray: 3 9;
+  animation: route-flow 6s linear infinite;
+}
+
+@keyframes route-flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-flow {
+    animation: none;
+  }
+}
