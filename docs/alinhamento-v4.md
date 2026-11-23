@@ -2,9 +2,8 @@
 
 Branch: `fix/alinhamento-apresentacao-v4` (sem push, sem deploy). Lint e build passam.
 
-> **Idiomas:** o site só existe em inglês (sem i18n; PT/ES no menu aparecem como "Coming soon").
-> O EN foi aplicado no site. As traduções PT-BR e ES de tudo que foi criado ou alterado estão na seção 4,
-> prontas para entrar quando houver i18n.
+> **Idiomas (atualização):** o site agora tem EN/PT-BR/ES (ver README, seção "Idiomas"). As traduções desta seção 4
+> foram incorporadas em `content/i18n/pt.ts` e `es.ts`; o texto abaixo é o histórico do alinhamento.
 
 ## 1. O que mudou, por item
 

@@ -3,23 +3,19 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import ContactForm from '@/components/forms/ContactForm'
 import type { FormType } from '@/content/forms'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 import { cn } from '@/lib/utils'
-
-const tabs: { type: FormType; label: string; intro: string }[] = [
-  {
-    type: 'quote',
-    label: 'Request a quote',
-    intro: 'Step out of local distributors’ hands and start importing your own product line.',
-  },
-  {
-    type: 'supplier',
-    label: 'Become a supplier',
-    intro: 'Grow together with Navigal’s clients by registering your company and products.',
-  },
-]
 
 /** Alterna entre os dois formulários; `?type=supplier` abre direto o de fornecedor. */
 export default function ContactTabs() {
+  const {
+    t,
+    content: { quoteCta },
+  } = useI18n()
+  const tabs: { type: FormType; label: string; intro: string }[] = [
+    { type: 'quote', label: quoteCta.label, intro: t('contact.tab.quote.intro') },
+    { type: 'supplier', label: t('contact.tab.supplier'), intro: t('contact.tab.supplier.intro') },
+  ]
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -28,7 +24,7 @@ export default function ContactTabs() {
 
   return (
     <div>
-      <div role="tablist" aria-label="Contact form" className="grid grid-cols-2 gap-1 rounded-card bg-off-white p-1">
+      <div role="tablist" aria-label={t('contact.tabsLabel')} className="grid grid-cols-2 gap-1 rounded-card bg-off-white p-1">
         {tabs.map((tab) => (
           <button
             key={tab.type}

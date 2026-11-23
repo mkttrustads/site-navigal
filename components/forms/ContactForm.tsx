@@ -3,19 +3,18 @@
 import { useState, type FormEvent } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import Button from '@/components/ui/Button'
-import { company } from '@/content/site'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 import { cn } from '@/lib/utils'
-import { formFields, type FormType } from '@/content/forms'
-
-const submitLabel: Record<FormType, string> = {
-  quote: 'Send request',
-  supplier: 'Register as a supplier',
-}
+import type { FormType } from '@/content/forms'
 
 const inputClass =
   'w-full rounded-card border border-linha bg-white px-4 py-3 text-base text-preto outline-none transition focus:border-cobalto focus:ring-2 focus:ring-cobalto/20'
 
 export default function ContactForm({ type }: { type: FormType }) {
+  const {
+    t,
+    content: { company, formFields },
+  } = useI18n()
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -38,10 +37,8 @@ export default function ContactForm({ type }: { type: FormType }) {
     return (
       <div className="flex flex-col items-start gap-4 rounded-card border border-cobalto/30 bg-cobalto/5 p-8" role="status">
         <CheckCircle2 aria-hidden="true" className="h-10 w-10 text-cobalto" />
-        <h3 className="text-2xl">Thank you. Your message has been received.</h3>
-        <p className="text-base leading-relaxed text-suave">
-          Our team will review the details and get back to you shortly.
-        </p>
+        <h3 className="text-2xl">{t('form.thanks')}</h3>
+        <p className="text-base leading-relaxed text-suave">{t('form.thanksBody')}</p>
       </div>
     )
   }
@@ -66,10 +63,13 @@ export default function ContactForm({ type }: { type: FormType }) {
             ) : field.type === 'select' ? (
               <select id={id} name={field.name} defaultValue="" className={inputClass}>
                 <option value="" disabled>
-                  Select
+                  {t('form.select')}
                 </option>
                 {field.options?.map((option) => (
-                  <option key={option}>{option}</option>
+                  // O valor enviado fica em inglês (o e-mail para o comercial não muda); só o texto exibido é traduzido.
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
                 ))}
               </select>
             ) : (
@@ -103,16 +103,16 @@ export default function ContactForm({ type }: { type: FormType }) {
 
       <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-suave">
-          <span className="text-cobalto">*</span> Required fields
+          <span className="text-cobalto">*</span> {t('form.required')}
         </p>
         <Button type="submit" arrow disabled={status === 'sending'} className="disabled:opacity-60">
-          {status === 'sending' ? 'Sending…' : submitLabel[type]}
+          {status === 'sending' ? t('form.sending') : t(type === 'quote' ? 'form.submit.quote' : 'form.submit.supplier')}
         </Button>
       </div>
 
       {status === 'error' && (
         <p role="alert" className="rounded-card border border-red-200 bg-red-50 p-4 text-sm text-red-800 sm:col-span-2">
-          We could not send your message right now. Please try again or write to{' '}
+          {t('form.error')}{' '}
           <a href={`mailto:${company.email}`} className="font-semibold underline">
             {company.email}
           </a>

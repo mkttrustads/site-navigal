@@ -118,3 +118,12 @@ export const audiences = {
     cta: { label: 'Become a supplier', href: '/suppliers' },
   },
 }
+
+// "What are we looking for?" (página /suppliers) — apresentação comercial (ULTIMA APRESENTAÇÃO).
+export const lookingFor = [
+  { icon: 'handshake', title: 'A trustworthy partner', description: 'Transparent, compliant and consistent in every negotiation.' },
+  { icon: 'clock', title: 'Long-term relationships', description: 'Partnerships designed to grow over many years, not single deals.' },
+  { icon: 'target', title: 'A hands-on approach', description: 'Close collaboration on specifications, documentation and logistics.' },
+  { icon: 'badgeCheck', title: 'Products with quality', description: 'Stable, certified quality that meets industrial specifications.' },
+  { icon: 'truck', title: 'Delivery on time', description: 'Reliable production planning and on-time shipments.' },
+]

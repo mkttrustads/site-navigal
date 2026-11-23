@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, Check } from 'lucide-react'
@@ -6,16 +8,15 @@ import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
 import GlobeMark from '@/components/ui/GlobeMark'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
-import { audiences, solutions } from '@/content/solutions'
-import { industries } from '@/content/industries'
-import { productsForIndustry } from '@/content/products'
-import { quoteCta, rankingFootnote, trustGroupFacts, trustGroupLines } from '@/content/site'
-import { certifications, certificationsFootnote, commitment, taglog } from '@/content/credibility'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 import { cn } from '@/lib/utils'
 
 // Seções reaproveitadas em mais de uma página.
 
 export function SolutionsGrid({ limit }: { limit?: number }) {
+  const {
+    content: { solutions },
+  } = useI18n()
   const items = limit ? solutions.slice(0, limit) : solutions
   return (
     <Reveal className="grid gap-px overflow-hidden rounded-card border border-linha bg-linha sm:grid-cols-2 lg:grid-cols-3">
@@ -36,6 +37,10 @@ export function SolutionsGrid({ limit }: { limit?: number }) {
 }
 
 export function IndustriesGrid({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
+  const {
+    t,
+    content: { industries, productsForIndustry },
+  } = useI18n()
   const dark = tone === 'dark'
   return (
     <Reveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5" stagger={0.05}>
@@ -60,7 +65,7 @@ export function IndustriesGrid({ tone = 'light' }: { tone?: 'light' | 'dark' }) 
             <div>
               <h3 className="text-lg leading-snug">{industry.name}</h3>
               <p className={cn('mt-2 text-sm transition-colors group-hover:text-white/80', dark ? 'text-white/60' : 'text-suave')}>
-                {productsForIndustry(industry.slug).length} products
+                {t('common.productCount', { count: productsForIndustry(industry.slug).length })}
               </p>
             </div>
           </Link>
@@ -71,6 +76,9 @@ export function IndustriesGrid({ tone = 'light' }: { tone?: 'light' | 'dark' }) 
 }
 
 export function AudienceSplit() {
+  const {
+    content: { audiences },
+  } = useI18n()
   const blocks = [audiences.buyers, audiences.suppliers]
   return (
     <div className="grid gap-6 lg:grid-cols-2">
@@ -108,21 +116,21 @@ export function AudienceSplit() {
 }
 
 export function TrustGroupSection() {
+  const {
+    t,
+    content: { rankingFootnote, trustGroupFacts, trustGroupLines },
+  } = useI18n()
   return (
     <Section tone="muted">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading
-            eyebrow="Part of Trust Group"
-            title="Global reach, backed by a full-service group on the ground."
+            eyebrow={t('trust.eyebrow')}
+            title={t('trust.title')}
             intro={
               <>
-                <p>
-                  Navigal is part of Trust Group, one of Brazil&rsquo;s leading foreign trade groups. Every operation can
-                  be integrated with the group&rsquo;s companies: customs brokerage, international freight forwarding,
-                  warehousing and national distribution.
-                </p>
-                <p className="mt-4">One partner from the supplier&rsquo;s gate to your plant.</p>
+                <p>{t('trust.p1')}</p>
+                <p className="mt-4">{t('trust.p2')}</p>
               </>
             }
           />
@@ -147,13 +155,13 @@ export function TrustGroupSection() {
             </ul>
           </div>
           <Button href="https://trust.group" variant="link" arrow className="mt-10">
-            Visit trust.group
+            {t('trust.visit')}
           </Button>
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-card">
           <Image
             src="/images/trust-group-warehouse-aerial.jpg"
-            alt="Aerial view of a Trust Group logistics center in Brazil"
+            alt={t('trust.imageAlt')}
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
@@ -168,14 +176,18 @@ export function TrustGroupSection() {
 }
 
 export function CtaBand({
-  title = 'Step out of local distributors’ hands and import your own product line.',
-  body = 'Send us the technical specification, end use and annual volume. We will come back with an analysis and supply options.',
+  title,
+  body,
   image = '/images/handshake-dark.jpg',
 }: {
   title?: string
   body?: string
   image?: string
 }) {
+  const {
+    t,
+    content: { quoteCta },
+  } = useI18n()
   return (
     <section className="relative isolate overflow-hidden bg-preto text-white">
       <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className="object-cover opacity-50" />
@@ -183,14 +195,14 @@ export function CtaBand({
       <GlobeMark tone="dark" className="absolute -right-10 top-1/2 hidden h-[140%] -translate-y-1/2 opacity-[0.08] md:block" />
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
         <div className="max-w-2xl">
-          <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title}</h2>
-          <p className="mt-5 text-pretty text-lg leading-relaxed text-white/80">{body}</p>
+          <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title ?? t('cta.title')}</h2>
+          <p className="mt-5 text-pretty text-lg leading-relaxed text-white/80">{body ?? t('cta.body')}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button href={quoteCta.href} arrow>
               {quoteCta.label}
             </Button>
             <Button href="/products" variant="outline">
-              View products
+              {t('common.viewProducts')}
             </Button>
           </div>
         </div>
@@ -201,9 +213,13 @@ export function CtaBand({
 
 /** Bloco "Certifications & compliance" (About e /suppliers). */
 export function CertificationsSection() {
+  const {
+    t,
+    content: { certifications, certificationsFootnote },
+  } = useI18n()
   return (
     <Section tone="muted">
-      <SectionHeading eyebrow="Certifications & compliance" title="Credentials that back every operation." align="center" />
+      <SectionHeading eyebrow={t('certs.eyebrow')} title={t('certs.title')} align="center" />
       <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((item) => (
           <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
@@ -221,11 +237,15 @@ export function CertificationsSection() {
 
 /** Logística no Brasil via Taglog (/suppliers). */
 export function TaglogSection() {
+  const {
+    t,
+    content: { taglog },
+  } = useI18n()
   return (
     <Section>
       <SectionHeading
-        eyebrow="Logistics in Brazil"
-        title="Licensed warehousing across Brazil, through Taglog."
+        eyebrow={t('taglog.eyebrow')}
+        title={t('taglog.title')}
         intro={taglog.licensed}
       />
       <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -239,7 +259,7 @@ export function TaglogSection() {
         ))}
       </Reveal>
       <p className="mt-8 text-lg font-bold">
-        Total: <span className="stat-numeral">{taglog.total.area}</span> · <span className="stat-numeral">{taglog.total.pallets}</span>
+        {t('taglog.total')} <span className="stat-numeral">{taglog.total.area}</span> · <span className="stat-numeral">{taglog.total.pallets}</span>
       </p>
     </Section>
   )
@@ -247,9 +267,13 @@ export function TaglogSection() {
 
 /** "Our commitment" (About). */
 export function CommitmentSection() {
+  const {
+    t,
+    content: { commitment },
+  } = useI18n()
   return (
     <Section>
-      <SectionHeading eyebrow="Our commitment" title="Responsibility beyond the operation." align="center" />
+      <SectionHeading eyebrow={t('commitment.eyebrow')} title={t('commitment.title')} align="center" />
       <Reveal className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-2">
         {commitment.map((item) => (
           <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
