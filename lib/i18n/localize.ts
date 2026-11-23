@@ -71,7 +71,6 @@ function build(tr?: Translation) {
     company: {
       ...company,
       tagline: tr?.site.tagline ?? company.tagline,
-      phones: mergeList(company.phones, tr?.site.phoneLabels.map((label) => ({ label }))),
       address: { ...company.address, lines: tr?.site.addressLines ?? company.address.lines },
     },
     primaryNav: localizedNav,

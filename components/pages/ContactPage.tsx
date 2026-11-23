@@ -51,8 +51,7 @@ export default function ContactPage() {
                       <li key={phone.href}>
                         <a href={phone.href} className="text-suave transition hover:text-cobalto">
                           {phone.display}
-                        </a>{' '}
-                        <span className="text-sm text-suave/70">({phone.label})</span>
+                        </a>
                       </li>
                     ))}
                   </ul>

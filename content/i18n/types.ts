@@ -43,8 +43,6 @@ export type Translation = {
       title: string
       items: Pick2<Item<typeof trustGroupLines.items>, 'name' | 'description'>[]
     }
-    /** Rótulo de cada telefone, na ordem de `company.phones`. */
-    phoneLabels: string[]
     /** Linhas do endereço, na ordem de `company.address.lines`. */
     addressLines: (typeof company.address.lines)[number][]
   }

@@ -277,7 +277,6 @@ export const pt: Translation = {
         { name: 'Global Brands Management', description: 'Expansão de marcas internacionais no Brasil' },
       ],
     },
-    phoneLabels: ['Internacional', 'Brasil'],
     addressLines: ['Escritório nº TI-4F-11, RAKEZ Amenity Center', 'Al Hamra Industrial Zone FZ', 'Ras Al Khaimah, Emirados Árabes Unidos'],
   },
 
