@@ -47,7 +47,7 @@ o envio falha com mensagem e o link de e-mail como alternativa.
 ## Pendências para validar com o Marketing
 
 - **Idioma:** PT-BR e ES foram adicionados (o Brand Persona pedia só inglês). As traduções não passaram por revisão nativa: validar com o Marketing, em especial slogan, notas regulatórias e termos técnicos.
-- **Telefones:** +1 646 915 1713 (site antigo) e +55 11 93312 5318 (Navigal.pptx). Quais seguem ativos?
+- **Telefone:** número único +55 (47) 98844-9269, igual em EN/PT/ES.
 - **Escritórios:** EAU, Panamá, Miami e Brasil. Miami vem do site Trust Group; o Brand Persona cita Dubai e Panamá.
 - **Números:** alinhados à apresentação para fornecedores v4 (ver `docs/alinhamento-v4.md`); "14M+ investido em tecnologia" não publicado (moeda indefinida).
 - **Fichas técnicas corrigidas** em relação ao Book de serviços (ver comentário no topo de `content/products.ts`):

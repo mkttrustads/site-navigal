@@ -107,7 +107,6 @@ for (const locale of ['pt', 'es']) {
   checkLength(locale, 'site.nav', site.primaryNav, tr.site.nav)
   checkLength(locale, 'site.trustGroupFacts', site.trustGroupFacts, tr.site.trustGroupFacts)
   checkLength(locale, 'site.trustGroupLines.items', site.trustGroupLines.items, tr.site.trustGroupLines.items)
-  checkLength(locale, 'site.phoneLabels', site.company.phones, tr.site.phoneLabels)
   checkLength(locale, 'site.addressLines', site.company.address.lines, tr.site.addressLines)
   checkLength(locale, 'about.milestones', about.milestones, tr.about.milestones)
   checkLength(locale, 'about.story.paragraphs', about.story.paragraphs, tr.about.story.paragraphs)

@@ -15,13 +15,8 @@ export const company = {
   // público passou a usar 2021 (lançamento da Navigal). Decisão pendente.
   founded: 2008,
   email: 'sales@navigal-ts.com',
-  // Dois números aparecem nos materiais: +1 (site antigo e tradução para o
-  // espanhol) e +55 (apresentação Navigal.pptx). Confirmar com o Marketing
-  // quais seguem ativos.
-  phones: [
-    { label: 'International', display: '+1 646 915 1713', href: 'tel:+16469151713' },
-    { label: 'Brazil', display: '+55 11 93312 5318', href: 'tel:+5511933125318' },
-  ],
+  // Número único, igual em todos os idiomas (sem rótulo de região).
+  phones: [{ display: '+55 (47) 98844-9269', href: 'tel:+5547988449269' }],
   address: {
     lines: ['Office No. TI-4F-11, RAKEZ Amenity Center', 'Al Hamra Industrial Zone FZ', 'Ras Al Khaimah, United Arab Emirates'],
   },
