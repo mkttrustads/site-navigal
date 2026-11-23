@@ -18,7 +18,7 @@ Branch: `fix/alinhamento-apresentacao-v4` (sem push, sem deploy). Lint e build p
 | **F** Tags | `content/products.ts` | As 7 correções do slide 7 aplicadas. |
 | **G** | — | Soda Ash (Dense), DMF e Polyacrylamide mantidos. Não estão na apresentação. |
 | **H** /products | `app/products/page.tsx`, `app/industries/page.tsx`, `app/solutions/page.tsx` | "Our product portfolio." / "Key products we supply today." e novo title/meta. "Winner Mix" removido de todos os textos públicos (restou só em comentários internos e no histórico do README). |
-| **I** Certificações | `content/credibility.ts`, `Shared.tsx` (`CertificationsSection`), `/about`, `/suppliers` | 4 itens, cada um atribuído à empresa correta. |
+| **I** Certificações | `content/credibility.ts`, `Shared.tsx` (`CertificationsSection`), `/about`, `/suppliers` | 3 itens (Top 35, Receita Federal, SASSMAQ/ISO 9001), cada um atribuído à empresa correta. IMO fora, por decisão do Marketing. |
 | **J** Trust Group | `content/site.ts`, `Shared.tsx` (`TrustGroupSection`) | Eyebrow "Part of Trust Group", 5 stats do prompt + Top 35, 5 linhas de negócio (slide 4). "80,000 m²" virou "80k+ m²" / "80,000+ m²". |
 | **K** Taglog | `content/credibility.ts`, `Shared.tsx` (`TaglogSection`), `/suppliers` | 4 hubs + total + texto de licenciamento. |
 | **L** Menções | `app/suppliers/page.tsx`, `Shared.tsx` (`CommitmentSection`), `/about` | Trust Tech adicionado ao bloco "Your gateway". "Our commitment" no About. Os 6 diferenciais: ver pendências. |
@@ -38,10 +38,9 @@ Decisões minhas que você pode reverter:
    - Já refletidos, em outras palavras: Real-time visibility (`content/solutions.ts`, `audiences.suppliers.items`), Efficient logistics (nova seção Taglog), Expert team ("technical, regulatory and logistics expertise") e Tailored solutions ("partnerships designed for each product and market").
    - Não refletidos: **Nationwide network** (parcial, via hubs Taglog) e **Cost efficiency** (nada no `/suppliers`).
    - Para criar a seção "Why partner with Navigal", preciso dos textos do slide 11.
-3. **Atribuição do IMO**: o prompt não diz qual empresa do grupo. O item está sem empresa em `content/credibility.ts:19-23`. Informe e eu atribuo.
-4. **CAS dos 4 produtos novos**: verificados (MSG 142-47-2, Potassium Sorbate 24634-61-5, TiO₂ 13463-67-7, HF 7664-39-3), mas não exibidos. O CAS só existe dentro do `datasheet`, que exige NCM, fórmula, aplicações e compradores, e a apresentação não os traz. Estão como comentário em `content/products.ts` (topo). Sem CAS, esses itens também não aparecem na busca por CAS.
-5. **Slide 12 (Our commitment)**: texto montado a partir da descrição do prompt (`content/credibility.ts`, `commitment`). Confira com o slide.
-6. **Soda Ash (Dense), DMF e Polyacrylamide** estão no site e não na apresentação (`content/products.ts`: linhas 82, 135 e 166).
+3. **CAS dos 4 produtos novos**: verificados (MSG 142-47-2, Potassium Sorbate 24634-61-5, TiO₂ 13463-67-7, HF 7664-39-3), mas não exibidos. O CAS só existe dentro do `datasheet`, que exige NCM, fórmula, aplicações e compradores, e a apresentação não os traz. Estão como comentário em `content/products.ts` (topo). Sem CAS, esses itens também não aparecem na busca por CAS.
+4. **Slide 12 (Our commitment)**: texto montado a partir da descrição do prompt (`content/credibility.ts`, `commitment`). Confira com o slide.
+5. **Soda Ash (Dense), DMF e Polyacrylamide** estão no site e não na apresentação (`content/products.ts`: linhas 82, 135 e 166).
 
 ### Decisões suas (não alterei)
 1. **Contato.** A apresentação usa Fernando Victorino, fernando.victorino@trust.group, +55 (47) 98844 9269 e www.navigal-ts.com. O site usa contact@navigal-ts.com, +1 646 915 1713 e +55 11 93312 5318. Onde o contato aparece:
@@ -122,7 +121,6 @@ Decisões minhas que você pode reverter:
 | Credentials that back every operation. | Credenciais que sustentam cada operação. | Credenciales que respaldan cada operación. |
 | Top 35 chemical importers in Brazil* (Trust Group) | Top 35 importadores químicos do Brasil* (Trust Group) | Top 35 importadores químicos de Brasil* (Trust Group) |
 | Ranked among the largest chemical importers in the country. | Entre os maiores importadores químicos do país. | Entre los mayores importadores químicos del país. |
-| IMO: Hazardous cargo handled with full licensing. | IMO: carga perigosa movimentada com licenciamento completo. | IMO: carga peligrosa manejada con licenciamiento completo. |
 | Federal Revenue certification (Trust Comércio Exterior): Trust Comércio Exterior is certified by the Brazilian Federal Revenue. | Certificação da Receita Federal (Trust Comércio Exterior): a Trust Comércio Exterior é certificada pela Receita Federal do Brasil. | Certificación de la Receita Federal (Trust Comércio Exterior): Trust Comércio Exterior está certificada por la Receita Federal de Brasil. |
 | SASSMAQ and ISO 9001 (Taglog Logística Integrada, a Trust Group company): Safety, health, environment and quality standards in logistics operations. | SASSMAQ e ISO 9001 (Taglog Logística Integrada, empresa do Trust Group): padrões de segurança, saúde, meio ambiente e qualidade nas operações logísticas. | SASSMAQ e ISO 9001 (Taglog Logística Integrada, empresa de Trust Group): estándares de seguridad, salud, medio ambiente y calidad en las operaciones logísticas. |
 

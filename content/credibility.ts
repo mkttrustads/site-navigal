@@ -6,19 +6,14 @@ import { rankingFootnote } from './site'
 export const certificationsFootnote = rankingFootnote
 
 // Bloco "Certifications & compliance" (About e /suppliers).
-// `holder` é a empresa do grupo; o item do IMO fica sem empresa porque a
-// apresentação não informa qual delas (pendência do relatório).
+// `holder` é a empresa do grupo que detém a certificação. O item do IMO foi
+// retirado por decisão do Marketing.
 export const certifications = [
   {
     icon: 'badgeCheck',
     title: 'Top 35 chemical importers in Brazil*',
     holder: 'Trust Group',
     description: 'Ranked among the largest chemical importers in the country.',
-  },
-  {
-    icon: 'shield',
-    title: 'IMO',
-    description: 'Hazardous cargo handled with full licensing.',
   },
   {
     icon: 'landmark',

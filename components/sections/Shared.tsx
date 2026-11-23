@@ -204,7 +204,7 @@ export function CertificationsSection() {
   return (
     <Section tone="muted">
       <SectionHeading eyebrow="Certifications & compliance" title="Credentials that back every operation." align="center" />
-      <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((item) => (
           <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
             <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
