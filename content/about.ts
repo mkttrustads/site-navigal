@@ -4,31 +4,39 @@
 export const mission =
   'To find the best possible combination of quality, price and capability for each client’s business, and to secure their complete satisfaction.'
 
-// Só 2008 tem data confirmada nos materiais; as demais etapas ficam sem ano.
+// Linha do tempo (slides 2 e 3 da apresentação para fornecedores v4).
 export const milestones = [
   {
-    label: '2008',
-    title: 'Founded in Panama',
-    description: 'Navigal is incorporated in Panama to manage the international supply of raw materials for Latin American industry.',
+    label: '2005',
+    title: 'Trust is founded in Itajaí/SC',
+    description:
+      'Juliano Victorino founds Trust to import the chemical raw materials he had found so hard to source from abroad.',
   },
   {
-    label: 'Global hub',
-    title: 'Operating from the UAE',
+    label: '2021',
+    title: 'Navigal is launched',
     description:
-      'Headquartered in the United Arab Emirates, a trade hub at the crossroads of Asia, Europe, Africa and the Middle East.',
-  },
-  {
-    label: 'Trust Group',
-    title: 'Backed by a full-service group',
-    description:
-      'Built on Trust Group’s experience in importing chemical inputs, with the group’s complete foreign trade, logistics and warehousing structure in Brazil.',
+      'Trust Group creates its international trading company to take the group’s know-how to the source, working side by side with suppliers.',
   },
   {
     label: 'Today',
-    title: 'A strategic partner for the region',
-    description: 'Chemicals, fertilizers, resins and specialty inputs for more than ten industries across Latin America.',
+    title: 'Full ecosystem support',
+    description: 'Navigal operates with the full support of a foreign trade and logistics ecosystem.',
   },
 ]
+
+// História (slides 2 e 3). Usada na Home e na página About.
+export const story = {
+  eyebrow: 'Why Navigal exists',
+  title: 'Born from the chemical industry',
+  paragraphs: [
+    'Before Trust Group, our founder Juliano Victorino ran a detergent powder factory in Brazil and learned first-hand how hard it is to source chemical inputs from abroad. In 2005, he founded Trust in Itajaí/SC to import those raw materials.',
+    'Two decades of importing chemicals and other products taught us every technical, regulatory and logistics requirement of the Brazilian market. In 2021, Trust Group created Navigal to take this know-how to the source, working side by side with suppliers to grow their market share in Brazil and Latin America.',
+  ],
+  closing: 'We know the industry because we were the industry.',
+  // Mantém a informação de base: escritório nos Emirados e em Miami.
+  presence: 'Navigal operates from the United Arab Emirates, with an office in Miami.',
+}
 
 // Personalidade do Brand Persona traduzida em princípios de atuação.
 export const principles = [
@@ -53,7 +61,7 @@ export const principles = [
 ]
 
 export const values = [
-  { icon: 'clock', title: 'Experience', description: 'More than a decade building outstanding commercial relationships across continents.' },
+  { icon: 'clock', title: 'Experience', description: 'Two decades of Trust Group experience importing chemicals and other products.' },
   { icon: 'shield', title: 'Security', description: 'Experience and analytical capability applied to make every negotiation safer.' },
   { icon: 'badgeCheck', title: 'Quality', description: 'Always raising the bar to deliver the best service and product.' },
   { icon: 'target', title: 'Commitment', description: 'Our mission is your satisfaction, and we are committed to it.' },
@@ -61,14 +69,15 @@ export const values = [
 ]
 
 // "Miami" vem da página Trading Internacional do site Trust Group; o Brand
-// Persona cita Dubai e Panamá. Confirmar a lista final com o Marketing.
+// Persona cita Dubai e Panamá. O card do Panamá ("Incorporated in 2008") saiu
+// com a nova história (Navigal lançada em 2021); decisão sobre o Panamá pendente.
+// Confirmar a lista final com o Marketing.
 export const offices = [
   {
     country: 'United Arab Emirates',
     role: 'Headquarters',
     detail: 'RAKEZ Amenity Center, Al Hamra Industrial Zone FZ, Ras Al Khaimah',
   },
-  { country: 'Panama', role: 'Where it all began', detail: 'Incorporated in 2008' },
   { country: 'United States', role: 'Miami office', detail: 'Supplier and market relations in the Americas' },
   { country: 'Brazil', role: 'Commercial & operations team', detail: 'Close to industrial buyers across Latin America' },
 ]

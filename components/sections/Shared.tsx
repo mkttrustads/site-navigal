@@ -9,7 +9,8 @@ import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { audiences, solutions } from '@/content/solutions'
 import { industries } from '@/content/industries'
 import { productsForIndustry } from '@/content/products'
-import { quoteCta, trustGroupFacts } from '@/content/site'
+import { quoteCta, rankingFootnote, trustGroupFacts, trustGroupLines } from '@/content/site'
+import { certifications, certificationsFootnote, commitment, taglog } from '@/content/credibility'
 import { cn } from '@/lib/utils'
 
 // Seções reaproveitadas em mais de uma página.
@@ -112,7 +113,7 @@ export function TrustGroupSection() {
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading
-            eyebrow="A Trust Group company"
+            eyebrow="Part of Trust Group"
             title="Global reach, backed by a full-service group on the ground."
             intro={
               <>
@@ -133,6 +134,18 @@ export function TrustGroupSection() {
               </div>
             ))}
           </dl>
+          <p className="mt-6 text-xs leading-relaxed text-suave">{rankingFootnote}</p>
+          <div className="mt-10 border-t border-preto/10 pt-8">
+            <h3 className="text-lg leading-snug">{trustGroupLines.title}</h3>
+            <ul className="mt-5 divide-y divide-preto/10 border-y border-preto/10">
+              {trustGroupLines.items.map((line) => (
+                <li key={line.name} className="flex flex-col gap-1 py-3 sm:flex-row sm:gap-6">
+                  <span className="text-base font-semibold sm:w-56 sm:shrink-0">{line.name}</span>
+                  <span className="text-base text-suave">{line.description}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
           <Button href="https://trust.group" variant="link" arrow className="mt-10">
             Visit trust.group
           </Button>
@@ -183,5 +196,69 @@ export function CtaBand({
         </div>
       </div>
     </section>
+  )
+}
+
+/** Bloco "Certifications & compliance" (About e /suppliers). */
+export function CertificationsSection() {
+  return (
+    <Section tone="muted">
+      <SectionHeading eyebrow="Certifications & compliance" title="Credentials that back every operation." align="center" />
+      <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {certifications.map((item) => (
+          <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
+            <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
+            <h3 className="mt-5 text-lg">{item.title}</h3>
+            {item.holder && <p className="mt-1 text-sm font-semibold text-cobalto">{item.holder}</p>}
+            <p className="mt-2 text-base leading-relaxed text-suave">{item.description}</p>
+          </RevealItem>
+        ))}
+      </Reveal>
+      <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-suave">{certificationsFootnote}</p>
+    </Section>
+  )
+}
+
+/** Logística no Brasil via Taglog (/suppliers). */
+export function TaglogSection() {
+  return (
+    <Section>
+      <SectionHeading
+        eyebrow="Logistics in Brazil"
+        title="Licensed warehousing across Brazil, through Taglog."
+        intro={taglog.licensed}
+      />
+      <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {taglog.hubs.map((hub) => (
+          <RevealItem key={hub.site} className="rounded-card border border-linha bg-white p-7">
+            <h3 className="text-lg">{hub.site}</h3>
+            <p className="stat-numeral mt-4 text-2xl font-bold">{hub.area}</p>
+            <p className="mt-1 text-base text-suave">{hub.pallets}</p>
+            <p className="mt-4 border-t border-linha pt-4 text-sm text-suave">{hub.access}</p>
+          </RevealItem>
+        ))}
+      </Reveal>
+      <p className="mt-8 text-lg font-bold">
+        Total: <span className="stat-numeral">{taglog.total.area}</span> · <span className="stat-numeral">{taglog.total.pallets}</span>
+      </p>
+    </Section>
+  )
+}
+
+/** "Our commitment" (About). */
+export function CommitmentSection() {
+  return (
+    <Section>
+      <SectionHeading eyebrow="Our commitment" title="Responsibility beyond the operation." align="center" />
+      <Reveal className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-2">
+        {commitment.map((item) => (
+          <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
+            <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
+            <h3 className="mt-5 text-lg">{item.title}</h3>
+            <p className="mt-2 text-base leading-relaxed text-suave">{item.description}</p>
+          </RevealItem>
+        ))}
+      </Reveal>
+    </Section>
   )
 }

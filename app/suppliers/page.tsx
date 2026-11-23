@@ -5,6 +5,7 @@ import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import ContactForm from '@/components/forms/ContactForm'
 import RouteMap from '@/components/sections/RouteMap'
+import { CertificationsSection, TaglogSection } from '@/components/sections/Shared'
 import { audiences } from '@/content/solutions'
 import { buildMetadata } from '@/lib/seo'
 
@@ -79,11 +80,15 @@ export default function SuppliersPage() {
             tone="dark"
             eyebrow="Your gateway"
             title="From your plant to Latin American industry."
-            intro="Combined with Trust Group’s licensed structure in Brazil, we handle customs, storage and delivery of regulated and dangerous goods, with full visibility of each operation."
+            intro="Combined with Trust Group’s licensed structure in Brazil, we handle customs, storage and delivery of regulated and dangerous goods, with full visibility of each operation. The Trust Tech platform tracks every stage of the operation."
           />
           <RouteMap />
         </div>
       </Section>
+
+      <TaglogSection />
+
+      <CertificationsSection />
 
       <Section id="register">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.4fr]">

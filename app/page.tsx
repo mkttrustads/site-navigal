@@ -5,6 +5,7 @@ import { AudienceSplit, CtaBand, IndustriesGrid, SolutionsGrid, TrustGroupSectio
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
+import { story } from '@/content/about'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
@@ -24,18 +25,17 @@ export default function HomePage() {
           <Reveal>
             <RevealItem>
               <SectionHeading
-                eyebrow="Who we are"
-                title="A global trading platform for Latin American industry."
+                eyebrow={story.eyebrow}
+                title={story.title}
                 intro={
                   <>
-                    <p>
-                      Founded in Panama in 2008 and operating from the United Arab Emirates, Navigal connects the
-                      world&rsquo;s most relevant production hubs to the industries of Brazil and Latin America.
-                    </p>
-                    <p className="mt-4">
-                      We combine market intelligence, rigorous risk management and a global presence to turn complex
-                      supply chains into predictable pathways, so our clients can buy better and grow with confidence.
-                    </p>
+                    {story.paragraphs.map((paragraph, index) => (
+                      <p key={paragraph} className={index > 0 ? 'mt-4' : undefined}>
+                        {paragraph}
+                      </p>
+                    ))}
+                    <p className="mt-4 font-semibold text-preto">{story.closing}</p>
+                    <p className="mt-4">{story.presence}</p>
                   </>
                 }
               />

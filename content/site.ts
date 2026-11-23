@@ -2,12 +2,17 @@
 // rodapé, contato, JSON-LD). Textos sempre em inglês, como pede o Brand
 // Persona ("Os textos devem ser sempre em inglês").
 
+import { products } from './products'
+
 export const SITE_URL = 'https://www.navigal-ts.com'
 
 export const company = {
   name: 'Navigal',
   legalName: 'Navigal Trading Solutions Limited',
   tagline: 'Building reliable connections.',
+  // Mantido em 2008 de propósito: alimenta o foundingDate do JSON-LD (dado da
+  // entidade legal, fora do escopo do alinhamento à apresentação v4). O texto
+  // público passou a usar 2021 (lançamento da Navigal). Decisão pendente.
   founded: 2008,
   email: 'contact@navigal-ts.com',
   // Dois números aparecem nos materiais: +1 (site antigo e tradução para o
@@ -36,21 +41,41 @@ export const primaryNav: NavItem[] = [
 export const quoteCta = { label: 'Request a quote', href: '/contact' }
 
 // Métricas da Navigal e do Trust Group. Mesma regra do site Trust Group:
-// todo número que se repete vem daqui, com a data-base quando conhecida.
+// todo número que se repete vem daqui. Fonte: apresentação para fornecedores v4.
+// "30+", "40+"... derivado da contagem real do portfólio, arredondada para
+// baixo na dezena, para o número não ficar defasado quando produtos entram.
+const portfolioFloor = Math.floor(products.length / 10) * 10
+
 export const facts = {
-  founded: { value: '2008', label: 'Founded in Panama' },
-  containers: {
-    value: '25,000+',
-    label: 'Containers managed in the last year',
-    note: 'Número do site atual (navigal-ts.com) e do site Trust Group; sem data-base fixa.',
-  },
-  portfolio: { value: '30+', label: 'Strategic raw materials in our portfolio' },
+  launched: { value: '2021', label: 'Navigal launched' },
+  tons: { value: '11k', label: 'Tons imported by Navigal in 2025' },
+  portfolio: { value: `${portfolioFloor}+`, label: 'Strategic raw materials in our portfolio' },
   continents: { value: '3', label: 'Sourcing regions: Asia, Europe and the Middle East' },
 }
 
+// Nota do ranking de importadores (apresentação v4). Exibida onde o ranking aparece.
+export const rankingFootnote =
+  '*Among 8,200+ importers (FOB, US$), excluding pesticides and fuels. Public import data, Aug/25 to Jul/26.'
+
+// Seção "Part of Trust Group". A apresentação não traz o "14M+ investido em
+// tecnologia" (moeda indefinida), por isso não é publicado.
 export const trustGroupFacts = [
-  { value: '20+', label: 'years in international trade' },
-  { value: '300+', label: 'professionals' },
-  { value: '80,000 m²', label: 'of warehousing in Brazil' },
-  { value: 'Top 30', label: 'chemical importers in Brazil' },
+  { value: '20+', label: 'years in the market' },
+  { value: '300+', label: 'employees' },
+  { value: '80k+ m²', label: 'of warehousing' },
+  { value: '65+', label: 'international routes' },
+  { value: '10+', label: 'certifications and seals' },
+  { value: 'Top 35*', label: 'chemical importers in Brazil (Trust Group)' },
 ]
+
+// Slide 4: "Five companies working together so every operation runs end to end".
+export const trustGroupLines = {
+  title: 'Five companies working together so every operation runs end to end',
+  items: [
+    { name: 'Foreign Trade', description: 'Import/export services and trade finance' },
+    { name: 'International Trading', description: 'Navigal' },
+    { name: 'International Logistics', description: 'Sea, air and road freight, including project cargo' },
+    { name: 'National Logistics', description: 'Warehouses and road transport across Brazil' },
+    { name: 'Global Brands Management', description: 'Expansion of international brands in Brazil' },
+  ],
+}
