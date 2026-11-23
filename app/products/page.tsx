@@ -7,9 +7,9 @@ import { CtaBand } from '@/components/sections/Shared'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
-  title: 'Products',
+  title: 'Product portfolio',
   description:
-    'The Navigal Winner Mix: fertilizers, industrial chemicals, water treatment, cosmetics and food ingredients, polyurethanes and resins sourced from qualified manufacturers worldwide.',
+    'Navigal’s product portfolio: fertilizers, industrial chemicals, water treatment, cosmetics and food ingredients, polyurethanes, resins and ceramic coating inputs sourced from qualified manufacturers worldwide.',
   path: '/products',
 })
 
@@ -18,8 +18,8 @@ export default function ProductsPage() {
     <>
       <PageHero
         image="/images/chemicals-drums.jpg"
-        title="The Winner Mix portfolio."
-        subtitle="Strategic raw materials from qualified manufacturers worldwide, with the best import conditions for Latin American industry."
+        title="Our product portfolio."
+        subtitle="Key products we supply today."
         breadcrumb={[
           { name: 'Home', path: '/' },
           { name: 'Products', path: '/products' },

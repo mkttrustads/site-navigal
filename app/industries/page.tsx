@@ -13,7 +13,7 @@ import { buildMetadata } from '@/lib/seo'
 export const metadata = buildMetadata({
   title: 'Industries',
   description:
-    'Raw materials for agribusiness, cosmetics and home care, water treatment, food and pharma, automotive, polyurethanes, coatings, textile and plastics in Latin America.',
+    'Raw materials for agribusiness, cosmetics and home care, water treatment, food and pharma, automotive, polyurethanes, paints and coatings, ceramic coating, textile and plastics in Latin America.',
   path: '/industries',
 })
 
@@ -41,7 +41,7 @@ export default function IndustriesPage() {
         <SectionHeading
           eyebrow="Sectors"
           title="Delivering essential products to Latin American industry."
-          intro="Through the Winner Mix we bring Brazilian and Latin American manufacturers the best purchasing opportunities to expand their business."
+          intro="Through our product portfolio we bring Brazilian and Latin American manufacturers the best purchasing opportunities to expand their business."
         />
         <Reveal className="mt-14 divide-y divide-linha border-y border-linha" stagger={0.05}>
           {industries.map((industry) => {

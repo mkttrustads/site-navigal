@@ -5,14 +5,14 @@ import Section, { SectionHeading } from '@/components/ui/Section'
 import Icon from '@/components/ui/Icon'
 import GlobeMark from '@/components/ui/GlobeMark'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
-import { CtaBand, TrustGroupSection } from '@/components/sections/Shared'
-import { milestones, mission, offices, principles, values } from '@/content/about'
+import { CertificationsSection, CommitmentSection, CtaBand, TrustGroupSection } from '@/components/sections/Shared'
+import { milestones, mission, offices, principles, story, values } from '@/content/about'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
   title: 'About Navigal',
   description:
-    'Founded in Panama in 2008 and operating from the United Arab Emirates, Navigal is a Trust Group company connecting global suppliers to Latin American industry.',
+    'Born from the chemical industry: Navigal is the international trading company launched by Trust Group in 2021, operating from the United Arab Emirates and connecting global suppliers to Latin American industry.',
   path: '/about',
 })
 
@@ -32,20 +32,17 @@ export default function AboutPage() {
       <Section>
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <SectionHeading
-            eyebrow="Our story"
-            title="Navigate international business with us."
+            eyebrow={story.eyebrow}
+            title={story.title}
             intro={
               <>
-                <p>
-                  Founded in Panama in 2008 and now operating from the United Arab Emirates, Navigal manages the
-                  supply of products mainly for the chemical, agribusiness, thermoplastic resin and specialty input
-                  segments, with a clear focus on Latin America.
-                </p>
-                <p className="mt-4">
-                  Our competitive advantage is our close relationship with the region&rsquo;s industrial markets: we
-                  evaluate each opportunity on the ground and help our clients see the world differently, uncovering
-                  opportunities they may never have imagined.
-                </p>
+                {story.paragraphs.map((paragraph, index) => (
+                  <p key={paragraph} className={index > 0 ? 'mt-4' : undefined}>
+                    {paragraph}
+                  </p>
+                ))}
+                <p className="mt-4 font-semibold text-preto">{story.closing}</p>
+                <p className="mt-4">{story.presence}</p>
               </>
             }
           />
@@ -131,6 +128,10 @@ export default function AboutPage() {
       </Section>
 
       <TrustGroupSection />
+
+      <CommitmentSection />
+
+      <CertificationsSection />
 
       <CtaBand />
     </>

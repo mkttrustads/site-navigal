@@ -8,7 +8,7 @@ import Button from '@/components/ui/Button'
 import GlobeMark from '@/components/ui/GlobeMark'
 import { facts, quoteCta } from '@/content/site'
 
-const heroFacts = [facts.founded, facts.containers, facts.portfolio, facts.continents]
+const heroFacts = [facts.launched, facts.tons, facts.portfolio, facts.continents]
 
 export default function HomeHero() {
   const reduce = useReducedMotion()

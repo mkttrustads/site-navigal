@@ -30,7 +30,7 @@ export default function SolutionsPage() {
         <SectionHeading
           eyebrow="What we do"
           title="Discover international business opportunities."
-          intro="We buy and sell international products, with special expertise in our Winner Mix portfolio, and tailor each solution to your specific needs. As a sourcing company, we keep expanding our network of clients and suppliers to offer the best connection for everyone involved."
+          intro="We buy and sell international products, with special expertise in our product portfolio, and tailor each solution to your specific needs. As a sourcing company, we keep expanding our network of clients and suppliers to offer the best connection for everyone involved."
         />
         <div className="mt-14">
           <SolutionsGrid />

@@ -1,6 +1,6 @@
-// Portfólio Winner Mix.
+// Portfólio de produtos (antigo "Winner Mix", termo interno que não aparece mais no site).
 //
-// Fontes: "Book de serviços - Navigal" (fichas técnicas, `datasheet`),
+// Fontes: apresentação para fornecedores v4 (slide 7), "Book de serviços - Navigal" (fichas técnicas, `datasheet`),
 // "Portfólio Navigal Versão 02" e a lista atualizada da página Trading
 // Internacional do site Trust Group ("Principais produtos que fornecemos hoje").
 //
@@ -12,6 +12,11 @@
 //   mistura 80/20 o CAS é 26471-62-5.
 // - Poliacrilamida: o Book traz a fórmula do monômero (acrilamida); aqui a do
 //   polímero.
+//
+// Produtos sem `datasheet` (como Fertilizer Urea, MSG, Potassium Sorbate, TiO₂ e HF)
+// não exibem CAS: a ficha exige NCM, aplicações e compradores que a apresentação
+// não traz. CAS verificados para quando as fichas forem preenchidas: MSG 142-47-2,
+// Potassium Sorbate 24634-61-5, TiO₂ 13463-67-7, HF 7664-39-3.
 //
 // `ncm` é o código Mercosul. Notas regulatórias valem para o Brasil.
 
@@ -43,7 +48,7 @@ export const products: Product[] = [
   {
     slug: 'acetic-acid',
     name: 'Acetic Acid',
-    industries: ['cosmetics-home-care', 'food-pharma', 'textile'],
+    industries: ['cosmetics-home-care', 'food-pharma', 'textile', 'paints-coatings'],
     datasheet: {
       chemicalName: 'Ethanoic acid',
       cas: '64-19-7',
@@ -62,7 +67,7 @@ export const products: Product[] = [
   {
     slug: 'citric-acid',
     name: 'Citric Acid',
-    industries: ['food-pharma', 'cosmetics-home-care'],
+    industries: ['food-pharma', 'cosmetics-home-care', 'water-treatment'],
     datasheet: {
       chemicalName: '2-hydroxy-1,2,3-propanetricarboxylic acid',
       cas: '77-92-9',
@@ -235,24 +240,41 @@ export const products: Product[] = [
   { slug: 'ammonium-sulfate', name: 'Ammonium Sulfate (SAM)', industries: ['agribusiness'] },
   { slug: 'tsp', name: 'Triple Superphosphate (TSP)', industries: ['agribusiness'] },
   { slug: 'potassium-hydroxide', name: 'Potassium Hydroxide (KOH)', industries: ['agribusiness', 'cosmetics-home-care'] },
-  { slug: 'caustic-soda', name: 'Caustic Soda Flakes', industries: ['agribusiness', 'cosmetics-home-care', 'water-treatment'] },
-  { slug: 'edta', name: 'EDTA', grade: '2Na / 4Na', industries: ['agribusiness', 'cosmetics-home-care', 'water-treatment'] },
+  {
+    slug: 'caustic-soda',
+    name: 'Caustic Soda Flakes',
+    industries: ['agribusiness', 'cosmetics-home-care', 'water-treatment', 'ceramic-coating'],
+  },
+  {
+    slug: 'edta',
+    name: 'EDTA',
+    grade: '2Na / 4Na',
+    industries: ['agribusiness', 'cosmetics-home-care', 'water-treatment', 'food-pharma'],
+  },
 
   // Cosmetics & home care
   { slug: 'sodium-percarbonate', name: 'Sodium Percarbonate', industries: ['cosmetics-home-care'] },
   { slug: 'labsa', name: 'Sulfonic Acid (LABSA)', grade: '90–96%', industries: ['cosmetics-home-care', 'water-treatment'] },
   { slug: 'sles', name: 'Sodium Lauryl Ether Sulfate (SLES)', grade: '70%', industries: ['cosmetics-home-care'] },
   { slug: 'mea', name: 'Monoethanolamine (MEA)', industries: ['cosmetics-home-care', 'automotive'] },
-  { slug: 'lactic-acid', name: 'Lactic Acid', grade: '85%', industries: ['cosmetics-home-care'] },
+  { slug: 'lactic-acid', name: 'Lactic Acid', grade: '85%', industries: ['cosmetics-home-care', 'food-pharma'] },
 
   // Water treatment
   { slug: 'sdic', name: 'SDIC (Sodium Dichloroisocyanurate)', grade: '56%', industries: ['water-treatment'] },
-  { slug: 'phosphoric-acid', name: 'Phosphoric Acid', grade: '85%', industries: ['water-treatment'] },
-  { slug: 'stpp', name: 'STPP (Sodium Tripolyphosphate)', industries: ['water-treatment'] },
+  { slug: 'phosphoric-acid', name: 'Phosphoric Acid', grade: '85%', industries: ['water-treatment', 'food-pharma'] },
+  { slug: 'stpp', name: 'STPP (Sodium Tripolyphosphate)', industries: ['water-treatment', 'ceramic-coating'] },
+
+  // Food, supplements & pharma
+  { slug: 'msg', name: 'Monosodium Glutamate (MSG)', industries: ['food-pharma'] },
+  { slug: 'potassium-sorbate', name: 'Potassium Sorbate', industries: ['food-pharma'] },
+
+  // Paints, coatings & ceramic coating
+  { slug: 'tio2', name: 'Titanium Dioxide (TiO₂)', industries: ['paints-coatings', 'ceramic-coating'] },
+  { slug: 'hydrofluoric-acid', name: 'Hydrofluoric Acid (HF)', grade: '70%', industries: ['ceramic-coating'] },
 
   // Resins & plasticizers
   { slug: 'thermoplastic-resins', name: 'Thermoplastic Resins', grade: 'PP, PE, PVC and PET', industries: ['plastics'] },
-  { slug: 'plasticizers', name: 'Plasticizers', industries: ['plastics'] },
+  { slug: 'plasticizers', name: 'Plasticizers', grade: 'DOTP, DOP, DINP', industries: ['plastics'] },
 ]
 
 export function productsForIndustry(slug: string) {

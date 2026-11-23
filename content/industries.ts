@@ -1,5 +1,6 @@
-// Setores atendidos. Consolida os segmentos do Portfólio Winner Mix (2023),
-// do site atual e da página Trading Internacional do site Trust Group.
+// Setores atendidos. Consolida os segmentos do portfólio (Winner Mix, 2023), da
+// apresentação para fornecedores v4 (slide 7), do site atual e da página
+// Trading Internacional do site Trust Group.
 // `icon` é o nome de um ícone do lucide-react (ver components/ui/Icon.tsx).
 
 export type Industry = {
@@ -51,6 +52,12 @@ export const industries: Industry[] = [
     name: 'Paints, Varnishes & Coatings',
     icon: 'paintbrush',
     description: 'Solvents for paints, varnishes and lacquers that require durability, resistance and a consistent finish.',
+  },
+  {
+    slug: 'ceramic-coating',
+    name: 'Ceramic Coating',
+    icon: 'factory',
+    description: 'Inputs for ceramic coatings and glazes.',
   },
   {
     slug: 'textile',

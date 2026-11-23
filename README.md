@@ -9,15 +9,15 @@ Figtree em todo o site com títulos em negrito, textos em inglês.
 
 | Rota | Conteúdo |
 | --- | --- |
-| `/` | Hero, quem somos, soluções, setores, mapa de rotas, públicos, Trust Group, CTA |
-| `/about` | História, missão, princípios, valores, presença global |
+| `/` | Hero, história ("Born from the chemical industry"), soluções, setores, mapa de rotas, públicos, Trust Group, CTA |
+| `/about` | História e linha do tempo, missão, princípios, valores, presença global, Trust Group, compromisso, certificações |
 | `/solutions` | 6 soluções, processo em 5 etapas, gestão de risco |
-| `/products` | Portfólio Winner Mix com filtro por setor, busca e fichas técnicas |
-| `/industries` | 10 setores com os produtos de cada um |
-| `/suppliers` | Proposta para fornecedores internacionais e formulário de cadastro |
+| `/products` | Portfólio de produtos com filtro por setor, busca e fichas técnicas |
+| `/industries` | 11 setores (incl. Ceramic Coating) com os produtos de cada um |
+| `/suppliers` | Proposta para fornecedores internacionais, logística Taglog, certificações e formulário de cadastro |
 | `/contact` | Formulários de cotação e de fornecedor, contatos |
 
-Conteúdo editável fica em `content/` (textos, produtos, setores, números).
+Conteúdo editável fica em `content/` (textos, produtos, setores, números, credibilidade). O site é só em inglês; as traduções PT-BR/ES dos textos do alinhamento à apresentação v4 estão em `docs/alinhamento-v4.md`.
 
 ## Rodar
 
@@ -34,11 +34,11 @@ o envio falha com mensagem e o link de e-mail como alternativa.
 - **Idioma:** só inglês, como pede o Brand Persona. PT/ES aparecem no cabeçalho como "em breve".
 - **Telefones:** +1 646 915 1713 (site antigo) e +55 11 93312 5318 (Navigal.pptx). Quais seguem ativos?
 - **Escritórios:** EAU, Panamá, Miami e Brasil. Miami vem do site Trust Group; o Brand Persona cita Dubai e Panamá.
-- **Números:** "25,000+ contêineres no último ano" sem data-base; números do Trust Group copiados de `content/facts.ts` do site Trust Group.
+- **Números:** alinhados à apresentação para fornecedores v4 (ver `docs/alinhamento-v4.md`); "14M+ investido em tecnologia" não publicado (moeda indefinida).
 - **Fichas técnicas corrigidas** em relação ao Book de serviços (ver comentário no topo de `content/products.ts`):
   ácido acético (vinha com dados do ácido cítrico), creatina (fórmula), TDI 80/20 (CAS) e poliacrilamida (fórmula).
-- **Lista de produtos:** baseada na lista atual do site Trust Group + fichas do Book. Itens antigos das
-  apresentações (MAP, DAP, HF, acetato de vinila, lactonas, têxtil etc.) ficaram de fora.
+- **Lista de produtos:** baseada na lista atual do site Trust Group + fichas do Book. MSG, Potassium Sorbate, TiO₂ e HF entraram com a v4. Itens antigos das
+  apresentações (MAP, DAP, acetato de vinila, lactonas, têxtil etc.) ficaram de fora.
 - **Fotos:** vindas das apresentações e do site Trust Group. Faltam imagens próprias para alguns setores
   (automotivo, tratamento de água, cosméticos).
 - **Política de privacidade e LinkedIn:** não encontrados nos materiais; rodapé ainda sem esses links.
