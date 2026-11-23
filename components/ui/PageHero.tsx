@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { revealUp, staggerContainer, staticReveal } from '@/lib/motion-variants'
 import GlobeMark from '@/components/ui/GlobeMark'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 
 type Crumb = { name: string; path: string }
 
@@ -25,6 +26,7 @@ export default function PageHero({
   subtitle: string
   breadcrumb: Crumb[]
 }) {
+  const { t } = useI18n()
   const reduce = useReducedMotion()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -46,7 +48,7 @@ export default function PageHero({
         variants={staggerContainer(0.1)}
         className="relative mx-auto flex min-h-[24rem] max-w-site flex-col justify-end px-6 pb-16 pt-36 sm:min-h-[28rem] lg:min-h-[30rem]"
       >
-        <motion.nav variants={item} aria-label="Breadcrumb">
+        <motion.nav variants={item} aria-label={t('a11y.breadcrumb')}>
           <ol className="eyebrow flex flex-wrap items-center gap-x-2 gap-y-1 text-cobalto-claro">
             {breadcrumb.map((crumb, index) => {
               const last = index === breadcrumb.length - 1

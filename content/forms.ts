@@ -3,7 +3,7 @@
 
 export type FormType = 'quote' | 'supplier'
 
-type Field = {
+export type Field = {
   name: string
   label: string
   type?: 'text' | 'email' | 'tel' | 'textarea' | 'select'

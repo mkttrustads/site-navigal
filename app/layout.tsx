@@ -2,7 +2,11 @@ import type { Metadata } from 'next'
 import { Figtree } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import DocumentMeta from '@/components/layout/DocumentMeta'
+import { pageMeta } from '@/content/i18n/en'
 import { SITE_URL, company } from '@/content/site'
+import { I18nProvider } from '@/lib/i18n/I18nProvider'
+import { bootScript } from '@/lib/i18n/config'
 import './globals.css'
 
 // Figtree em todo o site, títulos em negrito (pedido do Marketing).
@@ -16,11 +20,10 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Navigal Trading Solutions | International Trading for Latin American Industry',
+    default: pageMeta['/'].title,
     template: '%s | Navigal Trading Solutions',
   },
-  description:
-    'Navigal structures international supply chains and trades strategic raw materials for Latin American industry: qualified global suppliers, managed risk and door-to-door delivery.',
+  description: pageMeta['/'].description,
 }
 
 const organizationJsonLd = {
@@ -42,12 +45,20 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={figtree.variable}>
+    // `lang` e o atributo de "idioma pendente" são ajustados antes da hidratação
+    // pelo script abaixo (idioma salvo do visitante), por isso o aviso é suprimido.
+    <html lang="en" className={figtree.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+      </head>
       <body className="bg-white font-body text-lg text-preto antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <I18nProvider>
+          <DocumentMeta />
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   )

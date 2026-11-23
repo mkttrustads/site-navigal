@@ -4,10 +4,19 @@ import { useMemo, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, FileText, Search } from 'lucide-react'
-import { products, type Product } from '@/content/products'
-import { getIndustry, industries } from '@/content/industries'
+import { products as sourceProducts, type Product } from '@/content/products'
 import Formula from '@/components/ui/Formula'
+import { useI18n } from '@/lib/i18n/I18nProvider'
+import { htmlLang } from '@/lib/i18n/config'
 import { cn } from '@/lib/utils'
+
+/** Minúsculas e sem acentos: "acido" encontra "Ácido". */
+function normalize(value: string) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+}
+
+// Texto-fonte (inglês) por slug: a busca continua achando pelo nome em inglês em qualquer idioma.
+const sourceBySlug = new Map(sourceProducts.map((product) => [product.slug, product]))
 
 /**
  * Portfólio com filtro por setor (sincronizado com `?industry=` na URL, para
@@ -15,6 +24,10 @@ import { cn } from '@/lib/utils'
  * ou CAS. Produtos com ficha técnica abrem os dados do Book de serviços.
  */
 export default function ProductCatalog() {
+  const {
+    t,
+    content: { getIndustry, industries, products },
+  } = useI18n()
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -23,15 +36,23 @@ export default function ProductCatalog() {
   const [query, setQuery] = useState('')
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    const q = normalize(query.trim())
     return products.filter((product) => {
       if (active !== 'all' && !product.industries.includes(active)) return false
       if (!q) return true
-      return [product.name, product.grade, product.datasheet?.cas, product.datasheet?.chemicalName]
+      const source = sourceBySlug.get(product.slug)
+      return [
+        product.name,
+        product.grade,
+        product.datasheet?.cas,
+        product.datasheet?.chemicalName,
+        source?.name,
+        source?.datasheet?.chemicalName,
+      ]
         .filter(Boolean)
-        .some((field) => field!.toLowerCase().includes(q))
+        .some((field) => normalize(field!).includes(q))
     })
-  }, [active, query])
+  }, [active, query, products])
 
   function selectIndustry(slug: string) {
     const params = new URLSearchParams(searchParams.toString())
@@ -45,23 +66,24 @@ export default function ProductCatalog() {
     <div>
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <label className="relative block w-full lg:max-w-sm">
-          <span className="sr-only">Search products by name or CAS number</span>
+          <span className="sr-only">{t('catalog.searchLabel')}</span>
           <Search aria-hidden="true" className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-suave" />
           <input
             type="search"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search by product or CAS number"
+            placeholder={t('catalog.searchPlaceholder')}
             className="w-full rounded-card border border-linha bg-white py-3.5 pl-12 pr-4 text-base outline-none transition focus:border-cobalto"
           />
         </label>
         <p className="text-sm text-suave" aria-live="polite">
-          Showing <strong className="text-preto">{filtered.length}</strong> of {products.length} products
+          {t('catalog.showing')} <strong className="text-preto">{filtered.length}</strong> {t('catalog.of')} {products.length}{' '}
+          {t('catalog.products')}
         </p>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label="Filter by industry">
-        {[{ slug: 'all', name: 'All industries' }, ...industries].map((industry) => (
+      <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label={t('catalog.filterLabel')}>
+        {[{ slug: 'all', name: t('catalog.allIndustries') }, ...industries].map((industry) => (
           <button
             key={industry.slug}
             type="button"
@@ -91,7 +113,7 @@ export default function ProductCatalog() {
 
       {filtered.length === 0 && (
         <p className="mt-10 rounded-card border border-dashed border-linha p-10 text-center text-base text-suave">
-          No products match your search. Our on-demand sourcing team can find it for you.
+          {t('catalog.noResults')}
         </p>
       )}
     </div>
@@ -99,6 +121,11 @@ export default function ProductCatalog() {
 }
 
 function ProductCard({ product }: { product: Product }) {
+  const {
+    t,
+    locale,
+    content: { getIndustry },
+  } = useI18n()
   const [open, setOpen] = useState(false)
   const reduce = useReducedMotion()
   const sheet = product.datasheet
@@ -131,7 +158,7 @@ function ProductCard({ product }: { product: Product }) {
             className="inline-flex shrink-0 items-center gap-2 self-start rounded-card border border-linha px-4 py-2 text-sm font-semibold text-cobalto transition hover:border-cobalto"
           >
             <FileText aria-hidden="true" className="h-4 w-4" />
-            Technical data
+            {t('catalog.technicalData')}
             <ChevronDown aria-hidden="true" className={cn('h-4 w-4 transition-transform', open && 'rotate-180')} />
           </button>
         )}
@@ -149,28 +176,28 @@ function ProductCard({ product }: { product: Product }) {
           >
             <div className="grid gap-8 border-t border-linha p-6 lg:grid-cols-[0.9fr_1.4fr]">
               <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 self-start rounded-card bg-off-white p-5 text-sm">
-                <dt className="font-semibold text-suave">Chemical name</dt>
+                <dt className="font-semibold text-suave">{t('sheet.chemicalName')}</dt>
                 <dd>{sheet.chemicalName}</dd>
-                <dt className="font-semibold text-suave">CAS No.</dt>
+                <dt className="font-semibold text-suave">{t('sheet.cas')}</dt>
                 <dd className="stat-numeral">{sheet.cas}</dd>
-                <dt className="font-semibold text-suave">Formula</dt>
+                <dt className="font-semibold text-suave">{t('sheet.formula')}</dt>
                 <dd>
                   <Formula value={sheet.formula} />
                 </dd>
-                <dt className="font-semibold text-suave">NCM</dt>
+                <dt className="font-semibold text-suave">{t('sheet.ncm')}</dt>
                 <dd className="stat-numeral">{sheet.ncm}</dd>
                 {sheet.description && (
                   <>
-                    <dt className="font-semibold text-suave">Description</dt>
+                    <dt className="font-semibold text-suave">{t('sheet.description')}</dt>
                     <dd>{sheet.description}</dd>
                   </>
                 )}
               </dl>
               <div className="space-y-5 text-base leading-relaxed">
-                <SheetBlock title="Applications">{sheet.applications}</SheetBlock>
-                <SheetBlock title="Typical buyers">{sheet.buyers}</SheetBlock>
+                <SheetBlock title={t('sheet.applications')}>{sheet.applications}</SheetBlock>
+                <SheetBlock title={t('sheet.buyers')}>{sheet.buyers}</SheetBlock>
                 {sheet.regulatory && (
-                  <SheetBlock title="Regulatory notes (Brazil)">
+                  <SheetBlock title={t('sheet.regulatory')}>
                     <ul className="list-disc space-y-1 pl-5">
                       {sheet.regulatory.map((note) => (
                         <li key={note}>{note}</li>
@@ -178,7 +205,9 @@ function ProductCard({ product }: { product: Product }) {
                     </ul>
                   </SheetBlock>
                 )}
-                <SheetBlock title="Documents provided">{sheet.documents.join(' and ')}</SheetBlock>
+                <SheetBlock title={t('sheet.documents')}>
+                  {new Intl.ListFormat(htmlLang[locale], { style: 'long', type: 'conjunction' }).format(sheet.documents)}
+                </SheetBlock>
               </div>
             </div>
           </motion.div>

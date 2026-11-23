@@ -1,7 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { company, primaryNav } from '@/content/site'
-import { industries } from '@/content/industries'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 
 /**
  * Estrutura do rodapé do site Trust Group (marca à esquerda, colunas de links
@@ -9,13 +10,17 @@ import { industries } from '@/content/industries'
  * "A Trust Group company".
  */
 export default function Footer() {
+  const {
+    t,
+    content: { company, primaryNav, industries },
+  } = useI18n()
   const year = new Date().getFullYear()
   return (
     <footer className="border-t border-linha bg-white text-preto">
       <div className="mx-auto max-w-site px-6 py-16">
         <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
           <div className="flex max-w-sm flex-col gap-6">
-            <Link href="/" aria-label="Navigal home">
+            <Link href="/" aria-label={t('footer.homeLabel')}>
               <Image
                 src="/brand/navigal-logo.png"
                 alt="Navigal Trading Solutions Limited"
@@ -25,8 +30,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-pretty text-base leading-relaxed text-suave">
-              A global trading platform that structures international supply chains and delivers strategic raw materials
-              to Latin American industry.
+              {t('footer.description')}
             </p>
             <a
               href="https://trust.group"
@@ -34,7 +38,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-sm font-semibold text-suave transition hover:text-cobalto"
             >
-              A company of
+              {t('footer.companyOf')}
               <Image
                 src="/brand/trust-group-horizontal.png"
                 alt="Trust Group"
@@ -59,7 +63,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="eyebrow mb-5 text-cobalto">Industries</h3>
+              <h3 className="eyebrow mb-5 text-cobalto">{t('common.industries')}</h3>
               <ul className="space-y-3">
                 {industries.slice(0, 6).map((industry) => (
                   <li key={industry.slug}>
@@ -74,7 +78,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="eyebrow mb-5 text-cobalto">Contact</h3>
+              <h3 className="eyebrow mb-5 text-cobalto">{t('footer.contact')}</h3>
               <ul className="space-y-3 text-base text-preto/80">
                 <li>
                   <a href={`mailto:${company.email}`} className="break-words transition hover:text-cobalto">
@@ -103,7 +107,7 @@ export default function Footer() {
       <div className="border-t border-linha">
         <div className="mx-auto flex max-w-site flex-col gap-2 px-6 py-6 text-sm text-suave sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {company.legalName}. All rights reserved.
+            © {year} {company.legalName}. {t('footer.rights')}
           </p>
           <p className="tracking-[0.14em]">TRADING SOLUTIONS LIMITED</p>
         </div>

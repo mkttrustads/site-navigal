@@ -69,3 +69,9 @@
     animation: none;
   }
 }
+
+/* Visitante com PT/ES salvo: o servidor entrega o HTML em inglês, então a página
+   fica oculta até o idioma salvo ser aplicado (ver lib/i18n/config.ts). */
+html[data-i18n-pending] body {
+  visibility: hidden;
+}

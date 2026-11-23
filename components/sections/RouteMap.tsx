@@ -1,4 +1,6 @@
 import DottedMap from 'dotted-map'
+import { LocalizedSvg, T } from '@/components/ui/LocalizedText'
+import type { UiKey } from '@/lib/i18n/translate'
 
 // Mapa-múndi pontilhado gerado no servidor (a biblioteca não vai para o
 // bundle do cliente) com as rotas em Azul Marítimo: a faixa curva usada como
@@ -62,12 +64,7 @@ export default function RouteMap({ className }: { className?: string }) {
           // SVG gerado pela própria aplicação no build, sem entrada do usuário.
           dangerouslySetInnerHTML={{ __html: baseSvg }}
         />
-        <svg
-          viewBox={`0 0 ${width} ${height}`}
-          className="absolute inset-0 h-full w-full"
-          role="img"
-          aria-label="Map of Navigal's network: offices in the United Arab Emirates, Panama, Miami and Brazil, and sourcing routes from China, India, Europe and the Middle East to Latin America."
-        >
+        <LocalizedSvg labelKey="map.aria" viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 h-full w-full">
           {routes.map(({ from, bend }) => (
             <g key={from}>
               <path d={arc(points[from], destination, bend)} fill="none" stroke="#2B5EA7" strokeOpacity={0.35} strokeWidth={0.5} />
@@ -95,25 +92,25 @@ export default function RouteMap({ className }: { className?: string }) {
                   className="fill-white/80 font-body"
                   style={{ fontSize: 1.5, fontWeight: 600 }}
                 >
-                  {point.name}
+                  <T k={`map.place.${point.name}` as UiKey} />
                 </text>
               </g>
             )
           })}
-        </svg>
+        </LocalizedSvg>
       </div>
       <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm text-white/70">
         <li className="flex items-center gap-2">
           <span aria-hidden="true" className="h-3 w-3 rounded-full border-2 border-white bg-cobalto" />
-          Navigal offices
+          <T k="map.legend.offices" />
         </li>
         <li className="flex items-center gap-2">
           <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-white" />
-          Main sourcing origins
+          <T k="map.legend.origins" />
         </li>
         <li className="flex items-center gap-2">
           <span aria-hidden="true" className="h-0.5 w-6 bg-cobalto-claro" />
-          Supply routes to Latin America
+          <T k="map.legend.routes" />
         </li>
       </ul>
     </div>

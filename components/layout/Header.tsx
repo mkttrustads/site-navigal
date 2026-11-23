@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import { primaryNav, quoteCta } from '@/content/site'
 import Button from '@/components/ui/Button'
 import GlobeMark from '@/components/ui/GlobeMark'
+import LanguageSwitcher from '@/components/layout/LanguageSwitcher'
+import { useI18n } from '@/lib/i18n/I18nProvider'
 import { cn } from '@/lib/utils'
 
 /**
@@ -15,6 +16,10 @@ import { cn } from '@/lib/utils'
  */
 export default function Header() {
   const pathname = usePathname()
+  const {
+    t,
+    content: { primaryNav, quoteCta },
+  } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -44,18 +49,18 @@ export default function Header() {
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-card focus:bg-cobalto focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
       >
-        Skip to content
+        {t('a11y.skipToContent')}
       </a>
 
       <div className="mx-auto flex max-w-site items-center justify-between gap-6 px-6">
         {/* Só a esfera, como o monograma no cabeçalho do site Trust Group; a
             logo completa fica na Hero da Home. Vetor, para ficar nítido no
             tamanho pequeno, com a faixa de destaque em Azul Marítimo. */}
-        <Link href="/" className="shrink-0" aria-label="Navigal Trading Solutions Limited, home">
+        <Link href="/" className="shrink-0" aria-label={t('header.homeLabel')}>
           <GlobeMark tone="dark" className="h-[2.4rem] w-auto sm:h-[2.8rem]" />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-7 xl:flex">
+        <nav aria-label={t('a11y.mainNav')} className="hidden items-center gap-7 xl:flex">
           {primaryNav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
             return (
@@ -75,24 +80,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-6 xl:flex">
-          {/* Versões em português e espanhol ainda não publicadas. */}
-          <div className="flex items-center gap-1 text-sm font-semibold" aria-label="Language">
-            <span className="text-white" aria-current="true">
-              EN
-            </span>
-            <span aria-hidden="true" className="text-white/30">
-              /
-            </span>
-            <span className="cursor-not-allowed text-white/45" title="Coming soon">
-              PT
-            </span>
-            <span aria-hidden="true" className="text-white/30">
-              /
-            </span>
-            <span className="cursor-not-allowed text-white/45" title="Coming soon">
-              ES
-            </span>
-          </div>
+          <LanguageSwitcher />
           <Button href={quoteCta.href} className="px-5 py-2.5 text-sm">
             {quoteCta.label}
           </Button>
@@ -101,7 +89,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setMobileOpen((open) => !open)}
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-label={mobileOpen ? t('a11y.closeMenu') : t('a11y.openMenu')}
           aria-expanded={mobileOpen}
           className="text-white xl:hidden"
         >
@@ -111,7 +99,7 @@ export default function Header() {
 
       {mobileOpen && (
         <div className="mt-3 max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-preto px-6 pb-8 pt-2 xl:hidden">
-          <nav aria-label="Main" className="flex flex-col">
+          <nav aria-label={t('a11y.mainNav')} className="flex flex-col">
             {primaryNav.map((item) => (
               <Link
                 key={item.href}
@@ -122,7 +110,8 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <Button href={quoteCta.href} className="mt-6 w-full">
+          <LanguageSwitcher touch className="mt-4 -ml-2" />
+          <Button href={quoteCta.href} className="mt-4 w-full">
             {quoteCta.label}
           </Button>
         </div>

@@ -6,11 +6,14 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion
 import { revealUp, staggerContainer, staticReveal } from '@/lib/motion-variants'
 import Button from '@/components/ui/Button'
 import GlobeMark from '@/components/ui/GlobeMark'
-import { facts, quoteCta } from '@/content/site'
-
-const heroFacts = [facts.launched, facts.tons, facts.portfolio, facts.continents]
+import { useI18n } from '@/lib/i18n/I18nProvider'
 
 export default function HomeHero() {
+  const {
+    t,
+    content: { company, facts, quoteCta },
+  } = useI18n()
+  const heroFacts = [facts.launched, facts.tons, facts.portfolio, facts.continents]
   const reduce = useReducedMotion()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -55,18 +58,17 @@ export default function HomeHero() {
           />
         </motion.div>
         <motion.h1 variants={item} className="mt-10 max-w-4xl text-balance text-[clamp(2.4rem,5.2vw,4.6rem)] leading-[1.05]">
-          Building reliable connections.
+          {company.tagline}
         </motion.h1>
         <motion.p variants={item} className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl">
-          We structure international supply chains and trade strategic raw materials for Latin American industry: from
-          qualified suppliers at origin to delivery at your plant, with every risk governed along the way.
+          {t('home.hero.lead')}
         </motion.p>
         <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
           <Button href={quoteCta.href} arrow>
             {quoteCta.label}
           </Button>
           <Button href="/products" variant="outline">
-            Explore our portfolio
+            {t('home.hero.explore')}
           </Button>
         </motion.div>
       </motion.div>
