@@ -190,14 +190,17 @@ export const ui = {
 
   // Mapa de rotas
   'map.aria':
-    "Map of Navigal's network: offices in the United Arab Emirates, Panama, Miami and Brazil, and sourcing routes from China, India, Europe and the Middle East to Latin America.",
-  'map.place.UAE': 'UAE',
-  'map.place.Panama': 'Panama',
+    "Map of Navigal's network: Navigal's base in the United Arab Emirates, offices in Miami and Brazil, and sourcing routes from Italy, Turkey, Oman, China, Taiwan, Vietnam and Malaysia converging on Navigal, with a single route from Navigal to Brazil and Latin America.",
+  'map.place.Navigal': 'Navigal',
   'map.place.Miami': 'Miami',
   'map.place.Brazil': 'Brazil',
+  'map.place.Italy': 'Italy',
+  'map.place.Turkey': 'Turkey',
+  'map.place.Oman': 'Oman',
   'map.place.China': 'China',
-  'map.place.India': 'India',
-  'map.place.Europe': 'Europe',
+  'map.place.Taiwan': 'Taiwan',
+  'map.place.Vietnam': 'Vietnam',
+  'map.place.Malaysia': 'Malaysia',
   'map.legend.offices': 'Navigal offices',
   'map.legend.origins': 'Main sourcing origins',
   'map.legend.routes': 'Supply routes to Latin America',

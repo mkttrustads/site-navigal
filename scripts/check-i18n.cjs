@@ -50,7 +50,7 @@ const KEEP = new RegExp(
       'Error 404', 'sales@navigal-ts\\.com', 'Al Hamra Industrial Zone FZ',
       'RAKEZ Amenity Center, Al Hamra Industrial Zone FZ, Ras Al Khaimah',
       'Garuva, SC', 'Sumaré, SP', 'Cabo de Santo Agostinho, PE', 'ISO 9001', 'SASSMAQ e ISO 9001',
-      'PP, PE, PVC (e|y) PET', '200 mesh', 'India', 'Panama', 'Brazil', 'Europe', 'Taglog Logística Integrada.*',
+      'PP, PE, PVC (e|y) PET', '200 mesh', 'Brazil', 'Taiwan', 'Vietnam', 'Taglog Logística Integrada.*',
       'EDTA', 'Trust Group', 'Trust Group',
     ].join('|') +
     ')$'
