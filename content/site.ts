@@ -14,7 +14,7 @@ export const company = {
   // entidade legal, fora do escopo do alinhamento à apresentação v4). O texto
   // público passou a usar 2021 (lançamento da Navigal). Decisão pendente.
   founded: 2008,
-  email: 'contact@navigal-ts.com',
+  email: 'sales@navigal-ts.com',
   // Dois números aparecem nos materiais: +1 (site antigo e tradução para o
   // espanhol) e +55 (apresentação Navigal.pptx). Confirmar com o Marketing
   // quais seguem ativos.

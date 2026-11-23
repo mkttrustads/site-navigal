@@ -1,7 +1,10 @@
 import { Resend } from 'resend'
 import { formFields, type FormType } from '@/content/forms'
+import { company } from '@/content/site'
 
-const DESTINATION = 'contact@navigal-ts.com'
+// Mesmo endereço exibido no site (content/site.ts), para destino e contato
+// público nunca divergirem. Vale para os dois formulários (quote e supplier).
+const DESTINATION = company.email
 
 // Remetente padrão da Resend, que funciona sem verificar domínio. Assim que
 // navigal-ts.com estiver verificado na Resend, trocar por algo como

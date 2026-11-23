@@ -43,7 +43,7 @@ Decisões minhas que você pode reverter:
 5. **Soda Ash (Dense), DMF e Polyacrylamide** estão no site e não na apresentação (`content/products.ts`: linhas 82, 135 e 166).
 
 ### Decisões suas (não alterei)
-1. **Contato.** A apresentação usa Fernando Victorino, fernando.victorino@trust.group, +55 (47) 98844 9269 e www.navigal-ts.com. O site usa contact@navigal-ts.com, +1 646 915 1713 e +55 11 93312 5318. Onde o contato aparece:
+1. **Contato.** A apresentação usa Fernando Victorino, fernando.victorino@trust.group, +55 (47) 98844 9269 e www.navigal-ts.com. O site usa sales@navigal-ts.com, +1 646 915 1713 e +55 11 93312 5318. Onde o contato aparece:
    - Fonte dos dados: `content/site.ts:17` (e-mail) e `:22-23` (telefones).
    - Rodapé: `components/layout/Footer.tsx:80-90`.
    - /contact: `app/contact/page.tsx:41-55`.
