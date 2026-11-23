@@ -21,12 +21,20 @@ const places: Place[] = [
   { name: 'Europe', lat: 51.92, lng: 4.48, kind: 'origin' },
 ]
 
-// Curvatura diferente por rota, para as curvas vindas do Oriente não se sobreporem.
-const routes: { from: string; bend: number }[] = [
-  { from: 'China', bend: 0.2 },
-  { from: 'India', bend: 0.3 },
-  { from: 'UAE', bend: 0.42 },
-  { from: 'Europe', bend: 0.3 },
+// Duas camadas de rota, no mesmo estilo visual:
+// 1) origens → base da Navigal nos Emirados (UAE), onde a carga é negociada;
+// 2) rotas comerciais para o Brasil / América Latina (as já existentes).
+// A curvatura varia por rota para as curvas não se sobreporem.
+const BASE = 'UAE'
+
+const routes: { from: string; to: string; bend: number }[] = [
+  { from: 'China', to: BASE, bend: -0.1 },
+  { from: 'India', to: BASE, bend: -0.3 },
+  { from: 'Europe', to: BASE, bend: 0.12 },
+  { from: 'China', to: DESTINATION.name, bend: 0.2 },
+  { from: 'India', to: DESTINATION.name, bend: 0.3 },
+  { from: 'UAE', to: DESTINATION.name, bend: 0.42 },
+  { from: 'Europe', to: DESTINATION.name, bend: 0.3 },
 ]
 
 const map = new DottedMap({ height: 64, grid: 'diagonal', region: { lat: { min: -56, max: 72 }, lng: { min: -130, max: 160 } } })
@@ -44,7 +52,7 @@ function arc(from: { x: number; y: number }, to: { x: number; y: number }, bend:
 
 // Rótulos posicionados à mão, para não colidirem entre si nem com as rotas.
 const labelOffset: Record<string, { dx: number; dy: number; anchor: 'start' | 'end' | 'middle' }> = {
-  UAE: { dx: -1.4, dy: -1.4, anchor: 'end' },
+  UAE: { dx: 0.4, dy: -2, anchor: 'middle' },
   Panama: { dx: -1.6, dy: 0.6, anchor: 'end' },
   Miami: { dx: -1.6, dy: 0.2, anchor: 'end' },
   Brazil: { dx: 1.8, dy: 0.6, anchor: 'start' },
@@ -54,7 +62,6 @@ const labelOffset: Record<string, { dx: number; dy: number; anchor: 'start' | 'e
 }
 
 export default function RouteMap({ className }: { className?: string }) {
-  const destination = points[DESTINATION.name]
   return (
     <div className={className}>
       <div className="relative">
@@ -65,11 +72,11 @@ export default function RouteMap({ className }: { className?: string }) {
           dangerouslySetInnerHTML={{ __html: baseSvg }}
         />
         <LocalizedSvg labelKey="map.aria" viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 h-full w-full">
-          {routes.map(({ from, bend }) => (
-            <g key={from}>
-              <path d={arc(points[from], destination, bend)} fill="none" stroke="#2B5EA7" strokeOpacity={0.35} strokeWidth={0.5} />
+          {routes.map(({ from, to, bend }) => (
+            <g key={`${from}-${to}`}>
+              <path d={arc(points[from], points[to], bend)} fill="none" stroke="#2B5EA7" strokeOpacity={0.35} strokeWidth={0.5} />
               <path
-                d={arc(points[from], destination, bend)}
+                d={arc(points[from], points[to], bend)}
                 fill="none"
                 stroke="#8FB0E0"
                 strokeWidth={0.5}
