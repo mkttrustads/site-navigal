@@ -3,15 +3,28 @@
 @tailwind utilities;
 
 @layer base {
-  /* Títulos em Figtree negrito (pedido do Marketing — substitui a Baskerville
-     sugerida no Brand Persona). Entrelinha única para todos os títulos. */
+  /* Peso único dos títulos (h1–h4): Figtree Regular, como na apresentação
+     institucional. A hierarquia vem de tamanho e cor, não de negrito. Para
+     mudar o peso de todos os títulos do site, altere só este token. */
+  :root {
+    --heading-weight: 400;
+  }
+
   h1,
   h2,
   h3,
   h4 {
-    font-weight: 700;
+    font-weight: var(--heading-weight);
     line-height: 1.15;
     letter-spacing: -0.01em;
+  }
+
+  /* Títulos grandes (hero e seções): no peso regular o corpo da letra afina,
+     então fechamos um pouco o tracking e a entrelinha para manter a leitura. */
+  h1,
+  h2 {
+    line-height: 1.12;
+    letter-spacing: -0.015em;
   }
 
   :focus-visible {

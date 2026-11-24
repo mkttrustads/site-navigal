@@ -52,7 +52,7 @@ export default function HomeHero() {
             className="h-28 w-auto sm:h-36"
           />
         </motion.div>
-        <motion.h1 variants={item} className="mt-10 max-w-4xl text-balance text-[clamp(2.4rem,5.2vw,4.6rem)] leading-[1.05]">
+        <motion.h1 variants={item} className="mt-10 max-w-4xl text-balance text-[clamp(2.4rem,5.2vw,4.6rem)] leading-[1.1]">
           {company.tagline}
         </motion.h1>
         <motion.p variants={item} className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl">

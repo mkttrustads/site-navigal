@@ -10,7 +10,7 @@ import { I18nProvider } from '@/lib/i18n/I18nProvider'
 import { bootScript } from '@/lib/i18n/config'
 import './globals.css'
 
-// Figtree em todo o site, títulos em negrito (pedido do Marketing).
+// Figtree em todo o site; títulos em peso regular (400), definido por --heading-weight em globals.css.
 // Hospedada no repositório (variável, 400–800, subset latin; licença OFL) em vez de
 // next/font/google: o build não depende mais do Google Fonts, que na Vercel às vezes
 // devolve URLs sem extensão e derruba o build do Next 14.2.5 ("Cannot read properties of null").
