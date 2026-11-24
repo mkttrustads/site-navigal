@@ -20,6 +20,9 @@ export default function Header() {
     t,
     content: { primaryNav, quoteCta },
   } = useI18n()
+  // "Contato" saiu do menu do cabeçalho: o acesso é só pelo botão. Rodapé e
+  // breadcrumbs continuam usando primaryNav completo.
+  const headerNav = primaryNav.filter((item) => item.href !== quoteCta.href)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -63,8 +66,8 @@ export default function Header() {
           <GlobeMark tone="dark" className="h-[2.4rem] w-auto sm:h-[2.8rem]" />
         </Link>
 
-        <nav aria-label={t('a11y.mainNav')} className="hidden items-center gap-7 xl:flex">
-          {primaryNav.map((item) => {
+        <nav aria-label={t('a11y.mainNav')} className="hidden items-center gap-8 xl:flex">
+          {headerNav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
             return (
               <Link
@@ -85,7 +88,7 @@ export default function Header() {
         <div className="hidden items-center gap-6 xl:flex">
           <LanguageSwitcher />
           <Button href={quoteCta.href} className="px-5 py-2.5 text-sm">
-            {quoteCta.label}
+            {t('header.contact')}
           </Button>
         </div>
 
@@ -103,7 +106,7 @@ export default function Header() {
       {mobileOpen && (
         <div className="mt-3 max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-preto px-6 pb-8 pt-2 xl:hidden">
           <nav aria-label={t('a11y.mainNav')} className="flex flex-col">
-            {primaryNav.map((item) => (
+            {headerNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -115,7 +118,7 @@ export default function Header() {
           </nav>
           <LanguageSwitcher touch className="mt-4 -ml-2" />
           <Button href={quoteCta.href} className="mt-4 w-full">
-            {quoteCta.label}
+            {t('header.contact')}
           </Button>
         </div>
       )}
