@@ -223,7 +223,7 @@ export const es: Translation = {
     '/about': {
       title: 'Sobre Navigal',
       description:
-        'Nacida de la industria química: Navigal es la trading internacional lanzada por Trust Group en 2021, opera desde los Emiratos Árabes Unidos y conecta proveedores globales con la industria latinoamericana.',
+        'Nacida de la industria química: Navigal es la trading internacional lanzada por Trust Group en 2024, opera desde los Emiratos Árabes Unidos y conecta proveedores globales con la industria latinoamericana.',
     },
     '/solutions': {
       title: 'Soluciones',
@@ -296,7 +296,7 @@ export const es: Translation = {
           'Juliano Victorino funda Trust para importar las materias primas químicas que tanto le costaba conseguir en el exterior.',
       },
       {
-        label: '2021',
+        label: '2024',
         title: 'Se lanza Navigal',
         description:
           'Trust Group crea su trading internacional para llevar el conocimiento del grupo al origen, trabajando codo a codo con los proveedores.',
@@ -312,7 +312,7 @@ export const es: Translation = {
       title: 'Nacida de la industria química',
       paragraphs: [
         'Antes de Trust Group, nuestro fundador Juliano Victorino dirigía una fábrica de detergente en polvo en Brasil y aprendió de primera mano lo difícil que es conseguir insumos químicos en el exterior. En 2005 fundó Trust en Itajaí/SC para importar esas materias primas.',
-        'Dos décadas importando productos químicos y otros artículos nos enseñaron todos los requisitos técnicos, regulatorios y logísticos del mercado brasileño. En 2021, Trust Group creó Navigal para llevar este conocimiento al origen, trabajando codo a codo con los proveedores para ampliar su participación de mercado en Brasil y América Latina.',
+        'Dos décadas importando productos químicos y otros artículos nos enseñaron todos los requisitos técnicos, regulatorios y logísticos del mercado brasileño. En 2024, Trust Group creó Navigal para llevar este conocimiento al origen, trabajando codo a codo con los proveedores para ampliar su participación de mercado en Brasil y América Latina.',
       ],
       closing: 'Conocemos la industria porque fuimos la industria.',
       presence: 'Navigal opera desde los Emiratos Árabes Unidos, con oficina en Miami.',

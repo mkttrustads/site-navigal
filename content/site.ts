@@ -10,10 +10,9 @@ export const company = {
   name: 'Navigal',
   legalName: 'Navigal Trading Solutions Limited',
   tagline: 'Building reliable connections.',
-  // Mantido em 2008 de propósito: alimenta o foundingDate do JSON-LD (dado da
-  // entidade legal, fora do escopo do alinhamento à apresentação v4). O texto
-  // público passou a usar 2021 (lançamento da Navigal). Decisão pendente.
-  founded: 2008,
+  // Ano de lançamento da Navigal (2024). Alimenta o foundingDate do JSON-LD e
+  // deve ficar igual a facts.launched e à linha do tempo do About.
+  founded: 2024,
   email: 'sales@navigal-ts.com',
   // Número único, igual em todos os idiomas (sem rótulo de região).
   phones: [{ display: '+55 (47) 98844-9269', href: 'tel:+5547988449269' }],
@@ -42,7 +41,7 @@ export const quoteCta = { label: 'Request a quote', href: '/contact' }
 const portfolioFloor = Math.floor(products.length / 10) * 10
 
 export const facts = {
-  launched: { value: '2021', label: 'Navigal launched' },
+  launched: { value: '2024', label: 'Navigal launched' },
   tons: { value: '11k', label: 'Tons imported by Navigal in 2025' },
   portfolio: { value: `${portfolioFloor}+`, label: 'Strategic raw materials in our portfolio' },
   continents: { value: '3', label: 'Sourcing regions: Asia, Europe and the Middle East' },
