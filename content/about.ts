@@ -13,7 +13,7 @@ export const milestones = [
       'Juliano Victorino founds Trust to import the chemical raw materials he had found so hard to source from abroad.',
   },
   {
-    label: '2021',
+    label: '2024',
     title: 'Navigal is launched',
     description:
       'Trust Group creates its international trading company to take the group’s know-how to the source, working side by side with suppliers.',
@@ -31,7 +31,7 @@ export const story = {
   title: 'Born from the chemical industry',
   paragraphs: [
     'Before Trust Group, our founder Juliano Victorino ran a detergent powder factory in Brazil and learned first-hand how hard it is to source chemical inputs from abroad. In 2005, he founded Trust in Itajaí/SC to import those raw materials.',
-    'Two decades of importing chemicals and other products taught us every technical, regulatory and logistics requirement of the Brazilian market. In 2021, Trust Group created Navigal to take this know-how to the source, working side by side with suppliers to grow their market share in Brazil and Latin America.',
+    'Two decades of importing chemicals and other products taught us every technical, regulatory and logistics requirement of the Brazilian market. In 2024, Trust Group created Navigal to take this know-how to the source, working side by side with suppliers to grow their market share in Brazil and Latin America.',
   ],
   closing: 'We know the industry because we were the industry.',
   // Mantém a informação de base: escritório nos Emirados e em Miami.
@@ -70,7 +70,7 @@ export const values = [
 
 // "Miami" vem da página Trading Internacional do site Trust Group; o Brand
 // Persona cita Dubai e Panamá. O card do Panamá ("Incorporated in 2008") saiu
-// com a nova história (Navigal lançada em 2021); decisão sobre o Panamá pendente.
+// com a nova história (Navigal lançada em 2024); decisão sobre o Panamá pendente.
 // Confirmar a lista final com o Marketing.
 export const offices = [
   {

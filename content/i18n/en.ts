@@ -227,7 +227,7 @@ export const pageMeta = {
   '/about': {
     title: 'About Navigal',
     description:
-      'Born from the chemical industry: Navigal is the international trading company launched by Trust Group in 2021, operating from the United Arab Emirates and connecting global suppliers to Latin American industry.',
+      'Born from the chemical industry: Navigal is the international trading company launched by Trust Group in 2024, operating from the United Arab Emirates and connecting global suppliers to Latin American industry.',
   },
   '/solutions': {
     title: 'Solutions',
