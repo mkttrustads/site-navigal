@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowUpRight, Check } from 'lucide-react'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
+import Carousel from '@/components/ui/Carousel'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { useI18n } from '@/lib/i18n/I18nProvider'
@@ -128,59 +129,126 @@ export function AudienceSplit() {
   )
 }
 
+/** Rótulo de seção no mesmo padrão do `SectionHeading` (usado nos slides sem título principal). */
+function SlideEyebrow({ children }: { children: string }) {
+  return (
+    <p className="eyebrow flex items-center gap-3 text-cobalto">
+      <span aria-hidden="true" className="h-px w-8 bg-cobalto" />
+      {children}
+    </p>
+  )
+}
+
+/**
+ * "Parte do Trust Group": carrossel de 3 slides (contexto, números, empresas)
+ * à esquerda e montagem de 3 fotos à direita (1 grande + 2 menores).
+ * Mobile/tablet: carrossel primeiro, montagem depois.
+ */
 export function TrustGroupSection() {
   const {
     t,
     content: { rankingFootnote, trustGroupFacts, trustGroupLines },
   } = useI18n()
+
+  const slides = [
+    // 1. Contexto institucional
+    <div key="context">
+      <SectionHeading
+        eyebrow={t('trust.eyebrow')}
+        title={t('trust.title')}
+        intro={
+          <>
+            <p>{t('trust.p1')}</p>
+            <p className="mt-5 border-l-2 border-cobalto pl-4 font-semibold text-preto">{t('trust.p2')}</p>
+          </>
+        }
+      />
+    </div>,
+
+    // 2. Números e estrutura
+    <div key="facts">
+      <SlideEyebrow>{t('trust.eyebrow')}</SlideEyebrow>
+      <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3">
+        {trustGroupFacts.map((fact) => (
+          <div key={fact.label} className="flex flex-col">
+            <dt className="mt-1 text-sm leading-snug text-suave">{fact.label}</dt>
+            <dd className="stat-numeral order-first text-3xl font-bold text-preto">{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-6 text-xs leading-relaxed text-suave">{rankingFootnote}</p>
+    </div>,
+
+    // 3. Ecossistema de empresas
+    <div key="lines">
+      <SlideEyebrow>{t('trust.eyebrow')}</SlideEyebrow>
+      <h3 className="mt-4 text-lg leading-snug">{trustGroupLines.title}</h3>
+      <ul className="mt-4 divide-y divide-preto/10 border-y border-preto/10">
+        {trustGroupLines.items.map((line) => (
+          <li key={line.name} className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:gap-6">
+            <span className="text-base font-semibold sm:w-48 sm:shrink-0">{line.name}</span>
+            <span className="text-[0.9375rem] leading-snug text-suave">{line.description}</span>
+          </li>
+        ))}
+      </ul>
+      <Button href="https://trust.group" variant="link" arrow className="mt-5">
+        {t('trust.visit')}
+      </Button>
+    </div>,
+  ]
+
   return (
     <Section tone="muted">
-      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <SectionHeading
-            eyebrow={t('trust.eyebrow')}
-            title={t('trust.title')}
-            intro={
-              <>
-                <p>{t('trust.p1')}</p>
-                <p className="mt-4">{t('trust.p2')}</p>
-              </>
-            }
-          />
-          <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-preto/10 pt-8">
-            {trustGroupFacts.map((fact) => (
-              <div key={fact.label} className="flex flex-col">
-                <dt className="mt-1 text-sm text-suave">{fact.label}</dt>
-                <dd className="stat-numeral order-first text-3xl font-bold text-preto">{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-6 text-xs leading-relaxed text-suave">{rankingFootnote}</p>
-          <div className="mt-10 border-t border-preto/10 pt-8">
-            <h3 className="text-lg leading-snug">{trustGroupLines.title}</h3>
-            <ul className="mt-5 divide-y divide-preto/10 border-y border-preto/10">
-              {trustGroupLines.items.map((line) => (
-                <li key={line.name} className="flex flex-col gap-1 py-3 sm:flex-row sm:gap-6">
-                  <span className="text-base font-semibold sm:w-56 sm:shrink-0">{line.name}</span>
-                  <span className="text-base text-suave">{line.description}</span>
-                </li>
-              ))}
-            </ul>
+      <div className="grid gap-12 lg:grid-cols-2 lg:items-stretch lg:gap-16">
+        <Carousel
+          className="mx-auto w-full max-w-2xl lg:max-w-none"
+          label={t('trust.carouselLabel')}
+          slides={slides}
+          labels={{
+            prev: t('trust.prev'),
+            next: t('trust.next'),
+            slide: (current, total) => t('trust.slideLabel', { current, total }),
+            goTo: (n) => t('trust.goTo', { n }),
+          }}
+        />
+
+        {/* Montagem: foto larga em cima, duas menores lado a lado. Mesmos cantos e espaçamento. */}
+        <div className="mx-auto grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 lg:max-w-none lg:grid-rows-[3fr_2fr]">
+          <div className="relative col-span-2 aspect-[2.2/1] overflow-hidden lg:aspect-auto rounded-card">
+            <Image
+              src="/images/trust-group-warehouse-aerial.jpg"
+              alt={t('trust.imageAlt')}
+              fill
+              sizes="(min-width: 1024px) 540px, (min-width: 672px) 672px, 100vw"
+              className="object-cover object-[50%_60%]"
+            />
+            <div className="absolute bottom-0 left-0 rounded-tr-card bg-white px-4 py-2.5 sm:px-5 sm:py-3">
+              <Image
+                src="/brand/trust-group-horizontal.png"
+                alt="Trust Group"
+                width={1134}
+                height={294}
+                className="h-6 w-auto sm:h-7"
+              />
+            </div>
           </div>
-          <Button href="https://trust.group" variant="link" arrow className="mt-10">
-            {t('trust.visit')}
-          </Button>
-        </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-card">
-          <Image
-            src="/images/trust-group-warehouse-aerial.jpg"
-            alt={t('trust.imageAlt')}
-            fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute bottom-0 left-0 rounded-tr-card bg-white px-6 py-4">
-            <Image src="/brand/trust-group-horizontal.png" alt="Trust Group" width={1134} height={294} className="h-8 w-auto" />
+          <div className="relative aspect-[16/10] overflow-hidden rounded-card lg:aspect-auto">
+            <Image
+              src="/images/trust-group-container-handling.jpg"
+              alt={t('trust.imageAlt2')}
+              fill
+              sizes="(min-width: 1024px) 264px, (min-width: 672px) 330px, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative aspect-[16/10] overflow-hidden rounded-card lg:aspect-auto">
+            <Image
+              src="/images/trust-group-warehouse-operation.jpg"
+              alt={t('trust.imageAlt3')}
+              fill
+              sizes="(min-width: 1024px) 264px, (min-width: 672px) 330px, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
