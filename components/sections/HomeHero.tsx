@@ -10,9 +10,8 @@ import { useI18n } from '@/lib/i18n/I18nProvider'
 export default function HomeHero() {
   const {
     t,
-    content: { company, facts, quoteCta },
+    content: { company, quoteCta },
   } = useI18n()
-  const heroFacts = [facts.launched, facts.tons, facts.portfolio, facts.continents]
   const reduce = useReducedMotion()
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
@@ -67,22 +66,6 @@ export default function HomeHero() {
           </Button>
         </motion.div>
       </motion.div>
-
-      <div className="relative border-t border-white/10 bg-preto/60 backdrop-blur-sm">
-        <dl className="mx-auto grid max-w-site grid-cols-2 px-6 lg:grid-cols-4">
-          {heroFacts.map((fact, index) => (
-            <div
-              key={fact.label}
-              className={`flex flex-col gap-1 py-6 lg:py-8 ${index % 2 === 1 ? 'pl-6' : 'pr-6'} ${
-                index > 0 ? 'lg:border-l lg:border-white/10 lg:pl-8' : ''
-              } ${index > 1 ? 'border-t border-white/10 lg:border-t-0' : ''}`}
-            >
-              <dt className="text-sm leading-snug text-white/65">{fact.label}</dt>
-              <dd className="stat-numeral order-first text-3xl font-bold text-white sm:text-4xl">{fact.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
     </section>
   )
 }
