@@ -5,7 +5,6 @@ import { MapPin } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Icon from '@/components/ui/Icon'
-import GlobeMark from '@/components/ui/GlobeMark'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { CertificationsSection, CommitmentSection, CtaBand, TrustGroupSection } from '@/components/sections/Shared'
 import { useI18n } from '@/lib/i18n/I18nProvider'
@@ -62,7 +61,6 @@ export default function AboutPage() {
       </Section>
 
       <section className="relative isolate overflow-hidden bg-preto text-white">
-        <GlobeMark tone="dark" className="absolute -left-20 top-1/2 h-[120%] -translate-y-1/2 opacity-[0.06]" />
         <div className="relative mx-auto grid max-w-site gap-12 px-6 py-24 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:py-28">
           <div>
             <p className="eyebrow text-cobalto-claro">{t('common.ourMission')}</p>
