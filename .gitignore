@@ -39,3 +39,6 @@ node_modules
 # materiais de referência do Marketing (brandbook, decks, wallpapers) — só
 # fonte de conteúdo local, não fazem parte do site
 /Materiais de Referencia/
+
+# Gerado automaticamente pelo `next dev`
+AGENTS.md
