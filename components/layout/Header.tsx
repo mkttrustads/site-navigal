@@ -33,6 +33,9 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
+    // Fecha o menu mobile ao trocar de rota. Comportamento intencional; a regra
+    // react-hooks/set-state-in-effect (React 19) é nova e não muda o resultado aqui.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false)
   }, [pathname])
 
