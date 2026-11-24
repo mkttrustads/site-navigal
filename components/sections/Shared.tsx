@@ -6,7 +6,6 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
-import GlobeMark from '@/components/ui/GlobeMark'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 import { cn } from '@/lib/utils'
@@ -90,7 +89,6 @@ export function AudienceSplit() {
             index === 0 ? 'bg-preto text-white' : 'bg-cobalto text-white'
           )}
         >
-          <GlobeMark tone="dark" className="absolute -bottom-16 -right-16 h-64 opacity-[0.08]" />
           <p className={cn('eyebrow', index === 0 ? 'text-cobalto-claro' : 'text-white/80')}>{block.eyebrow}</p>
           <h3 className="mt-4 max-w-md text-balance text-[clamp(1.6rem,2.4vw,2.1rem)]">{block.title}</h3>
           <ul className="mt-8 flex-1 space-y-4">
@@ -192,7 +190,6 @@ export function CtaBand({
     <section className="relative isolate overflow-hidden bg-preto text-white">
       <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className="object-cover opacity-50" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/90 to-preto/40" />
-      <GlobeMark tone="dark" className="absolute -right-10 top-1/2 hidden h-[140%] -translate-y-1/2 opacity-[0.08] md:block" />
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title ?? t('cta.title')}</h2>

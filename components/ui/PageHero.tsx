@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { revealUp, staggerContainer, staticReveal } from '@/lib/motion-variants'
-import GlobeMark from '@/components/ui/GlobeMark'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 type Crumb = { name: string; path: string }
@@ -40,7 +39,6 @@ export default function PageHero({
       </motion.div>
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/85 to-preto/30" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-preto/80 via-transparent to-preto/40" />
-      <GlobeMark tone="dark" className="absolute -right-24 top-1/2 hidden h-[130%] -translate-y-1/2 opacity-[0.07] lg:block" />
 
       <motion.div
         initial="hidden"

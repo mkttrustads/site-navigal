@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { revealUp, staggerContainer, staticReveal } from '@/lib/motion-variants'
 import Button from '@/components/ui/Button'
-import GlobeMark from '@/components/ui/GlobeMark'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 export default function HomeHero() {
@@ -18,7 +17,6 @@ export default function HomeHero() {
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 1.12])
-  const globeY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '18%'])
   const item = reduce ? staticReveal : revealUp
 
   return (
@@ -36,9 +34,6 @@ export default function HomeHero() {
       </motion.div>
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/80 to-preto/20" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-preto via-transparent to-preto/50" />
-      <motion.div style={{ y: globeY }} className="absolute -right-32 top-24 hidden h-[85%] lg:block" aria-hidden="true">
-        <GlobeMark tone="dark" className="h-full w-auto opacity-[0.06]" />
-      </motion.div>
 
       <motion.div
         initial="hidden"
