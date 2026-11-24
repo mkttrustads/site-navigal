@@ -1,7 +1,7 @@
 # Site Navigal
 
 Novo site da Navigal Trading Solutions Limited. Mesmo stack e estrutura do site Trust Group
-(Next.js 14, Tailwind, Framer Motion), com a identidade do Brand Persona da Navigal:
+(Next.js 16, Tailwind, Framer Motion), com a identidade do Brand Persona da Navigal:
 Azul Marítimo `#2B5EA7` como única cor de destaque sobre preto `#0D0D0D` e off-white `#F7F9F8`,
 Figtree em todo o site com títulos em negrito. Site em EN (padrão), PT-BR e ES.
 
@@ -40,6 +40,8 @@ Limitação conhecida: o HTML do servidor, o JSON-LD e o sitemap são em inglês
 npm install
 npm run dev
 ```
+
+Requer Node 20.9+. Lint: `npm run lint` (ESLint direto; o `next lint` foi removido no Next 16).
 
 Formulários enviam por Resend: configurar `RESEND_API_KEY` no ambiente (Vercel). Sem a chave,
 o envio falha com mensagem e o link de e-mail como alternativa.
