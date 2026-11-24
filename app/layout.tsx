@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Figtree } from 'next/font/google'
+import localFont from 'next/font/local'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import DocumentMeta from '@/components/layout/DocumentMeta'
@@ -10,9 +10,12 @@ import { bootScript } from '@/lib/i18n/config'
 import './globals.css'
 
 // Figtree em todo o site, títulos em negrito (pedido do Marketing).
-const figtree = Figtree({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+// Hospedada no repositório (variável, 400–800, subset latin; licença OFL) em vez de
+// next/font/google: o build não depende mais do Google Fonts, que na Vercel às vezes
+// devolve URLs sem extensão e derruba o build do Next 14.2.5 ("Cannot read properties of null").
+const figtree = localFont({
+  src: './fonts/Figtree-latin.woff2',
+  weight: '400 800',
   variable: '--font-figtree',
   display: 'swap',
 })
