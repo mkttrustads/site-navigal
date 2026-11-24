@@ -14,6 +14,7 @@ export const ui = {
   'a11y.openMenu': 'Open menu',
   'a11y.closeMenu': 'Close menu',
   'a11y.breadcrumb': 'Breadcrumb',
+  'a11y.backToTop': 'Back to top',
   'header.homeLabel': 'Navigal Trading Solutions Limited, home',
 
   // Termos comuns

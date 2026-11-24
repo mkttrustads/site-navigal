@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import BackToTop from '@/components/layout/BackToTop'
 import DocumentMeta from '@/components/layout/DocumentMeta'
 import { pageMeta } from '@/content/i18n/en'
 import { SITE_URL, company } from '@/content/site'
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <BackToTop />
         </I18nProvider>
       </body>
     </html>

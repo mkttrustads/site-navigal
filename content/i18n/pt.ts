@@ -23,6 +23,7 @@ export const pt: Translation = {
     'a11y.openMenu': 'Abrir menu',
     'a11y.closeMenu': 'Fechar menu',
     'a11y.breadcrumb': 'Trilha de navegação',
+    'a11y.backToTop': 'Voltar ao topo',
     'header.homeLabel': 'Navigal Trading Solutions Limited, página inicial',
 
     'common.home': 'Início',
