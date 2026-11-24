@@ -39,7 +39,7 @@ export default function HomeHero() {
         initial="hidden"
         animate="visible"
         variants={staggerContainer(0.12, 0.1)}
-        className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-16 pt-32"
+        className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-10 pt-28 sm:pt-32"
       >
         {/* Logo completa na Hero e só a esfera no menu, como no site Trust Group. */}
         <motion.div variants={item}>
@@ -49,16 +49,16 @@ export default function HomeHero() {
             width={809}
             height={520}
             priority
-            className="h-28 w-auto sm:h-36"
+            className="h-20 w-auto sm:h-[6.3rem]"
           />
         </motion.div>
-        <motion.h1 variants={item} className="mt-10 max-w-4xl text-balance text-[clamp(2.4rem,5.2vw,4.6rem)] leading-[1.1]">
+        <motion.h1 variants={item} className="mt-6 max-w-[12.2em] text-balance text-[clamp(1.8rem,3.9vw,3.45rem)] leading-[1.1]">
           {company.tagline}
         </motion.h1>
-        <motion.p variants={item} className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl">
+        <motion.p variants={item} className="mt-4 max-w-2xl text-pretty text-[0.95rem] leading-relaxed text-white/80 sm:text-base">
           {t('home.hero.lead')}
         </motion.p>
-        <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
+        <motion.div variants={item} className="mt-7 flex flex-wrap gap-4">
           <Button href={quoteCta.href} arrow>
             {quoteCta.label}
           </Button>
