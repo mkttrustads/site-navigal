@@ -64,7 +64,7 @@ export default function AboutPage() {
         <div className="relative mx-auto grid max-w-site gap-12 px-6 py-24 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:py-28">
           <div>
             <p className="eyebrow text-cobalto-claro">{t('common.ourMission')}</p>
-            <p className="mt-6 text-balance text-[clamp(1.5rem,2.4vw,2.1rem)] font-bold leading-snug">{mission}</p>
+            <p className="mt-6 text-balance text-[clamp(1.5rem,2.4vw,2.1rem)] leading-snug">{mission}</p>
           </div>
           <Reveal className="grid gap-px overflow-hidden rounded-card bg-white/10 sm:grid-cols-3">
             {principles.map((principle, index) => (
