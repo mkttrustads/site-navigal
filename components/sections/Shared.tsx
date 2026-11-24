@@ -41,14 +41,29 @@ export function IndustriesGrid({ tone = 'light' }: { tone?: 'light' | 'dark' }) 
     content: { industries, productsForIndustry },
   } = useI18n()
   const dark = tone === 'dark'
+  // Grid de 12 colunas com cards de largura idêntica e linhas de mesma altura (auto-rows-fr):
+  //  - lg+: 6 cards (span 2) + 5 cards centralizados (7º card começa na coluna 2)
+  //  - md: 3 por linha, última linha (2 cards) centralizada
+  //  - sm: 2 por linha, card final centralizado
+  //  - mobile: 1 por linha
+  // Se a quantidade de setores mudar, ajuste os offsets em `offsetClass`.
+  const offsetClass = (index: number) => {
+    if (index === 6) return 'lg:col-start-2'
+    if (index === 9) return 'md:col-start-3 lg:col-start-auto'
+    if (index === 10) return 'sm:col-start-4 md:col-start-auto'
+    return ''
+  }
   return (
-    <Reveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5" stagger={0.05}>
-      {industries.map((industry) => (
-        <RevealItem key={industry.slug}>
+    <Reveal className="grid auto-rows-fr grid-cols-12 gap-3 xl:gap-4" stagger={0.05}>
+      {industries.map((industry, index) => (
+        <RevealItem
+          key={industry.slug}
+          className={cn('col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-2', offsetClass(index))}
+        >
           <Link
             href={`/products?industry=${industry.slug}`}
             className={cn(
-              'group flex h-full flex-col justify-between gap-8 rounded-card border p-6 transition-colors',
+              'group flex h-full min-h-[11rem] flex-col gap-6 rounded-card border p-6 transition-colors lg:min-h-[12rem] lg:p-4 xl:p-5',
               dark
                 ? 'border-white/10 bg-white/[0.03] hover:border-cobalto hover:bg-cobalto'
                 : 'border-linha bg-white hover:border-cobalto hover:bg-cobalto hover:text-white'
@@ -61,8 +76,8 @@ export function IndustriesGrid({ tone = 'light' }: { tone?: 'light' | 'dark' }) 
               />
               <ArrowUpRight aria-hidden="true" className="h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
-            <div>
-              <h3 className="text-lg leading-snug">{industry.name}</h3>
+            <div className="flex flex-1 flex-col">
+              <h3 className="flex-1 text-balance text-lg leading-snug lg:text-base xl:text-lg">{industry.name}</h3>
               <p className={cn('mt-2 text-sm transition-colors group-hover:text-white/80', dark ? 'text-white/60' : 'text-suave')}>
                 {t('common.productCount', { count: productsForIndustry(industry.slug).length })}
               </p>
