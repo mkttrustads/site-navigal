@@ -182,6 +182,13 @@ export const es: Translation = {
     'trust.p2': 'Un solo socio, desde la puerta del proveedor hasta su planta.',
     'trust.visit': 'Visite trust.group',
     'trust.imageAlt': 'Vista aérea de un centro logístico de Trust Group en Brasil',
+    'trust.imageAlt2': 'Apilador de contenedores levantando un contenedor en una terminal portuaria',
+    'trust.imageAlt3': 'Operario de almacén con tableta junto a un montacargas y estanterías de palés',
+    'trust.carouselLabel': 'Sobre Navigal y Trust Group',
+    'trust.slideLabel': 'Diapositiva {current} de {total}',
+    'trust.prev': 'Diapositiva anterior',
+    'trust.next': 'Siguiente diapositiva',
+    'trust.goTo': 'Ir a la diapositiva {n}',
     'cta.title': 'Salga de las manos de los distribuidores locales e importe su propia línea de productos.',
     'cta.body':
       'Envíenos la especificación técnica, el uso final y el volumen anual. Volveremos con un análisis y opciones de suministro.',

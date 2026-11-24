@@ -179,6 +179,13 @@ export const ui = {
   'trust.p2': 'One partner from the supplier’s gate to your plant.',
   'trust.visit': 'Visit trust.group',
   'trust.imageAlt': 'Aerial view of a Trust Group logistics center in Brazil',
+  'trust.imageAlt2': 'Reach stacker lifting a shipping container at a port terminal',
+  'trust.imageAlt3': 'Warehouse operator with a tablet next to a forklift and pallet racking',
+  'trust.carouselLabel': 'About Navigal and Trust Group',
+  'trust.slideLabel': 'Slide {current} of {total}',
+  'trust.prev': 'Previous slide',
+  'trust.next': 'Next slide',
+  'trust.goTo': 'Go to slide {n}',
   'cta.title': 'Step out of local distributors’ hands and import your own product line.',
   'cta.body':
     'Send us the technical specification, end use and annual volume. We will come back with an analysis and supply options.',
