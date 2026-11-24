@@ -26,7 +26,12 @@ export default function DocumentMeta() {
     function apply() {
       if (fallback && !isSiteDefault(document.title)) return
       if (document.title !== title) document.title = title
-      const description = document.querySelector('meta[name="description"]')
+      // Ao trocar o conteúdo de uma tag que o React gerencia, ele pode inserir
+      // outra (em inglês) ao lado dela, deixando duas meta descriptions no
+      // <head>. Fica só a última (a mais recente) e as demais são removidas.
+      const descriptions = Array.from(document.head.querySelectorAll('meta[name="description"]'))
+      const description = descriptions[descriptions.length - 1]
+      descriptions.slice(0, -1).forEach((duplicate) => duplicate.remove())
       if (description && description.getAttribute('content') !== meta.description) {
         description.setAttribute('content', meta.description)
       }
