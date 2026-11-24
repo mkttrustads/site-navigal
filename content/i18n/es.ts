@@ -24,6 +24,7 @@ export const es: Translation = {
     'a11y.openMenu': 'Abrir menú',
     'a11y.closeMenu': 'Cerrar menú',
     'a11y.breadcrumb': 'Ruta de navegación',
+    'a11y.backToTop': 'Volver arriba',
     'header.homeLabel': 'Navigal Trading Solutions Limited, inicio',
 
     'common.home': 'Inicio',
