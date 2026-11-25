@@ -6,7 +6,6 @@ import PageHero from '@/components/ui/PageHero'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import ProductCatalog from '@/components/sections/ProductCatalog'
-import { CtaBand } from '@/components/sections/Shared'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 import type { UiKey } from '@/lib/i18n/translate'
 
@@ -71,8 +70,6 @@ export default function ProductsPage() {
           </figure>
         ))}
       </section>
-
-      <CtaBand />
     </>
   )
 }
