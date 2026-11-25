@@ -84,19 +84,6 @@ export const ui = {
     'International supply of regulated and dangerous goods demands more than a good price. We govern the risks that matter to industry, so every shipment arrives compliant, on specification and on time.',
   'solutions.who.title': 'Built for both sides of the trade.',
 
-  // Industries
-  'industries.hero.title': 'Industries we supply.',
-  'industries.hero.subtitle':
-    'We work in sectors with demanding technical and regulatory standards, where a secure, predictable supply makes the difference.',
-  'industries.sectors.eyebrow': 'Sectors',
-  'industries.sectors.title': 'Delivering essential products to Latin American industry.',
-  'industries.sectors.intro':
-    'Through our product portfolio we bring Brazilian and Latin American manufacturers the best purchasing opportunities to expand their business.',
-  'industries.highlightsLabel': 'Photo highlights',
-  'industries.caption.sulfur': 'Sulfur for the fertilizer industry',
-  'industries.caption.resins': 'Thermoplastic resins',
-  'industries.caption.lab': 'Quality control at origin',
-
   // Products
   'products.hero.title': 'Our product portfolio.',
   'products.hero.subtitle': 'Key products we supply today.',
@@ -116,6 +103,7 @@ export const ui = {
   'catalog.showing': 'Showing',
   'catalog.of': 'of',
   'catalog.products': 'products',
+  'catalog.browseByIndustry': 'Browse by industry',
   'catalog.filterLabel': 'Filter by industry',
   'catalog.allIndustries': 'All industries',
   'catalog.noResults': 'No products match your search. Our on-demand sourcing team can find it for you.',
@@ -246,11 +234,6 @@ export const pageMeta = {
     title: 'Product portfolio',
     description:
       'Navigal’s product portfolio: fertilizers, industrial chemicals, water treatment, cosmetics and food ingredients, polyurethanes, resins and ceramic coating inputs sourced from qualified manufacturers worldwide.',
-  },
-  '/industries': {
-    title: 'Industries',
-    description:
-      'Raw materials for agribusiness, cosmetics and home care, water treatment, food and pharma, automotive, polyurethanes, paints and coatings, ceramic coating, textile and plastics in Latin America.',
   },
   '/suppliers': {
     title: 'For Suppliers',

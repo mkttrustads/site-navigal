@@ -12,8 +12,7 @@ Figtree em todo o site com títulos em negrito. Site em EN (padrão), PT-BR e ES
 | `/` | Hero, história ("Born from the chemical industry"), soluções, setores, mapa de rotas, públicos, Trust Group, CTA |
 | `/about` | História e linha do tempo, missão, princípios, valores, presença global, Trust Group, compromisso, certificações |
 | `/solutions` | 6 soluções, processo em 5 etapas, gestão de risco |
-| `/products` | Portfólio de produtos com filtro por setor, busca e fichas técnicas |
-| `/industries` | 11 setores (incl. Ceramic Coating) com os produtos de cada um |
+| `/products` | Portfólio de produtos com seletor dos 11 setores (incl. Ceramic Coating), busca e fichas técnicas. `/industries` redireciona para cá (308 permanente) |
 | `/suppliers` | Proposta para fornecedores internacionais, logística Taglog, certificações e formulário de cadastro |
 | `/contact` | Formulários de cotação e de fornecedor, contatos |
 

@@ -1,11 +1,12 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, FileText, Search } from 'lucide-react'
 import { products as sourceProducts, type Product } from '@/content/products'
 import Formula from '@/components/ui/Formula'
+import Icon from '@/components/ui/Icon'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 import { htmlLang } from '@/lib/i18n/config'
 import { cn } from '@/lib/utils'
@@ -26,7 +27,7 @@ const sourceBySlug = new Map(sourceProducts.map((product) => [product.slug, prod
 export default function ProductCatalog() {
   const {
     t,
-    content: { getIndustry, industries, products },
+    content: { getIndustry, industries, products, productsForIndustry },
   } = useI18n()
   const router = useRouter()
   const pathname = usePathname()
@@ -34,6 +35,8 @@ export default function ProductCatalog() {
   const industryParam = searchParams.get('industry')
   const active = industryParam && getIndustry(industryParam) ? industryParam : 'all'
   const [query, setQuery] = useState('')
+  const resultsRef = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim())
@@ -60,62 +63,87 @@ export default function ProductCatalog() {
     else params.set('industry', slug)
     const qs = params.toString()
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
+    // Os cards ocupam várias linhas no mobile: leva o visitante até a lista filtrada.
+    resultsRef.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
   }
+
+  // "Todos" + 11 setores = 12 cards: fecha 2, 3 e 4 colunas sem linha incompleta.
+  const options = [
+    { slug: 'all', name: t('catalog.allIndustries'), icon: 'network', count: products.length },
+    ...industries.map((industry) => ({
+      slug: industry.slug,
+      name: industry.name,
+      icon: industry.icon,
+      count: productsForIndustry(industry.slug).length,
+    })),
+  ]
 
   return (
     <div>
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <label className="relative block w-full lg:max-w-sm">
-          <span className="sr-only">{t('catalog.searchLabel')}</span>
-          <Search aria-hidden="true" className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-suave" />
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={t('catalog.searchPlaceholder')}
-            className="w-full rounded-card border border-linha bg-white py-3.5 pl-12 pr-4 text-base outline-none transition focus:border-cobalto"
-          />
-        </label>
-        <p className="text-sm text-suave" aria-live="polite">
-          {t('catalog.showing')} <strong className="text-preto">{filtered.length}</strong> {t('catalog.of')} {products.length}{' '}
-          {t('catalog.products')}
-        </p>
+      <p className="eyebrow text-cobalto">{t('catalog.browseByIndustry')}</p>
+      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" role="group" aria-label={t('catalog.filterLabel')}>
+        {options.map((option) => {
+          const selected = active === option.slug
+          return (
+            <button
+              key={option.slug}
+              type="button"
+              onClick={() => selectIndustry(option.slug)}
+              aria-pressed={selected}
+              className={cn(
+                'flex min-h-[8.5rem] flex-col justify-between gap-5 rounded-card border p-5 text-left transition-colors',
+                selected
+                  ? 'border-cobalto bg-cobalto text-white'
+                  : 'border-linha bg-white hover:border-cobalto'
+              )}
+            >
+              <Icon name={option.icon} className={cn('h-7 w-7', selected ? 'text-white' : 'text-cobalto')} />
+              <span>
+                <span className="block text-balance text-base font-semibold leading-snug">{option.name}</span>
+                <span className={cn('mt-1 block text-sm', selected ? 'text-white/80' : 'text-suave')}>
+                  {t('common.productCount', { count: option.count })}
+                </span>
+              </span>
+            </button>
+          )
+        })}
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-2" role="group" aria-label={t('catalog.filterLabel')}>
-        {[{ slug: 'all', name: t('catalog.allIndustries') }, ...industries].map((industry) => (
-          <button
-            key={industry.slug}
-            type="button"
-            onClick={() => selectIndustry(industry.slug)}
-            aria-pressed={active === industry.slug}
-            className={cn(
-              'rounded-full border px-4 py-2 text-sm font-semibold transition-colors',
-              active === industry.slug
-                ? 'border-cobalto bg-cobalto text-white'
-                : 'border-linha bg-white text-preto/80 hover:border-cobalto hover:text-cobalto'
-            )}
-          >
-            {industry.name}
-          </button>
-        ))}
+      <div ref={resultsRef} className="mt-10 scroll-mt-28">
+        {active !== 'all' && (
+          <p className="mb-8 max-w-3xl text-base leading-relaxed text-suave">{getIndustry(active)?.description}</p>
+        )}
+
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <label className="relative block w-full lg:max-w-sm">
+            <span className="sr-only">{t('catalog.searchLabel')}</span>
+            <Search aria-hidden="true" className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-suave" />
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={t('catalog.searchPlaceholder')}
+              className="w-full rounded-card border border-linha bg-white py-3.5 pl-12 pr-4 text-base outline-none transition focus:border-cobalto"
+            />
+          </label>
+          <p className="text-sm text-suave" aria-live="polite">
+            {t('catalog.showing')} <strong className="text-preto">{filtered.length}</strong> {t('catalog.of')} {products.length}{' '}
+            {t('catalog.products')}
+          </p>
+        </div>
+
+        <ul className="mt-8 grid gap-4 md:grid-cols-2">
+          {filtered.map((product) => (
+            <ProductCard key={product.slug} product={product} />
+          ))}
+        </ul>
+
+        {filtered.length === 0 && (
+          <p className="mt-10 rounded-card border border-dashed border-linha p-10 text-center text-base text-suave">
+            {t('catalog.noResults')}
+          </p>
+        )}
       </div>
-
-      {active !== 'all' && (
-        <p className="mt-6 max-w-3xl text-base leading-relaxed text-suave">{getIndustry(active)?.description}</p>
-      )}
-
-      <ul className="mt-10 grid gap-4 md:grid-cols-2">
-        {filtered.map((product) => (
-          <ProductCard key={product.slug} product={product} />
-        ))}
-      </ul>
-
-      {filtered.length === 0 && (
-        <p className="mt-10 rounded-card border border-dashed border-linha p-10 text-center text-base text-suave">
-          {t('catalog.noResults')}
-        </p>
-      )}
     </div>
   )
 }

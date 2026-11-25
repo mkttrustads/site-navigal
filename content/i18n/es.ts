@@ -91,18 +91,6 @@ export const es: Translation = {
       'El suministro internacional de productos regulados y peligrosos exige más que un buen precio. Gobernamos los riesgos que importan a la industria, para que cada embarque llegue en cumplimiento, dentro de la especificación y a tiempo.',
     'solutions.who.title': 'Pensada para ambos lados de la negociación.',
 
-    'industries.hero.title': 'Sectores que atendemos.',
-    'industries.hero.subtitle':
-      'Trabajamos en sectores con altos estándares técnicos y regulatorios, donde un suministro seguro y predecible marca la diferencia.',
-    'industries.sectors.eyebrow': 'Sectores',
-    'industries.sectors.title': 'Entregando productos esenciales a la industria latinoamericana.',
-    'industries.sectors.intro':
-      'A través de nuestro portafolio de productos, ofrecemos a fabricantes brasileños y latinoamericanos las mejores oportunidades de compra para expandir sus negocios.',
-    'industries.highlightsLabel': 'Fotos destacadas',
-    'industries.caption.sulfur': 'Azufre para la industria de fertilizantes',
-    'industries.caption.resins': 'Resinas termoplásticas',
-    'industries.caption.lab': 'Control de calidad en origen',
-
     'products.hero.title': 'Nuestro portafolio de productos.',
     'products.hero.subtitle': 'Principales productos que suministramos hoy.',
     'products.intro.eyebrow': 'Crezcamos juntos',
@@ -120,6 +108,7 @@ export const es: Translation = {
     'catalog.showing': 'Mostrando',
     'catalog.of': 'de',
     'catalog.products': 'productos',
+    'catalog.browseByIndustry': 'Navegue por sector',
     'catalog.filterLabel': 'Filtrar por sector',
     'catalog.allIndustries': 'Todos los sectores',
     'catalog.noResults':
@@ -243,11 +232,6 @@ export const es: Translation = {
       description:
         'Portafolio de productos de Navigal: fertilizantes, químicos industriales, tratamiento de agua, ingredientes para cosméticos y alimentos, poliuretanos, resinas e insumos para recubrimiento cerámico, de fabricantes calificados en todo el mundo.',
     },
-    '/industries': {
-      title: 'Sectores',
-      description:
-        'Materias primas para agroindustria, cosmética y cuidado del hogar, tratamiento de agua, alimentos y farma, automotriz, poliuretanos, pinturas y recubrimientos, recubrimiento cerámico, textil y plásticos en América Latina.',
-    },
     '/suppliers': {
       title: 'Para Proveedores',
       description:
@@ -262,7 +246,7 @@ export const es: Translation = {
 
   site: {
     tagline: 'Construyendo conexiones confiables.',
-    nav: ['Nosotros', 'Soluciones', 'Productos', 'Sectores', 'Para Proveedores', 'Contacto'],
+    nav: ['Nosotros', 'Soluciones', 'Productos', 'Para Proveedores', 'Contacto'],
     quoteCta: 'Solicitar cotización',
     facts: {
       launched: 'Navigal lanzada',
