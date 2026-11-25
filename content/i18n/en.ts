@@ -39,9 +39,15 @@ export const ui = {
   'home.hero.lead':
     'We structure international supply chains and trade strategic raw materials for Latin American industry: from qualified suppliers at origin to delivery at your plant, with every risk governed along the way.',
   'home.hero.explore': 'Explore our portfolio',
-  'home.aboutLink': 'About Navigal',
   'home.imageAlt': "Bulk raw material being loaded into a vessel's hold",
-  'home.mission.short': 'To find the best possible combination of quality, price and capability for each client’s business.',
+  'home.about.eyebrow': 'Who we are',
+  'home.about.title': 'We connect global suppliers to Latin American industry.',
+  'home.about.p1':
+    'Navigal is the international trading company of Trust Group. We connect global suppliers to manufacturers and distributors across Latin America.',
+  'home.about.p2': 'The ideal partner to conduct international business with confidence.',
+  'home.about.highlight': 'From strategy to delivery.',
+  'home.about.backedBy': 'Backed by',
+  'home.about.link': 'Meet Navigal',
   'home.what.title': 'End-to-end international trading solutions.',
   'home.what.intro':
     'From supplier development at origin to delivery at your plant, with reliability, quality and ease at every step.',

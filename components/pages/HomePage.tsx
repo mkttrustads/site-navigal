@@ -11,10 +11,7 @@ import { useI18n } from '@/lib/i18n/I18nProvider'
 
 /** `routeMap` vem da página (Server Component) para a biblioteca do mapa ficar fora do bundle do cliente. */
 export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
-  const {
-    t,
-    content: { story },
-  } = useI18n()
+  const { t } = useI18n()
 
   return (
     <>
@@ -25,41 +22,42 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
           <Reveal>
             <RevealItem>
               <SectionHeading
-                eyebrow={story.eyebrow}
-                title={story.title}
+                eyebrow={t('home.about.eyebrow')}
+                title={t('home.about.title')}
                 intro={
                   <>
-                    {story.paragraphs.map((paragraph, index) => (
-                      <p key={index} className={index > 0 ? 'mt-4' : undefined}>
-                        {paragraph}
-                      </p>
-                    ))}
-                    <p className="mt-4 font-semibold text-preto">{story.closing}</p>
-                    <p className="mt-4">{story.presence}</p>
+                    <p>{t('home.about.p1')}</p>
+                    <p className="mt-4">
+                      {t('home.about.p2')} <span className="font-semibold text-cobalto">{t('home.about.highlight')}</span>
+                    </p>
                   </>
                 }
               />
             </RevealItem>
+            <RevealItem className="mt-10 flex flex-col gap-3">
+              <p className="text-sm font-semibold text-suave">{t('home.about.backedBy')}</p>
+              <Image
+                src="/brand/trust-group-horizontal.png"
+                alt="Trust Group"
+                width={1134}
+                height={294}
+                className="h-8 w-auto self-start sm:h-9"
+              />
+            </RevealItem>
             <RevealItem className="mt-10">
               <Button href="/about" variant="link" arrow>
-                {t('home.aboutLink')}
+                {t('home.about.link')}
               </Button>
             </RevealItem>
           </Reveal>
-          <div className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-card sm:aspect-[5/4] lg:aspect-[4/5]">
-              <Image
-                src="/images/bulk-vessel-loading.jpg"
-                alt={t('home.imageAlt')}
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 left-6 right-6 rounded-card bg-preto p-6 text-white shadow-2xl sm:left-auto sm:right-8 sm:w-72">
-              <p className="eyebrow text-cobalto-claro">{t('common.ourMission')}</p>
-              <p className="mt-3 text-base leading-relaxed text-white/85">{t('home.mission.short')}</p>
-            </div>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-card sm:aspect-[5/4] lg:aspect-[4/5]">
+            <Image
+              src="/images/bulk-vessel-loading.jpg"
+              alt={t('home.imageAlt')}
+              fill
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </Section>
