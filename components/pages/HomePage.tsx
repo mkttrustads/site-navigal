@@ -51,14 +51,20 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
               </Button>
             </RevealItem>
           </Reveal>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-card sm:aspect-[5/4] lg:aspect-[4/5]">
-            <Image
-              src="/images/bulk-vessel-loading.jpg"
-              alt={t('home.imageAlt')}
-              fill
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="object-cover"
-            />
+          <div className="relative mx-auto mb-6 w-full max-w-xl lg:mb-0 lg:max-w-none">
+            <div className="relative aspect-square overflow-hidden rounded-card">
+              <Image
+                src="/images/bulk-vessel-loading.jpg"
+                alt={t('home.imageAlt')}
+                fill
+                sizes="(min-width: 1024px) 45vw, (min-width: 640px) 576px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-6 left-6 right-6 rounded-card bg-preto p-6 text-white shadow-2xl sm:left-auto sm:right-8 sm:w-72">
+              <p className="eyebrow text-cobalto-claro">{t('common.ourMission')}</p>
+              <p className="mt-3 text-base leading-relaxed text-white/85">{t('home.about.mission')}</p>
+            </div>
           </div>
         </div>
       </Section>

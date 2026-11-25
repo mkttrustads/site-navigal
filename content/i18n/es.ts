@@ -55,6 +55,7 @@ export const es: Translation = {
     'home.about.highlight': 'De la estrategia a la entrega.',
     'home.about.backedBy': 'Con el respaldo de',
     'home.about.link': 'Conozca Navigal',
+    'home.about.mission': "Encontrar la mejor combinación posible de calidad, precio y capacidad para el negocio de cada cliente.",
     'home.what.item1': 'Suministro de insumos industriales estratégicos.',
     'home.what.item2': 'Desarrollo de proveedores en Asia, Europa y Oriente Medio.',
     'home.what.item3': 'Equipo comercial local y cartera de clientes en América Latina.',
