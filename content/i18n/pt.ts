@@ -118,7 +118,6 @@ export const pt: Translation = {
     'catalog.showing': 'Mostrando',
     'catalog.of': 'de',
     'catalog.products': 'produtos',
-    'catalog.browseByIndustry': 'Navegue por setor',
     'catalog.filterLabel': 'Filtrar por setor',
     'catalog.allIndustries': 'Todos os setores',
     'catalog.noResults':
