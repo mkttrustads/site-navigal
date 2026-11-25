@@ -74,6 +74,7 @@ export const es: Translation = {
     'about.hero.title': 'Conectando el mundo con la industria latinoamericana',
     'about.hero.subtitle':
       'Estructuramos cadenas de suministro internacionales y comercializamos materias primas estratégicas, conectando los principales centros comerciales del mundo con una ejecución práctica y segura.',
+    'about.story.trustLink': 'Conoce Trust Group',
     'about.values.eyebrow': 'Nuestros valores',
     'about.values.title': 'Lo que guía cada operación',
     'about.imageAlt': 'Bahía de Río de Janeiro con el Pan de Azúcar',
