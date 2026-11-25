@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { MapPin } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import Section, { SectionHeading } from '@/components/ui/Section'
+import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { CertificationsSection, CommitmentSection, CtaBand, TrustGroupSection } from '@/components/sections/Shared'
@@ -41,6 +42,11 @@ export default function AboutPage() {
                 ))}
                 <p className="mt-4 font-semibold text-preto">{story.closing}</p>
                 <p className="mt-4">{story.presence}</p>
+                <p className="mt-8">
+                  <Button href="https://trust.group/" variant="link" arrow>
+                    {t('about.story.trustLink')}
+                  </Button>
+                </p>
               </>
             }
           />
