@@ -41,8 +41,8 @@ const originRoutes: { from: string; bend: number }[] = [
 
 const map = new DottedMap({ height: 64, grid: 'diagonal', region: { lat: { min: -56, max: 72 }, lng: { min: -130, max: 160 } } })
 const baseSvg = map.getSVG({ radius: 0.24, color: '#3A3F47', shape: 'circle', backgroundColor: 'transparent' })
-// Variante para fundo azul (Home): pontos brancos, atenuados por opacidade no contêiner.
-const baseSvgBrand = map.getSVG({ radius: 0.24, color: '#FFFFFF', shape: 'circle', backgroundColor: 'transparent' })
+// Variante para fundo cinza-claro (Home, mesmo off-white de "O que fazemos"): pontos em cinza médio.
+const baseSvgLight = map.getSVG({ radius: 0.24, color: '#9AA1AB', shape: 'circle', backgroundColor: 'transparent' })
 const { width, height } = map.image
 
 const points = Object.fromEntries(places.map((place) => [place.name, { ...place, ...map.getPin(place) }]))
@@ -70,45 +70,45 @@ const labelOffset: Record<string, { dx: number; dy: number; anchor: 'start' | 'e
 
 type RouteMapProps = {
   className?: string
-  /** `dark`: fundo preto (Suppliers). `brand`: fundo azul institucional (Home), tudo em branco para contrastar. */
-  tone?: 'dark' | 'brand'
+  /** `dark`: fundo preto (Suppliers). `light`: fundo cinza-claro (Home), rotas e escritórios em azul institucional. */
+  tone?: 'dark' | 'light'
 }
 
 export default function RouteMap({ className, tone = 'dark' }: RouteMapProps) {
   const hub = points[HUB.name]
   const destination = points[DESTINATION.name]
-  const brand = tone === 'brand'
-  // No azul, o cobalto some e o cobalto-claro tem pouco contraste: rotas e marcadores passam a branco.
-  const routeBase = brand ? '#FFFFFF' : '#2B5EA7'
-  const routeFlow = brand ? '#FFFFFF' : '#8FB0E0'
+  const light = tone === 'light'
+  // No claro, o cobalto institucional serve de base e o cobalto-escuro do fluxo animado garante contraste.
+  const routeBase = '#2B5EA7'
+  const routeFlow = light ? '#214B87' : '#8FB0E0'
   return (
     <div className={className}>
       <div className="relative">
         <div
           aria-hidden="true"
-          className={brand ? 'opacity-40 [&>svg]:h-auto [&>svg]:w-full' : '[&>svg]:h-auto [&>svg]:w-full'}
+          className="[&>svg]:h-auto [&>svg]:w-full"
           // SVG gerado pela própria aplicação no build, sem entrada do usuário.
-          dangerouslySetInnerHTML={{ __html: brand ? baseSvgBrand : baseSvg }}
+          dangerouslySetInnerHTML={{ __html: light ? baseSvgLight : baseSvg }}
         />
         <LocalizedSvg labelKey="map.aria" viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 h-full w-full">
           {/* Miami → Brasil: tracejada e discreta, sem animação. */}
           <path
             d={`M${points.Miami.x} ${points.Miami.y} L${destination.x} ${destination.y}`}
             fill="none"
-            stroke="#FFFFFF"
-            strokeOpacity={brand ? 0.7 : 0.45}
+            stroke={light ? '#2B5EA7' : '#FFFFFF'}
+            strokeOpacity={light ? 0.7 : 0.45}
             strokeWidth={0.3}
             strokeDasharray="1 1.1"
           />
           {originRoutes.map(({ from, bend }) => (
             <g key={from}>
-              <path d={arc(points[from], hub, bend)} fill="none" stroke={routeBase} strokeOpacity={brand ? 0.45 : 0.35} strokeWidth={0.5} />
+              <path d={arc(points[from], hub, bend)} fill="none" stroke={routeBase} strokeOpacity={light ? 0.4 : 0.35} strokeWidth={0.5} />
               <path d={arc(points[from], hub, bend)} fill="none" stroke={routeFlow} strokeWidth={0.5} strokeLinecap="round" className="route-flow" />
             </g>
           ))}
           {/* Navigal → Brasil: a única rota que sai da base, em destaque. */}
           <g>
-            <path d={arc(hub, destination, 0.16)} fill="none" stroke={routeBase} strokeOpacity={brand ? 0.6 : 1} strokeWidth={0.9} strokeLinecap="round" />
+            <path d={arc(hub, destination, 0.16)} fill="none" stroke={routeBase} strokeOpacity={light ? 0.55 : 1} strokeWidth={0.9} strokeLinecap="round" />
             <path d={arc(hub, destination, 0.16)} fill="none" stroke={routeFlow} strokeWidth={0.5} strokeLinecap="round" className="route-flow" />
           </g>
           {Object.values(points).map((point) => {
@@ -116,14 +116,15 @@ export default function RouteMap({ className, tone = 'dark' }: RouteMapProps) {
             const office = point.kind === 'office'
             return (
               <g key={point.name}>
-                {office && <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 2.4 : 1.6} fill={brand ? '#FFFFFF' : '#2B5EA7'} fillOpacity={brand ? 0.25 : 0.3} />}
-                <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 1.15 : office ? 0.8 : 0.6} fill={office ? '#2B5EA7' : '#FFFFFF'} stroke="#FFFFFF" strokeWidth={office ? 0.25 : 0} />
+                {office && <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 2.4 : 1.6} fill="#2B5EA7" fillOpacity={light ? 0.2 : 0.3} />}
+                <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 1.15 : office ? 0.8 : 0.6} fill={office ? '#2B5EA7' : light ? '#4B5058' : '#FFFFFF'} stroke="#FFFFFF" strokeWidth={office ? 0.25 : 0} />
                 <text
                   x={point.x + offset.dx}
                   y={point.y + offset.dy}
                   textAnchor={offset.anchor}
-                  className={brand ? 'fill-white font-body' : 'fill-white/80 font-body'}
-                  style={{ fontSize: 1.5, fontWeight: 600 }}
+                  className={light ? 'fill-suave font-body' : 'fill-white/80 font-body'}
+                  // Halo off-white nos rótulos: mantém a leitura sobre os pontos do mapa.
+                  style={{ fontSize: 1.5, fontWeight: 600, ...(light && { paintOrder: 'stroke', stroke: '#F7F9F8', strokeWidth: 0.5, strokeLinejoin: 'round' }) }}
                 >
                   <T k={`map.place.${point.name}` as UiKey} />
                 </text>
@@ -132,17 +133,17 @@ export default function RouteMap({ className, tone = 'dark' }: RouteMapProps) {
           })}
         </LocalizedSvg>
       </div>
-      <ul className={`mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm ${brand ? 'text-white/90' : 'text-white/70'}`}>
+      <ul className={`mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm ${light ? 'text-suave' : 'text-white/70'}`}>
         <li className="flex items-center gap-2">
-          <span aria-hidden="true" className="h-3 w-3 rounded-full border-2 border-white bg-cobalto" />
+          <span aria-hidden="true" className={`h-3 w-3 rounded-full border-2 bg-cobalto ${light ? 'border-white ring-1 ring-cobalto/30' : 'border-white'}`} />
           <T k="map.legend.offices" />
         </li>
         <li className="flex items-center gap-2">
-          <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-white" />
+          <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${light ? 'bg-suave' : 'bg-white'}`} />
           <T k="map.legend.origins" />
         </li>
         <li className="flex items-center gap-2">
-          <span aria-hidden="true" className={`h-0.5 w-6 ${brand ? 'bg-white' : 'bg-cobalto-claro'}`} />
+          <span aria-hidden="true" className={`h-0.5 w-6 ${light ? 'bg-cobalto' : 'bg-cobalto-claro'}`} />
           <T k="map.legend.routes" />
         </li>
       </ul>
