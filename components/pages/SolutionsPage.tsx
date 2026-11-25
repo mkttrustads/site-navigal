@@ -4,7 +4,7 @@ import PageHero from '@/components/ui/PageHero'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
-import { AudienceSplit, CtaBand, SolutionsGrid } from '@/components/sections/Shared'
+import { AudienceSplit, SolutionsGrid } from '@/components/sections/Shared'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 export default function SolutionsPage() {
@@ -86,8 +86,6 @@ export default function SolutionsPage() {
           <AudienceSplit />
         </div>
       </Section>
-
-      <CtaBand />
     </>
   )
 }
