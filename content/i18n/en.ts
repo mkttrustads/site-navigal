@@ -75,6 +75,7 @@ export const ui = {
   'about.presence.title': 'Present where trade happens',
   'about.presence.intro':
     'A presence that combines the sophistication of global hubs with first-hand knowledge of Latin American markets.',
+  'about.cta.title': 'Together beyond borders',
 
   // Solutions
   'solutions.hero.title': 'End-to-end international trading solutions',

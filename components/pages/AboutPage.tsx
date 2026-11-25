@@ -136,7 +136,7 @@ export default function AboutPage() {
 
       <CertificationsSection />
 
-      <CtaBand />
+      <CtaBand title={t('about.cta.title')} />
     </>
   )
 }
