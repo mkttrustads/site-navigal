@@ -81,6 +81,7 @@ export const es: Translation = {
     'about.presence.title': 'Presentes donde ocurre el comercio',
     'about.presence.intro':
       'Una presencia que combina la sofisticación de los centros globales con el conocimiento directo de los mercados latinoamericanos.',
+    'about.cta.title': 'Juntos más allá de las fronteras',
 
     'solutions.hero.title': 'Soluciones internacionales de trading, de punta a punta',
     'solutions.hero.subtitle':
