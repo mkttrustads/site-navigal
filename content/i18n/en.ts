@@ -96,6 +96,10 @@ export const ui = {
   'products.onDemand.body':
     'Send us the product, technical specification, CAS number, end use and annual volume. We will find the suppliers that best match your requirement, even in other segments.',
   'products.onDemand.cta': 'Send your requirement',
+  'products.highlightsLabel': 'Photo highlights',
+  'products.caption.sulfur': 'Sulfur for the fertilizer industry',
+  'products.caption.resins': 'Thermoplastic resins',
+  'products.caption.lab': 'Quality control at origin',
 
   // Catálogo de produtos
   'catalog.searchLabel': 'Search products by name or CAS number',
@@ -231,9 +235,9 @@ export const pageMeta = {
       'Supplier sourcing and negotiation, quality assessment, process management and door-to-door control for international purchases of raw materials.',
   },
   '/products': {
-    title: 'Product portfolio',
+    title: 'Product portfolio by industry',
     description:
-      'Navigal’s product portfolio: fertilizers, industrial chemicals, water treatment, cosmetics and food ingredients, polyurethanes, resins and ceramic coating inputs sourced from qualified manufacturers worldwide.',
+      'Navigal’s raw materials by industry: agribusiness, cosmetics, water treatment, food and pharma, automotive, polyurethanes, coatings, textile and plastics.',
   },
   '/suppliers': {
     title: 'For Suppliers',

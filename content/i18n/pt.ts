@@ -101,6 +101,10 @@ export const pt: Translation = {
     'products.onDemand.body':
       'Envie o produto, a especificação técnica, o número CAS, o uso final e o volume anual. Encontraremos os fornecedores que melhor atendem à sua necessidade, inclusive em outros segmentos.',
     'products.onDemand.cta': 'Envie sua necessidade',
+    'products.highlightsLabel': 'Destaques em fotos',
+    'products.caption.sulfur': 'Enxofre para a indústria de fertilizantes',
+    'products.caption.resins': 'Resinas termoplásticas',
+    'products.caption.lab': 'Controle de qualidade na origem',
 
     'catalog.searchLabel': 'Buscar produtos por nome ou número CAS',
     'catalog.searchPlaceholder': 'Buscar por produto ou número CAS',
@@ -227,9 +231,9 @@ export const pt: Translation = {
         'Prospecção e negociação com fornecedores, avaliação de qualidade, gestão de processos e controle porta a porta para compras internacionais de matérias-primas.',
     },
     '/products': {
-      title: 'Portfólio de produtos',
+      title: 'Portfólio de produtos por setor',
       description:
-        'Portfólio de produtos da Navigal: fertilizantes, químicos industriais, tratamento de água, ingredientes para cosméticos e alimentos, poliuretanos, resinas e insumos para revestimento cerâmico, de fabricantes qualificados no mundo todo.',
+        'Matérias-primas da Navigal por setor: agronegócio, cosméticos, tratamento de água, alimentos e farma, automotivo, poliuretanos, revestimentos, têxtil e plásticos.',
     },
     '/suppliers': {
       title: 'Para Fornecedores',
