@@ -6,5 +6,5 @@ import { buildMetadata } from '@/lib/seo'
 export const metadata = buildMetadata({ ...pageMeta['/'], path: '/' })
 
 export default function Page() {
-  return <HomePage routeMap={<RouteMap />} />
+  return <HomePage routeMap={<RouteMap tone="brand" />} />
 }

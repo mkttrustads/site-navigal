@@ -86,10 +86,10 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      <Section tone="dark">
+      <Section tone="brand">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.6fr] lg:items-center">
           <SectionHeading
-            tone="dark"
+            tone="brand"
             eyebrow={t('home.network.eyebrow')}
             title={t('home.network.title')}
             intro={
