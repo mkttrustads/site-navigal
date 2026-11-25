@@ -46,6 +46,7 @@ export default function PageHero({
         variants={staggerContainer(0.1)}
         className="relative mx-auto flex min-h-[24rem] max-w-site flex-col justify-end px-6 pb-16 pt-36 sm:min-h-[28rem] lg:min-h-[30rem]"
       >
+        {/* Mesmo ritmo vertical da Hero da Home: breadcrumb → título (mt-7/8) < título → subtítulo (mt-8/10). */}
         <motion.nav variants={item} aria-label={t('a11y.breadcrumb')}>
           <ol className="eyebrow flex flex-wrap items-center gap-x-2 gap-y-1 text-cobalto-claro">
             {breadcrumb.map((crumb, index) => {
@@ -69,10 +70,10 @@ export default function PageHero({
             })}
           </ol>
         </motion.nav>
-        <motion.h1 variants={item} className="hero-title mt-5 max-w-3xl text-balance text-white">
+        <motion.h1 variants={item} className="hero-title mt-7 max-w-3xl text-balance text-white sm:mt-8">
           {title}
         </motion.h1>
-        <motion.p variants={item} className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl">
+        <motion.p variants={item} className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:mt-10 sm:text-xl">
           {subtitle}
         </motion.p>
       </motion.div>
