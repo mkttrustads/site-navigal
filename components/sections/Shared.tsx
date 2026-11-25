@@ -231,20 +231,20 @@ export function TrustGroupSection() {
           </div>
           <div className="relative aspect-[16/10] overflow-hidden rounded-card lg:aspect-auto">
             <Image
-              src="/images/trust-group-container-handling.jpg"
+              src="/images/trust-group-container-handling.webp"
               alt={t('trust.imageAlt2')}
               fill
               sizes="(min-width: 1024px) 264px, (min-width: 672px) 330px, 50vw"
-              className="object-cover"
+              className="object-cover object-[38%_50%]"
             />
           </div>
           <div className="relative aspect-[16/10] overflow-hidden rounded-card lg:aspect-auto">
             <Image
-              src="/images/trust-group-warehouse-operation.jpg"
+              src="/images/trust-group-warehouse-operation.webp"
               alt={t('trust.imageAlt3')}
               fill
               sizes="(min-width: 1024px) 264px, (min-width: 672px) 330px, 50vw"
-              className="object-cover"
+              className="object-cover object-[45%_40%]"
             />
           </div>
         </div>
