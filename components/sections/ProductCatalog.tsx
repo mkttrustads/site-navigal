@@ -67,7 +67,6 @@ export default function ProductCatalog() {
     resultsRef.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
   }
 
-  // "Todos" + 11 setores = 12 cards: fecha 2, 3 e 4 colunas sem linha incompleta.
   const options = [
     { slug: 'all', name: t('catalog.allIndustries'), icon: 'network', count: products.length },
     ...industries.map((industry) => ({
@@ -81,7 +80,7 @@ export default function ProductCatalog() {
   return (
     <div>
       <p className="eyebrow text-cobalto">{t('catalog.browseByIndustry')}</p>
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" role="group" aria-label={t('catalog.filterLabel')}>
+      <div className="mt-4 flex flex-wrap gap-2.5" role="group" aria-label={t('catalog.filterLabel')}>
         {options.map((option) => {
           const selected = active === option.slug
           return (
@@ -91,18 +90,22 @@ export default function ProductCatalog() {
               onClick={() => selectIndustry(option.slug)}
               aria-pressed={selected}
               className={cn(
-                'flex min-h-[8.5rem] flex-col justify-between gap-5 rounded-card border p-5 text-left transition-colors',
+                'inline-flex items-center gap-2 rounded-full border py-2 pl-3.5 pr-2.5 text-left text-sm font-semibold leading-snug transition-colors sm:gap-2.5 sm:py-2.5 sm:pl-4 sm:pr-3 sm:text-base',
                 selected
                   ? 'border-cobalto bg-cobalto text-white'
-                  : 'border-linha bg-white hover:border-cobalto'
+                  : 'border-linha bg-white text-preto/85 hover:border-cobalto hover:text-cobalto'
               )}
             >
-              <Icon name={option.icon} className={cn('h-7 w-7', selected ? 'text-white' : 'text-cobalto')} />
-              <span>
-                <span className="block text-balance text-base font-semibold leading-snug">{option.name}</span>
-                <span className={cn('mt-1 block text-sm', selected ? 'text-white/80' : 'text-suave')}>
-                  {t('common.productCount', { count: option.count })}
-                </span>
+              <Icon name={option.icon} className={cn('h-5 w-5 shrink-0', selected ? 'text-white' : 'text-cobalto')} />
+              {option.name}
+              <span
+                className={cn(
+                  'stat-numeral rounded-full px-2.5 py-0.5 text-sm font-semibold',
+                  selected ? 'bg-white/20 text-white' : 'bg-off-white text-preto/70'
+                )}
+              >
+                {option.count}
+                <span className="sr-only"> {t('catalog.products')}</span>
               </span>
             </button>
           )
