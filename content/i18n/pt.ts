@@ -64,7 +64,7 @@ export const pt: Translation = {
     'home.who.title': 'Dois lados da mesma conexão de confiança.',
     'home.cta.title': 'Importe a sua própria linha de produtos',
 
-    'about.hero.title': 'Inteligência multinacional, impulsionando a indústria latino-americana.',
+    'about.hero.title': 'Conectando o mundo à indústria latino-americana',
     'about.hero.subtitle':
       'Estruturamos cadeias de suprimento internacionais e negociamos matérias-primas estratégicas, conectando os principais polos comerciais do mundo a uma execução prática e segura.',
     'about.values.eyebrow': 'Nossos valores',
