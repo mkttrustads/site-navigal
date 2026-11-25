@@ -24,7 +24,7 @@ export const company = {
 export type NavItem = { label: string; href: string }
 
 export const primaryNav: NavItem[] = [
-  { label: 'About', href: '/about' },
+  { label: 'About us', href: '/about' },
   { label: 'Solutions', href: '/solutions' },
   { label: 'Products', href: '/products' },
   { label: 'For Suppliers', href: '/suppliers' },

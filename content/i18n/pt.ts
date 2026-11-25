@@ -256,7 +256,7 @@ export const pt: Translation = {
 
   site: {
     tagline: 'Construindo conexões confiáveis',
-    nav: ['Sobre', 'Soluções', 'Produtos', 'Para Fornecedores', 'Contato'],
+    nav: ['Quem somos','Soluções', 'Produtos', 'Para Fornecedores', 'Contato'],
     quoteCta: 'Solicitar cotação',
     facts: {
       launched: 'Navigal lançada',
