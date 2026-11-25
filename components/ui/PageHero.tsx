@@ -69,7 +69,7 @@ export default function PageHero({
             })}
           </ol>
         </motion.nav>
-        <motion.h1 variants={item} className="mt-5 max-w-3xl text-balance text-[clamp(2.4rem,4.6vw,4rem)] text-white">
+        <motion.h1 variants={item} className="hero-title mt-5 max-w-3xl text-balance text-white">
           {title}
         </motion.h1>
         <motion.p variants={item} className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:text-xl">
