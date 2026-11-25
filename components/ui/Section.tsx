@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 type SectionProps = {
   children: ReactNode
-  tone?: 'light' | 'muted' | 'dark'
+  tone?: 'light' | 'muted' | 'dark' | 'brand'
   className?: string
   id?: string
   background?: ReactNode
@@ -13,6 +13,8 @@ const toneClasses: Record<NonNullable<SectionProps['tone']>, string> = {
   light: 'bg-white text-preto',
   muted: 'bg-off-white text-preto',
   dark: 'bg-preto text-white',
+  // Azul institucional da Navigal (cobalto) como fundo sólido.
+  brand: 'bg-cobalto text-white',
 }
 
 /** Mesmo ritmo vertical do site Trust Group, com container um pouco mais largo. */
@@ -30,12 +32,13 @@ type SectionHeadingProps = {
   title: string
   intro?: ReactNode
   align?: 'left' | 'center'
-  tone?: 'light' | 'dark'
+  tone?: 'light' | 'dark' | 'brand'
   className?: string
 }
 
 export function SectionHeading({ eyebrow, title, intro, align = 'left', tone = 'light', className }: SectionHeadingProps) {
   const dark = tone === 'dark'
+  const brand = tone === 'brand'
   return (
     <div className={cn('max-w-3xl', align === 'center' && 'mx-auto text-center', className)}>
       {eyebrow && (
@@ -43,16 +46,24 @@ export function SectionHeading({ eyebrow, title, intro, align = 'left', tone = '
           className={cn(
             'eyebrow mb-4 flex items-center gap-3',
             align === 'center' && 'justify-center',
-            dark ? 'text-cobalto-claro' : 'text-cobalto'
+            brand ? 'text-white' : dark ? 'text-cobalto-claro' : 'text-cobalto'
           )}
         >
-          <span aria-hidden="true" className={cn('h-px w-8', dark ? 'bg-cobalto-claro' : 'bg-cobalto')} />
+          {/* Sobre o fundo azul o cobalto-claro não contrasta (~2,6:1): label e traço em branco. */}
+          <span aria-hidden="true" className={cn('h-px w-8', brand ? 'bg-white' : dark ? 'bg-cobalto-claro' : 'bg-cobalto')} />
           {eyebrow}
         </p>
       )}
       <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title}</h2>
       {intro && (
-        <div className={cn('mt-5 text-pretty text-lg leading-relaxed', dark ? 'text-white/75' : 'text-suave')}>{intro}</div>
+        <div
+          className={cn(
+            'mt-5 text-pretty text-lg leading-relaxed',
+            brand ? 'text-white/90' : dark ? 'text-white/75' : 'text-suave'
+          )}
+        >
+          {intro}
+        </div>
       )}
     </div>
   )
