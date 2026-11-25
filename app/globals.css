@@ -34,6 +34,16 @@
 }
 
 @layer utilities {
+  /* Título principal (H1) das capas: Home e PageHero usam esta classe, então
+     o tamanho, a entrelinha e o tracking ficam definidos só aqui. Não
+     redefina font-size/line-height/letter-spacing nos componentes de capa. */
+  .hero-title {
+    font-size: clamp(1.8rem, 3.9vw, 3.45rem);
+    font-weight: var(--heading-weight);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
   /* Numerais de dado alinhados e com largura fixa. */
   .stat-numeral {
     font-variant-numeric: lining-nums tabular-nums;
