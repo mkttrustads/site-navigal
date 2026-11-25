@@ -114,7 +114,7 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
 
       <TrustGroupSection />
 
-      <CtaBand />
+      <CtaBand title={t('home.cta.title')} />
     </>
   )
 }

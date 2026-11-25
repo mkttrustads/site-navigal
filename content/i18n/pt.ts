@@ -62,6 +62,7 @@ export const pt: Translation = {
     'home.network.p2':
       'Nossa equipe no Brasil nos mantém próximos dos compradores industriais de toda a América Latina, onde avaliamos cada oportunidade em primeira mão.',
     'home.who.title': 'Dois lados da mesma conexão de confiança.',
+    'home.cta.title': 'Importe a sua própria linha de produtos',
 
     'about.hero.title': 'Inteligência multinacional, impulsionando a indústria latino-americana.',
     'about.hero.subtitle':
