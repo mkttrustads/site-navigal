@@ -257,10 +257,12 @@ export function CtaBand({
   title,
   body,
   image = '/images/handshake-dark.jpg',
+  imageClassName = 'object-cover opacity-50',
 }: {
   title?: string
   body?: string
   image?: string
+  imageClassName?: string
 }) {
   const {
     t,
@@ -268,7 +270,7 @@ export function CtaBand({
   } = useI18n()
   return (
     <section className="relative isolate overflow-hidden bg-preto text-white">
-      <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className="object-cover opacity-50" />
+      <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className={imageClassName} />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/90 to-preto/40" />
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
         <div className="max-w-2xl">

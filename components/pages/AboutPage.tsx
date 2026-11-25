@@ -136,7 +136,11 @@ export default function AboutPage() {
 
       <CertificationsSection />
 
-      <CtaBand title={t('about.cta.title')} />
+      <CtaBand
+        title={t('about.cta.title')}
+        image="/images/earth-from-space.webp"
+        imageClassName="object-cover object-center opacity-100"
+      />
     </>
   )
 }
