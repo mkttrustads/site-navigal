@@ -47,7 +47,7 @@ export const pt: Translation = {
     'home.hero.explore': 'Conheça nosso portfólio',
     'home.imageAlt': 'Matéria-prima a granel sendo carregada no porão de um navio',
     'home.about.eyebrow': 'Quem somos',
-    'home.about.title': 'Conectamos fornecedores globais à indústria latino-americana.',
+    'home.about.title': 'Conectamos fornecedores globais à indústria latino-americana',
     'home.about.p1':
       'A Navigal é a empresa de trading internacional do Trust Group. Conectamos fornecedores globais a fabricantes e distribuidores em toda a América Latina.',
     'home.about.p2': 'O parceiro ideal para conduzir negócios internacionais com segurança.',
@@ -59,48 +59,48 @@ export const pt: Translation = {
     'home.what.item2': 'Desenvolvimento de fornecedores na Ásia, Europa e Oriente Médio.',
     'home.what.item3': 'Equipe comercial local e carteira de clientes na América Latina.',
     'home.what.link': 'Conheça nossas soluções',
-    'home.industries.title': 'Matérias-primas para setores com altos padrões técnicos e regulatórios.',
+    'home.industries.title': 'Matérias-primas para setores com altos padrões técnicos e regulatórios',
     'home.industries.link': 'Portfólio completo',
     'home.network.eyebrow': 'Rede global',
-    'home.network.title': 'Onde a oferta global encontra a demanda latino-americana.',
+    'home.network.title': 'Onde a oferta global encontra a demanda latino-americana',
     'home.network.p1':
       'Estrategicamente sediados nos Emirados Árabes Unidos, um dos polos comerciais mais dinâmicos do mundo, trabalhamos ao lado de fabricantes na Ásia, na Europa e no Oriente Médio.',
     'home.network.p2':
       'Nossa equipe no Brasil nos mantém próximos dos compradores industriais de toda a América Latina, onde avaliamos cada oportunidade em primeira mão.',
-    'home.who.title': 'Dois lados da mesma conexão de confiança.',
+    'home.who.title': 'Dois lados da mesma conexão de confiança',
     'home.cta.title': 'Importe a sua própria linha de produtos',
 
     'about.hero.title': 'Conectando o mundo à indústria latino-americana',
     'about.hero.subtitle':
       'Estruturamos cadeias de suprimento internacionais e negociamos matérias-primas estratégicas, conectando os principais polos comerciais do mundo a uma execução prática e segura.',
     'about.values.eyebrow': 'Nossos valores',
-    'about.values.title': 'O que guia cada operação.',
+    'about.values.title': 'O que guia cada operação',
     'about.imageAlt': 'Baía do Rio de Janeiro com o Pão de Açúcar',
     'about.presence.eyebrow': 'Presença global',
-    'about.presence.title': 'Presentes onde o comércio acontece.',
+    'about.presence.title': 'Presentes onde o comércio acontece',
     'about.presence.intro':
       'Uma presença que une a sofisticação dos polos globais ao conhecimento direto dos mercados latino-americanos.',
 
-    'solutions.hero.title': 'Soluções internacionais de trading, de ponta a ponta.',
+    'solutions.hero.title': 'Soluções internacionais de trading, de ponta a ponta',
     'solutions.hero.subtitle':
       'Confiabilidade, qualidade e facilidade em cada elo da sua cadeia de suprimentos, do portão do fornecedor até a sua fábrica.',
-    'solutions.what.title': 'Descubra oportunidades de negócios internacionais.',
+    'solutions.what.title': 'Descubra oportunidades de negócios internacionais',
     'solutions.what.intro':
       'Compramos e vendemos produtos internacionais, com especialidade no nosso portfólio de produtos, e adaptamos cada solução às suas necessidades específicas. Como empresa de sourcing, ampliamos continuamente nossa rede de clientes e fornecedores para oferecer a melhor conexão para todos os envolvidos.',
     'solutions.how.eyebrow': 'Como funciona',
-    'solutions.how.title': 'Da necessidade à entrega, um único parceiro responsável.',
+    'solutions.how.title': 'Da necessidade à entrega, um único parceiro responsável',
     'solutions.how.intro':
       'Envie os detalhes da sua necessidade e retornaremos rapidamente com uma oferta para a sua análise.',
     'solutions.risk.eyebrow': 'Gestão de riscos',
-    'solutions.risk.title': 'A previsibilidade é construída, elo por elo.',
+    'solutions.risk.title': 'A previsibilidade é construída, elo por elo',
     'solutions.risk.intro':
       'O suprimento internacional de produtos controlados e perigosos exige mais do que um bom preço. Governamos os riscos que importam para a indústria, para que cada embarque chegue em conformidade, dentro da especificação e no prazo.',
-    'solutions.who.title': 'Pensada para os dois lados da negociação.',
+    'solutions.who.title': 'Pensada para os dois lados da negociação',
 
-    'products.hero.title': 'Nosso portfólio de produtos.',
+    'products.hero.title': 'Nosso portfólio de produtos',
     'products.hero.subtitle': 'Principais produtos que fornecemos hoje.',
     'products.intro.eyebrow': 'Vamos crescer juntos',
-    'products.intro.title': 'Matérias-primas de excelência para diversos setores industriais.',
+    'products.intro.title': 'Matérias-primas de excelência para diversos setores industriais',
     'products.intro.intro':
       'Para estes produtos temos experiência comprovada e podemos oferecer as melhores condições de importação. Trabalhamos com fabricantes renomados e oferecemos controle de qualidade confiável e apoio financeiro.',
     'products.onDemand.eyebrow': 'Sourcing sob demanda',
@@ -134,7 +134,7 @@ export const pt: Translation = {
     'sheet.regulatory': 'Notas regulatórias (Brasil)',
     'sheet.documents': 'Documentos fornecidos',
 
-    'suppliers.hero.title': 'Cresça com os clientes da Navigal em toda a América Latina.',
+    'suppliers.hero.title': 'Cresça com os clientes da Navigal em toda a América Latina',
     'suppliers.hero.subtitle':
       'Cadastre sua empresa e os produtos que você fabrica ou comercializa. Atuamos em todas as etapas, da prospecção à entrega ao cliente.',
     'suppliers.intro':
@@ -142,12 +142,12 @@ export const pt: Translation = {
     'suppliers.extraItem':
       'Força de vendas local com clientes em agronegócio, alimentos, farma, tratamento de água e automotivo',
     'suppliers.look.eyebrow': 'O que buscamos',
-    'suppliers.look.title': 'Os parceiros com quem construímos.',
+    'suppliers.look.title': 'Os parceiros com quem construímos',
     'suppliers.gateway.eyebrow': 'Sua porta de entrada',
-    'suppliers.gateway.title': 'Da sua fábrica à indústria latino-americana.',
+    'suppliers.gateway.title': 'Da sua fábrica à indústria latino-americana',
     'suppliers.gateway.intro':
       'Combinada à estrutura licenciada do Trust Group no Brasil, cuidamos do desembaraço aduaneiro, da armazenagem e da entrega de produtos controlados e perigosos, com visibilidade total de cada operação. A plataforma Trust Tech acompanha cada etapa da operação.',
-    'suppliers.register.title': 'Cadastre sua empresa.',
+    'suppliers.register.title': 'Cadastre sua empresa',
     'suppliers.register.intro':
       'Conte-nos sobre seus produtos e sua capacidade. Nossa equipe analisará o seu perfil e entrará em contato para conversar sobre os próximos passos.',
 
@@ -155,7 +155,7 @@ export const pt: Translation = {
     'contact.hero.subtitle':
       'Conte-nos os detalhes da sua necessidade e enviaremos rapidamente uma oferta para a sua análise.',
     'contact.getInTouch': 'Fale conosco',
-    'contact.help': 'O que você precisar, estamos aqui para ajudar.',
+    'contact.help': 'O que você precisar, estamos aqui para ajudar',
     'contact.email': 'E-mail',
     'contact.phone': 'Telefone',
     'contact.hq': 'Sede',
@@ -168,14 +168,14 @@ export const pt: Translation = {
     'form.submit.quote': 'Enviar solicitação',
     'form.submit.supplier': 'Cadastrar como fornecedor',
     'form.sending': 'Enviando…',
-    'form.thanks': 'Obrigado. Recebemos a sua mensagem.',
+    'form.thanks': 'Obrigado. Recebemos a sua mensagem',
     'form.thanksBody': 'Nossa equipe analisará os detalhes e retornará em breve.',
     'form.select': 'Selecione',
     'form.required': 'Campos obrigatórios',
     'form.error': 'Não foi possível enviar a sua mensagem agora. Tente novamente ou escreva para',
 
     'trust.eyebrow': 'Parte do Trust Group',
-    'trust.title': 'Alcance global, sustentado por um grupo de serviço completo em campo.',
+    'trust.title': 'Alcance global, sustentado por um grupo de serviço completo em campo',
     'trust.p1':
       'A Navigal faz parte do Trust Group, um dos principais grupos de comércio exterior do Brasil. Cada operação pode ser integrada às empresas do grupo: despacho aduaneiro, agenciamento de carga internacional, armazenagem e distribuição nacional.',
     'trust.p2': 'Um único parceiro, do portão do fornecedor até a sua fábrica.',
@@ -188,16 +188,16 @@ export const pt: Translation = {
     'trust.prev': 'Slide anterior',
     'trust.next': 'Próximo slide',
     'trust.goTo': 'Ir para o slide {n}',
-    'cta.title': 'Saia das mãos dos distribuidores locais e importe a sua própria linha de produtos.',
+    'cta.title': 'Saia das mãos dos distribuidores locais e importe a sua própria linha de produtos',
     'cta.body':
       'Envie a especificação técnica, o uso final e o volume anual. Retornaremos com uma análise e opções de suprimento.',
     'certs.eyebrow': 'Certificações e compliance',
-    'certs.title': 'Credenciais que sustentam cada operação.',
+    'certs.title': 'Credenciais que sustentam cada operação',
     'taglog.eyebrow': 'Logística no Brasil',
-    'taglog.title': 'Armazenagem licenciada em todo o Brasil, com a Taglog.',
+    'taglog.title': 'Armazenagem licenciada em todo o Brasil, com a Taglog',
     'taglog.total': 'Total:',
     'commitment.eyebrow': 'Nosso compromisso',
-    'commitment.title': 'Responsabilidade além da operação.',
+    'commitment.title': 'Responsabilidade além da operação',
 
     'map.aria':
       'Mapa da rede da Navigal: base da Navigal nos Emirados Árabes Unidos, escritórios em Miami e no Brasil, e rotas de suprimento da Itália, Turquia, Omã, China, Taiwan, Vietnã e Malásia convergindo para a Navigal, com uma única rota da Navigal para o Brasil e a América Latina.',
@@ -216,7 +216,7 @@ export const pt: Translation = {
     'map.legend.routes': 'Rotas de suprimento para a América Latina',
 
     'notFound.eyebrow': 'Erro 404',
-    'notFound.title': 'Esta rota não existe.',
+    'notFound.title': 'Esta rota não existe',
     'notFound.body': 'A página que você procura pode ter sido movida. Vamos colocar você de volta no rumo.',
     'notFound.back': 'Voltar ao início',
   },
@@ -255,7 +255,7 @@ export const pt: Translation = {
   },
 
   site: {
-    tagline: 'Construindo conexões confiáveis.',
+    tagline: 'Construindo conexões confiáveis',
     nav: ['Sobre', 'Soluções', 'Produtos', 'Para Fornecedores', 'Contato'],
     quoteCta: 'Solicitar cotação',
     facts: {
@@ -479,7 +479,7 @@ export const pt: Translation = {
     audiences: {
       buyers: {
         eyebrow: 'Para indústrias e distribuidores',
-        title: 'Importe a sua própria linha de produtos com um parceiro global.',
+        title: 'Importe a sua própria linha de produtos com um parceiro global',
         items: [
           'Acesso a novas origens e produtos de fornecedores qualificados',
           'Insumos para setores com exigências técnicas e regulatórias rigorosas',
@@ -490,7 +490,7 @@ export const pt: Translation = {
       },
       suppliers: {
         eyebrow: 'Para fornecedores internacionais',
-        title: 'Entre no Brasil e na América Latina com um parceiro que conhece o mercado.',
+        title: 'Entre no Brasil e na América Latina com um parceiro que conhece o mercado',
         items: [
           'Entrada no mercado respaldada por expertise técnica, regulatória e logística',
           'Estrutura logística licenciada no Brasil para produtos controlados',
