@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import HomeHero from '@/components/sections/HomeHero'
-import { AudienceSplit, CtaBand, IndustriesGrid } from '@/components/sections/Shared'
+import { CtaBand, IndustriesGrid } from '@/components/sections/Shared'
 import WhatWeDo from '@/components/sections/WhatWeDo'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
@@ -96,13 +96,6 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
             }
           />
           {routeMap}
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHeading eyebrow={t('common.whoWeServe')} title={t('home.who.title')} align="center" />
-        <div className="mt-14">
-          <AudienceSplit />
         </div>
       </Section>
 

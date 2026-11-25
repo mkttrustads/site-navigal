@@ -67,7 +67,6 @@ export const pt: Translation = {
       'Estrategicamente sediados nos Emirados Árabes Unidos, um dos polos comerciais mais dinâmicos do mundo, trabalhamos ao lado de fabricantes na Ásia, na Europa e no Oriente Médio.',
     'home.network.p2':
       'Nossa equipe no Brasil nos mantém próximos dos compradores industriais de toda a América Latina, onde avaliamos cada oportunidade em primeira mão.',
-    'home.who.title': 'Dois lados da mesma conexão de confiança',
     'home.cta.title': 'Importe a sua própria linha de produtos',
 
     'about.hero.title': 'Conectando o mundo à indústria latino-americana',
