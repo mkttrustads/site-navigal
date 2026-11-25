@@ -90,18 +90,6 @@ export const pt: Translation = {
       'O suprimento internacional de produtos controlados e perigosos exige mais do que um bom preço. Governamos os riscos que importam para a indústria, para que cada embarque chegue em conformidade, dentro da especificação e no prazo.',
     'solutions.who.title': 'Pensada para os dois lados da negociação.',
 
-    'industries.hero.title': 'Setores que atendemos.',
-    'industries.hero.subtitle':
-      'Atuamos em setores com altos padrões técnicos e regulatórios, nos quais um suprimento seguro e previsível faz a diferença.',
-    'industries.sectors.eyebrow': 'Setores',
-    'industries.sectors.title': 'Entregando produtos essenciais à indústria latino-americana.',
-    'industries.sectors.intro':
-      'Por meio do nosso portfólio de produtos, oferecemos a fabricantes brasileiros e latino-americanos as melhores oportunidades de compra para expandir seus negócios.',
-    'industries.highlightsLabel': 'Destaques em fotos',
-    'industries.caption.sulfur': 'Enxofre para a indústria de fertilizantes',
-    'industries.caption.resins': 'Resinas termoplásticas',
-    'industries.caption.lab': 'Controle de qualidade na origem',
-
     'products.hero.title': 'Nosso portfólio de produtos.',
     'products.hero.subtitle': 'Principais produtos que fornecemos hoje.',
     'products.intro.eyebrow': 'Vamos crescer juntos',
@@ -113,12 +101,17 @@ export const pt: Translation = {
     'products.onDemand.body':
       'Envie o produto, a especificação técnica, o número CAS, o uso final e o volume anual. Encontraremos os fornecedores que melhor atendem à sua necessidade, inclusive em outros segmentos.',
     'products.onDemand.cta': 'Envie sua necessidade',
+    'products.highlightsLabel': 'Destaques em fotos',
+    'products.caption.sulfur': 'Enxofre para a indústria de fertilizantes',
+    'products.caption.resins': 'Resinas termoplásticas',
+    'products.caption.lab': 'Controle de qualidade na origem',
 
     'catalog.searchLabel': 'Buscar produtos por nome ou número CAS',
     'catalog.searchPlaceholder': 'Buscar por produto ou número CAS',
     'catalog.showing': 'Mostrando',
     'catalog.of': 'de',
     'catalog.products': 'produtos',
+    'catalog.browseByIndustry': 'Navegue por setor',
     'catalog.filterLabel': 'Filtrar por setor',
     'catalog.allIndustries': 'Todos os setores',
     'catalog.noResults':
@@ -238,14 +231,9 @@ export const pt: Translation = {
         'Prospecção e negociação com fornecedores, avaliação de qualidade, gestão de processos e controle porta a porta para compras internacionais de matérias-primas.',
     },
     '/products': {
-      title: 'Portfólio de produtos',
+      title: 'Portfólio de produtos por setor',
       description:
-        'Portfólio de produtos da Navigal: fertilizantes, químicos industriais, tratamento de água, ingredientes para cosméticos e alimentos, poliuretanos, resinas e insumos para revestimento cerâmico, de fabricantes qualificados no mundo todo.',
-    },
-    '/industries': {
-      title: 'Setores',
-      description:
-        'Matérias-primas para agronegócio, cosméticos e home care, tratamento de água, alimentos e farma, automotivo, poliuretanos, tintas e revestimentos, revestimento cerâmico, têxtil e plásticos na América Latina.',
+        'Matérias-primas da Navigal por setor: agronegócio, cosméticos, tratamento de água, alimentos e farma, automotivo, poliuretanos, revestimentos, têxtil e plásticos.',
     },
     '/suppliers': {
       title: 'Para Fornecedores',
@@ -261,7 +249,7 @@ export const pt: Translation = {
 
   site: {
     tagline: 'Construindo conexões confiáveis.',
-    nav: ['Sobre', 'Soluções', 'Produtos', 'Setores', 'Para Fornecedores', 'Contato'],
+    nav: ['Sobre', 'Soluções', 'Produtos', 'Para Fornecedores', 'Contato'],
     quoteCta: 'Solicitar cotação',
     facts: {
       launched: 'Navigal lançada',
