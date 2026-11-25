@@ -40,6 +40,7 @@ export default function HomeHero() {
         variants={staggerContainer(0.12, 0.1)}
         className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-10 pt-28 sm:pt-32"
       >
+        {/* Ritmo vertical do bloco: logo → título (mt-7/8) < título → texto (mt-8/10) < texto → botões (mt-11/14). */}
         {/* Logo completa na Hero e só a esfera no menu, como no site Trust Group. */}
         <motion.div variants={item}>
           <Image
@@ -51,13 +52,13 @@ export default function HomeHero() {
             className="h-20 w-auto sm:h-[6.3rem]"
           />
         </motion.div>
-        <motion.h1 variants={item} className="hero-title mt-6 max-w-[12.2em] text-balance">
+        <motion.h1 variants={item} className="hero-title mt-7 max-w-[12.2em] text-balance sm:mt-8">
           {company.tagline}
         </motion.h1>
-        <motion.p variants={item} className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-white/80">
+        <motion.p variants={item} className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:mt-10">
           {t('home.hero.lead')}
         </motion.p>
-        <motion.div variants={item} className="mt-7 flex flex-wrap gap-4">
+        <motion.div variants={item} className="mt-11 flex flex-wrap gap-4 sm:mt-14">
           <Button href={quoteCta.href} arrow>
             {quoteCta.label}
           </Button>
