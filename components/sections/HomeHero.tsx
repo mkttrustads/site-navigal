@@ -54,7 +54,7 @@ export default function HomeHero() {
         <motion.h1 variants={item} className="hero-title mt-6 max-w-[12.2em] text-balance">
           {company.tagline}
         </motion.h1>
-        <motion.p variants={item} className="mt-4 max-w-2xl text-pretty text-[0.95rem] leading-relaxed text-white/80 sm:text-base">
+        <motion.p variants={item} className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-white/80">
           {t('home.hero.lead')}
         </motion.p>
         <motion.div variants={item} className="mt-7 flex flex-wrap gap-4">
