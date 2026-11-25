@@ -3,7 +3,8 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import HomeHero from '@/components/sections/HomeHero'
-import { AudienceSplit, CtaBand, IndustriesGrid, SolutionsGrid, TrustGroupSection } from '@/components/sections/Shared'
+import { AudienceSplit, CtaBand, IndustriesGrid, TrustGroupSection } from '@/components/sections/Shared'
+import WhatWeDo from '@/components/sections/WhatWeDo'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
@@ -62,17 +63,7 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      <Section tone="muted">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow={t('common.whatWeDo')} title={t('home.what.title')} intro={t('home.what.intro')} />
-          <Button href="/solutions" variant="link" arrow className="shrink-0">
-            {t('home.what.link')}
-          </Button>
-        </div>
-        <div className="mt-14">
-          <SolutionsGrid />
-        </div>
-      </Section>
+      <WhatWeDo />
 
       <Section>
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
