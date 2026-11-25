@@ -97,7 +97,7 @@ export const riskPillars = [
 export const audiences = {
   buyers: {
     eyebrow: 'For industry & distributors',
-    title: 'Import your own product line with a global partner.',
+    title: 'Import your own product line with a global partner',
     items: [
       'Access to new origins and products from qualified suppliers',
       'Inputs for sectors with demanding technical and regulatory requirements',
@@ -108,7 +108,7 @@ export const audiences = {
   },
   suppliers: {
     eyebrow: 'For international suppliers',
-    title: 'Enter Brazil and Latin America with a partner that knows the market.',
+    title: 'Enter Brazil and Latin America with a partner that knows the market',
     items: [
       'Market entry backed by technical, regulatory and logistics expertise',
       'Licensed logistics structure in Brazil for regulated products',

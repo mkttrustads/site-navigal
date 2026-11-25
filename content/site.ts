@@ -9,7 +9,7 @@ export const SITE_URL = 'https://www.navigal-ts.com'
 export const company = {
   name: 'Navigal',
   legalName: 'Navigal Trading Solutions Limited',
-  tagline: 'Building reliable connections.',
+  tagline: 'Building reliable connections',
   // Ano de lançamento da Navigal (2024). Alimenta o foundingDate do JSON-LD e
   // deve ficar igual a facts.launched e à linha do tempo do About.
   founded: 2024,

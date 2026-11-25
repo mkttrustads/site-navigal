@@ -41,7 +41,7 @@ export const ui = {
   'home.hero.explore': 'Explore our portfolio',
   'home.imageAlt': "Bulk raw material being loaded into a vessel's hold",
   'home.about.eyebrow': 'Who we are',
-  'home.about.title': 'We connect global suppliers to Latin American industry.',
+  'home.about.title': 'We connect global suppliers to Latin American industry',
   'home.about.p1':
     'Navigal is the international trading company of Trust Group. We connect global suppliers to manufacturers and distributors across Latin America.',
   'home.about.p2': 'The ideal partner to conduct international business with confidence.',
@@ -53,15 +53,15 @@ export const ui = {
   'home.what.item2': 'Supplier development across Asia, Europe and the Middle East.',
   'home.what.item3': 'Local sales force and customer base in Latin America.',
   'home.what.link': 'Explore our solutions',
-  'home.industries.title': 'Raw materials for sectors with demanding technical and regulatory standards.',
+  'home.industries.title': 'Raw materials for sectors with demanding technical and regulatory standards',
   'home.industries.link': 'Full portfolio',
   'home.network.eyebrow': 'Global network',
-  'home.network.title': 'Where global supply meets Latin American demand.',
+  'home.network.title': 'Where global supply meets Latin American demand',
   'home.network.p1':
     'Strategically based in the United Arab Emirates, one of the most dynamic trade hubs in the world, we work alongside manufacturers in Asia, Europe and the Middle East.',
   'home.network.p2':
     'Our team in Brazil keeps us close to industrial buyers across Latin America, where we evaluate every opportunity first-hand.',
-  'home.who.title': 'Two sides of the same trusted connection.',
+  'home.who.title': 'Two sides of the same trusted connection',
   'home.cta.title': 'Import your own product line',
 
   // About
@@ -69,34 +69,34 @@ export const ui = {
   'about.hero.subtitle':
     'We structure international supply chains and trade strategic raw materials, connecting the world’s key trade hubs to practical, secure execution.',
   'about.values.eyebrow': 'Our values',
-  'about.values.title': 'What guides every operation.',
+  'about.values.title': 'What guides every operation',
   'about.imageAlt': 'Rio de Janeiro bay with Sugarloaf Mountain',
   'about.presence.eyebrow': 'Global presence',
-  'about.presence.title': 'Present where trade happens.',
+  'about.presence.title': 'Present where trade happens',
   'about.presence.intro':
     'A presence that combines the sophistication of global hubs with first-hand knowledge of Latin American markets.',
 
   // Solutions
-  'solutions.hero.title': 'End-to-end international trading solutions.',
+  'solutions.hero.title': 'End-to-end international trading solutions',
   'solutions.hero.subtitle':
     'Reliability, quality and ease across every link of your supply chain, from the supplier’s gate to your plant.',
-  'solutions.what.title': 'Discover international business opportunities.',
+  'solutions.what.title': 'Discover international business opportunities',
   'solutions.what.intro':
     'We buy and sell international products, with special expertise in our product portfolio, and tailor each solution to your specific needs. As a sourcing company, we keep expanding our network of clients and suppliers to offer the best connection for everyone involved.',
   'solutions.how.eyebrow': 'How it works',
-  'solutions.how.title': 'From requirement to delivery, one accountable partner.',
+  'solutions.how.title': 'From requirement to delivery, one accountable partner',
   'solutions.how.intro': 'Send us the details of your requirement and we will quickly come back with an offer for your analysis.',
   'solutions.risk.eyebrow': 'Risk management',
-  'solutions.risk.title': 'Predictability is built, link by link.',
+  'solutions.risk.title': 'Predictability is built, link by link',
   'solutions.risk.intro':
     'International supply of regulated and dangerous goods demands more than a good price. We govern the risks that matter to industry, so every shipment arrives compliant, on specification and on time.',
-  'solutions.who.title': 'Built for both sides of the trade.',
+  'solutions.who.title': 'Built for both sides of the trade',
 
   // Products
-  'products.hero.title': 'Our product portfolio.',
+  'products.hero.title': 'Our product portfolio',
   'products.hero.subtitle': 'Key products we supply today.',
   'products.intro.eyebrow': 'Let’s grow together',
-  'products.intro.title': 'Raw materials of excellence for many industrial sectors.',
+  'products.intro.title': 'Raw materials of excellence for many industrial sectors',
   'products.intro.intro':
     'For these products we have proven experience and can offer the best conditions for import. We work with renowned manufacturers and provide reliable quality control and financial support.',
   'products.onDemand.eyebrow': 'On-demand sourcing',
@@ -131,19 +131,19 @@ export const ui = {
   'sheet.documents': 'Documents provided',
 
   // Suppliers
-  'suppliers.hero.title': 'Grow with Navigal’s clients across Latin America.',
+  'suppliers.hero.title': 'Grow with Navigal’s clients across Latin America',
   'suppliers.hero.subtitle':
     'Register your company and the products you manufacture or trade. We work at every stage, from prospecting to delivery to the client.',
   'suppliers.intro':
     'Brazil and Latin America are among the most promising markets for industrial inputs, and among the most complex. Navigal knows the region’s regulatory, customs, logistics and payment requirements and turns them into a clear path to market.',
   'suppliers.extraItem': 'Local sales force with clients in agribusiness, food, pharma, water treatment and automotive',
   'suppliers.look.eyebrow': 'What we look for',
-  'suppliers.look.title': 'The partners we build with.',
+  'suppliers.look.title': 'The partners we build with',
   'suppliers.gateway.eyebrow': 'Your gateway',
-  'suppliers.gateway.title': 'From your plant to Latin American industry.',
+  'suppliers.gateway.title': 'From your plant to Latin American industry',
   'suppliers.gateway.intro':
     'Combined with Trust Group’s licensed structure in Brazil, we handle customs, storage and delivery of regulated and dangerous goods, with full visibility of each operation. The Trust Tech platform tracks every stage of the operation.',
-  'suppliers.register.title': 'Register your company.',
+  'suppliers.register.title': 'Register your company',
   'suppliers.register.intro':
     'Tell us about your products and capacity. Our team will review your profile and contact you to discuss the next steps.',
 
@@ -152,7 +152,7 @@ export const ui = {
   'contact.hero.subtitle':
     'Let us know the details of your requirement and we will quickly send you an offer for your analysis.',
   'contact.getInTouch': 'Get in touch',
-  'contact.help': 'Whatever you need, we are here to help.',
+  'contact.help': 'Whatever you need, we are here to help',
   'contact.email': 'Email',
   'contact.phone': 'Phone',
   'contact.hq': 'Headquarters',
@@ -165,7 +165,7 @@ export const ui = {
   'form.submit.quote': 'Send request',
   'form.submit.supplier': 'Register as a supplier',
   'form.sending': 'Sending…',
-  'form.thanks': 'Thank you. Your message has been received.',
+  'form.thanks': 'Thank you. Your message has been received',
   'form.thanksBody': 'Our team will review the details and get back to you shortly.',
   'form.select': 'Select',
   'form.required': 'Required fields',
@@ -173,7 +173,7 @@ export const ui = {
 
   // Seções compartilhadas
   'trust.eyebrow': 'Part of Trust Group',
-  'trust.title': 'Global reach, backed by a full-service group on the ground.',
+  'trust.title': 'Global reach, backed by a full-service group on the ground',
   'trust.p1':
     'Navigal is part of Trust Group, one of Brazil’s leading foreign trade groups. Every operation can be integrated with the group’s companies: customs brokerage, international freight forwarding, warehousing and national distribution.',
   'trust.p2': 'One partner from the supplier’s gate to your plant.',
@@ -186,16 +186,16 @@ export const ui = {
   'trust.prev': 'Previous slide',
   'trust.next': 'Next slide',
   'trust.goTo': 'Go to slide {n}',
-  'cta.title': 'Step out of local distributors’ hands and import your own product line.',
+  'cta.title': 'Step out of local distributors’ hands and import your own product line',
   'cta.body':
     'Send us the technical specification, end use and annual volume. We will come back with an analysis and supply options.',
   'certs.eyebrow': 'Certifications & compliance',
-  'certs.title': 'Credentials that back every operation.',
+  'certs.title': 'Credentials that back every operation',
   'taglog.eyebrow': 'Logistics in Brazil',
-  'taglog.title': 'Licensed warehousing across Brazil, through Taglog.',
+  'taglog.title': 'Licensed warehousing across Brazil, through Taglog',
   'taglog.total': 'Total:',
   'commitment.eyebrow': 'Our commitment',
-  'commitment.title': 'Responsibility beyond the operation.',
+  'commitment.title': 'Responsibility beyond the operation',
 
   // Mapa de rotas
   'map.aria':
@@ -216,7 +216,7 @@ export const ui = {
 
   // 404
   'notFound.eyebrow': 'Error 404',
-  'notFound.title': 'This route does not exist.',
+  'notFound.title': 'This route does not exist',
   'notFound.body': 'The page you are looking for may have moved. Let us take you back on course.',
   'notFound.back': 'Back to home',
 } as const
