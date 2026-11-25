@@ -1,7 +1,7 @@
 'use client'
 
-import { useMemo, useRef, useState } from 'react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, FileText, Search } from 'lucide-react'
 import { products as sourceProducts, type Product } from '@/content/products'
@@ -29,14 +29,17 @@ export default function ProductCatalog() {
     t,
     content: { getIndustry, industries, products, productsForIndustry },
   } = useI18n()
-  const router = useRouter()
-  const pathname = usePathname()
   const searchParams = useSearchParams()
   const industryParam = searchParams.get('industry')
-  const active = industryParam && getIndustry(industryParam) ? industryParam : 'all'
+  const paramIndustry = industryParam && getIndustry(industryParam) ? industryParam : 'all'
+  // Estado local: a troca de setor é instantânea e não depende de navegação do Next.
+  const [active, setActive] = useState(paramIndustry)
   const [query, setQuery] = useState('')
-  const resultsRef = useRef<HTMLDivElement>(null)
-  const reduce = useReducedMotion()
+
+  // Mantém o filtro em sincronia com a URL (cards de setor, voltar/avançar do navegador).
+  useEffect(() => {
+    setActive(paramIndustry)
+  }, [paramIndustry])
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim())
@@ -58,13 +61,12 @@ export default function ProductCatalog() {
   }, [active, query, products])
 
   function selectIndustry(slug: string) {
-    const params = new URLSearchParams(searchParams.toString())
-    if (slug === 'all') params.delete('industry')
-    else params.set('industry', slug)
-    const qs = params.toString()
-    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
-    // Os cards ocupam várias linhas no mobile: leva o visitante até a lista filtrada.
-    resultsRef.current?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+    setActive(slug)
+    // Só atualiza a URL (compartilhável) sem navegar nem alterar a rolagem.
+    const url = new URL(window.location.href)
+    if (slug === 'all') url.searchParams.delete('industry')
+    else url.searchParams.set('industry', slug)
+    window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash)
   }
 
   const options = [
@@ -79,8 +81,7 @@ export default function ProductCatalog() {
 
   return (
     <div>
-      <p className="eyebrow text-cobalto">{t('catalog.browseByIndustry')}</p>
-      <div className="mt-4 flex flex-wrap gap-2.5" role="group" aria-label={t('catalog.filterLabel')}>
+      <div className="flex flex-wrap gap-2.5" role="group" aria-label={t('catalog.filterLabel')}>
         {options.map((option) => {
           const selected = active === option.slug
           return (
@@ -112,11 +113,7 @@ export default function ProductCatalog() {
         })}
       </div>
 
-      <div ref={resultsRef} className="mt-10 scroll-mt-28">
-        {active !== 'all' && (
-          <p className="mb-8 max-w-3xl text-base leading-relaxed text-suave">{getIndustry(active)?.description}</p>
-        )}
-
+      <div className="mt-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <label className="relative block w-full lg:max-w-sm">
             <span className="sr-only">{t('catalog.searchLabel')}</span>

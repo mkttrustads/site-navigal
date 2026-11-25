@@ -115,7 +115,6 @@ export const ui = {
   'catalog.showing': 'Showing',
   'catalog.of': 'of',
   'catalog.products': 'products',
-  'catalog.browseByIndustry': 'Browse by industry',
   'catalog.filterLabel': 'Filter by industry',
   'catalog.allIndustries': 'All industries',
   'catalog.noResults': 'No products match your search. Our on-demand sourcing team can find it for you.',
