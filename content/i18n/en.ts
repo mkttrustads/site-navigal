@@ -58,7 +58,7 @@ export const ui = {
   'home.cta.title': 'Import your own product line',
 
   // About
-  'about.hero.title': 'Multinational intelligence, driving Latin American industry.',
+  'about.hero.title': 'Connecting the world to Latin American industry',
   'about.hero.subtitle':
     'We structure international supply chains and trade strategic raw materials, connecting the world’s key trade hubs to practical, secure execution.',
   'about.values.eyebrow': 'Our values',
