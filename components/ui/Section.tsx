@@ -44,13 +44,11 @@ export function SectionHeading({ eyebrow, title, intro, align = 'left', tone = '
       {eyebrow && (
         <p
           className={cn(
-            'eyebrow mb-4 flex items-center gap-3',
-            align === 'center' && 'justify-center',
+            'eyebrow mb-4',
+            // Sobre o fundo azul o cobalto-claro não contrasta (~2,6:1): label em branco.
             brand ? 'text-white' : dark ? 'text-cobalto-claro' : 'text-cobalto'
           )}
         >
-          {/* Sobre o fundo azul o cobalto-claro não contrasta (~2,6:1): label e traço em branco. */}
-          <span aria-hidden="true" className={cn('h-px w-8', brand ? 'bg-white' : dark ? 'bg-cobalto-claro' : 'bg-cobalto')} />
           {eyebrow}
         </p>
       )}

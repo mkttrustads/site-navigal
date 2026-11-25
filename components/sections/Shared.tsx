@@ -132,10 +132,7 @@ export function AudienceSplit() {
 /** Rótulo de seção no mesmo padrão do `SectionHeading` (usado nos slides sem título principal). */
 function SlideEyebrow({ children }: { children: string }) {
   return (
-    <p className="eyebrow flex items-center gap-3 text-cobalto">
-      <span aria-hidden="true" className="h-px w-8 bg-cobalto" />
-      {children}
-    </p>
+    <p className="eyebrow text-cobalto">{children}</p>
   )
 }
 
