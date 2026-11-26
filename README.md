@@ -33,7 +33,7 @@ Seletor no cabeçalho (desktop e menu mobile). A troca é feita no cliente, sem 
 ### Como as traduções se encaixam (leia antes de editar)
 
 - **A estrutura vem do inglês; a tradução só traz texto.** Quais cards existem, a ordem, ícones, imagens, selos e links ficam em `content/*.ts` e valem para os três idiomas. `pt.ts`/`es.ts` nunca criam nem removem itens.
-- **Todo item de lista tem um `id` estável** (`certifications`, `commitment`, `solutions`, `milestones`, `values`, `offices`, `taglog.hubs`, `lookingFor`, itens de público...). As traduções são objetos indexados por esse `id`, não arrays por posição: inserir ou reordenar um item não desloca o texto dos outros. O `id` também é a `key` do React.
+- **Todo item de lista tem um `id` estável** (`certifications`, `commitment`, `solutions`, `milestones`, `offices`, `taglog.hubs`, `lookingFor`, itens de público...). As traduções são objetos indexados por esse `id`, não arrays por posição: inserir ou reordenar um item não desloca o texto dos outros. O `id` também é a `key` do React.
 - **Nunca use texto traduzido (nem o índice) como `key`** em lista renderizada com `RevealItem`. O check acusa isso.
 - **Fallback seguro:** texto ausente ou vazio cai, campo a campo, no inglês (`lib/i18n/localize.ts`), então um card nunca some por tradução incompleta. Em desenvolvimento o fallback avisa no console (`[i18n] tradução ausente...`). Fallback é rede de segurança, não solução: o `check:i18n` falha se faltar qualquer id/campo.
 

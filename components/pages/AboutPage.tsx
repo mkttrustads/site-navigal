@@ -13,7 +13,7 @@ import { useI18n } from '@/lib/i18n/I18nProvider'
 export default function AboutPage() {
   const {
     t,
-    content: { milestones, mission, navLabel, offices, principles, story, values },
+    content: { milestones, mission, navLabel, offices, principles, story },
   } = useI18n()
 
   return (
@@ -83,19 +83,6 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </section>
-
-      <Section tone="muted">
-        <SectionHeading eyebrow={t('about.values.eyebrow')} title={t('about.values.title')} align="center" />
-        <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {values.map((value) => (
-            <RevealItem key={value.id} className="rounded-card border border-linha bg-white p-7">
-              <Icon name={value.icon} className="h-7 w-7 text-cobalto" />
-              <h3 className="mt-5 text-lg">{value.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-suave">{value.description}</p>
-            </RevealItem>
-          ))}
-        </Reveal>
-      </Section>
 
       <Section>
         <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:items-center">

@@ -116,7 +116,6 @@ const idLists = (tr) => [
   ['site.trustGroupLines.items', en.site.trustGroupLines.items, tr.site.trustGroupLines.items, ['name', 'description']],
   ['about.milestones', en.about.milestones, tr.about.milestones, ['label', 'title', 'description']],
   ['about.principles', en.about.principles, tr.about.principles, ['title', 'description']],
-  ['about.values', en.about.values, tr.about.values, ['title', 'description']],
   ['about.offices', en.about.offices, tr.about.offices, ['country', 'role', 'detail']],
   ['credibility.certifications', en.credibility.certifications, tr.credibility.certifications, ['title', 'holder', 'description']],
   ['credibility.taglog.hubs', en.credibility.taglog.hubs, tr.credibility.taglog.hubs, ['site', 'area', 'pallets', 'access']],
@@ -263,7 +262,7 @@ console.log('\nFallback')
   broken.credibility.commitment.ethics.title = '' // campo vazio
   broken.credibility.commitment.ethics.paragraphs = undefined // prosa ausente
   delete broken.credibility.seals.ods // selo sem alt traduzido
-  broken.about.values = {} // lista inteira vazia
+  broken.about.offices = {} // lista inteira vazia
   broken.about.story.paragraphs = ['só o primeiro'] // prosa incompleta
   broken.solutions.audiences.buyers.items = undefined // lista de textos ausente
   delete broken.site.nav.contact
@@ -275,7 +274,7 @@ console.log('\nFallback')
   const ethics = content.commitment.find((c) => c.id === 'ethics')
   if (!ethics || ethics.title !== reference.commitment[0].title || ethics.paragraphs.join() !== reference.commitment[0].paragraphs.join()) fail('fallback', 'campo vazio/ausente não caiu no inglês')
   if (content.commitmentSeals.find((x) => x.id === 'ods')?.alt !== reference.commitmentSeals[0].alt) fail('fallback', 'selo sem tradução não caiu no alt em inglês')
-  if (content.values.length !== reference.values.length) fail('fallback', 'lista de valores vazia fez cards sumirem')
+  if (content.offices.length !== reference.offices.length) fail('fallback', 'lista de escritórios vazia fez cards sumirem')
   if (content.primaryNav.find((n) => n.id === 'contact')?.label !== 'Contact') fail('fallback', 'item de menu ausente não caiu no inglês')
   if (content.certifications[0].title === reference.certifications[0].title) fail('fallback', 'itens traduzidos presentes deveriam continuar em português')
 }

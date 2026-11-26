@@ -75,8 +75,6 @@ export const pt: Translation = {
     'about.hero.subtitle':
       'Estruturamos cadeias de suprimento internacionais e negociamos matérias-primas estratégicas, conectando os principais polos comerciais do mundo a uma execução prática e segura.',
     'about.story.trustLink': 'Conheça o Trust Group',
-    'about.values.eyebrow': 'Nossos valores',
-    'about.values.title': 'O que guia cada operação',
     'about.imageAlt': 'Baía do Rio de Janeiro com o Pão de Açúcar',
     'about.presence.eyebrow': 'Presença global',
     'about.presence.title': 'Presentes onde o comércio acontece',
@@ -340,13 +338,6 @@ export const pt: Translation = {
         description:
           'Somos a conexão entre fornecedores globais confiáveis e as indústrias que dependem de um suprimento seguro e competitivo.',
       },
-    },
-    values: {
-      'experience': { title: 'Experiência', description: 'Duas décadas de experiência do Trust Group importando produtos químicos e outros itens.' },
-      'security': { title: 'Segurança', description: 'Experiência e capacidade analítica aplicadas para tornar cada negociação mais segura.' },
-      'quality': { title: 'Qualidade', description: 'Sempre elevando o padrão para entregar o melhor serviço e produto.' },
-      'commitment': { title: 'Comprometimento', description: 'Nossa missão é a sua satisfação, e estamos comprometidos com ela.' },
-      'punctuality': { title: 'Pontualidade', description: 'Atendemos cada pedido com comprometimento e entrega precisa.' },
     },
     offices: {
       'uae': {

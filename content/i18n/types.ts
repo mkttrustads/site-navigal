@@ -10,7 +10,7 @@
 // content/*.ts, igual nos três idiomas), nunca pela posição: reordenar, inserir
 // ou esquecer um item não desloca os textos dos demais.
 
-import type { Milestone, MilestoneId, Office, OfficeId, Principle, PrincipleId, Value, ValueId, story } from '../about'
+import type { Milestone, MilestoneId, Office, OfficeId, Principle, PrincipleId, story } from '../about'
 import type { Certification, CertificationId, CommitmentId, CommitmentItem, Seal, SealId, TaglogHub, TaglogHubId, taglog } from '../credibility'
 import type { FormType } from '../forms'
 import type {
@@ -70,7 +70,6 @@ export type Translation = {
     /** `paragraphs` é prosa em ordem (mesma quantidade em todos os idiomas). */
     story: Pick2<typeof story, 'eyebrow' | 'title' | 'paragraphs' | 'closing' | 'presence'>
     principles: ById<PrincipleId, Pick2<Principle, 'title' | 'description'>>
-    values: ById<ValueId, Pick2<Value, 'title' | 'description'>>
     offices: ById<OfficeId, Pick2<Office, 'country' | 'role' | 'detail'>>
   }
 
