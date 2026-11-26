@@ -22,25 +22,32 @@ export default function HomeHero() {
     <section ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-preto text-white">
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image
-          src="/images/hero-container-ship-night.jpg"
+          src="/images/hero-industrial-drums.jpg"
           alt=""
           aria-hidden="true"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[65%_center]"
+          // No mobile (recorte estreito) o foco vai para o operador da direita; de md para cima, a foto inteira.
+          className="object-cover object-[62%_center] md:object-center"
         />
       </motion.div>
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/80 to-preto/20" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-preto via-transparent to-preto/50" />
+      {/* Overlay: escurece a base, onde ficam título e faixa descrição + CTAs, e deixa a metade superior
+          (operadores e tambores) aparente. O gradiente lateral é leve, só para firmar o canto do texto. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-preto/95 via-preto/60 via-[42%] to-preto/10"
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto/50 via-preto/10 to-transparent" />
 
       <motion.div
         initial="hidden"
         animate="visible"
         variants={staggerContainer(0.12, 0.1)}
-        className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-center px-6 pb-10 pt-28 sm:pt-32"
+        className="relative mx-auto flex w-full max-w-site flex-1 flex-col justify-end px-6 pb-12 pt-28 sm:pt-32 lg:pb-16"
       >
-        {/* Ritmo vertical do bloco: logo → título (mt-7/8) < título → texto (mt-8/10) < texto → botões (mt-11/14). */}
+        {/* Ritmo vertical do bloco: logo → título (mt-7/8) < título → faixa (mt-10/12). Na faixa, descrição e
+            botões dividem a mesma linha no desktop (lg) e empilham abaixo disso. */}
         {/* Logo completa na Hero e só a esfera no menu, como no site Trust Group. */}
         <motion.div variants={item}>
           <Image
@@ -52,20 +59,22 @@ export default function HomeHero() {
             className="h-20 w-auto sm:h-[6.3rem]"
           />
         </motion.div>
-        <motion.h1 variants={item} className="hero-title mt-7 max-w-[12.2em] text-balance sm:mt-8">
+        <motion.h1 variants={item} className="hero-title-home mt-7 max-w-[12.2em] text-balance sm:mt-8">
           {company.tagline}
         </motion.h1>
-        <motion.p variants={item} className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:mt-10">
-          {t('home.hero.lead')}
-        </motion.p>
-        <motion.div variants={item} className="mt-11 flex flex-wrap gap-4 sm:mt-14">
-          <Button href={quoteCta.href} arrow>
-            {quoteCta.label}
-          </Button>
-          <Button href="/products" variant="outline">
-            {t('home.hero.explore')}
-          </Button>
-        </motion.div>
+        <div className="mt-10 flex flex-col gap-8 border-t border-white/20 pt-8 sm:mt-12 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <motion.p variants={item} className="min-w-0 max-w-2xl text-pretty text-lg leading-relaxed text-white/85">
+            {t('home.hero.lead')}
+          </motion.p>
+          <motion.div variants={item} className="flex flex-wrap gap-4 lg:shrink-0 lg:flex-nowrap">
+            <Button href={quoteCta.href} arrow>
+              {quoteCta.label}
+            </Button>
+            <Button href="/products" variant="outline">
+              {t('home.hero.explore')}
+            </Button>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   )
