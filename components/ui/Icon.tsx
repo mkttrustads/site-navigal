@@ -1,5 +1,6 @@
 import {
   BadgeCheck,
+  BarChart3,
   Car,
   ClipboardList,
   Clock,
@@ -8,6 +9,7 @@ import {
   Globe,
   Handshake,
   Landmark,
+  Medal,
   Network,
   Package,
   Paintbrush,
@@ -21,7 +23,9 @@ import {
   Sparkles,
   Sprout,
   Target,
+  Trophy,
   Truck,
+  Users,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -29,6 +33,7 @@ import {
 // conteúdo continuar sendo dado puro, sem JSX.
 const icons: Record<string, LucideIcon> = {
   badgeCheck: BadgeCheck,
+  barChart: BarChart3,
   car: Car,
   clipboard: ClipboardList,
   clock: Clock,
@@ -37,6 +42,7 @@ const icons: Record<string, LucideIcon> = {
   globe: Globe,
   handshake: Handshake,
   landmark: Landmark,
+  medal: Medal,
   network: Network,
   package: Package,
   paintbrush: Paintbrush,
@@ -50,7 +56,9 @@ const icons: Record<string, LucideIcon> = {
   sparkles: Sparkles,
   sprout: Sprout,
   target: Target,
+  trophy: Trophy,
   truck: Truck,
+  users: Users,
 }
 
 export default function Icon({ name, className }: { name: string; className?: string }) {

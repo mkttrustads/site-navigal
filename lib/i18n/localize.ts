@@ -12,7 +12,7 @@
 //    o fallback é avisado no console; `npm run check:i18n` falha o build/CI).
 // Para EN devolve o próprio conteúdo-fonte.
 
-import { company, facts, primaryNav, quoteCta, rankingFootnote, trustGroupFacts, trustGroupLines } from '../../content/site'
+import { bigNumbers, company, facts, primaryNav, quoteCta, rankingFootnote, trustGroupFacts, trustGroupLines } from '../../content/site'
 import { milestones, mission, offices, principles, story } from '../../content/about'
 import { certifications, certificationsFootnote, commitment, commitmentSeals, taglog } from '../../content/credibility'
 import { accessoryServices, audiences, lookingFor, processSteps, riskPillars, solutions, type AudienceItem } from '../../content/solutions'
@@ -167,6 +167,7 @@ function build(tr?: Translation) {
       continents: { ...facts.continents, label: pick(factText?.continents, facts.continents.label, 'site.facts.continents') },
     },
     rankingFootnote: pick(tr?.site.rankingFootnote, rankingFootnote, 'site.rankingFootnote'),
+    bigNumbers: mergeLabels(bigNumbers, tr?.site.bigNumbers, 'label', 'site.bigNumbers'),
     trustGroupFacts: mergeLabels(trustGroupFacts, tr?.site.trustGroupFacts, 'label', 'site.trustGroupFacts'),
     trustGroupLines: {
       title: pick(tr?.site.trustGroupLines.title, trustGroupLines.title, 'site.trustGroupLines.title'),

@@ -65,6 +65,27 @@ export const trustGroupFacts: TrustGroupFact[] = [
   { id: 'ranking', value: 'Top 35*', label: 'chemical importers in Brazil (Trust Group)' },
 ]
 
+// Big Numbers do topo da página About (logo abaixo da capa). Fonte: apresentação institucional.
+// O número exibido é `prefix` + `count` + `suffix`; só `count` é animado (contagem ao entrar na tela).
+// `prefix`/`suffix` e `count` valem para os três idiomas; só o `label` é traduzido (content/i18n/*).
+// `footnote: true` marca o item que remete à nota do ranking (`rankingFootnote`, a mesma da seção de certificações).
+export type BigNumberId = 'years' | 'people' | 'ranking' | 'revenue'
+export type BigNumber = {
+  id: BigNumberId
+  icon: string
+  prefix: string
+  count: number
+  suffix: string
+  label: string
+  footnote?: boolean
+}
+export const bigNumbers: BigNumber[] = [
+  { id: 'years', icon: 'medal', prefix: '', count: 20, suffix: '+', label: 'Years in the market' },
+  { id: 'people', icon: 'users', prefix: '', count: 300, suffix: '+', label: 'People across the group' },
+  { id: 'ranking', icon: 'trophy', prefix: 'Top ', count: 35, suffix: '', label: 'Chemical importers in Brazil*', footnote: true },
+  { id: 'revenue', icon: 'barChart', prefix: 'US$ ', count: 100, suffix: 'M+', label: 'Trust Group revenue in 2024' },
+]
+
 // Slide 4: "Five companies working together so every operation runs end to end".
 export type TrustGroupLineId = 'foreign-trade' | 'international-trading' | 'international-logistics' | 'national-logistics' | 'global-brands'
 export type TrustGroupLine = { id: TrustGroupLineId; name: string; description: string }
