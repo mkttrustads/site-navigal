@@ -79,19 +79,69 @@ export const taglog: { licensed: string; hubs: TaglogHub[]; total: { area: strin
 }
 
 // Slide 12, "Our commitment". Sem números, como pedido.
-export type CommitmentId = 'instituto-trust' | 'ethics'
-export type CommitmentItem = { id: CommitmentId; icon: string; title: string; description: string }
+// `paragraphs` é prosa em ordem (mesma quantidade em todos os idiomas).
+export type CommitmentId = 'ethics' | 'instituto-trust'
+export type CommitmentItem = { id: CommitmentId; icon: string; title: string; paragraphs: string[] }
 export const commitment: CommitmentItem[] = [
-  {
-    id: 'instituto-trust',
-    icon: 'handshake',
-    title: 'Instituto Trust',
-    description: 'Sport as a tool for inclusion and social development.',
-  },
   {
     id: 'ethics',
     icon: 'scale',
     title: 'Ethics, compliance and sustainability',
-    description: 'Shared standards across the group, assessed by independent organizations.',
+    paragraphs: [
+      'Across Trust Group, we follow shared standards of ethics, compliance and sustainability. These practices are independently assessed by international and Brazilian organizations. Our partners can count on transparent processes at every stage.',
+    ],
+  },
+  {
+    id: 'instituto-trust',
+    icon: 'handshake',
+    title: 'Instituto Trust',
+    paragraphs: [
+      'Through Instituto Trust, Trust Group invests in the communities where we operate.',
+      'Sport is a tool for inclusion and social development, and thousands of families in the region have already been impacted.',
+    ],
+  },
+]
+
+// Selos da faixa "Independently assessed by" (seção Our commitment, About).
+// Ordem de exibição = ordem da lista. `scale` padroniza a altura VISUAL: 1 = selo
+// quadrado/vertical; selos largos ficam mais baixos para não dominar a linha.
+// O arquivo nunca é esticado (largura automática pela proporção `width`/`height`).
+// LGPD: o arquivo do selo ainda não foi enviado. Para incluir, adicione o arquivo em
+// public/brand/seals/, uma entrada aqui (na posição desejada) e o `alt` em
+// content/i18n/pt.ts e es.ts (credibility.seals).
+export type SealId = 'ods' | 'ecovadis' | 'gptw' | 'empresa-limpa'
+export type Seal = { id: SealId; src: string; width: number; height: number; scale: number; alt: string }
+export const commitmentSeals: Seal[] = [
+  {
+    id: 'ods',
+    src: '/brand/seals/ods-santa-catarina.webp',
+    width: 256,
+    height: 256,
+    scale: 1,
+    alt: 'Together for the SDGs seal – Movimento Nacional ODS Santa Catarina, signatory since 2024',
+  },
+  {
+    id: 'ecovadis',
+    src: '/brand/seals/ecovadis-bronze.webp',
+    width: 256,
+    height: 256,
+    scale: 1,
+    alt: 'EcoVadis Sustainability Rating – Bronze medal, top 35%, December 2024',
+  },
+  {
+    id: 'gptw',
+    src: '/brand/seals/great-place-to-work.webp',
+    width: 256,
+    height: 362,
+    scale: 1,
+    alt: 'Great Place to Work certified seal – Brazil, October 2025 to October 2026',
+  },
+  {
+    id: 'empresa-limpa',
+    src: '/brand/seals/empresa-limpa.webp',
+    width: 256,
+    height: 101,
+    scale: 0.6,
+    alt: 'Empresa Limpa (Clean Company) seal',
   },
 ]

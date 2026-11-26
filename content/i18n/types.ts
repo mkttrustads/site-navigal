@@ -11,7 +11,7 @@
 // ou esquecer um item não desloca os textos dos demais.
 
 import type { Milestone, MilestoneId, Office, OfficeId, Principle, PrincipleId, Value, ValueId, story } from '../about'
-import type { Certification, CertificationId, CommitmentId, CommitmentItem, TaglogHub, TaglogHubId, taglog } from '../credibility'
+import type { Certification, CertificationId, CommitmentId, CommitmentItem, Seal, SealId, TaglogHub, TaglogHubId, taglog } from '../credibility'
 import type { FormType } from '../forms'
 import type {
   AccessoryServiceId,
@@ -81,7 +81,9 @@ export type Translation = {
       hubs: ById<TaglogHubId, Pick2<TaglogHub, 'site' | 'area' | 'pallets' | 'access'>>
       total: Pick2<typeof taglog.total, 'area' | 'pallets'>
     }
-    commitment: ById<CommitmentId, Pick2<CommitmentItem, 'title' | 'description'>>
+    /** `paragraphs` é prosa em ordem (mesma quantidade em todos os idiomas). */
+    commitment: ById<CommitmentId, Pick2<CommitmentItem, 'title' | 'paragraphs'>>
+    seals: ById<SealId, Pick2<Seal, 'alt'>>
   }
 
   solutions: {

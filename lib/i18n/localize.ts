@@ -14,7 +14,7 @@
 
 import { company, facts, primaryNav, quoteCta, rankingFootnote, trustGroupFacts, trustGroupLines } from '../../content/site'
 import { milestones, mission, offices, principles, story, values } from '../../content/about'
-import { certifications, certificationsFootnote, commitment, taglog } from '../../content/credibility'
+import { certifications, certificationsFootnote, commitment, commitmentSeals, taglog } from '../../content/credibility'
 import { accessoryServices, audiences, lookingFor, processSteps, riskPillars, solutions, type AudienceItem } from '../../content/solutions'
 import { industries, type Industry } from '../../content/industries'
 import { products, type Product } from '../../content/products'
@@ -189,6 +189,7 @@ function build(tr?: Translation) {
       total: overlayText(taglog.total, tr?.credibility.taglog.total, 'credibility.taglog.total'),
     },
     commitment: mergeById(commitment, tr?.credibility.commitment, 'credibility.commitment'),
+    commitmentSeals: mergeById(commitmentSeals, tr?.credibility.seals, 'credibility.seals'),
 
     solutions: mergeById(solutions, tr?.solutions.solutions, 'solutions.solutions'),
     accessoryServices: mergeLabels(accessoryServices, tr?.solutions.accessoryServices, 'label', 'solutions.accessoryServices'),
