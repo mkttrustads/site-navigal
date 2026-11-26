@@ -388,10 +388,7 @@ export function CommitmentSection() {
     <Section>
       <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,28rem)]">
         <div className="lg:col-start-1 lg:row-start-1">
-          <p className="eyebrow mb-4 text-cobalto">{t('commitment.eyebrow')}</p>
-          <h2 className="max-w-2xl text-balance text-[clamp(2.25rem,4.4vw,3.75rem)] leading-[1.05] tracking-[-0.02em]">
-            {t('commitment.title')}
-          </h2>
+          <SectionHeading eyebrow={t('commitment.eyebrow')} title={t('commitment.title')} />
 
           <Reveal className="mt-12 divide-y divide-linha border-y border-linha">
             {commitment.map((item) => (
@@ -412,11 +409,13 @@ export function CommitmentSection() {
           </Reveal>
         </div>
 
-        <div className="lg:col-span-2 lg:row-start-2 lg:grid lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:items-center lg:gap-12">
-          <p className="eyebrow text-suave">{t('commitment.sealsTitle')}</p>
-          <ul className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 [--seal-size:4.5rem] sm:flex sm:flex-wrap sm:justify-between sm:[--seal-size:5.25rem] lg:mt-0 lg:[--seal-size:5.75rem]">
+        <div className="lg:col-span-2 lg:row-start-2 lg:flex lg:items-center lg:gap-8">
+          <p className="eyebrow shrink-0 text-suave">{t('commitment.sealsTitle')}</p>
+          {/* Selos 30% menores que o original (4.5/5.25/5.75rem x 0,7) e agrupados à esquerda,
+              logo ao lado do rótulo, em vez de distribuídos pela largura da seção. */}
+          <ul className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-5 [--seal-size:3.15rem] sm:gap-x-5 sm:[--seal-size:3.675rem] lg:mt-0 lg:[--seal-size:4.025rem]">
             {commitmentSeals.map((seal) => (
-              <li key={seal.id} className="flex items-center last:odd:col-span-2">
+              <li key={seal.id} className="flex items-center">
                 <Image
                   src={seal.src}
                   alt={seal.alt}
