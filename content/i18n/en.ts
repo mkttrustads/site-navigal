@@ -58,11 +58,20 @@ export const ui = {
   'home.industries.title': 'Raw materials for sectors with demanding technical and regulatory standards',
   'home.industries.link': 'Full portfolio',
   'home.network.eyebrow': 'Global network',
-  'home.network.title': 'Where global supply meets Latin American demand',
-  'home.network.p1':
-    'Strategically based in the United Arab Emirates, one of the most dynamic trade hubs in the world, we work alongside manufacturers in Asia, Europe and the Middle East.',
-  'home.network.p2':
-    'Our team in Brazil keeps us close to industrial buyers across Latin America, where we evaluate every opportunity first-hand.',
+  'home.network.title': 'A reliable partner to sell in Brazil',
+  'home.network.subtitle':
+    'Navigal buys from you and sells to Brazilian industry. Trust Group supports the import.',
+  'home.network.step1.title': 'You',
+  'home.network.step1.role': 'Global supplier',
+  'home.network.step1.text': 'Sell and ship to one counterpart.',
+  'home.network.step2.title': 'Navigal',
+  'home.network.step2.role': 'Trading company, UAE',
+  'home.network.step2.text': 'Buys from you and sells in Brazil and LATAM.',
+  'home.network.step3.title': 'Customers',
+  'home.network.step3.role': 'Brazilian industry',
+  'home.network.step3.text': 'Imports with full support from Trust Group.',
+  'home.network.highlight':
+    'You sell to one company. Your customers get a simple, compliant import.',
   'home.cta.title': 'Import your supplies with a global partner',
 
   // About
@@ -204,6 +213,8 @@ export const ui = {
   'map.aria':
     "Map of Navigal's network: Navigal's base in the United Arab Emirates, offices in Miami and Brazil, and sourcing routes from Italy, Turkey, Oman, China, Taiwan, Vietnam and Malaysia converging on Navigal, with a single route from Navigal to Brazil and Latin America.",
   'map.place.Navigal': 'Navigal',
+  'map.place.NavigalHub': 'Navigal · UAE',
+  'map.place.BrazilLatam': 'Brazil / LATAM',
   'map.place.Miami': 'Miami',
   'map.place.Brazil': 'Brazil',
   'map.place.Italy': 'Italy',

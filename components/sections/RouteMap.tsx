@@ -1,4 +1,5 @@
 import DottedMap from 'dotted-map'
+import Flag, { type FlagCode } from '@/components/ui/Flags'
 import { LocalizedSvg, T } from '@/components/ui/LocalizedText'
 import type { UiKey } from '@/lib/i18n/translate'
 
@@ -68,16 +69,44 @@ const labelOffset: Record<string, { dx: number; dy: number; anchor: 'start' | 'e
   Malaysia: { dx: 1.2, dy: 0.5, anchor: 'start' },
 }
 
+// Bandeiras (Home): cada ponto ganha uma etiqueta HTML com bandeira + nome, posicionada em % sobre o
+// mapa mas com tamanho fixo em px, para continuar legível no mobile (o texto do SVG encolhe com o mapa).
+// `placement` é o lado do ponto onde a etiqueta fica; `compact` esconde o nome abaixo de `sm`, onde só a
+// bandeira cabe sem colisão (o nome segue disponível para leitores de tela).
+type Placement = 'top' | 'bottom' | 'left' | 'right'
+const flagChips: Record<string, { flag: FlagCode; label: UiKey; placement: Placement; compact?: boolean; strong?: boolean }> = {
+  Navigal: { flag: 'AE', label: 'map.place.NavigalHub', placement: 'top', strong: true },
+  Miami: { flag: 'US', label: 'map.place.Miami', placement: 'top' },
+  Brazil: { flag: 'BR', label: 'map.place.BrazilLatam', placement: 'right', strong: true },
+  Italy: { flag: 'IT', label: 'map.place.Italy', placement: 'left', compact: true },
+  Turkey: { flag: 'TR', label: 'map.place.Turkey', placement: 'top', compact: true },
+  Oman: { flag: 'OM', label: 'map.place.Oman', placement: 'bottom', compact: true },
+  China: { flag: 'CN', label: 'map.place.China', placement: 'top', compact: true },
+  Taiwan: { flag: 'TW', label: 'map.place.Taiwan', placement: 'right', compact: true },
+  Vietnam: { flag: 'VN', label: 'map.place.Vietnam', placement: 'right', compact: true },
+  Malaysia: { flag: 'MY', label: 'map.place.Malaysia', placement: 'right', compact: true },
+}
+
+const placementTransform: Record<Placement, string> = {
+  top: 'translate(-50%, calc(-100% - 9px))',
+  bottom: 'translate(-50%, 9px)',
+  left: 'translate(calc(-100% - 10px), -50%)',
+  right: 'translate(10px, -50%)',
+}
+
 type RouteMapProps = {
   className?: string
+  /** Etiquetas com bandeira nos pontos do mapa (somente `tone="light"`). */
+  flags?: boolean
   /** `dark`: fundo preto (Suppliers). `light`: fundo cinza-claro (Home), rotas e escritórios em azul institucional. */
   tone?: 'dark' | 'light'
 }
 
-export default function RouteMap({ className, tone = 'dark' }: RouteMapProps) {
+export default function RouteMap({ className, tone = 'dark', flags = false }: RouteMapProps) {
   const hub = points[HUB.name]
   const destination = points[DESTINATION.name]
   const light = tone === 'light'
+  const showFlags = flags && light
   // No claro, o cobalto institucional serve de base e o cobalto-escuro do fluxo animado garante contraste.
   const routeBase = '#2B5EA7'
   const routeFlow = light ? '#214B87' : '#8FB0E0'
@@ -118,20 +147,47 @@ export default function RouteMap({ className, tone = 'dark' }: RouteMapProps) {
               <g key={point.name}>
                 {office && <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 2.4 : 1.6} fill="#2B5EA7" fillOpacity={light ? 0.2 : 0.3} />}
                 <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 1.15 : office ? 0.8 : 0.6} fill={office ? '#2B5EA7' : light ? '#4B5058' : '#FFFFFF'} stroke="#FFFFFF" strokeWidth={office ? 0.25 : 0} />
-                <text
-                  x={point.x + offset.dx}
-                  y={point.y + offset.dy}
-                  textAnchor={offset.anchor}
-                  className={light ? 'fill-suave font-body' : 'fill-white/80 font-body'}
-                  // Halo off-white nos rótulos: mantém a leitura sobre os pontos do mapa.
-                  style={{ fontSize: 1.5, fontWeight: 600, ...(light && { paintOrder: 'stroke', stroke: '#F7F9F8', strokeWidth: 0.5, strokeLinejoin: 'round' }) }}
-                >
-                  <T k={`map.place.${point.name}` as UiKey} />
-                </text>
+                {!showFlags && (
+                  <text
+                    x={point.x + offset.dx}
+                    y={point.y + offset.dy}
+                    textAnchor={offset.anchor}
+                    className={light ? 'fill-suave font-body' : 'fill-white/80 font-body'}
+                    // Halo off-white nos rótulos: mantém a leitura sobre os pontos do mapa.
+                    style={{ fontSize: 1.5, fontWeight: 600, ...(light && { paintOrder: 'stroke', stroke: '#F7F9F8', strokeWidth: 0.5, strokeLinejoin: 'round' }) }}
+                  >
+                    <T k={`map.place.${point.name}` as UiKey} />
+                  </text>
+                )}
               </g>
             )
           })}
         </LocalizedSvg>
+        {showFlags && (
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            {Object.values(points).map((point) => {
+              const chip = flagChips[point.name]
+              return (
+                <span
+                  key={point.name}
+                  className="absolute"
+                  style={{ left: `${(point.x / width) * 100}%`, top: `${(point.y / height) * 100}%`, transform: placementTransform[chip.placement] }}
+                >
+                  <span
+                    className={`flex items-center gap-1 whitespace-nowrap rounded bg-white/90 px-1 py-0.5 text-[10px] leading-none shadow-sm ring-1 ring-linha sm:gap-1.5 sm:px-1.5 sm:py-1 sm:text-xs ${
+                      chip.strong ? 'font-bold text-cobalto-escuro' : 'font-semibold text-suave'
+                    }`}
+                  >
+                    <Flag code={chip.flag} className="h-2.5 w-[15px] sm:h-3.5 sm:w-5" />
+                    <span className={chip.compact ? 'sr-only sm:not-sr-only' : undefined}>
+                      <T k={chip.label} />
+                    </span>
+                  </span>
+                </span>
+              )
+            })}
+          </div>
+        )}
       </div>
       <ul className={`mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm ${light ? 'text-suave' : 'text-white/70'}`}>
         <li className="flex items-center gap-2">
