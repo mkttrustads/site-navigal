@@ -64,11 +64,20 @@ export const pt: Translation = {
     'home.industries.title': 'Matérias-primas para setores com altos padrões técnicos e regulatórios',
     'home.industries.link': 'Portfólio completo',
     'home.network.eyebrow': 'Rede global',
-    'home.network.title': 'Onde a oferta global encontra a demanda latino-americana',
-    'home.network.p1':
-      'Estrategicamente sediados nos Emirados Árabes Unidos, um dos polos comerciais mais dinâmicos do mundo, trabalhamos ao lado de fabricantes na Ásia, na Europa e no Oriente Médio.',
-    'home.network.p2':
-      'Nossa equipe no Brasil nos mantém próximos dos compradores industriais de toda a América Latina, onde avaliamos cada oportunidade em primeira mão.',
+    'home.network.title': 'Um parceiro confiável para vender no Brasil',
+    'home.network.subtitle':
+      'A Navigal compra de você e vende para a indústria brasileira. O Trust Group apoia a importação.',
+    'home.network.step1.title': 'Você',
+    'home.network.step1.role': 'Fornecedor global',
+    'home.network.step1.text': 'Vende e embarca para um único comprador.',
+    'home.network.step2.title': 'Navigal',
+    'home.network.step2.role': 'Trading company, UAE',
+    'home.network.step2.text': 'Compra de você e vende no Brasil e na América Latina.',
+    'home.network.step3.title': 'Clientes',
+    'home.network.step3.role': 'Indústria brasileira',
+    'home.network.step3.text': 'Importa com suporte completo do Trust Group.',
+    'home.network.highlight':
+      'Você vende para uma única empresa. Seus clientes recebem uma importação simples e em conformidade.',
     'home.cta.title': 'Importe seus insumos com um parceiro global',
 
     'about.hero.title': 'Conectando o mundo à indústria latino-americana',
@@ -205,6 +214,8 @@ export const pt: Translation = {
     'map.aria':
       'Mapa da rede da Navigal: base da Navigal nos Emirados Árabes Unidos, escritórios em Miami e no Brasil, e rotas de suprimento da Itália, Turquia, Omã, China, Taiwan, Vietnã e Malásia convergindo para a Navigal, com uma única rota da Navigal para o Brasil e a América Latina.',
     'map.place.Navigal': 'Navigal',
+    'map.place.NavigalHub': 'Navigal · EAU',
+    'map.place.BrazilLatam': 'Brasil / LATAM',
     'map.place.Miami': 'Miami',
     'map.place.Brazil': 'Brasil',
     'map.place.Italy': 'Itália',

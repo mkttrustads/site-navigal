@@ -10,6 +10,9 @@ import Button from '@/components/ui/Button'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
+// Fluxo da seção "Global network": fornecedor → Navigal → clientes (chaves `home.network.<step>.*`).
+const networkSteps = ['step1', 'step2', 'step3'] as const
+
 /** `routeMap` vem da página (Server Component) para a biblioteca do mapa ficar fora do bundle do cliente. */
 export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
   const { t } = useI18n()
@@ -71,16 +74,32 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
 
       <Section tone="muted">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.6fr] lg:items-center">
-          <SectionHeading
-            eyebrow={t('home.network.eyebrow')}
-            title={t('home.network.title')}
-            intro={
-              <>
-                <p>{t('home.network.p1')}</p>
-                <p className="mt-4">{t('home.network.p2')}</p>
-              </>
-            }
-          />
+          <div>
+            <SectionHeading
+              eyebrow={t('home.network.eyebrow')}
+              title={t('home.network.title')}
+              intro={<p className="font-semibold text-cobalto">{t('home.network.subtitle')}</p>}
+            />
+            <ol className="mt-10">
+              {networkSteps.map((step, index) => (
+                <li key={step} className="relative flex gap-4 pb-7 last:pb-0">
+                  {index < networkSteps.length - 1 && <span aria-hidden="true" className="absolute bottom-0 left-4 top-10 w-px -translate-x-1/2 bg-linha" />}
+                  <span
+                    aria-hidden="true"
+                    className="stat-numeral relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cobalto text-sm font-semibold text-white"
+                  >
+                    {index + 1}
+                  </span>
+                  <div>
+                    <h3 className="text-xl leading-tight">{t(`home.network.${step}.title`)}</h3>
+                    <p className="mt-1 text-sm font-semibold text-cobalto">{t(`home.network.${step}.role`)}</p>
+                    <p className="mt-1.5 text-base leading-relaxed text-suave">{t(`home.network.${step}.text`)}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-10 border-l-2 border-cobalto pl-5 text-lg font-semibold leading-snug text-preto">{t('home.network.highlight')}</p>
+          </div>
           {routeMap}
         </div>
       </Section>
