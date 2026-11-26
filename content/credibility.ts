@@ -18,6 +18,9 @@ export type Certification = {
   /** Selo exibido no lugar do ícone. */
   badge?: string
   badgeAlt?: string
+  /** Dimensões intrínsecas do `badge` (padrão 256x120). Só dão a proporção; o tamanho exibido vem do CSS. */
+  badgeWidth?: number
+  badgeHeight?: number
   /** Vários selos no mesmo card (substituem o ícone). `badgeAlts` segue a mesma ordem e é traduzido em content/i18n/*. */
   badges?: { src: string; width: number; height: number; size: 'md' | 'sm' }[]
   badgeAlts?: string[]
@@ -29,6 +32,11 @@ export const certifications: Certification[] = [
     title: 'Top 35 chemical importers in Brazil*',
     holder: 'Trust Group',
     description: 'Ranked among the largest chemical importers in the country.',
+    // Logo do Trust Group no topo, no mesmo papel dos selos dos outros cards.
+    badge: '/brand/trust-group-horizontal.png',
+    badgeWidth: 1134,
+    badgeHeight: 294,
+    badgeAlt: 'Trust Group logo',
   },
   {
     id: 'aeo',
