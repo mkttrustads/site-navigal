@@ -302,7 +302,18 @@ export function CertificationsSection() {
       <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((item) => (
           <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
-            <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
+            {item.badge ? (
+              <Image
+                src={item.badge}
+                alt={item.badgeAlt}
+                width={256}
+                height={120}
+                sizes="(min-width: 1024px) 140px, 128px"
+                className="h-16 w-auto"
+              />
+            ) : (
+              <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
+            )}
             <h3 className="mt-5 text-lg">{item.title}</h3>
             {item.holder && <p className="mt-1 text-sm font-semibold text-cobalto">{item.holder}</p>}
             <p className="mt-2 text-base leading-relaxed text-suave">{item.description}</p>

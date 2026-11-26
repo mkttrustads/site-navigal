@@ -17,9 +17,13 @@ export const certifications = [
   },
   {
     icon: 'landmark',
-    title: 'Federal Revenue certification',
+    title: 'AEO – Essential Compliance',
     holder: 'Trust Comércio Exterior',
-    description: 'Trust Comércio Exterior is certified by the Brazilian Federal Revenue.',
+    description:
+      'Certified by the Brazilian Federal Revenue, we are part of the Brazilian Authorized Economic Operator (AEO) Program, recognized for its compliance and risk management standards.',
+    // Selo exibido no lugar do ícone; o alt é traduzido em content/i18n/*.
+    badge: '/brand/oea-conformidade-essencial.webp',
+    badgeAlt: 'Authorized Economic Operator (AEO) seal – Essential Compliance',
   },
   {
     icon: 'clipboard',
