@@ -331,10 +331,10 @@ export function CertificationsSection() {
               <Image
                 src={item.badge}
                 alt={item.badgeAlt ?? item.title}
-                width={256}
-                height={120}
-                sizes="(min-width: 1024px) 140px, 128px"
-                className="h-16 w-auto"
+                width={item.badgeWidth ?? 256}
+                height={item.badgeHeight ?? 120}
+                sizes="(min-width: 1024px) 260px, 200px"
+                className="h-16 w-auto max-w-full object-contain object-left"
               />
             ) : (
               <Icon name={item.icon} className="h-7 w-7 text-cobalto" />

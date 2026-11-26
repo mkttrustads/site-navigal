@@ -368,6 +368,7 @@ export const es: Translation = {
         title: 'Top 35 importadores químicos de Brasil*',
         holder: 'Trust Group',
         description: 'Entre los mayores importadores químicos del país.',
+        badgeAlt: 'Logotipo de Trust Group',
       },
       'aeo': {
         title: 'OEA-Conformidad Esencial',
