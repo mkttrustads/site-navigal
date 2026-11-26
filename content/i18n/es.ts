@@ -416,6 +416,7 @@ export const es: Translation = {
       'ods': { alt: 'Sello Juntos por los ODS – Movimento Nacional ODS Santa Catarina, firmante desde 2024' },
       'ecovadis': { alt: 'EcoVadis Sustainability Rating – medalla de bronce, top 35%, diciembre de 2024' },
       'gptw': { alt: 'Sello Great Place to Work – empresa certificada en Brasil, de octubre de 2025 a octubre de 2026' },
+      'lgpd': { alt: 'Sello LGPD – Ley General de Protección de Datos Personales de Brasil' },
       'empresa-limpa': { alt: 'Sello Empresa Limpa' },
     },
   },

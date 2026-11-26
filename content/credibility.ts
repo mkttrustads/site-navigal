@@ -106,10 +106,9 @@ export const commitment: CommitmentItem[] = [
 // Ordem de exibição = ordem da lista. `scale` padroniza a altura VISUAL: 1 = selo
 // quadrado/vertical; selos largos ficam mais baixos para não dominar a linha.
 // O arquivo nunca é esticado (largura automática pela proporção `width`/`height`).
-// LGPD: o arquivo do selo ainda não foi enviado. Para incluir, adicione o arquivo em
-// public/brand/seals/, uma entrada aqui (na posição desejada) e o `alt` em
-// content/i18n/pt.ts e es.ts (credibility.seals).
-export type SealId = 'ods' | 'ecovadis' | 'gptw' | 'empresa-limpa'
+// Para incluir um selo: arquivo em public/brand/seals/, uma entrada aqui (na posição
+// desejada) e o `alt` em content/i18n/pt.ts e es.ts (credibility.seals).
+export type SealId = 'ods' | 'ecovadis' | 'gptw' | 'lgpd' | 'empresa-limpa'
 export type Seal = { id: SealId; src: string; width: number; height: number; scale: number; alt: string }
 export const commitmentSeals: Seal[] = [
   {
@@ -135,6 +134,14 @@ export const commitmentSeals: Seal[] = [
     height: 362,
     scale: 1,
     alt: 'Great Place to Work certified seal – Brazil, October 2025 to October 2026',
+  },
+  {
+    id: 'lgpd',
+    src: '/brand/seals/lgpd.webp',
+    width: 512,
+    height: 194,
+    scale: 0.65,
+    alt: 'LGPD seal – Brazilian General Data Protection Law (Lei Geral de Proteção de Dados Pessoais)',
   },
   {
     id: 'empresa-limpa',

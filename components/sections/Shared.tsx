@@ -413,9 +413,9 @@ export function CommitmentSection() {
 
         <div className="lg:col-span-2 lg:row-start-2 lg:grid lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:items-center lg:gap-12">
           <p className="eyebrow text-suave">{t('commitment.sealsTitle')}</p>
-          <ul className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 [--seal-size:5.5rem] sm:flex sm:flex-wrap sm:justify-between sm:[--seal-size:6.5rem] lg:mt-0 lg:[--seal-size:7rem]">
+          <ul className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 [--seal-size:4.5rem] sm:flex sm:flex-wrap sm:justify-between sm:[--seal-size:5.25rem] lg:mt-0 lg:[--seal-size:5.75rem]">
             {commitmentSeals.map((seal) => (
-              <li key={seal.id} className="flex items-center">
+              <li key={seal.id} className="flex items-center last:odd:col-span-2">
                 <Image
                   src={seal.src}
                   alt={seal.alt}
