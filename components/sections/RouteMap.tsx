@@ -212,7 +212,7 @@ export function RouteMapStory({ className }: { className?: string }) {
       <div aria-hidden="true" className="ns-frame" style={css({ '--ns-ar': width / height })}>
         <div className="ns-zoom" style={css({ '--hub-x': pct(hub.x, width), '--hub-y': pct(hub.y, height) })}>
           <div
-            className="[&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
+            className="ns-dots [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
             // SVG gerado pela própria aplicação no build, sem entrada do usuário.
             dangerouslySetInnerHTML={{ __html: baseSvgLight }}
           />
@@ -283,7 +283,7 @@ export function RouteMapStory({ className }: { className?: string }) {
           </div>
         </div>
       </div>
-      <ul className="mt-6 hidden flex-wrap gap-x-8 gap-y-2 text-sm text-suave md:flex">
+      <ul className="ns-legend flex-wrap gap-x-8 gap-y-2 text-sm text-suave">
         <li className="flex items-center gap-2">
           <span aria-hidden="true" className="h-3 w-3 rounded-full border-2 border-white bg-cobalto ring-1 ring-cobalto/30" />
           <T k="map.legend.offices" />

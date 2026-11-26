@@ -10,10 +10,14 @@ export const NETWORK_STEPS = ['step1', 'step2', 'step3'] as const
 
 /**
  * Faixa de leitura (margens do root do IntersectionObserver): desktop = faixa central da viewport;
- * mobile = faixa abaixo do mapa fixo (~40vh + cabeçalho).
+ * mobile/tablet = faixa abaixo do mapa fixo (~40vh + cabeçalho).
  */
 export const STEP_BAND = { desktop: { top: '-40%', bottom: '-40%' }, mobile: { top: '-58%', bottom: '-25%' } } as const
 
-/** Mobile baixo (celular deitado): o mapa fixo ocuparia a tela toda, então vira estático no estado final. */
-export const STORY_STATIC_QUERY = '(max-width: 767px) and (max-height: 520px)'
-export const STORY_MOBILE_QUERY = '(max-width: 767px)'
+/**
+ * Abaixo de 1024px (celular e tablet) o mapa vem acima dos passos, fixo no topo; a partir daí ele é o fundo
+ * da seção, com os passos à esquerda (ver bloco "Rede Global" de globals.css: mantenha os dois em sincronia).
+ */
+export const STORY_MOBILE_QUERY = '(max-width: 1023px)'
+/** Tela baixa (celular deitado): o mapa fixo ocuparia a tela toda, então vira estático no estado final. */
+export const STORY_STATIC_QUERY = '(max-width: 1023px) and (max-height: 520px)'
