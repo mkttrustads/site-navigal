@@ -411,6 +411,7 @@ export const pt: Translation = {
       'ods': { alt: 'Selo Juntos pelos ODS – Movimento Nacional ODS Santa Catarina, signatário desde 2024' },
       'ecovadis': { alt: 'EcoVadis Sustainability Rating – medalha de bronze, top 35%, dezembro de 2024' },
       'gptw': { alt: 'Selo Great Place to Work – empresa certificada no Brasil, de outubro de 2025 a outubro de 2026' },
+      'lgpd': { alt: 'Selo LGPD – Lei Geral de Proteção de Dados Pessoais' },
       'empresa-limpa': { alt: 'Selo Empresa Limpa' },
     },
   },
