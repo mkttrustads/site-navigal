@@ -5,14 +5,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { revealUp, staggerContainer, staticReveal } from '@/lib/motion-variants'
+import CoverOverlay from '@/components/ui/CoverOverlay'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 type Crumb = { name: string; path: string }
 
 /**
- * Banner das páginas internas — mesma estrutura do ServiceHero do site Trust
- * Group (foto com gradiente, breadcrumb, H1 e subtítulo), em preto
- * corporativo e com o globo como marca d'água.
+ * Banner das páginas internas (foto, breadcrumb, H1 e subtítulo) com o mesmo overlay azul
+ * translúcido da Hero da Home — ver `CoverOverlay`.
  */
 export default function PageHero({
   image,
@@ -37,8 +37,7 @@ export default function PageHero({
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image src={image} alt="" aria-hidden="true" fill priority sizes="100vw" className="object-cover" />
       </motion.div>
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/85 to-preto/30" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-preto/80 via-transparent to-preto/40" />
+      <CoverOverlay />
 
       <motion.div
         initial="hidden"

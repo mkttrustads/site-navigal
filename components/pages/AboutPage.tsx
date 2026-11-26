@@ -139,7 +139,7 @@ export default function AboutPage() {
       <CtaBand
         title={t('about.cta.title')}
         image="/images/earth-from-space.webp"
-        imageClassName="object-cover object-center opacity-100"
+        imageClassName="object-cover object-center"
       />
     </>
   )
