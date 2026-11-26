@@ -258,11 +258,14 @@ export function CtaBand({
   body,
   image = '/images/handshake-dark.jpg',
   imageClassName = 'object-cover opacity-50',
+  overlayClassName = 'bg-gradient-to-r from-preto via-preto/90 to-preto/40',
 }: {
   title?: string
   body?: string
   image?: string
   imageClassName?: string
+  /** Camada sobre a imagem; o padrão é o degradê preto usado nas demais páginas. */
+  overlayClassName?: string
 }) {
   const {
     t,
@@ -271,7 +274,7 @@ export function CtaBand({
   return (
     <section className="relative isolate overflow-hidden bg-preto text-white">
       <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className={imageClassName} />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/90 to-preto/40" />
+      <div aria-hidden="true" className={`absolute inset-0 ${overlayClassName}`} />
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title ?? t('cta.title')}</h2>
