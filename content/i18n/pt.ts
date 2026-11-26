@@ -67,8 +67,8 @@ export const pt: Translation = {
     'home.network.title': 'Um parceiro confiável para vender no Brasil',
     'home.network.subtitle':
       'A Navigal compra de você e vende para a indústria brasileira. O Trust Group apoia a importação.',
-    'home.network.step1.title': 'Você',
-    'home.network.step1.role': 'Fornecedor global',
+    'home.network.step1.title': 'Fornecedor global',
+    'home.network.step1.role': 'Você',
     'home.network.step1.text': 'Vende e embarca para um único comprador.',
     'home.network.step2.title': 'Navigal',
     'home.network.step2.role': 'Trading company, UAE',
