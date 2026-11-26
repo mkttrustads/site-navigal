@@ -99,13 +99,7 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      <CtaBand
-        title={t('home.cta.title')}
-        imageClassName="object-cover object-[60%_50%]"
-        // Degradê em azul-escuro (marinho da identidade): leve à direita, onde a imagem
-        // aparece; no mobile o texto ocupa a largura toda, então a camada é uniforme.
-        overlayClassName="bg-[#0B2347]/70 md:bg-transparent md:bg-gradient-to-r md:from-[#0B2347]/90 md:via-[#0F2F5E]/60 md:to-[#1A4B8C]/10"
-      />
+      <CtaBand title={t('home.cta.title')} />
     </>
   )
 }
