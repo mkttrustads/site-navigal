@@ -358,24 +358,73 @@ export function TaglogSection() {
   )
 }
 
-/** "Our commitment" (About). */
+/**
+ * "Our commitment" (About): conteúdo institucional à esquerda (título e blocos Ética/Compliance e
+ * Instituto Trust), foto vertical do Instituto Trust à direita e, abaixo das duas colunas, a faixa
+ * de selos. A ordem do DOM é a do mobile: título, blocos, selos e, por último, a foto; no desktop
+ * a foto sobe para a coluna da direita (lg:col-start-2 / lg:row-start-1).
+ */
 export function CommitmentSection() {
   const {
     t,
-    content: { commitment },
+    content: { commitment, commitmentSeals },
   } = useI18n()
   return (
     <Section>
-      <SectionHeading eyebrow={t('commitment.eyebrow')} title={t('commitment.title')} align="center" />
-      <Reveal className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-2">
-        {commitment.map((item) => (
-          <RevealItem key={item.id} className="rounded-card border border-linha bg-white p-7">
-            <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
-            <h3 className="mt-5 text-lg">{item.title}</h3>
-            <p className="mt-2 text-base leading-relaxed text-suave">{item.description}</p>
-          </RevealItem>
-        ))}
-      </Reveal>
+      <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,28rem)]">
+        <div className="lg:col-start-1 lg:row-start-1">
+          <p className="eyebrow mb-4 text-cobalto">{t('commitment.eyebrow')}</p>
+          <h2 className="max-w-2xl text-balance text-[clamp(2.25rem,4.4vw,3.75rem)] leading-[1.05] tracking-[-0.02em]">
+            {t('commitment.title')}
+          </h2>
+
+          <Reveal className="mt-12 divide-y divide-linha border-y border-linha">
+            {commitment.map((item) => (
+              <RevealItem key={item.id} className="grid gap-4 py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-6">
+                <span className="flex h-12 w-12 items-center justify-center rounded-card bg-cobalto/10 text-cobalto">
+                  <Icon name={item.icon} className="h-6 w-6" />
+                </span>
+                <div>
+                  <h3 className="text-base font-bold uppercase tracking-[0.08em] text-cobalto">{item.title}</h3>
+                  <div className="mt-3 space-y-3 text-pretty text-lg leading-relaxed text-suave">
+                    {item.paragraphs.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              </RevealItem>
+            ))}
+          </Reveal>
+        </div>
+
+        <div className="lg:col-span-2 lg:row-start-2 lg:grid lg:grid-cols-[minmax(0,16rem)_minmax(0,1fr)] lg:items-center lg:gap-12">
+          <p className="eyebrow text-suave">{t('commitment.sealsTitle')}</p>
+          <ul className="mt-8 grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 [--seal-size:5.5rem] sm:flex sm:flex-wrap sm:justify-between sm:[--seal-size:6.5rem] lg:mt-0 lg:[--seal-size:7rem]">
+            {commitmentSeals.map((seal) => (
+              <li key={seal.id} className="flex items-center">
+                <Image
+                  src={seal.src}
+                  alt={seal.alt}
+                  width={seal.width}
+                  height={seal.height}
+                  sizes="(min-width: 1024px) 180px, 140px"
+                  style={{ height: `calc(var(--seal-size) * ${seal.scale})`, width: 'auto' }}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="relative mx-auto aspect-[5/6] w-full max-w-sm overflow-hidden rounded-card sm:max-w-md lg:col-start-2 lg:row-start-1 lg:mx-0 lg:aspect-auto lg:min-h-[28rem] lg:max-w-none">
+          <Image
+            src="/images/instituto-trust-criancas.webp"
+            alt={t('commitment.imageAlt')}
+            fill
+            sizes="(min-width: 1280px) 448px, (min-width: 1024px) 384px, (min-width: 640px) 448px, 384px"
+            className="object-cover object-[40%_center]"
+          />
+        </div>
+      </div>
     </Section>
   )
 }

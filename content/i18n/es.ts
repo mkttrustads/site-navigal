@@ -198,7 +198,10 @@ export const es: Translation = {
     'taglog.title': 'Almacenamiento licenciado en todo Brasil, con Taglog',
     'taglog.total': 'Total:',
     'commitment.eyebrow': 'Nuestro compromiso',
-    'commitment.title': 'Responsabilidad más allá de la operación',
+    'commitment.title': 'Nuestro compromiso va más allá',
+    'commitment.sealsTitle': 'Evaluado independientemente por',
+    'commitment.imageAlt':
+      'Niños con chalecos del Instituto Trust sosteniendo balones de baloncesto, posando en una cancha deportiva con un profesor del proyecto',
 
     'map.aria':
       'Mapa de la red de Navigal: base de Navigal en los Emiratos Árabes Unidos, oficinas en Miami y Brasil, y rutas de abastecimiento desde Italia, Turquía, Omán, China, Taiwán, Vietnam y Malasia que convergen en Navigal, con una única ruta de Navigal hacia Brasil y América Latina.',
@@ -391,11 +394,25 @@ export const es: Translation = {
       total: { area: '80.000+ m²', pallets: '38.000+ posiciones de palet' },
     },
     commitment: {
-      'instituto-trust': { title: 'Instituto Trust', description: 'El deporte como herramienta de inclusión y desarrollo social.' },
       'ethics': {
-        title: 'Ética, cumplimiento y sostenibilidad',
-        description: 'Estándares compartidos en todo el grupo, evaluados por organizaciones independientes.',
+        title: 'Ética, compliance y sostenibilidad',
+        paragraphs: [
+          'En Trust Group, seguimos estándares compartidos de ética, compliance y sostenibilidad. Estas prácticas son evaluadas de forma independiente por organizaciones brasileñas e internacionales. Nuestros socios pueden contar con procesos transparentes en cada etapa.',
+        ],
       },
+      'instituto-trust': {
+        title: 'Instituto Trust',
+        paragraphs: [
+          'A través del Instituto Trust, Trust Group invierte en las comunidades donde opera.',
+          'El deporte es una herramienta de inclusión y desarrollo social, y miles de familias de la región ya han sido impactadas.',
+        ],
+      },
+    },
+    seals: {
+      'ods': { alt: 'Sello Juntos por los ODS – Movimento Nacional ODS Santa Catarina, firmante desde 2024' },
+      'ecovadis': { alt: 'EcoVadis Sustainability Rating – medalla de bronce, top 35%, diciembre de 2024' },
+      'gptw': { alt: 'Sello Great Place to Work – empresa certificada en Brasil, de octubre de 2025 a octubre de 2026' },
+      'empresa-limpa': { alt: 'Sello Empresa Limpa' },
     },
   },
 

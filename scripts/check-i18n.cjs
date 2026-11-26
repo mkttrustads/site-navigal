@@ -120,7 +120,8 @@ const idLists = (tr) => [
   ['about.offices', en.about.offices, tr.about.offices, ['country', 'role', 'detail']],
   ['credibility.certifications', en.credibility.certifications, tr.credibility.certifications, ['title', 'holder', 'description']],
   ['credibility.taglog.hubs', en.credibility.taglog.hubs, tr.credibility.taglog.hubs, ['site', 'area', 'pallets', 'access']],
-  ['credibility.commitment', en.credibility.commitment, tr.credibility.commitment, ['title', 'description']],
+  ['credibility.commitment', en.credibility.commitment, tr.credibility.commitment, ['title']],
+  ['credibility.seals', en.credibility.commitmentSeals, tr.credibility.seals, ['alt']],
   ['solutions.solutions', en.solutions.solutions, tr.solutions.solutions, ['title', 'description']],
   ['solutions.accessoryServices', en.solutions.accessoryServices, tr.solutions.accessoryServices, null],
   ['solutions.processSteps', en.solutions.processSteps, tr.solutions.processSteps, ['title', 'description']],
@@ -190,6 +191,7 @@ for (const locale of LOCALES) {
   }
   sameLength('site.addressLines', en.site.company.address.lines, tr.site.addressLines)
   sameLength('about.story.paragraphs', en.about.story.paragraphs, tr.about.story.paragraphs)
+  for (const item of en.credibility.commitment) sameLength(`credibility.commitment.${item.id}.paragraphs`, item.paragraphs, tr.credibility.commitment[item.id]?.paragraphs)
 
   // --- Slugs ---
   const { industries, products, forms } = en
@@ -255,7 +257,8 @@ console.log('\nFallback')
   const broken = JSON.parse(JSON.stringify(translations.pt))
   delete broken.credibility.certifications.aeo // item inteiro ausente
   broken.credibility.commitment.ethics.title = '' // campo vazio
-  delete broken.credibility.commitment.ethics.description // campo ausente
+  broken.credibility.commitment.ethics.paragraphs = undefined // prosa ausente
+  delete broken.credibility.seals.ods // selo sem alt traduzido
   broken.about.values = {} // lista inteira vazia
   broken.about.story.paragraphs = ['só o primeiro'] // prosa incompleta
   broken.solutions.audiences.buyers.items = undefined // lista de textos ausente
@@ -266,7 +269,8 @@ console.log('\nFallback')
   const aeo = content.certifications.find((c) => c.id === 'aeo')
   if (!aeo || aeo.title !== reference.certifications[1].title || aeo.badge !== reference.certifications[1].badge) fail('fallback', 'item ausente não caiu no inglês com selo preservado')
   const ethics = content.commitment.find((c) => c.id === 'ethics')
-  if (!ethics || ethics.title !== reference.commitment[1].title || ethics.description !== reference.commitment[1].description) fail('fallback', 'campo vazio/ausente não caiu no inglês')
+  if (!ethics || ethics.title !== reference.commitment[0].title || ethics.paragraphs.join() !== reference.commitment[0].paragraphs.join()) fail('fallback', 'campo vazio/ausente não caiu no inglês')
+  if (content.commitmentSeals.find((x) => x.id === 'ods')?.alt !== reference.commitmentSeals[0].alt) fail('fallback', 'selo sem tradução não caiu no alt em inglês')
   if (content.values.length !== reference.values.length) fail('fallback', 'lista de valores vazia fez cards sumirem')
   if (content.primaryNav.find((n) => n.id === 'contact')?.label !== 'Contact') fail('fallback', 'item de menu ausente não caiu no inglês')
   if (content.certifications[0].title === reference.certifications[0].title) fail('fallback', 'itens traduzidos presentes deveriam continuar em português')

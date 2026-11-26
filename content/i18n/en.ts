@@ -195,7 +195,10 @@ export const ui = {
   'taglog.title': 'Licensed warehousing across Brazil, through Taglog',
   'taglog.total': 'Total:',
   'commitment.eyebrow': 'Our commitment',
-  'commitment.title': 'Responsibility beyond the operation',
+  'commitment.title': 'Our commitment goes further',
+  'commitment.sealsTitle': 'Independently assessed by',
+  'commitment.imageAlt':
+    'Children wearing Instituto Trust vests and holding basketballs, posing on a sports court with a coach from the project',
 
   // Mapa de rotas
   'map.aria':
