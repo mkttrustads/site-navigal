@@ -19,8 +19,11 @@ export default function PageHero({
   title,
   subtitle,
   breadcrumb,
+  imageClassName = 'object-cover',
 }: {
   image: string
+  /** Enquadramento da foto (ex.: `object-cover object-[60%_45%]`). Padrão: centralizada. */
+  imageClassName?: string
   title: string
   subtitle: string
   breadcrumb: Crumb[]
@@ -35,7 +38,7 @@ export default function PageHero({
   return (
     <section ref={ref} className="relative isolate overflow-hidden bg-preto">
       <motion.div style={{ scale }} className="absolute inset-0">
-        <Image src={image} alt="" aria-hidden="true" fill priority sizes="100vw" className="object-cover" />
+        <Image src={image} alt="" aria-hidden="true" fill priority sizes="100vw" className={imageClassName} />
       </motion.div>
       <CoverOverlay variant="text" />
 
