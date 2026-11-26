@@ -7,7 +7,7 @@ import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
-import { CertificationsSection, CommitmentSection, CtaBand, TrustGroupSection } from '@/components/sections/Shared'
+import { BigNumbersSection, CertificationsSection, CommitmentSection, CtaBand, TrustGroupSection } from '@/components/sections/Shared'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 export default function AboutPage() {
@@ -28,6 +28,8 @@ export default function AboutPage() {
           { name: navLabel('/about'), path: '/about' },
         ]}
       />
+
+      <BigNumbersSection />
 
       <Section>
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">

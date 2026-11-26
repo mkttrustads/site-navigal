@@ -91,6 +91,7 @@ export const pt: Translation = {
     'about.hero.title': 'Conectando o mundo à indústria latino-americana',
     'about.hero.subtitle':
       'Estruturamos cadeias de suprimento internacionais e negociamos matérias-primas estratégicas, conectando os principais polos comerciais do mundo a uma execução prática e segura.',
+    'about.bigNumbers.title': 'Navigal: uma empresa do Trust Group',
     'about.story.trustLink': 'Conheça o Trust Group',
     'about.imageAlt': 'Baía do Rio de Janeiro com o Pão de Açúcar',
     'about.presence.eyebrow': 'Presença global',
@@ -285,6 +286,12 @@ export const pt: Translation = {
     },
     rankingFootnote:
       '*Entre mais de 8.200 importadores (FOB, US$), excluindo defensivos agrícolas e combustíveis. Dados públicos de importação, ago/25 a jul/26.',
+    bigNumbers: {
+      'years': 'Anos de mercado',
+      'people': 'Colaboradores no grupo',
+      'ranking': 'Entre os maiores importadores químicos do Brasil*',
+      'revenue': 'Faturamento do Trust Group em 2024',
+    },
     trustGroupFacts: {
       'years': 'anos no mercado',
       'employees': 'colaboradores',

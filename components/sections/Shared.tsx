@@ -6,6 +6,7 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import Carousel from '@/components/ui/Carousel'
+import CountUp from '@/components/ui/CountUp'
 import CoverOverlay from '@/components/ui/CoverOverlay'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
@@ -130,6 +131,40 @@ export function AudienceSplit() {
         </div>
       ))}
     </div>
+  )
+}
+
+/**
+ * Big Numbers (topo da página About, logo abaixo da capa): título centralizado no padrão dos demais
+ * títulos de seção e quatro indicadores sem card/borda/sombra. Desktop: 1 linha de 4; tablet e
+ * mobile: grade de 2 colunas. A nota do ranking é a mesma da seção de certificações.
+ * Alinhamento: em ≥640px os indicadores ficam centralizados; no mobile o CSS global
+ * (`.text-center` → esquerda, app/globals.css) alinha à esquerda, como nos demais blocos do site.
+ */
+export function BigNumbersSection() {
+  const {
+    t,
+    content: { bigNumbers, rankingFootnote },
+  } = useI18n()
+  return (
+    <Section tone="muted" className="py-12 sm:py-16">
+      <SectionHeading title={t('about.bigNumbers.title')} align="center" />
+      <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:mt-12 lg:grid-cols-4 lg:gap-x-8">
+        {bigNumbers.map((item) => (
+          <RevealItem key={item.id} className="flex flex-col items-center text-center">
+            <Icon name={item.icon} className="h-9 w-9 text-cobalto sm:h-10 sm:w-10" />
+            <CountUp
+              to={item.count}
+              prefix={item.prefix}
+              suffix={item.suffix}
+              className="stat-numeral mt-4 block text-[clamp(1.875rem,3.6vw,3rem)] font-bold leading-none tracking-tight text-cobalto"
+            />
+            <p className="mt-3 max-w-[16rem] text-pretty text-sm leading-snug text-suave sm:text-base">{item.label}</p>
+          </RevealItem>
+        ))}
+      </Reveal>
+      <p className="mx-auto mt-10 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
+    </Section>
   )
 }
 

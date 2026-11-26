@@ -63,7 +63,7 @@ const KEEP = new RegExp(
     ')$'
 )
 // Campos que não são texto traduzível (dados, ids, links, números, imagens).
-const SKIP_KEYS = new Set(['id', 'icon', 'slug', 'href', 'value', 'display', 'founded', 'email', 'legalName', 'ncm', 'formula', 'type', 'required', 'wide', 'image', 'badge'])
+const SKIP_KEYS = new Set(['id', 'icon', 'slug', 'href', 'value', 'prefix', 'suffix', 'count', 'display', 'founded', 'email', 'legalName', 'ncm', 'formula', 'type', 'required', 'wide', 'image', 'badge'])
 // Identificadores estruturais (não são texto exibido): slugs de setor dentro de produtos e `name` dos campos de formulário.
 const SKIP_PATHS = [/^products\[\d+\]\.industries\[/, /^formFields\.\w+\[\d+\]\.name$/, /^formFields\.\w+\[\d+\]\.options\[\d+\]\.value$/]
 
@@ -112,6 +112,7 @@ function diffShape(a, b, where, report, key = '') {
 // --- Listas com `id` estável: [rótulo, itens-fonte, texto traduzido por id, campos obrigatórios] ---
 const idLists = (tr) => [
   ['site.nav', en.site.primaryNav, tr.site.nav, null],
+  ['site.bigNumbers', en.site.bigNumbers, tr.site.bigNumbers, null],
   ['site.trustGroupFacts', en.site.trustGroupFacts, tr.site.trustGroupFacts, null],
   ['site.trustGroupLines.items', en.site.trustGroupLines.items, tr.site.trustGroupLines.items, ['name', 'description']],
   ['about.milestones', en.about.milestones, tr.about.milestones, ['label', 'title', 'description']],
