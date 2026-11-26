@@ -29,7 +29,7 @@ export default function SuppliersPage({ routeMap }: { routeMap: ReactNode }) {
         ]}
       />
 
-      <Section>
+      <Section tone="muted">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <SectionHeading
             eyebrow={audiences.suppliers.eyebrow}
@@ -49,7 +49,7 @@ export default function SuppliersPage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      <Section tone="muted">
+      <Section>
         <SectionHeading eyebrow={t('suppliers.look.eyebrow')} title={t('suppliers.look.title')} align="center" />
         <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {lookingFor.map((item, index) => (
@@ -62,10 +62,9 @@ export default function SuppliersPage({ routeMap }: { routeMap: ReactNode }) {
         </Reveal>
       </Section>
 
-      <Section tone="dark">
+      <Section tone="muted">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.6fr] lg:items-center">
           <SectionHeading
-            tone="dark"
             eyebrow={t('suppliers.gateway.eyebrow')}
             title={t('suppliers.gateway.title')}
             intro={t('suppliers.gateway.intro')}
