@@ -19,7 +19,7 @@ export default function WhatWeDo() {
 
   return (
     <Section tone="muted">
-      <SectionHeading title={t('common.whatWeDo')} />
+      <SectionHeading eyebrow={t('home.what.eyebrow')} title={t('home.what.title')} />
 
       {/* Três colunas de mesma largura a partir de md; `h-full` + `items-stretch` igualam a altura dos cards. */}
       <Reveal className="mt-14 grid items-stretch gap-4 md:grid-cols-3 lg:gap-6">

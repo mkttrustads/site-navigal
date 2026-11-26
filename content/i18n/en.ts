@@ -49,6 +49,8 @@ export const ui = {
   'home.about.backedBy': 'Backed by',
   'home.about.link': 'Meet Navigal',
   'home.about.mission': "To find the best possible combination of quality, price and capability for each client’s business.",
+  'home.what.eyebrow': 'What we do',
+  'home.what.title': 'We handle the hard parts',
   'home.what.item1': 'Supply of strategic industrial inputs.',
   'home.what.item2': 'Supplier development across Asia, Europe and the Middle East.',
   'home.what.item3': 'Local sales force and customer base in Latin America.',
