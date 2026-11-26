@@ -184,12 +184,12 @@ html[data-i18n-pending] body {
   }
 }
 
-/* Passos (≥768px): folga acima e abaixo para o mapa fixo ficar centralizado quando o 1º e o último
-   passo ocupam a faixa central (cada passo tem 62vh: 50vh - 31vh = 19vh). */
+/* Passos (≥768px): folga só embaixo, para o mapa fixo continuar centralizado enquanto o último passo
+   ocupa a faixa central (cada passo tem 52vh: 50vh - 26vh = 24vh). Em cima não há folga, para o mapa e os
+   passos ficarem colados ao subtítulo. */
 @media (min-width: 768px) {
   .ns-steps {
-    padding-top: max(0px, calc(19vh - var(--ns-top)));
-    padding-bottom: 19vh;
+    padding-bottom: 24vh;
   }
 }
 

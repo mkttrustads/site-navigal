@@ -68,8 +68,8 @@ export const es: Translation = {
     'home.network.title': 'Un socio confiable para vender en Brasil',
     'home.network.subtitle':
       'Navigal le compra a usted y vende a la industria brasileña. Trust Group apoya la importación.',
-    'home.network.step1.title': 'Usted',
-    'home.network.step1.role': 'Proveedor global',
+    'home.network.step1.title': 'Proveedor global',
+    'home.network.step1.role': 'Usted',
     'home.network.step1.text': 'Vende y embarca a una sola contraparte.',
     'home.network.step2.title': 'Navigal',
     'home.network.step2.role': 'Trading company, UAE',

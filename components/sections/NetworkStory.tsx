@@ -81,18 +81,18 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
   }, [isMobile, isStatic])
 
   return (
-    <div ref={rootRef} data-step={activeStep} className="network-story mt-12 grid gap-x-12 md:mt-16 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:gap-x-20">
+    <div ref={rootRef} data-step={activeStep} className="network-story mt-6 grid gap-x-10 md:-mt-4 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:-mt-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.5fr)] xl:gap-x-12">
       <ol className="ns-steps md:row-start-1">
         {NETWORK_STEPS.map((step, index) => (
           <li
             key={step}
             data-step-index={index}
             data-active={activeStep === index + 1}
-            className="group flex items-center gap-5 py-8 max-md:min-h-[36vh] md:min-h-[62vh] md:gap-5 lg:gap-7"
+            className="group flex items-center gap-5 py-8 max-md:min-h-[36vh] md:min-h-[52vh] md:gap-5 xl:gap-7"
           >
             <span
               aria-hidden="true"
-              className="stat-numeral w-[0.62em] shrink-0 text-[4.5rem] font-normal leading-none text-linha transition-[color,font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold group-data-[active=true]:text-cobalto md:text-[5.5rem] lg:text-[7rem]"
+              className="stat-numeral w-[0.62em] shrink-0 text-[4.5rem] font-normal leading-none text-linha transition-[color,font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold group-data-[active=true]:text-cobalto md:text-[5.5rem] xl:text-[7rem]"
             >
               {index + 1}
             </span>
