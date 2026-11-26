@@ -82,7 +82,7 @@ export type BigNumber = {
 export const bigNumbers: BigNumber[] = [
   { id: 'years', icon: 'medal', prefix: '', count: 20, suffix: '+', label: 'Years in the market' },
   { id: 'people', icon: 'users', prefix: '', count: 300, suffix: '+', label: 'People across the group' },
-  { id: 'ranking', icon: 'trophy', prefix: 'Top ', count: 35, suffix: '', label: 'Chemical importer in Brazil*', footnote: true },
+  { id: 'ranking', icon: 'trophy', prefix: 'Top ', count: 35, suffix: '', label: 'Chemical importers in Brazil*', footnote: true },
   { id: 'revenue', icon: 'barChart', prefix: 'US$ ', count: 100, suffix: 'M+', label: 'Trust Group revenue in 2024' },
 ]
 
