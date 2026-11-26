@@ -372,6 +372,10 @@ export const pt: Translation = {
         title: 'SASSMAQ e ISO 9001',
         holder: 'Taglog Logística Integrada, empresa do Trust Group',
         description: 'Padrões de segurança, saúde, meio ambiente e qualidade nas operações logísticas.',
+        badgeAlts: [
+          'Selo SASSMAQ – Empresa aprovada (Sistema de Avaliação de Segurança, Saúde, Meio Ambiente e Qualidade)',
+          'Selo de certificação ISO 9001 – Bureau Veritas',
+        ],
       },
     },
     taglog: {
