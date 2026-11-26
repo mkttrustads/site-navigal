@@ -70,16 +70,6 @@ export const principles: Principle[] = [
   },
 ]
 
-export type ValueId = 'experience' | 'security' | 'quality' | 'commitment' | 'punctuality'
-export type Value = { id: ValueId; icon: string; title: string; description: string }
-export const values: Value[] = [
-  { id: 'experience', icon: 'clock', title: 'Experience', description: 'Two decades of Trust Group experience importing chemicals and other products.' },
-  { id: 'security', icon: 'shield', title: 'Security', description: 'Experience and analytical capability applied to make every negotiation safer.' },
-  { id: 'quality', icon: 'badgeCheck', title: 'Quality', description: 'Always raising the bar to deliver the best service and product.' },
-  { id: 'commitment', icon: 'target', title: 'Commitment', description: 'Our mission is your satisfaction, and we are committed to it.' },
-  { id: 'punctuality', icon: 'truck', title: 'Punctuality', description: 'We honor every request with commitment and precise delivery.' },
-]
-
 // "Miami" vem da página Trading Internacional do site Trust Group; o Brand
 // Persona cita Dubai e Panamá. O card do Panamá ("Incorporated in 2008") saiu
 // com a nova história (Navigal lançada em 2024); decisão sobre o Panamá pendente.

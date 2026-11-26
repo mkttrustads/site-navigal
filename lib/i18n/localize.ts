@@ -13,7 +13,7 @@
 // Para EN devolve o próprio conteúdo-fonte.
 
 import { company, facts, primaryNav, quoteCta, rankingFootnote, trustGroupFacts, trustGroupLines } from '../../content/site'
-import { milestones, mission, offices, principles, story, values } from '../../content/about'
+import { milestones, mission, offices, principles, story } from '../../content/about'
 import { certifications, certificationsFootnote, commitment, commitmentSeals, taglog } from '../../content/credibility'
 import { accessoryServices, audiences, lookingFor, processSteps, riskPillars, solutions, type AudienceItem } from '../../content/solutions'
 import { industries, type Industry } from '../../content/industries'
@@ -177,7 +177,6 @@ function build(tr?: Translation) {
     milestones: mergeById(milestones, tr?.about.milestones, 'about.milestones'),
     story: overlayText(story, tr?.about.story, 'about.story'),
     principles: mergeById(principles, tr?.about.principles, 'about.principles'),
-    values: mergeById(values, tr?.about.values, 'about.values'),
     offices: mergeById(offices, tr?.about.offices, 'about.offices'),
 
     certifications: mergeById(certifications, tr?.credibility.certifications, 'credibility.certifications'),
