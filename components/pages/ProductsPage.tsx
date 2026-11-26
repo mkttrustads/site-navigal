@@ -10,8 +10,9 @@ import { useI18n } from '@/lib/i18n/I18nProvider'
 import type { UiKey } from '@/lib/i18n/translate'
 
 // Fotos de apoio no fim da página — só setores com imagem própria disponível.
-const highlights: { image: string; caption: UiKey }[] = [
-  { image: '/images/sulfur-plant.jpg', caption: 'products.caption.sulfur' },
+const highlights: { image: string; caption: UiKey; position?: string }[] = [
+  // Enquadramento: base da montanha de enxofre + esteira industrial visíveis em todos os breakpoints.
+  { image: '/images/sulfur-plant.webp', caption: 'products.caption.sulfur', position: 'object-[50%_65%]' },
   { image: '/images/resins.jpg', caption: 'products.caption.resins' },
   { image: '/images/quality-lab.jpg', caption: 'products.caption.lab' },
 ]
@@ -59,7 +60,7 @@ export default function ProductsPage() {
       <section className="grid sm:grid-cols-3" aria-label={t('products.highlightsLabel')}>
         {highlights.map((highlight) => (
           <figure key={highlight.image} className="relative aspect-[4/3] overflow-hidden bg-preto">
-            <Image src={highlight.image} alt={t(highlight.caption)} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover opacity-80" />
+            <Image src={highlight.image} alt={t(highlight.caption)} fill sizes="(min-width: 640px) 33vw, 100vw" className={`object-cover opacity-80 ${highlight.position ?? ''}`} />
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-preto/90 to-transparent p-6 text-base font-semibold text-white">
               {t(highlight.caption)}
             </figcaption>
