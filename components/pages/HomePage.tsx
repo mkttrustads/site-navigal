@@ -47,7 +47,7 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
               />
             </RevealItem>
             <RevealItem className="mt-10">
-              <Button href="/about" variant="link" arrow>
+              <Button href="https://trust.group" variant="link" arrow>
                 {t('home.about.link')}
               </Button>
             </RevealItem>

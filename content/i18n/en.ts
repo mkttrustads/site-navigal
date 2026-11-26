@@ -55,7 +55,7 @@ export const ui = {
   'home.about.p2': 'The ideal partner to conduct international business with confidence.',
   'home.about.highlight': 'From strategy to delivery.',
   'home.about.backedBy': 'Backed by',
-  'home.about.link': 'Meet Navigal',
+  'home.about.link': 'Discover Trust Group',
   'home.about.mission': "To find the best possible combination of quality, price and capability for each client’s business.",
   'home.what.eyebrow': 'What we do',
   'home.what.title': 'We handle the hard parts',
