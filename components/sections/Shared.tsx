@@ -262,20 +262,27 @@ export function CtaBand({
   body,
   image = '/images/handshake-dark.jpg',
   imageClassName = 'object-cover',
+  tone = 'photo',
 }: {
   title?: string
   body?: string
   image?: string
   imageClassName?: string
+  /** `photo` (padrão): foto + overlay. `blue`: fundo azul institucional sólido (#071A33, mesmo azul das capas), sem foto. */
+  tone?: 'photo' | 'blue'
 }) {
   const {
     t,
     content: { quoteCta },
   } = useI18n()
   return (
-    <section className="relative isolate overflow-hidden bg-preto text-white">
-      <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className={imageClassName} />
-      <CoverOverlay />
+    <section className={cn('relative isolate overflow-hidden text-white', tone === 'blue' ? 'bg-[#071A33]' : 'bg-preto')}>
+      {tone === 'photo' && (
+        <>
+          <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className={imageClassName} />
+          <CoverOverlay />
+        </>
+      )}
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title ?? t('cta.title')}</h2>

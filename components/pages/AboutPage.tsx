@@ -19,7 +19,8 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        image="/images/office-meeting.jpg"
+        image="/images/earth-from-space.webp"
+        imageClassName="object-cover object-[60%_45%]"
         title={t('about.hero.title')}
         subtitle={t('about.hero.subtitle')}
         breadcrumb={[
@@ -123,11 +124,7 @@ export default function AboutPage() {
 
       <CertificationsSection />
 
-      <CtaBand
-        title={t('about.cta.title')}
-        image="/images/earth-from-space.webp"
-        imageClassName="object-cover object-center"
-      />
+      <CtaBand title={t('about.cta.title')} tone="blue" />
     </>
   )
 }
