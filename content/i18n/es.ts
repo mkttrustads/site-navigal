@@ -434,16 +434,13 @@ export const es: Translation = {
     processSteps: [
       { title: 'Su requerimiento', description: 'Producto, especificación técnica, número CAS, uso final y volumen anual.' },
       {
-        title: 'Sourcing y calificación',
-        description: 'Mapeamos fabricantes calificados y evaluamos calidad, capacidad y cumplimiento en origen.',
-      },
-      {
         title: 'Oferta y negociación',
         description: 'Usted recibe una oferta estructurada con precio, Incoterm, plazo de entrega y condiciones de pago.',
       },
       {
         title: 'Embarque y tránsito',
-        description: 'Reserva, documentación y tránsito internacional, con seguimiento frente al SLA acordado.',
+        description:
+          'Control de calidad en origen, reserva de carga, documentación y tránsito internacional, con seguimiento de acuerdo con el SLA establecido.',
       },
       {
         title: 'Despacho y entrega',

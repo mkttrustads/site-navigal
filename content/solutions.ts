@@ -52,16 +52,13 @@ export const processSteps = [
     description: 'Product, technical specification, CAS number, end use and annual volume.',
   },
   {
-    title: 'Sourcing & qualification',
-    description: 'We map qualified manufacturers and assess quality, capacity and compliance at origin.',
-  },
-  {
     title: 'Offer & negotiation',
     description: 'You receive a structured offer with price, Incoterm, lead time and payment terms.',
   },
   {
     title: 'Shipment & transit',
-    description: 'Booking, documentation and international transit, tracked against the agreed SLA.',
+    description:
+      'Quality control at origin, cargo booking, documentation and international transit, tracked in line with the established SLA.',
   },
   {
     title: 'Clearance & delivery',

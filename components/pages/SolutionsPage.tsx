@@ -43,21 +43,34 @@ export default function SolutionsPage() {
           title={t('solutions.how.title')}
           intro={t('solutions.how.intro')}
         />
-        <Reveal className="mt-16 grid gap-10 md:grid-cols-5 md:gap-6">
-          {processSteps.map((step, index) => (
-            <RevealItem key={index} className="relative">
-              <div className="flex items-center gap-4">
-                <span className="stat-numeral flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-cobalto-claro text-base font-bold text-cobalto-claro">
-                  {index + 1}
-                </span>
-                {index < processSteps.length - 1 && (
-                  <span aria-hidden="true" className="hidden h-px flex-1 bg-gradient-to-r from-cobalto to-transparent md:block" />
-                )}
-              </div>
-              <h3 className="mt-6 text-lg">{step.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-white/70">{step.description}</p>
-            </RevealItem>
-          ))}
+        {/* Mobile: lista vertical com linha conectora à esquerda.
+            Tablet (sm): grade 2x2, conector horizontal na coluna esquerda.
+            Desktop (lg): 4 colunas proporcionais ocupando toda a largura. */}
+        <Reveal className="mt-16 grid grid-cols-1 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4">
+          {processSteps.map((step, index) => {
+            const isLast = index === processSteps.length - 1
+            // Em 2 colunas, só a coluna esquerda conecta com a direita; em 4 colunas, todas menos a última.
+            const tabletVisibility = index % 2 === 0 ? 'sm:block' : 'sm:hidden lg:block'
+            return (
+              <RevealItem key={index} className="relative flex gap-5 pb-10 last:pb-0 sm:block sm:pb-0">
+                <div className="flex flex-col items-center sm:flex-row sm:gap-4">
+                  <span className="stat-numeral flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-cobalto-claro text-base font-bold text-cobalto-claro">
+                    {index + 1}
+                  </span>
+                  {!isLast && (
+                    <span
+                      aria-hidden="true"
+                      className={`my-2 w-px flex-1 bg-gradient-to-b from-cobalto to-transparent sm:my-0 sm:-mr-3 sm:h-px sm:w-auto sm:bg-gradient-to-r ${tabletVisibility}`}
+                    />
+                  )}
+                </div>
+                <div className="min-w-0 sm:mt-6">
+                  <h3 className="pt-2.5 text-lg sm:pt-0">{step.title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-white/70">{step.description}</p>
+                </div>
+              </RevealItem>
+            )
+          })}
         </Reveal>
       </Section>
 
