@@ -1,12 +1,14 @@
-import type { ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
-type SectionProps = {
+type SectionProps = Omit<ComponentPropsWithoutRef<'section'>, 'className' | 'children'> & {
   children: ReactNode
   tone?: 'light' | 'muted' | 'dark' | 'brand'
   className?: string
   id?: string
   background?: ReactNode
+  /** Classes extras do contêiner interno (largura/padding do conteúdo). */
+  containerClassName?: string
 }
 
 const toneClasses: Record<NonNullable<SectionProps['tone']>, string> = {
@@ -18,11 +20,11 @@ const toneClasses: Record<NonNullable<SectionProps['tone']>, string> = {
 }
 
 /** Mesmo ritmo vertical do site Trust Group, com container um pouco mais largo. */
-export default function Section({ children, tone = 'light', className, id, background }: SectionProps) {
+export default function Section({ children, tone = 'light', className, id, background, containerClassName, ...rest }: SectionProps) {
   return (
-    <section id={id} className={cn('relative overflow-hidden py-20 sm:py-28', toneClasses[tone], className)}>
+    <section id={id} className={cn('relative overflow-hidden py-20 sm:py-28', toneClasses[tone], className)} {...rest}>
       {background}
-      <div className="relative z-10 mx-auto max-w-site px-6">{children}</div>
+      <div className={cn('relative z-10 mx-auto max-w-site px-6', containerClassName)}>{children}</div>
     </section>
   )
 }

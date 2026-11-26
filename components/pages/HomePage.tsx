@@ -70,16 +70,7 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      {/* overflow-clip (não hidden): o mapa fixo (sticky) não funciona dentro de um contêiner de rolagem. */}
-      <Section tone="muted" className="overflow-clip">
-        <SectionHeading
-          eyebrow={t('home.network.eyebrow')}
-          title={t('home.network.title')}
-          intro={<p className="font-semibold text-cobalto">{t('home.network.subtitle')}</p>}
-        />
-        <NetworkStory map={routeMap} />
-        <p className="mt-6 max-w-3xl text-balance text-2xl font-semibold leading-snug text-preto md:mt-10 md:text-3xl">{t('home.network.highlight')}</p>
-      </Section>
+      <NetworkStory map={routeMap} />
 
       <WhatWeDo />
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 import type { UiKey } from '@/lib/i18n/translate'
+import Section, { SectionHeading } from '@/components/ui/Section'
 import { NETWORK_STEPS, ORIGIN_NAMES, STEP_BAND, STORY_MOBILE_QUERY, STORY_STATIC_QUERY } from '@/lib/network-story'
 
 function useMediaQuery(query: string) {
@@ -18,7 +19,7 @@ function useMediaQuery(query: string) {
 }
 
 /**
- * Rede Global como mapa guiado por scroll. Uma única variável, `activeStep`
+ * Seção "Rede Global" inteira: o mapa guiado por scroll é o fundo dela (≥1024px). Uma única variável, `activeStep`
  * (0 = inicial, 1–3 = passo na faixa de leitura), vira o atributo `data-step`;
  * todo o visual do mapa deriva dele em CSS (bloco "Rede Global" de globals.css).
  *
@@ -81,37 +82,64 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
   }, [isMobile, isStatic])
 
   return (
-    <div ref={rootRef} data-step={activeStep} className="network-story mt-6 grid gap-x-10 md:-mt-4 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:-mt-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.5fr)] xl:gap-x-12">
-      <ol className="ns-steps md:row-start-1">
-        {NETWORK_STEPS.map((step, index) => (
-          <li
-            key={step}
-            data-step-index={index}
-            data-active={activeStep === index + 1}
-            className="group flex items-center gap-5 py-8 max-md:min-h-[36vh] md:min-h-[52vh] md:gap-5 xl:gap-7"
-          >
-            <span
-              aria-hidden="true"
-              className="stat-numeral w-[0.62em] shrink-0 text-[4.5rem] font-normal leading-none text-linha transition-[color,font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold group-data-[active=true]:text-cobalto md:text-[5.5rem] xl:text-[7rem]"
-            >
-              {index + 1}
-            </span>
-            {/* Inativo: opacidade 0,6 sobre texto preto (≈5:1 no off-white), acima dos 4,5:1. */}
-            <div className="min-w-0 text-preto opacity-60 transition-opacity duration-300 motion-reduce:transition-none group-data-[active=true]:opacity-100">
-              <h3 className="text-2xl font-normal leading-tight transition-[font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold md:text-3xl">
-                {t(`home.network.${step}.title` as UiKey)}
-              </h3>
-              <p className="mt-1.5 text-base font-semibold group-data-[active=true]:text-cobalto">{t(`home.network.${step}.role` as UiKey)}</p>
-              <p className="mt-2 text-base leading-relaxed group-data-[active=true]:text-suave">{t(`home.network.${step}.text` as UiKey)}</p>
-              {index === 0 && (
-                <p className="mt-3 text-sm leading-relaxed tracking-wide">{ORIGIN_NAMES.map((name) => t(`map.place.${name}` as UiKey)).join(' · ')}</p>
-              )}
-            </div>
-          </li>
-        ))}
-      </ol>
-      {/* No mobile o mapa vem primeiro e fica fixo no topo (~40vh); no desktop, fixo na coluna da direita. */}
-      <div className="ns-sticky max-md:order-first md:col-start-2 md:row-start-1">{map}</div>
-    </div>
+    <Section
+      tone="muted"
+      // overflow-clip (não hidden): o mapa fixo (sticky) não funciona dentro de um contêiner de rolagem.
+      // `network-story` + `data-step` ficam na seção inteira, porque o mapa (fundo) é descendente dela.
+      className="network-story overflow-clip [container-type:inline-size]"
+      containerClassName="lg:pointer-events-none"
+      data-step={activeStep}
+    >
+      {/* "Palco" do mapa-fundo: título + passos. A frase de destaque fica abaixo dele, já sem mapa por trás. */}
+      <div className="relative">
+        <div className="lg:pointer-events-auto lg:relative lg:z-10">
+          <SectionHeading
+            eyebrow={t('home.network.eyebrow')}
+            title={t('home.network.title')}
+            intro={<p className="font-semibold text-cobalto">{t('home.network.subtitle')}</p>}
+          />
+        </div>
+        <div ref={rootRef} className="mt-6 grid lg:-mt-12">
+          <ol className="ns-steps lg:pointer-events-auto lg:relative lg:z-10 lg:max-w-[25rem]">
+            {NETWORK_STEPS.map((step, index) => (
+              <li
+                key={step}
+                data-step-index={index}
+                data-active={activeStep === index + 1}
+                className="group flex items-center gap-5 py-8 max-lg:min-h-[36vh] lg:min-h-[52vh] md:gap-5 xl:gap-7"
+              >
+                <span
+                  aria-hidden="true"
+                  className="stat-numeral w-[0.62em] shrink-0 text-[4.5rem] font-normal leading-none text-linha transition-[color,font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold group-data-[active=true]:text-cobalto md:text-[5.5rem] xl:text-[7rem]"
+                >
+                  {index + 1}
+                </span>
+                {/* Inativo: opacidade 0,6 sobre texto preto (≈5:1 no off-white), acima dos 4,5:1. */}
+                <div className="min-w-0 text-preto opacity-60 transition-opacity duration-300 motion-reduce:transition-none group-data-[active=true]:opacity-100">
+                  <h3 className="text-2xl font-normal leading-tight transition-[font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold md:text-3xl">
+                    {t(`home.network.${step}.title` as UiKey)}
+                  </h3>
+                  <p className="mt-1.5 text-base font-semibold group-data-[active=true]:text-cobalto">{t(`home.network.${step}.role` as UiKey)}</p>
+                  <p className="mt-2 text-base leading-relaxed group-data-[active=true]:text-suave">{t(`home.network.${step}.text` as UiKey)}</p>
+                  {index === 0 && (
+                    <p className="mt-3 text-sm leading-relaxed tracking-wide">{ORIGIN_NAMES.map((name) => t(`map.place.${name}` as UiKey)).join(' · ')}</p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+          {/*
+            Mapa. <1024px: vem primeiro e fica fixo no topo (~40vh), com os passos rolando por baixo.
+            ≥1024px: `.ns-bg` cobre o palco, em toda a largura da seção (fundo), e o mapa fica fixo (sticky) à direita,
+            centralizado na viewport; `.ns-fade` (decorativo, sem eventos) suaviza o mapa sob o texto com a cor do fundo.
+          */}
+          <div className="ns-bg">
+            <div className="ns-sticky">{map}</div>
+            <div aria-hidden="true" className="ns-fade" />
+          </div>
+        </div>
+      </div>
+      <p className="mt-6 max-w-3xl text-balance text-2xl font-semibold leading-snug text-preto md:mt-10 md:text-3xl">{t('home.network.highlight')}</p>
+    </Section>
   )
 }
