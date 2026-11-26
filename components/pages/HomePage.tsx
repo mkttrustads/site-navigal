@@ -4,14 +4,12 @@ import type { ReactNode } from 'react'
 import Image from 'next/image'
 import HomeHero from '@/components/sections/HomeHero'
 import { CtaBand, IndustriesGrid } from '@/components/sections/Shared'
+import NetworkStory from '@/components/sections/NetworkStory'
 import WhatWeDo from '@/components/sections/WhatWeDo'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { useI18n } from '@/lib/i18n/I18nProvider'
-
-// Fluxo da seção "Global network": fornecedor → Navigal → clientes (chaves `home.network.<step>.*`).
-const networkSteps = ['step1', 'step2', 'step3'] as const
 
 /** `routeMap` vem da página (Server Component) para a biblioteca do mapa ficar fora do bundle do cliente. */
 export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
@@ -72,36 +70,15 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      <Section tone="muted">
-        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.6fr] lg:items-center">
-          <div>
-            <SectionHeading
-              eyebrow={t('home.network.eyebrow')}
-              title={t('home.network.title')}
-              intro={<p className="font-semibold text-cobalto">{t('home.network.subtitle')}</p>}
-            />
-            <ol className="mt-10">
-              {networkSteps.map((step, index) => (
-                <li key={step} className="relative flex gap-4 pb-7 last:pb-0">
-                  {index < networkSteps.length - 1 && <span aria-hidden="true" className="absolute bottom-0 left-4 top-10 w-px -translate-x-1/2 bg-linha" />}
-                  <span
-                    aria-hidden="true"
-                    className="stat-numeral relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cobalto text-sm font-semibold text-white"
-                  >
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-xl leading-tight">{t(`home.network.${step}.title`)}</h3>
-                    <p className="mt-1 text-sm font-semibold text-cobalto">{t(`home.network.${step}.role`)}</p>
-                    <p className="mt-1.5 text-base leading-relaxed text-suave">{t(`home.network.${step}.text`)}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-10 border-l-2 border-cobalto pl-5 text-lg font-semibold leading-snug text-preto">{t('home.network.highlight')}</p>
-          </div>
-          {routeMap}
-        </div>
+      {/* overflow-clip (não hidden): o mapa fixo (sticky) não funciona dentro de um contêiner de rolagem. */}
+      <Section tone="muted" className="overflow-clip">
+        <SectionHeading
+          eyebrow={t('home.network.eyebrow')}
+          title={t('home.network.title')}
+          intro={<p className="font-semibold text-cobalto">{t('home.network.subtitle')}</p>}
+        />
+        <NetworkStory map={routeMap} />
+        <p className="mt-6 max-w-3xl text-balance text-2xl font-semibold leading-snug text-preto md:mt-10 md:text-3xl">{t('home.network.highlight')}</p>
       </Section>
 
       <WhatWeDo />

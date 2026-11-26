@@ -1,7 +1,8 @@
+import type { CSSProperties } from 'react'
 import DottedMap from 'dotted-map'
-import Flag, { type FlagCode } from '@/components/ui/Flags'
 import { LocalizedSvg, T } from '@/components/ui/LocalizedText'
 import type { UiKey } from '@/lib/i18n/translate'
+import { ORIGIN_NAMES } from '@/lib/network-story'
 
 // Mapa-múndi pontilhado gerado no servidor (a biblioteca não vai para o
 // bundle do cliente) com as rotas em Azul Marítimo: a faixa curva usada como
@@ -69,44 +70,62 @@ const labelOffset: Record<string, { dx: number; dy: number; anchor: 'start' | 'e
   Malaysia: { dx: 1.2, dy: 0.5, anchor: 'start' },
 }
 
-// Bandeiras (Home): cada ponto ganha uma etiqueta HTML com bandeira + nome, posicionada em % sobre o
-// mapa mas com tamanho fixo em px, para continuar legível no mobile (o texto do SVG encolhe com o mapa).
-// `placement` é o lado do ponto onde a etiqueta fica; `compact` esconde o nome abaixo de `sm`, onde só a
-// bandeira cabe sem colisão (o nome segue disponível para leitores de tela).
+// ---------------------------------------------------------------------------
+// Variante "story" (Home): mesmo mapa e mesmas coordenadas, mas com grupos
+// nomeados (`data-group`) para o NetworkStory acender cada um conforme o passo
+// ativo. O CSS fica em globals.css (bloco "Rede Global"); aqui só há estrutura.
+// ---------------------------------------------------------------------------
+
+// Rótulos só com o nome (sem bandeira nem ícone), em HTML sobre o mapa: posição em % do mapa, tamanho
+// fixo em px, para continuar legível no mobile (o texto do SVG encolhe junto com o mapa).
+// `compact` esconde o nome abaixo de `sm`, onde as origens da Ásia colidiriam; os nomes seguem listados
+// em texto no passo 1.
 type Placement = 'top' | 'bottom' | 'left' | 'right'
-const flagChips: Record<string, { flag: FlagCode; label: UiKey; placement: Placement; compact?: boolean; strong?: boolean }> = {
-  Navigal: { flag: 'AE', label: 'map.place.NavigalHub', placement: 'top', strong: true },
-  Miami: { flag: 'US', label: 'map.place.Miami', placement: 'top' },
-  Brazil: { flag: 'BR', label: 'map.place.BrazilLatam', placement: 'right', strong: true },
-  Italy: { flag: 'IT', label: 'map.place.Italy', placement: 'left', compact: true },
-  Turkey: { flag: 'TR', label: 'map.place.Turkey', placement: 'top', compact: true },
-  Oman: { flag: 'OM', label: 'map.place.Oman', placement: 'bottom', compact: true },
-  China: { flag: 'CN', label: 'map.place.China', placement: 'top', compact: true },
-  Taiwan: { flag: 'TW', label: 'map.place.Taiwan', placement: 'right', compact: true },
-  Vietnam: { flag: 'VN', label: 'map.place.Vietnam', placement: 'right', compact: true },
-  Malaysia: { flag: 'MY', label: 'map.place.Malaysia', placement: 'right', compact: true },
+const storyLabels: Record<string, { label: UiKey; placement: Placement; compact?: boolean }> = {
+  Navigal: { label: 'map.place.NavigalHub', placement: 'top' },
+  Miami: { label: 'map.place.Miami', placement: 'top' },
+  Brazil: { label: 'map.place.BrazilLatam', placement: 'right' },
+  Italy: { label: 'map.place.Italy', placement: 'left', compact: true },
+  Turkey: { label: 'map.place.Turkey', placement: 'top', compact: true },
+  Oman: { label: 'map.place.Oman', placement: 'bottom', compact: true },
+  China: { label: 'map.place.China', placement: 'top', compact: true },
+  Taiwan: { label: 'map.place.Taiwan', placement: 'right', compact: true },
+  Vietnam: { label: 'map.place.Vietnam', placement: 'right', compact: true },
+  Malaysia: { label: 'map.place.Malaysia', placement: 'right', compact: true },
 }
 
 const placementTransform: Record<Placement, string> = {
-  top: 'translate(-50%, calc(-100% - 9px))',
-  bottom: 'translate(-50%, 9px)',
-  left: 'translate(calc(-100% - 10px), -50%)',
-  right: 'translate(10px, -50%)',
+  top: 'translate(-50%, calc(-100% - 8px))',
+  bottom: 'translate(-50%, 8px)',
+  left: 'translate(calc(-100% - 9px), -50%)',
+  right: 'translate(9px, -50%)',
 }
+// Ponto do rótulo mais próximo do marcador: âncora do contra-zoom (o rótulo não cresce junto com o mapa).
+const placementOrigin: Record<Placement, string> = { top: '50% 100%', bottom: '50% 0', left: '100% 50%', right: '0 50%' }
+
+// Leque curto a partir do Brasil: raios sem nome nem rótulo (deslocamentos em unidades do mapa, sobre a
+// América do Sul). Não representam países nem coordenadas reais, só "daqui a venda se abre pela região".
+const latamFan: { dx: number; dy: number; bend: number }[] = [
+  { dx: -1.5, dy: -9, bend: 0.1 },
+  { dx: -7, dy: -7, bend: 0.1 },
+  { dx: -8.5, dy: -1.5, bend: 0.1 },
+  { dx: -6, dy: 5.5, bend: 0.1 },
+  { dx: -1.5, dy: 8.5, bend: 0.1 },
+]
+
+const css = (vars: Record<string, string | number>) => vars as CSSProperties
+const pct = (value: number, total: number) => `${(value / total) * 100}%`
 
 type RouteMapProps = {
   className?: string
-  /** Etiquetas com bandeira nos pontos do mapa (somente `tone="light"`). */
-  flags?: boolean
   /** `dark`: fundo preto (Suppliers). `light`: fundo cinza-claro (Home), rotas e escritórios em azul institucional. */
   tone?: 'dark' | 'light'
 }
 
-export default function RouteMap({ className, tone = 'dark', flags = false }: RouteMapProps) {
+export default function RouteMap({ className, tone = 'dark' }: RouteMapProps) {
   const hub = points[HUB.name]
   const destination = points[DESTINATION.name]
   const light = tone === 'light'
-  const showFlags = flags && light
   // No claro, o cobalto institucional serve de base e o cobalto-escuro do fluxo animado garante contraste.
   const routeBase = '#2B5EA7'
   const routeFlow = light ? '#214B87' : '#8FB0E0'
@@ -147,47 +166,20 @@ export default function RouteMap({ className, tone = 'dark', flags = false }: Ro
               <g key={point.name}>
                 {office && <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 2.4 : 1.6} fill="#2B5EA7" fillOpacity={light ? 0.2 : 0.3} />}
                 <circle cx={point.x} cy={point.y} r={point.name === HUB.name ? 1.15 : office ? 0.8 : 0.6} fill={office ? '#2B5EA7' : light ? '#4B5058' : '#FFFFFF'} stroke="#FFFFFF" strokeWidth={office ? 0.25 : 0} />
-                {!showFlags && (
-                  <text
-                    x={point.x + offset.dx}
-                    y={point.y + offset.dy}
-                    textAnchor={offset.anchor}
-                    className={light ? 'fill-suave font-body' : 'fill-white/80 font-body'}
-                    // Halo off-white nos rótulos: mantém a leitura sobre os pontos do mapa.
-                    style={{ fontSize: 1.5, fontWeight: 600, ...(light && { paintOrder: 'stroke', stroke: '#F7F9F8', strokeWidth: 0.5, strokeLinejoin: 'round' }) }}
-                  >
-                    <T k={`map.place.${point.name}` as UiKey} />
-                  </text>
-                )}
+                <text
+                  x={point.x + offset.dx}
+                  y={point.y + offset.dy}
+                  textAnchor={offset.anchor}
+                  className={light ? 'fill-suave font-body' : 'fill-white/80 font-body'}
+                  // Halo off-white nos rótulos: mantém a leitura sobre os pontos do mapa.
+                  style={{ fontSize: 1.5, fontWeight: 600, ...(light && { paintOrder: 'stroke', stroke: '#F7F9F8', strokeWidth: 0.5, strokeLinejoin: 'round' }) }}
+                >
+                  <T k={`map.place.${point.name}` as UiKey} />
+                </text>
               </g>
             )
           })}
         </LocalizedSvg>
-        {showFlags && (
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-            {Object.values(points).map((point) => {
-              const chip = flagChips[point.name]
-              return (
-                <span
-                  key={point.name}
-                  className="absolute"
-                  style={{ left: `${(point.x / width) * 100}%`, top: `${(point.y / height) * 100}%`, transform: placementTransform[chip.placement] }}
-                >
-                  <span
-                    className={`flex items-center gap-1 whitespace-nowrap rounded bg-white/90 px-1 py-0.5 text-[10px] leading-none shadow-sm ring-1 ring-linha sm:gap-1.5 sm:px-1.5 sm:py-1 sm:text-xs ${
-                      chip.strong ? 'font-bold text-cobalto-escuro' : 'font-semibold text-suave'
-                    }`}
-                  >
-                    <Flag code={chip.flag} className="h-2.5 w-[15px] sm:h-3.5 sm:w-5" />
-                    <span className={chip.compact ? 'sr-only sm:not-sr-only' : undefined}>
-                      <T k={chip.label} />
-                    </span>
-                  </span>
-                </span>
-              )
-            })}
-          </div>
-        )}
       </div>
       <ul className={`mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm ${light ? 'text-suave' : 'text-white/70'}`}>
         <li className="flex items-center gap-2">
@@ -200,6 +192,108 @@ export default function RouteMap({ className, tone = 'dark', flags = false }: Ro
         </li>
         <li className="flex items-center gap-2">
           <span aria-hidden="true" className={`h-0.5 w-6 ${light ? 'bg-cobalto' : 'bg-cobalto-claro'}`} />
+          <T k="map.legend.routes" />
+        </li>
+      </ul>
+    </div>
+  )
+}
+
+export function RouteMapStory({ className }: { className?: string }) {
+  const hub = points[HUB.name]
+  const brazil = points[DESTINATION.name]
+  const miami = points[MIAMI.name]
+  const origins = ORIGIN_NAMES.map((name) => ({ point: points[name], bend: originRoutes.find((route) => route.from === name)?.bend ?? 0.1 }))
+  const routeBase = '#2B5EA7'
+  const dot = (x: number, y: number) => ({ cx: x, cy: y })
+  return (
+    <div className={className}>
+      {/* Decorativo: os passos ao lado trazem todo o conteúdo em texto. */}
+      <div aria-hidden="true" className="ns-frame" style={css({ '--ns-ar': width / height })}>
+        <div className="ns-zoom" style={css({ '--hub-x': pct(hub.x, width), '--hub-y': pct(hub.y, height) })}>
+          <div
+            className="[&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
+            // SVG gerado pela própria aplicação no build, sem entrada do usuário.
+            dangerouslySetInnerHTML={{ __html: baseSvgLight }}
+          />
+          <svg viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 h-full w-full">
+            {/* Miami → Brasil: tracejada e discreta, igual nos 4 estados. */}
+            <g data-group="miami">
+              <path d={`M${miami.x} ${miami.y} L${brazil.x} ${brazil.y}`} fill="none" stroke={routeBase} strokeOpacity={0.7} strokeWidth={0.3} strokeDasharray="1 1.1" />
+              <circle {...dot(miami.x, miami.y)} r={1.6} fill={routeBase} fillOpacity={0.2} />
+              <circle {...dot(miami.x, miami.y)} r={0.8} fill={routeBase} stroke="#FFFFFF" strokeWidth={0.25} />
+            </g>
+            {/* Passo 1: origens de suprimento. */}
+            <g data-group="origins">
+              {origins.map(({ point }, index) => (
+                <g key={point.name} className="ns-origin" style={css({ '--i': index })}>
+                  <circle {...dot(point.x, point.y)} r={1.7} className="ns-origin-halo" fill={routeBase} fillOpacity={0.22} />
+                  <circle {...dot(point.x, point.y)} r={0.6} className="ns-origin-dot" />
+                </g>
+              ))}
+            </g>
+            {/* Passo 2: as rotas se desenham até a base nos Emirados. */}
+            <g data-group="routes-to-hub">
+              {origins.map(({ point, bend }, index) => (
+                <path key={point.name} d={arc(point, hub, bend)} data-draw className="ns-draw" style={css({ '--i': index })} fill="none" stroke={routeBase} strokeWidth={0.5} strokeLinecap="round" />
+              ))}
+            </g>
+            <g data-group="hub">
+              <circle {...dot(hub.x, hub.y)} r={2.4} fill={routeBase} fillOpacity={0.2} />
+              <circle {...dot(hub.x, hub.y)} r={1.15} className="ns-hub-pulse" fill="none" stroke={routeBase} strokeWidth={0.35} />
+              <circle {...dot(hub.x, hub.y)} r={1.15} fill={routeBase} stroke="#FFFFFF" strokeWidth={0.25} />
+            </g>
+            {/* Passo 3: a rota única da base para o Brasil e o leque pela região. */}
+            <g data-group="route-to-br">
+              <path d={arc(hub, brazil, 0.16)} data-draw className="ns-draw" fill="none" stroke={routeBase} strokeWidth={0.9} strokeLinecap="round" />
+            </g>
+            <g data-group="latam-fan">
+              {latamFan.map(({ dx, dy, bend }, index) => {
+                const end = { x: brazil.x + dx, y: brazil.y + dy }
+                return (
+                  <g key={index} style={css({ '--i': index })}>
+                    <path d={arc(brazil, end, bend)} data-draw className="ns-draw" fill="none" stroke={routeBase} strokeWidth={0.4} strokeLinecap="round" />
+                    <circle {...dot(end.x, end.y)} r={0.5} className="ns-fan-end" fill={routeBase} />
+                  </g>
+                )
+              })}
+            </g>
+            <g data-group="br">
+              <circle {...dot(brazil.x, brazil.y)} r={1.6} fill={routeBase} fillOpacity={0.2} />
+              <circle {...dot(brazil.x, brazil.y)} r={0.8} fill={routeBase} stroke="#FFFFFF" strokeWidth={0.25} />
+            </g>
+          </svg>
+          <div className="pointer-events-none absolute inset-0">
+            {Object.values(points).map((point) => {
+              const chip = storyLabels[point.name]
+              const group = point.name === HUB.name ? 'hub' : point.name === DESTINATION.name ? 'br' : point.name === MIAMI.name ? 'miami' : 'origins'
+              return (
+                <span
+                  key={point.name}
+                  data-group={group}
+                  className="ns-label absolute"
+                  style={css({ left: pct(point.x, width), top: pct(point.y, height), transform: placementTransform[chip.placement], '--ns-o': placementOrigin[chip.placement] })}
+                >
+                  <span className={chip.compact ? 'ns-label-text max-sm:hidden' : 'ns-label-text'}>
+                    <T k={chip.label} />
+                  </span>
+                </span>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+      <ul className="mt-6 hidden flex-wrap gap-x-8 gap-y-2 text-sm text-suave md:flex">
+        <li className="flex items-center gap-2">
+          <span aria-hidden="true" className="h-3 w-3 rounded-full border-2 border-white bg-cobalto ring-1 ring-cobalto/30" />
+          <T k="map.legend.offices" />
+        </li>
+        <li className="flex items-center gap-2">
+          <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-suave" />
+          <T k="map.legend.origins" />
+        </li>
+        <li className="flex items-center gap-2">
+          <span aria-hidden="true" className="h-0.5 w-6 bg-cobalto" />
           <T k="map.legend.routes" />
         </li>
       </ul>
