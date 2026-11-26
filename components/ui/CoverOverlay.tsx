@@ -5,8 +5,17 @@
  * descrição/CTAs) + gradiente lateral no canto do texto. O topo e o miolo ficam quase limpos para
  * preservar a foto. Use dentro de uma `<section className="relative isolate">`, logo após a imagem
  * e antes do conteúdo. Para ajustar tons ou opacidades em todas as capas, altere só este arquivo.
+ *
+ * Variantes:
+ * - `default` (padrão): tratamento original — usado pela Home e pelos banners de CTA (`CtaBand`).
+ * - `text`: capas das páginas internas (`PageHero`). Mesmo azul (#071A33), mas com degradê horizontal
+ *   ancorado no bloco de texto (breadcrumb, título e descrição) e foto mais livre no restante. As
+ *   opacidades ficam em `.cover-overlay-text` (app/globals.css).
  */
-export default function CoverOverlay() {
+export default function CoverOverlay({ variant = 'default' }: { variant?: 'default' | 'text' }) {
+  if (variant === 'text') {
+    return <div aria-hidden="true" className="cover-overlay-text absolute inset-0" />
+  }
   return (
     <>
       <div aria-hidden="true" className="absolute inset-0 bg-[#071A33]/10" />
