@@ -69,20 +69,6 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         </div>
       </Section>
 
-      <WhatWeDo />
-
-      <Section>
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow={t('common.industries')} title={t('home.industries.title')} />
-          <Button href="/products" variant="link" arrow className="shrink-0">
-            {t('home.industries.link')}
-          </Button>
-        </div>
-        <div className="mt-14">
-          <IndustriesGrid />
-        </div>
-      </Section>
-
       <Section tone="muted">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.6fr] lg:items-center">
           <SectionHeading
@@ -96,6 +82,20 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
             }
           />
           {routeMap}
+        </div>
+      </Section>
+
+      <WhatWeDo />
+
+      <Section tone="muted">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeading eyebrow={t('common.industries')} title={t('home.industries.title')} />
+          <Button href="/products" variant="link" arrow className="shrink-0">
+            {t('home.industries.link')}
+          </Button>
+        </div>
+        <div className="mt-14">
+          <IndustriesGrid />
         </div>
       </Section>
 

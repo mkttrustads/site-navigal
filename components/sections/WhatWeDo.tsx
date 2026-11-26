@@ -18,7 +18,7 @@ export default function WhatWeDo() {
   const { t } = useI18n()
 
   return (
-    <Section tone="muted">
+    <Section>
       <SectionHeading eyebrow={t('home.what.eyebrow')} title={t('home.what.title')} />
 
       {/* Três colunas de mesma largura a partir de md; `h-full` + `items-stretch` igualam a altura dos cards. */}
