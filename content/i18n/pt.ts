@@ -61,7 +61,7 @@ export const pt: Translation = {
     'home.about.p2': 'O parceiro ideal para conduzir negócios internacionais com segurança.',
     'home.about.highlight': 'Da estratégia à entrega.',
     'home.about.backedBy': 'Com o respaldo do',
-    'home.about.link': 'Conheça a Navigal',
+    'home.about.link': 'Conheça o Trust Group',
     'home.about.mission': "Encontrar a melhor combinação possível de qualidade, preço e capacidade para o negócio de cada cliente.",
     'home.what.eyebrow': 'O que fazemos',
     'home.what.title': 'Cuidamos das etapas mais complexas',
