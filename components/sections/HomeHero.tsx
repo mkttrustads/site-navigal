@@ -20,7 +20,13 @@ export default function HomeHero() {
   const item = reduce ? staticReveal : revealUp
 
   return (
-    <section ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-preto text-white">
+    // Altura = tela inteira (100svh) em celular, tablet e notebook. A partir de 1280px de largura ela é limitada a
+    // 50rem (800px, a proporção do notebook de referência), para não crescer com monitores altos e abrir vazio entre
+    // o menu e a logo. min() em vez de max-h: min-height maior que max-height prevaleceria sobre o teto.
+    <section
+      ref={ref}
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-preto text-white min-[1280px]:min-h-[min(100svh,50rem)]"
+    >
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image
           src="/images/hero-port-truck.webp"
