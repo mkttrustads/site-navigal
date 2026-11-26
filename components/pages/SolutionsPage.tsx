@@ -52,7 +52,7 @@ export default function SolutionsPage() {
             // Em 2 colunas, só a coluna esquerda conecta com a direita; em 4 colunas, todas menos a última.
             const tabletVisibility = index % 2 === 0 ? 'sm:block' : 'sm:hidden lg:block'
             return (
-              <RevealItem key={index} className="relative flex gap-5 pb-10 last:pb-0 sm:block sm:pb-0">
+              <RevealItem key={step.id} className="relative flex gap-5 pb-10 last:pb-0 sm:block sm:pb-0">
                 <div className="flex flex-col items-center sm:flex-row sm:gap-4">
                   <span className="stat-numeral flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-cobalto-claro text-base font-bold text-cobalto-claro">
                     {index + 1}
@@ -82,8 +82,8 @@ export default function SolutionsPage() {
             intro={t('solutions.risk.intro')}
           />
           <Reveal className="grid gap-4 sm:grid-cols-2">
-            {riskPillars.map((pillar, index) => (
-              <RevealItem key={index} className="rounded-card border border-linha bg-white p-7">
+            {riskPillars.map((pillar) => (
+              <RevealItem key={pillar.id} className="rounded-card border border-linha bg-white p-7">
                 <Icon name={pillar.icon} className="h-7 w-7 text-cobalto" />
                 <h3 className="mt-5 text-lg">{pillar.title}</h3>
                 <p className="mt-2 text-base leading-relaxed text-suave">{pillar.description}</p>

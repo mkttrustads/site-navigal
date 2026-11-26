@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run check:i18n",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "check:i18n": "node scripts/check-i18n.cjs"
+    "typecheck": "tsc --noEmit",
+    "check:i18n": "node scripts/check-i18n.cjs",
+    "test:e2e:i18n": "node scripts/e2e-i18n.cjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

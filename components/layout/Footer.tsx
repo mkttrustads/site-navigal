@@ -54,7 +54,7 @@ export default function Footer() {
               <h3 className="eyebrow mb-5 text-cobalto">Navigal</h3>
               <ul className="space-y-3">
                 {primaryNav.map((item) => (
-                  <li key={item.href}>
+                  <li key={item.id}>
                     <Link href={item.href} className="text-base text-preto/80 transition hover:text-cobalto">
                       {item.label}
                     </Link>
@@ -93,8 +93,8 @@ export default function Footer() {
                   </li>
                 ))}
                 <li className="pt-2 text-sm leading-relaxed text-suave">
-                  {company.address.lines.map((line) => (
-                    <span key={line} className="block">
+                  {company.address.lines.map((line, index) => (
+                    <span key={index} className="block">
                       {line}
                     </span>
                   ))}

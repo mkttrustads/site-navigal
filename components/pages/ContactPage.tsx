@@ -62,8 +62,8 @@ export default function ContactPage() {
                 <div>
                   <p className="font-semibold">{t('contact.hq')}</p>
                   <address className="not-italic leading-relaxed text-suave">
-                    {company.address.lines.map((line) => (
-                      <span key={line} className="block">
+                    {company.address.lines.map((line, index) => (
+                      <span key={index} className="block">
                         {line}
                       </span>
                     ))}

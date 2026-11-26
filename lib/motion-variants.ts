@@ -17,17 +17,14 @@ export const staggerContainer = (staggerChildren = 0.08, delayChildren = 0): Var
 })
 
 /**
- * Props prontas para `motion.div` em uma seção que revela com stagger ao
- * entrar na viewport. `once: true` — a seção não re-anima ao rolar de volta.
+ * Opções de viewport do `Reveal` (usadas com `useInView`). `once: true` — a seção
+ * não re-anima ao rolar de volta.
+ *
+ * `amount: 'some'` (não uma fração): com 25% exigido, uma grade alta empilhada no
+ * mobile nunca chegava a 25% visível e ficava invisível. A margem negativa só adia
+ * o gatilho até o bloco entrar de fato.
  */
-export const revealOnView = {
-  initial: 'hidden' as const,
-  whileInView: 'visible' as const,
-  // `amount: 'some'` (não uma fração): com 25% exigido, uma grade alta empilhada no
-  // mobile nunca chegava a 25% visível e ficava
-  // invisível. A margem negativa só adia o gatilho até o bloco entrar de fato.
-  viewport: { once: true, amount: 'some' as const, margin: '0px 0px -80px 0px' },
-}
+export const revealViewport = { once: true, amount: 'some' as const, margin: '0px 0px -80px 0px' as const }
 
 /**
  * `prefers-reduced-motion`: mantém a variant, mas com transição instantânea e
