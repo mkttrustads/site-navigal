@@ -5,6 +5,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import Section from '@/components/ui/Section'
 import ContactTabs from '@/components/forms/ContactTabs'
+import { CONTACT_FORM_ANCHOR } from '@/components/layout/ContactFab'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 
 export default function ContactPage() {
@@ -72,7 +73,7 @@ export default function ContactPage() {
               </li>
             </ul>
           </aside>
-          <div className="rounded-card border border-linha bg-white p-6 shadow-sm sm:p-10">
+          <div id={CONTACT_FORM_ANCHOR} className="scroll-mt-24 rounded-card border border-linha bg-white p-6 shadow-sm sm:p-10">
             <Suspense fallback={null}>
               <ContactTabs />
             </Suspense>

@@ -45,6 +45,10 @@ O **teste de navegador** (`scripts/e2e-i18n.cjs`) troca o idioma ao vivo em toda
 
 Limitação conhecida: o HTML do servidor, o JSON-LD e o sitemap são em inglês (a URL é a mesma para os três idiomas); o `<title>` e a meta description são trocados no cliente. Se o SEO em PT/ES virar prioridade, o caminho é rotas por idioma (`/pt`, `/es`), o que muda URLs e não faz parte desta correção.
 
+## Botão flutuante "Fale conosco"
+
+`components/layout/ContactFab.tsx` (montado em `app/layout.tsx`, ao lado do `BackToTop`): botão fixo no canto inferior direito, em todas as páginas exceto `/contact`. Abre um painel com os dois perfis; cada opção é um `<Link>` para `/contact?type=supplier#contact-form` (fornecedor) ou `/contact?type=quote#contact-form` (indústria/distribuidor). O `?type=` é o mesmo parâmetro que `ContactTabs` já lia; a âncora `#contact-form` está no cartão dos formulários em `ContactPage`. Os formulários não foram alterados. Textos em `contactFab.*` (`en.ts`/`pt.ts`/`es.ts`). Teste de navegador: `BASE_URL=http://localhost:3000 node scripts/e2e-contact-fab.cjs` (mesmos requisitos do e2e de idioma).
+
 ## Rodar
 
 ```
