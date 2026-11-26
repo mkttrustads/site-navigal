@@ -107,11 +107,8 @@ export const pt: Translation = {
       'O suprimento internacional de produtos controlados e perigosos exige mais do que um bom preço. Governamos os riscos que importam para a indústria, para que cada embarque chegue em conformidade, dentro da especificação e no prazo.',
     'solutions.who.title': 'Pensada para os dois lados da negociação',
 
-    'products.hero.title': 'Nosso portfólio de produtos',
-    'products.hero.subtitle': 'Principais produtos que fornecemos hoje.',
-    'products.intro.eyebrow': 'Vamos crescer juntos',
-    'products.intro.title': 'Matérias-primas de excelência para diversos setores industriais',
-    'products.intro.intro':
+    'products.hero.title': 'Matérias-primas de excelência para diversos setores industriais',
+    'products.hero.subtitle':
       'Para estes produtos temos experiência comprovada e podemos oferecer as melhores condições de importação. Trabalhamos com fabricantes renomados e oferecemos controle de qualidade confiável e apoio financeiro.',
     'products.onDemand.eyebrow': 'Sourcing sob demanda',
     'products.onDemand.title': 'Procura um produto que não está na lista?',

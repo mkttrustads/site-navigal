@@ -103,11 +103,8 @@ export const ui = {
   'solutions.who.title': 'Built for both sides of the trade',
 
   // Products
-  'products.hero.title': 'Our product portfolio',
-  'products.hero.subtitle': 'Key products we supply today.',
-  'products.intro.eyebrow': 'Let’s grow together',
-  'products.intro.title': 'Raw materials of excellence for many industrial sectors',
-  'products.intro.intro':
+  'products.hero.title': 'Raw materials of excellence for many industrial sectors',
+  'products.hero.subtitle':
     'For these products we have proven experience and can offer the best conditions for import. We work with renowned manufacturers and provide reliable quality control and financial support.',
   'products.onDemand.eyebrow': 'On-demand sourcing',
   'products.onDemand.title': 'Looking for a product that is not listed?',

@@ -3,7 +3,7 @@
 import { Suspense } from 'react'
 import Image from 'next/image'
 import PageHero from '@/components/ui/PageHero'
-import Section, { SectionHeading } from '@/components/ui/Section'
+import Section from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import ProductCatalog from '@/components/sections/ProductCatalog'
 import { useI18n } from '@/lib/i18n/I18nProvider'
@@ -28,23 +28,19 @@ export default function ProductsPage() {
         image="/images/chemicals-drums.jpg"
         title={t('products.hero.title')}
         subtitle={t('products.hero.subtitle')}
+        titleClassName="max-w-[52rem]"
+        subtitleClassName="max-w-[44rem]"
         breadcrumb={[
           { name: t('common.home'), path: '/' },
           { name: navLabel('/products'), path: '/products' },
         ]}
       />
 
-      <Section>
-        <SectionHeading
-          eyebrow={t('products.intro.eyebrow')}
-          title={t('products.intro.title')}
-          intro={t('products.intro.intro')}
-        />
-        <div className="mt-14">
-          <Suspense fallback={null}>
-            <ProductCatalog />
-          </Suspense>
-        </div>
+      {/* Texto de abertura agora vive na capa: o catálogo (tags de setor → produtos) começa direto. */}
+      <Section className="pt-12 sm:pt-16">
+        <Suspense fallback={null}>
+          <ProductCatalog />
+        </Suspense>
       </Section>
 
       <Section tone="muted" className="py-16 sm:py-20">
