@@ -161,7 +161,7 @@ for (const locale of ['pt', 'es']) {
   const local = flatten(localizeContent(locale))
   for (const [key, text] of Object.entries(local)) {
     if (key.startsWith('pageMeta')) continue
-    if (text === base[key] && /[A-Za-z]{3,}/.test(text) && !KEEP.test(text) && !/^[\d\s.,+/*%()a-zA-Z²-]*$/.test(text.replace(/[A-Za-z]{4,}/g, '#'))) {
+    if (text === base[key] && /[A-Za-z]{3,}/.test(text) && !KEEP.test(text) && !text.startsWith('/') && !/^[\d\s.,+/*%()a-zA-Z²-]*$/.test(text.replace(/[A-Za-z]{4,}/g, '#'))) {
       fail(locale, `igual ao inglês: ${key} = "${text.slice(0, 80)}"`)
     }
   }

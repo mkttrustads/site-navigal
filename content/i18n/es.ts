@@ -363,9 +363,11 @@ export const es: Translation = {
         description: 'Entre los mayores importadores químicos del país.',
       },
       {
-        title: 'Certificación de la Receita Federal',
+        title: 'OEA-Conformidad Esencial',
         holder: 'Trust Comércio Exterior',
-        description: 'Trust Comércio Exterior está certificada por la Receita Federal de Brasil.',
+        description:
+          'Certificados por la Receita Federal, integramos el Programa Brasileño de Operador Económico Autorizado, reconocido por sus estándares de conformidad y gestión de riesgos.',
+        badgeAlt: 'Sello del Operador Económico Autorizado (OEA) – Conformidad Esencial',
       },
       {
         title: 'SASSMAQ e ISO 9001',

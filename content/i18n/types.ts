@@ -57,7 +57,7 @@ export type Translation = {
   }
 
   credibility: {
-    certifications: Pick2<Item<typeof certifications>, 'title' | 'holder' | 'description'>[]
+    certifications: (Pick2<Item<typeof certifications>, 'title' | 'holder' | 'description'> & { badgeAlt?: string })[]
     taglog: {
       licensed: string
       hubs: Pick2<Item<typeof taglog.hubs>, 'site' | 'area' | 'pallets' | 'access'>[]
