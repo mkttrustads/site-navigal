@@ -11,8 +11,8 @@ import { useI18n } from '@/lib/i18n/I18nProvider'
 type Crumb = { name: string; path: string }
 
 /**
- * Banner das páginas internas (foto, breadcrumb, H1 e subtítulo) com o mesmo overlay azul
- * translúcido da Hero da Home — ver `CoverOverlay`.
+ * Banner das páginas internas (foto, breadcrumb, H1 e subtítulo). Overlay azul (mesmo tom da Home)
+ * em degradê horizontal reforçado sob o texto — ver `CoverOverlay variant="text"`.
  */
 export default function PageHero({
   image,
@@ -37,7 +37,7 @@ export default function PageHero({
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image src={image} alt="" aria-hidden="true" fill priority sizes="100vw" className="object-cover" />
       </motion.div>
-      <CoverOverlay />
+      <CoverOverlay variant="text" />
 
       <motion.div
         initial="hidden"

@@ -54,6 +54,40 @@
     letter-spacing: -0.025em;
   }
 
+  /* Overlay das capas internas (CoverOverlay variant="text"): azul #071A33 em degradê horizontal.
+     O bloco de texto começa em --cover-text-start (margem da coluna max-w-site + px-6) e ocupa até
+     ~48rem, então o azul fica forte nessa faixa e some suavemente à direita, deixando a foto clara.
+     Em telas estreitas o texto ocupa a largura toda: o degradê vira véu quase uniforme (os stops
+     passam de 100% e são cortados) e uma máscara alivia só a faixa do topo, sem texto. */
+  .cover-overlay-text {
+    --cover-text-start: calc(max(0px, (100% - 76rem) / 2) + 1.5rem);
+    background-image:
+      linear-gradient(
+        to top,
+        rgba(7, 26, 51, 0.32) 0%,
+        rgba(7, 26, 51, 0.12) 40%,
+        rgba(7, 26, 51, 0) 70%
+      ),
+      linear-gradient(
+        to right,
+        rgba(7, 26, 51, 0.92) 0%,
+        rgba(7, 26, 51, 0.9) var(--cover-text-start),
+        rgba(7, 26, 51, 0.84) calc(var(--cover-text-start) + 28rem),
+        rgba(7, 26, 51, 0.76) calc(var(--cover-text-start) + 40rem),
+        rgba(7, 26, 51, 0.5) calc(var(--cover-text-start) + 47rem),
+        rgba(7, 26, 51, 0.24) calc(var(--cover-text-start) + 55rem),
+        rgba(7, 26, 51, 0.09) calc(var(--cover-text-start) + 63rem),
+        rgba(7, 26, 51, 0.06) 100%
+      );
+  }
+
+  @media (max-width: 639px) {
+    .cover-overlay-text {
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, #000 40%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, #000 40%);
+    }
+  }
+
   /* Numerais de dado alinhados e com largura fixa. */
   .stat-numeral {
     font-variant-numeric: lining-nums tabular-nums;
