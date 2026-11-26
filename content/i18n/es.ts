@@ -68,7 +68,7 @@ export const es: Translation = {
       'Con base estratégica en los Emiratos Árabes Unidos, uno de los centros comerciales más dinámicos del mundo, trabajamos junto a fabricantes de Asia, Europa y Medio Oriente.',
     'home.network.p2':
       'Nuestro equipo en Brasil nos mantiene cerca de los compradores industriales de toda América Latina, donde evaluamos cada oportunidad de primera mano.',
-    'home.cta.title': 'Importe su propia línea de productos',
+    'home.cta.title': 'Importe sus insumos con un socio global',
 
     'about.hero.title': 'Conectando el mundo con la industria latinoamericana',
     'about.hero.subtitle':

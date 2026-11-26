@@ -61,7 +61,7 @@ export const ui = {
     'Strategically based in the United Arab Emirates, one of the most dynamic trade hubs in the world, we work alongside manufacturers in Asia, Europe and the Middle East.',
   'home.network.p2':
     'Our team in Brazil keeps us close to industrial buyers across Latin America, where we evaluate every opportunity first-hand.',
-  'home.cta.title': 'Import your own product line',
+  'home.cta.title': 'Import your supplies with a global partner',
 
   // About
   'about.hero.title': 'Connecting the world to Latin American industry',
