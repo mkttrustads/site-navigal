@@ -6,6 +6,7 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import Carousel from '@/components/ui/Carousel'
+import CoverOverlay from '@/components/ui/CoverOverlay'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { useI18n } from '@/lib/i18n/I18nProvider'
@@ -260,7 +261,7 @@ export function CtaBand({
   title,
   body,
   image = '/images/handshake-dark.jpg',
-  imageClassName = 'object-cover opacity-50',
+  imageClassName = 'object-cover',
 }: {
   title?: string
   body?: string
@@ -274,7 +275,7 @@ export function CtaBand({
   return (
     <section className="relative isolate overflow-hidden bg-preto text-white">
       <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className={imageClassName} />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto via-preto/90 to-preto/40" />
+      <CoverOverlay />
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
         <div className="max-w-2xl">
           <h2 className="text-balance text-[clamp(2rem,3.4vw,3rem)]">{title ?? t('cta.title')}</h2>
