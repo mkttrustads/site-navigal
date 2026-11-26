@@ -22,23 +22,30 @@ export default function HomeHero() {
     <section ref={ref} className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-preto text-white">
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image
-          src="/images/hero-industrial-drums.jpg"
+          src="/images/hero-port-truck.webp"
           alt=""
           aria-hidden="true"
           fill
           priority
           sizes="100vw"
-          // No mobile (recorte estreito) o foco vai para o operador da direita; de md para cima, a foto inteira.
-          className="object-cover object-[62%_center] md:object-center"
+          // Caminhão, carga (big bags) e portal ficam no centro-direita da foto (≈42–85% da largura). Em telas
+          // estreitas o recorte acompanha a carga e a traseira do caminhão; em tablet o caminhão cabe inteiro;
+          // de lg para cima a foto aparece praticamente toda, centralizada.
+          className="object-cover object-[78%_center] md:object-[72%_center] lg:object-center"
         />
       </motion.div>
-      {/* Overlay: escurece a base, onde ficam título e faixa descrição + CTAs, e deixa a metade superior
-          (operadores e tambores) aparente. O gradiente lateral é leve, só para firmar o canto do texto. */}
+      {/* Overlay azul-escuro (#071A33): véu uniforme leve + gradiente na base (título e faixa descrição + CTAs)
+          + gradiente lateral no canto do texto. O topo e o miolo ficam quase limpos para preservar o céu, o
+          sol e a carga. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-[#071A33]/10" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-preto/95 via-preto/60 via-[42%] to-preto/10"
+        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,26,51,0.84)_0%,rgba(7,26,51,0.6)_34%,rgba(7,26,51,0.36)_62%,rgba(7,26,51,0.1)_86%,rgba(7,26,51,0)_100%)]"
       />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-preto/50 via-preto/10 to-transparent" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(to_right,rgba(7,26,51,0.5)_0%,rgba(7,26,51,0.2)_45%,rgba(7,26,51,0)_75%)]"
+      />
 
       <motion.div
         initial="hidden"
