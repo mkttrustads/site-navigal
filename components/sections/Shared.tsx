@@ -21,7 +21,7 @@ export function SolutionsGrid({ limit }: { limit?: number }) {
   return (
     <Reveal className="grid gap-px overflow-hidden rounded-card border border-linha bg-linha sm:grid-cols-2 lg:grid-cols-3">
       {items.map((solution, index) => (
-        <RevealItem key={solution.title} className="group relative flex flex-col bg-white p-8 transition-colors hover:bg-off-white">
+        <RevealItem key={solution.id} className="group relative flex flex-col bg-white p-8 transition-colors hover:bg-off-white">
           <span className="stat-numeral absolute right-8 top-8 text-sm font-semibold text-preto/25">
             {String(index + 1).padStart(2, '0')}
           </span>
@@ -94,12 +94,15 @@ export function AudienceSplit() {
   const {
     content: { audiences },
   } = useI18n()
-  const blocks = [audiences.buyers, audiences.suppliers]
+  const blocks = [
+    { key: 'buyers', ...audiences.buyers },
+    { key: 'suppliers', ...audiences.suppliers },
+  ]
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       {blocks.map((block, index) => (
         <div
-          key={block.eyebrow}
+          key={block.key}
           className={cn(
             'relative flex flex-col overflow-hidden rounded-card p-8 sm:p-12',
             index === 0 ? 'bg-preto text-white' : 'bg-cobalto text-white'
@@ -109,9 +112,9 @@ export function AudienceSplit() {
           <h3 className="mt-4 max-w-md text-balance text-[clamp(1.6rem,2.4vw,2.1rem)]">{block.title}</h3>
           <ul className="mt-8 flex-1 space-y-4">
             {block.items.map((item) => (
-              <li key={item} className="flex gap-3 text-base leading-relaxed text-white/85">
+              <li key={item.id} className="flex gap-3 text-base leading-relaxed text-white/85">
                 <Check aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-white" />
-                {item}
+                {item.text}
               </li>
             ))}
           </ul>
@@ -167,7 +170,7 @@ export function TrustGroupSection() {
       <SlideEyebrow>{t('trust.eyebrow')}</SlideEyebrow>
       <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3">
         {trustGroupFacts.map((fact) => (
-          <div key={fact.label} className="flex flex-col">
+          <div key={fact.id} className="flex flex-col">
             <dt className="mt-1 text-sm leading-snug text-suave">{fact.label}</dt>
             <dd className="stat-numeral order-first text-3xl font-bold text-preto">{fact.value}</dd>
           </div>
@@ -182,7 +185,7 @@ export function TrustGroupSection() {
       <h3 className="mt-4 text-lg leading-snug">{trustGroupLines.title}</h3>
       <ul className="mt-4 divide-y divide-preto/10 border-y border-preto/10">
         {trustGroupLines.items.map((line) => (
-          <li key={line.name} className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:gap-6">
+          <li key={line.id} className="flex flex-col gap-0.5 py-2.5 sm:flex-row sm:gap-6">
             <span className="text-base font-semibold sm:w-48 sm:shrink-0">{line.name}</span>
             <span className="text-[0.9375rem] leading-snug text-suave">{line.description}</span>
           </li>
@@ -301,11 +304,11 @@ export function CertificationsSection() {
       <SectionHeading eyebrow={t('certs.eyebrow')} title={t('certs.title')} align="center" />
       <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((item) => (
-          <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
+          <RevealItem key={item.id} className="rounded-card border border-linha bg-white p-7">
             {item.badge ? (
               <Image
                 src={item.badge}
-                alt={item.badgeAlt}
+                alt={item.badgeAlt ?? item.title}
                 width={256}
                 height={120}
                 sizes="(min-width: 1024px) 140px, 128px"
@@ -340,7 +343,7 @@ export function TaglogSection() {
       />
       <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {taglog.hubs.map((hub) => (
-          <RevealItem key={hub.site} className="rounded-card border border-linha bg-white p-7">
+          <RevealItem key={hub.id} className="rounded-card border border-linha bg-white p-7">
             <h3 className="text-lg">{hub.site}</h3>
             <p className="stat-numeral mt-4 text-2xl font-bold">{hub.area}</p>
             <p className="mt-1 text-base text-suave">{hub.pallets}</p>
@@ -366,7 +369,7 @@ export function CommitmentSection() {
       <SectionHeading eyebrow={t('commitment.eyebrow')} title={t('commitment.title')} align="center" />
       <Reveal className="mx-auto mt-14 grid max-w-4xl gap-4 sm:grid-cols-2">
         {commitment.map((item) => (
-          <RevealItem key={item.title} className="rounded-card border border-linha bg-white p-7">
+          <RevealItem key={item.id} className="rounded-card border border-linha bg-white p-7">
             <Icon name={item.icon} className="h-7 w-7 text-cobalto" />
             <h3 className="mt-5 text-lg">{item.title}</h3>
             <p className="mt-2 text-base leading-relaxed text-suave">{item.description}</p>

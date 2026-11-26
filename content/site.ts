@@ -21,14 +21,16 @@ export const company = {
   },
 }
 
-export type NavItem = { label: string; href: string }
+// `id` é o identificador estável do item (chave de React e das traduções); o rótulo muda por idioma.
+export type NavId = 'about' | 'solutions' | 'products' | 'suppliers' | 'contact'
+export type NavItem = { id: NavId; label: string; href: string }
 
 export const primaryNav: NavItem[] = [
-  { label: 'About us', href: '/about' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Products', href: '/products' },
-  { label: 'For Suppliers', href: '/suppliers' },
-  { label: 'Contact', href: '/contact' },
+  { id: 'about', label: 'About us', href: '/about' },
+  { id: 'solutions', label: 'Solutions', href: '/solutions' },
+  { id: 'products', label: 'Products', href: '/products' },
+  { id: 'suppliers', label: 'For Suppliers', href: '/suppliers' },
+  { id: 'contact', label: 'Contact', href: '/contact' },
 ]
 
 export const quoteCta = { label: 'Request a quote', href: '/contact' }
@@ -52,23 +54,27 @@ export const rankingFootnote =
 
 // Seção "Part of Trust Group". A apresentação não traz o "14M+ investido em
 // tecnologia" (moeda indefinida), por isso não é publicado.
-export const trustGroupFacts = [
-  { value: '20+', label: 'years in the market' },
-  { value: '300+', label: 'employees' },
-  { value: '80k+ m²', label: 'of warehousing' },
-  { value: '65+', label: 'international routes' },
-  { value: '10+', label: 'certifications and seals' },
-  { value: 'Top 35*', label: 'chemical importers in Brazil (Trust Group)' },
+export type TrustGroupFactId = 'years' | 'employees' | 'warehousing' | 'routes' | 'certifications' | 'ranking'
+export type TrustGroupFact = { id: TrustGroupFactId; value: string; label: string }
+export const trustGroupFacts: TrustGroupFact[] = [
+  { id: 'years', value: '20+', label: 'years in the market' },
+  { id: 'employees', value: '300+', label: 'employees' },
+  { id: 'warehousing', value: '80k+ m²', label: 'of warehousing' },
+  { id: 'routes', value: '65+', label: 'international routes' },
+  { id: 'certifications', value: '10+', label: 'certifications and seals' },
+  { id: 'ranking', value: 'Top 35*', label: 'chemical importers in Brazil (Trust Group)' },
 ]
 
 // Slide 4: "Five companies working together so every operation runs end to end".
-export const trustGroupLines = {
+export type TrustGroupLineId = 'foreign-trade' | 'international-trading' | 'international-logistics' | 'national-logistics' | 'global-brands'
+export type TrustGroupLine = { id: TrustGroupLineId; name: string; description: string }
+export const trustGroupLines: { title: string; items: TrustGroupLine[] } = {
   title: 'Five companies working together so every operation runs end to end',
   items: [
-    { name: 'Foreign Trade', description: 'Import/export services and trade finance' },
-    { name: 'International Trading', description: 'Navigal' },
-    { name: 'International Logistics', description: 'Sea, air and road freight, including project cargo' },
-    { name: 'National Logistics', description: 'Warehouses and road transport across Brazil' },
-    { name: 'Global Brands Management', description: 'Expansion of international brands in Brazil' },
+    { id: 'foreign-trade', name: 'Foreign Trade', description: 'Import/export services and trade finance' },
+    { id: 'international-trading', name: 'International Trading', description: 'Navigal' },
+    { id: 'international-logistics', name: 'International Logistics', description: 'Sea, air and road freight, including project cargo' },
+    { id: 'national-logistics', name: 'National Logistics', description: 'Warehouses and road transport across Brazil' },
+    { id: 'global-brands', name: 'Global Brands Management', description: 'Expansion of international brands in Brazil' },
   ],
 }

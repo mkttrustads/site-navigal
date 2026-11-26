@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, FileText, Search } from 'lucide-react'
@@ -36,10 +36,13 @@ export default function ProductCatalog() {
   const [active, setActive] = useState(paramIndustry)
   const [query, setQuery] = useState('')
 
-  // Mantém o filtro em sincronia com a URL (cards de setor, voltar/avançar do navegador).
-  useEffect(() => {
+  // Mantém o filtro em sincronia com a URL (cards de setor, voltar/avançar do navegador):
+  // ajuste de estado durante a renderização quando o parâmetro muda (sem effect).
+  const [syncedParam, setSyncedParam] = useState(paramIndustry)
+  if (syncedParam !== paramIndustry) {
+    setSyncedParam(paramIndustry)
     setActive(paramIndustry)
-  }, [paramIndustry])
+  }
 
   const filtered = useMemo(() => {
     const q = normalize(query.trim())
@@ -227,8 +230,8 @@ function ProductCard({ product }: { product: Product }) {
                 {sheet.regulatory && (
                   <SheetBlock title={t('sheet.regulatory')}>
                     <ul className="list-disc space-y-1 pl-5">
-                      {sheet.regulatory.map((note) => (
-                        <li key={note}>{note}</li>
+                      {sheet.regulatory.map((note, index) => (
+                        <li key={index}>{note}</li>
                       ))}
                     </ul>
                   </SheetBlock>

@@ -71,7 +71,7 @@ export default function Header() {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`)
             return (
               <Link
-                key={item.href}
+                key={item.id}
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
@@ -108,7 +108,7 @@ export default function Header() {
           <nav aria-label={t('a11y.mainNav')} className="flex flex-col">
             {headerNav.map((item) => (
               <Link
-                key={item.href}
+                key={item.id}
                 href={item.href}
                 className="border-b border-white/10 py-4 text-lg font-medium text-white"
               >

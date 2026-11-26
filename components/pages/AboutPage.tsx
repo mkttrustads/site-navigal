@@ -51,8 +51,8 @@ export default function AboutPage() {
             }
           />
           <Reveal className="relative border-l border-linha pl-8 sm:pl-10">
-            {milestones.map((milestone, index) => (
-              <RevealItem key={index} className="relative pb-10 last:pb-0">
+            {milestones.map((milestone) => (
+              <RevealItem key={milestone.id} className="relative pb-10 last:pb-0">
                 <span
                   aria-hidden="true"
                   className="absolute -left-[2.35rem] top-1 h-3 w-3 rounded-full border-2 border-white bg-cobalto ring-1 ring-cobalto sm:-left-[2.85rem]"
@@ -73,8 +73,8 @@ export default function AboutPage() {
             <p className="mt-6 text-balance text-[clamp(1.5rem,2.4vw,2.1rem)] leading-snug">{mission}</p>
           </div>
           <Reveal className="grid gap-px overflow-hidden rounded-card bg-white/10 sm:grid-cols-3">
-            {principles.map((principle, index) => (
-              <RevealItem key={index} className="bg-preto p-7">
+            {principles.map((principle) => (
+              <RevealItem key={principle.id} className="bg-preto p-7">
                 <Icon name={principle.icon} className="h-7 w-7 text-cobalto-claro" />
                 <h3 className="mt-5 text-lg">{principle.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/70">{principle.description}</p>
@@ -87,8 +87,8 @@ export default function AboutPage() {
       <Section tone="muted">
         <SectionHeading eyebrow={t('about.values.eyebrow')} title={t('about.values.title')} align="center" />
         <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {values.map((value, index) => (
-            <RevealItem key={index} className="rounded-card border border-linha bg-white p-7">
+          {values.map((value) => (
+            <RevealItem key={value.id} className="rounded-card border border-linha bg-white p-7">
               <Icon name={value.icon} className="h-7 w-7 text-cobalto" />
               <h3 className="mt-5 text-lg">{value.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-suave">{value.description}</p>
@@ -115,8 +115,8 @@ export default function AboutPage() {
               intro={t('about.presence.intro')}
             />
             <ul className="mt-10 grid gap-6 sm:grid-cols-2">
-              {offices.map((office, index) => (
-                <li key={index} className="border-t-2 border-preto pt-5">
+              {offices.map((office) => (
+                <li key={office.id} className="border-t-2 border-preto pt-5">
                   <p className="flex items-center gap-2 text-lg font-bold">
                     <MapPin aria-hidden="true" className="h-5 w-5 text-cobalto" />
                     {office.country}

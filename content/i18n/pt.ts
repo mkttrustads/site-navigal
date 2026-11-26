@@ -256,7 +256,7 @@ export const pt: Translation = {
 
   site: {
     tagline: 'Construindo conexões confiáveis',
-    nav: ['Quem somos','Soluções', 'Produtos', 'Para Fornecedores', 'Contato'],
+    nav: {'about': 'Quem somos','solutions': 'Soluções', 'products': 'Produtos', 'suppliers': 'Para Fornecedores', 'contact': 'Contato'},
     quoteCta: 'Solicitar cotação',
     facts: {
       launched: 'Navigal lançada',
@@ -266,23 +266,23 @@ export const pt: Translation = {
     },
     rankingFootnote:
       '*Entre mais de 8.200 importadores (FOB, US$), excluindo defensivos agrícolas e combustíveis. Dados públicos de importação, ago/25 a jul/26.',
-    trustGroupFacts: [
-      'anos no mercado',
-      'colaboradores',
-      'de armazenagem',
-      'rotas internacionais',
-      'certificações e selos',
-      'importadores químicos do Brasil (Trust Group)',
-    ],
+    trustGroupFacts: {
+      'years': 'anos no mercado',
+      'employees': 'colaboradores',
+      'warehousing': 'de armazenagem',
+      'routes': 'rotas internacionais',
+      'certifications': 'certificações e selos',
+      'ranking': 'importadores químicos do Brasil (Trust Group)',
+    },
     trustGroupLines: {
       title: 'Cinco empresas trabalhando juntas para que toda operação funcione de ponta a ponta',
-      items: [
-        { name: 'Comércio Exterior', description: 'Serviços de importação/exportação e financiamento do comércio' },
-        { name: 'Trading Internacional', description: 'Navigal' },
-        { name: 'Logística Internacional', description: 'Frete marítimo, aéreo e rodoviário, incluindo cargas de projeto' },
-        { name: 'Logística Nacional', description: 'Armazéns e transporte rodoviário em todo o Brasil' },
-        { name: 'Global Brands Management', description: 'Expansão de marcas internacionais no Brasil' },
-      ],
+      items: {
+        'foreign-trade': { name: 'Comércio Exterior', description: 'Serviços de importação/exportação e financiamento do comércio' },
+        'international-trading': { name: 'Trading Internacional', description: 'Navigal' },
+        'international-logistics': { name: 'Logística Internacional', description: 'Frete marítimo, aéreo e rodoviário, incluindo cargas de projeto' },
+        'national-logistics': { name: 'Logística Nacional', description: 'Armazéns e transporte rodoviário em todo o Brasil' },
+        'global-brands': { name: 'Global Brands Management', description: 'Expansão de marcas internacionais no Brasil' },
+      },
     },
     addressLines: ['Escritório nº TI-4F-11, RAKEZ Amenity Center', 'Al Hamra Industrial Zone FZ', 'Ras Al Khaimah, Emirados Árabes Unidos'],
   },
@@ -290,25 +290,25 @@ export const pt: Translation = {
   about: {
     mission:
       'Encontrar a melhor combinação possível de qualidade, preço e capacidade para o negócio de cada cliente e garantir a sua completa satisfação.',
-    milestones: [
-      {
+    milestones: {
+      'founded': {
         label: '2005',
         title: 'A Trust é fundada em Itajaí/SC',
         description:
           'Juliano Victorino funda a Trust para importar as matérias-primas químicas que tinha tanta dificuldade de obter no exterior.',
       },
-      {
+      'launch': {
         label: '2024',
         title: 'A Navigal é lançada',
         description:
           'O Trust Group cria sua trading internacional para levar o conhecimento do grupo até a origem, trabalhando lado a lado com os fornecedores.',
       },
-      {
+      'today': {
         label: 'Hoje',
         title: 'Apoio do ecossistema completo',
         description: 'A Navigal opera com o apoio total de um ecossistema de comércio exterior e logística.',
       },
-    ],
+    },
     story: {
       eyebrow: 'Por que a Navigal existe',
       title: 'Nascida da indústria química',
@@ -319,183 +319,183 @@ export const pt: Translation = {
       closing: 'Conhecemos a indústria porque fomos a indústria.',
       presence: 'A Navigal opera a partir dos Emirados Árabes Unidos, com escritório em Miami.',
     },
-    principles: [
-      {
+    principles: {
+      'global': {
         title: 'Global por natureza',
         description:
           'Cosmopolitas e multiculturais, falamos a língua dos negócios globais e respeitamos as regulamentações de cada fronteira que cruzamos.',
       },
-      {
+      'risk': {
         title: 'Risco sob governança',
         description:
           'Descobrimos fornecedores qualificados em qualquer lugar do mundo e governamos os riscos de cada operação, trazendo previsibilidade e estabilidade.',
       },
-      {
+      'link': {
         title: 'O elo de confiança',
         description:
           'Somos a conexão entre fornecedores globais confiáveis e as indústrias que dependem de um suprimento seguro e competitivo.',
       },
-    ],
-    values: [
-      { title: 'Experiência', description: 'Duas décadas de experiência do Trust Group importando produtos químicos e outros itens.' },
-      { title: 'Segurança', description: 'Experiência e capacidade analítica aplicadas para tornar cada negociação mais segura.' },
-      { title: 'Qualidade', description: 'Sempre elevando o padrão para entregar o melhor serviço e produto.' },
-      { title: 'Comprometimento', description: 'Nossa missão é a sua satisfação, e estamos comprometidos com ela.' },
-      { title: 'Pontualidade', description: 'Atendemos cada pedido com comprometimento e entrega precisa.' },
-    ],
-    offices: [
-      {
+    },
+    values: {
+      'experience': { title: 'Experiência', description: 'Duas décadas de experiência do Trust Group importando produtos químicos e outros itens.' },
+      'security': { title: 'Segurança', description: 'Experiência e capacidade analítica aplicadas para tornar cada negociação mais segura.' },
+      'quality': { title: 'Qualidade', description: 'Sempre elevando o padrão para entregar o melhor serviço e produto.' },
+      'commitment': { title: 'Comprometimento', description: 'Nossa missão é a sua satisfação, e estamos comprometidos com ela.' },
+      'punctuality': { title: 'Pontualidade', description: 'Atendemos cada pedido com comprometimento e entrega precisa.' },
+    },
+    offices: {
+      'uae': {
         country: 'Emirados Árabes Unidos',
         role: 'Sede',
         detail: 'RAKEZ Amenity Center, Al Hamra Industrial Zone FZ, Ras Al Khaimah',
       },
-      { country: 'Estados Unidos', role: 'Escritório em Miami', detail: 'Relacionamento com fornecedores e mercado nas Américas' },
-      { country: 'Brasil', role: 'Equipe comercial e de operações', detail: 'Próxima dos compradores industriais de toda a América Latina' },
-    ],
+      'usa': { country: 'Estados Unidos', role: 'Escritório em Miami', detail: 'Relacionamento com fornecedores e mercado nas Américas' },
+      'brazil': { country: 'Brasil', role: 'Equipe comercial e de operações', detail: 'Próxima dos compradores industriais de toda a América Latina' },
+    },
   },
 
   credibility: {
-    certifications: [
-      {
+    certifications: {
+      'top35': {
         title: 'Top 35 importadores químicos do Brasil*',
         holder: 'Trust Group',
         description: 'Entre os maiores importadores químicos do país.',
       },
-      {
+      'aeo': {
         title: 'OEA-Conformidade Essencial',
         holder: 'Trust Comércio Exterior',
         description:
           'Certificados pela Receita Federal, integramos o Programa Brasileiro de Operador Econômico Autorizado, reconhecido por seus padrões de conformidade e gestão de riscos.',
         badgeAlt: 'Selo do Operador Econômico Autorizado (OEA) – Conformidade Essencial',
       },
-      {
+      'sassmaq': {
         title: 'SASSMAQ e ISO 9001',
         holder: 'Taglog Logística Integrada, empresa do Trust Group',
         description: 'Padrões de segurança, saúde, meio ambiente e qualidade nas operações logísticas.',
       },
-    ],
+    },
     taglog: {
       licensed: 'Licenciada para produtos regulados por IBAMA, MAPA, ANVISA, Exército Brasileiro e Polícia Federal.',
-      hubs: [
-        { site: 'Itajaí, SC (matriz)', area: '47.000+ m²', pallets: '18.000+ posições-pallet', access: 'a 15 min do Porto de Navegantes' },
-        { site: 'Garuva, SC', area: '16.000+ m²', pallets: '5.000+ posições-pallet', access: 'a 45 min do Porto de Itapoá' },
-        { site: 'Sumaré, SP', area: '7.000+ m²', pallets: '6.000+ posições-pallet', access: 'a 25 min do Aeroporto de Viracopos' },
-        {
+      hubs: {
+        'itajai': { site: 'Itajaí, SC (matriz)', area: '47.000+ m²', pallets: '18.000+ posições-pallet', access: 'a 15 min do Porto de Navegantes' },
+        'garuva': { site: 'Garuva, SC', area: '16.000+ m²', pallets: '5.000+ posições-pallet', access: 'a 45 min do Porto de Itapoá' },
+        'sumare': { site: 'Sumaré, SP', area: '7.000+ m²', pallets: '6.000+ posições-pallet', access: 'a 25 min do Aeroporto de Viracopos' },
+        'cabo': {
           site: 'Cabo de Santo Agostinho, PE',
           area: '10.000+ m²',
           pallets: '9.000+ posições-pallet',
           access: 'a 30 min do Porto de Suape',
         },
-      ],
+      },
       total: { area: '80.000+ m²', pallets: '38.000+ posições-pallet' },
     },
-    commitment: [
-      { title: 'Instituto Trust', description: 'O esporte como ferramenta de inclusão e desenvolvimento social.' },
-      {
+    commitment: {
+      'instituto-trust': { title: 'Instituto Trust', description: 'O esporte como ferramenta de inclusão e desenvolvimento social.' },
+      'ethics': {
         title: 'Ética, compliance e sustentabilidade',
         description: 'Padrões compartilhados em todo o grupo, avaliados por organizações independentes.',
       },
-    ],
+    },
   },
 
   solutions: {
-    solutions: [
-      {
+    solutions: {
+      'sourcing': {
         title: 'Prospecção e negociação com fornecedores',
         description:
           'Identificamos e desenvolvemos fabricantes qualificados na Ásia, na Europa e no Oriente Médio, e negociamos preço, prazos e condições de pagamento, com possibilidade de linha de crédito.',
       },
-      {
+      'quality': {
         title: 'Avaliação da qualidade dos fornecedores',
         description:
           'Qualificação técnica de cada fornecedor antes do primeiro embarque: análise de especificações, documentação e controle de qualidade confiável na origem.',
       },
-      {
+      'process': {
         title: 'Gestão de processos',
         description:
           'Gerenciamos todo o trânsito internacional até a chegada ao porto de destino, com acompanhamento de KPIs em relação ao SLA acordado.',
       },
-      {
+      'door-to-door': {
         title: 'Controle porta a porta',
         description:
           'Retirada no porto, armazenagem e entrega no destino final por meio do Trust Group, com um único ponto de contato para toda a operação.',
       },
-      {
+      'on-demand': {
         title: 'Sourcing sob demanda',
         description:
           'Procura um produto fora do nosso portfólio, mesmo em outro segmento? Localizamos os fornecedores que melhor atendem à sua especificação.',
       },
-      {
+      'accessory': {
         title: 'Serviços acessórios',
         description:
           'Auditoria de fornecedores, consolidação de fornecedores, testes laboratoriais e inspeção de produtos, disponíveis como serviços independentes.',
       },
-    ],
-    accessoryServices: ['Auditoria de fornecedores', 'Consolidação de fornecedores', 'Testes laboratoriais', 'Inspeção de produtos'],
-    processSteps: [
-      { title: 'Sua necessidade', description: 'Produto, especificação técnica, número CAS, uso final e volume anual.' },
-      {
+    },
+    accessoryServices: {'audit': 'Auditoria de fornecedores', 'consolidation': 'Consolidação de fornecedores', 'lab': 'Testes laboratoriais', 'inspection': 'Inspeção de produtos'},
+    processSteps: {
+      'requirement': { title: 'Sua necessidade', description: 'Produto, especificação técnica, número CAS, uso final e volume anual.' },
+      'offer': {
         title: 'Oferta e negociação',
         description: 'Você recebe uma oferta estruturada com preço, Incoterm, prazo de entrega e condições de pagamento.',
       },
-      {
+      'shipment': {
         title: 'Embarque e trânsito',
         description:
           'Controle de qualidade na origem, reserva de carga, documentação e trânsito internacional, com acompanhamento de acordo com o SLA estabelecido.',
       },
-      {
+      'delivery': {
         title: 'Desembaraço e entrega',
         description: 'Desembaraço aduaneiro, armazenagem e entrega na sua fábrica por meio das empresas do Trust Group.',
       },
-    ],
-    riskPillars: [
-      {
+    },
+    riskPillars: {
+      'compliance': {
         title: 'Conformidade regulatória',
         description:
           'Produtos controlados pela Polícia Federal, Polícia Civil, Exército, IBAMA, MAPA ou ANVISA são tratados com as licenças que cada elo da cadeia exige.',
       },
-      {
+      'dangerous-goods': {
         title: 'Produtos perigosos',
         description:
           'Cargas classificadas pela IMO embarcadas com a embalagem correta, Fichas de Dados de Segurança e documentação de resposta a emergências.',
       },
-      {
+      'quality': {
         title: 'Qualidade na origem',
         description: 'Qualificação de fornecedores, inspeção pré-embarque e testes laboratoriais antes de a carga deixar o porto.',
       },
-      {
+      'payments': {
         title: 'Pagamentos e condições',
         description: 'Condições de pagamento estruturadas e opções de financiamento que protegem o seu fluxo de caixa e a operação.',
       },
-    ],
-    lookingFor: [
-      { title: 'Um parceiro confiável', description: 'Transparente, em conformidade e consistente em cada negociação.' },
-      { title: 'Relacionamentos de longo prazo', description: 'Parcerias pensadas para crescer ao longo de muitos anos, não negócios isolados.' },
-      { title: 'Uma abordagem prática', description: 'Colaboração estreita em especificações, documentação e logística.' },
-      { title: 'Produtos de qualidade', description: 'Qualidade estável e certificada, que atende às especificações industriais.' },
-      { title: 'Entrega no prazo', description: 'Planejamento de produção confiável e embarques dentro do prazo.' },
-    ],
+    },
+    lookingFor: {
+      'partner': { title: 'Um parceiro confiável', description: 'Transparente, em conformidade e consistente em cada negociação.' },
+      'long-term': { title: 'Relacionamentos de longo prazo', description: 'Parcerias pensadas para crescer ao longo de muitos anos, não negócios isolados.' },
+      'hands-on': { title: 'Uma abordagem prática', description: 'Colaboração estreita em especificações, documentação e logística.' },
+      'quality': { title: 'Produtos de qualidade', description: 'Qualidade estável e certificada, que atende às especificações industriais.' },
+      'on-time': { title: 'Entrega no prazo', description: 'Planejamento de produção confiável e embarques dentro do prazo.' },
+    },
     audiences: {
       buyers: {
         eyebrow: 'Para indústrias e distribuidores',
         title: 'Importe a sua própria linha de produtos com um parceiro global',
-        items: [
-          'Acesso a novas origens e produtos de fornecedores qualificados',
-          'Insumos para setores com exigências técnicas e regulatórias rigorosas',
-          'Planejamento tributário e logístico para otimizar custos e fluxo de caixa',
-          'Acompanhamento de ponta a ponta, da compra na origem à entrega na sua fábrica',
-        ],
+        items: {
+          'new-origins': 'Acesso a novas origens e produtos de fornecedores qualificados',
+          'demanding-sectors': 'Insumos para setores com exigências técnicas e regulatórias rigorosas',
+          'tax-logistics': 'Planejamento tributário e logístico para otimizar custos e fluxo de caixa',
+          'end-to-end': 'Acompanhamento de ponta a ponta, da compra na origem à entrega na sua fábrica',
+        },
         cta: 'Solicitar cotação',
       },
       suppliers: {
         eyebrow: 'Para fornecedores internacionais',
         title: 'Entre no Brasil e na América Latina com um parceiro que conhece o mercado',
-        items: [
-          'Entrada no mercado respaldada por expertise técnica, regulatória e logística',
-          'Estrutura logística licenciada no Brasil para produtos controlados',
-          'Visibilidade em tempo real de cada operação de comércio exterior',
-          'Parcerias de longo prazo desenhadas para cada produto e mercado',
-        ],
+        items: {
+          'market-entry': 'Entrada no mercado respaldada por expertise técnica, regulatória e logística',
+          'licensed-logistics': 'Estrutura logística licenciada no Brasil para produtos controlados',
+          'visibility': 'Visibilidade em tempo real de cada operação de comércio exterior',
+          'long-term': 'Parcerias de longo prazo desenhadas para cada produto e mercado',
+        },
         cta: 'Seja um fornecedor',
       },
     },
