@@ -75,7 +75,7 @@ export type Translation = {
   }
 
   credibility: {
-    certifications: ById<CertificationId, Pick2<Certification, 'title' | 'holder' | 'description'> & { badgeAlt?: string }>
+    certifications: ById<CertificationId, Pick2<Certification, 'title' | 'holder' | 'description'> & { badgeAlt?: string; badgeAlts?: string[] }>
     taglog: {
       licensed: string
       hubs: ById<TaglogHubId, Pick2<TaglogHub, 'site' | 'area' | 'pallets' | 'access'>>

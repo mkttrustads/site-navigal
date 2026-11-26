@@ -182,6 +182,10 @@ for (const locale of LOCALES) {
   // Selo da certificação: o alt precisa existir quando há selo.
   for (const cert of en.credibility.certifications) {
     if (cert.badge && !tr.credibility.certifications[cert.id]?.badgeAlt) fail(locale, `credibility.certifications.${cert.id}: falta o badgeAlt (alt do selo)`)
+    if (cert.badges) {
+      const alts = tr.credibility.certifications[cert.id]?.badgeAlts
+      if (!Array.isArray(alts) || alts.length !== cert.badges.length || alts.some((a) => !String(a).trim())) fail(locale, `credibility.certifications.${cert.id}: badgeAlts precisa ter ${cert.badges.length} alt(s) preenchido(s)`)
+    }
   }
 
   // --- Prosa em ordem (mesma quantidade de linhas) ---

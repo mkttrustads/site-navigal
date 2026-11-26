@@ -305,7 +305,21 @@ export function CertificationsSection() {
       <Reveal className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((item) => (
           <RevealItem key={item.id} className="rounded-card border border-linha bg-white p-7">
-            {item.badge ? (
+            {item.badges ? (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                {item.badges.map((badge, i) => (
+                  <Image
+                    key={badge.src}
+                    src={badge.src}
+                    alt={item.badgeAlts?.[i] ?? item.title}
+                    width={badge.width}
+                    height={badge.height}
+                    sizes="140px"
+                    className={`${badge.size === 'md' ? 'h-16' : 'h-12'} w-auto max-w-full`}
+                  />
+                ))}
+              </div>
+            ) : item.badge ? (
               <Image
                 src={item.badge}
                 alt={item.badgeAlt ?? item.title}

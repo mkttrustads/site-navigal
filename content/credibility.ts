@@ -18,6 +18,9 @@ export type Certification = {
   /** Selo exibido no lugar do ícone. */
   badge?: string
   badgeAlt?: string
+  /** Vários selos no mesmo card (substituem o ícone). `badgeAlts` segue a mesma ordem e é traduzido em content/i18n/*. */
+  badges?: { src: string; width: number; height: number; size: 'md' | 'sm' }[]
+  badgeAlts?: string[]
 }
 export const certifications: Certification[] = [
   {
@@ -44,6 +47,14 @@ export const certifications: Certification[] = [
     title: 'SASSMAQ and ISO 9001',
     holder: 'Taglog Logística Integrada, a Trust Group company',
     description: 'Safety, health, environment and quality standards in logistics operations.',
+    badges: [
+      { src: '/brand/sassmaq-empresa-aprovada.webp', width: 256, height: 192, size: 'md' },
+      { src: '/brand/iso-9001-bureau-veritas.webp', width: 256, height: 97, size: 'sm' },
+    ],
+    badgeAlts: [
+      'SASSMAQ seal – Approved company (Safety, Health, Environment and Quality Assessment System)',
+      'ISO 9001 certification seal – Bureau Veritas',
+    ],
   },
 ]
 
