@@ -7,6 +7,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion
 import { revealUp, staggerContainer, staticReveal } from '@/lib/motion-variants'
 import CoverOverlay from '@/components/ui/CoverOverlay'
 import { useI18n } from '@/lib/i18n/I18nProvider'
+import { cn } from '@/lib/utils'
 
 type Crumb = { name: string; path: string }
 
@@ -20,12 +21,18 @@ export default function PageHero({
   subtitle,
   breadcrumb,
   imageClassName = 'object-cover',
+  titleClassName = 'max-w-3xl',
+  subtitleClassName = 'max-w-2xl',
 }: {
   image: string
   /** Enquadramento da foto (ex.: `object-cover object-[60%_45%]`). Padrão: centralizada. */
   imageClassName?: string
   title: string
   subtitle: string
+  /** Largura máxima do H1 (padrão `max-w-3xl`). Títulos longos podem alargar para fechar em duas linhas. */
+  titleClassName?: string
+  /** Largura máxima do subtítulo (padrão `max-w-2xl`). */
+  subtitleClassName?: string
   breadcrumb: Crumb[]
 }) {
   const { t } = useI18n()
@@ -72,10 +79,11 @@ export default function PageHero({
             })}
           </ol>
         </motion.nav>
-        <motion.h1 variants={item} className="hero-title mt-7 max-w-3xl text-balance text-white sm:mt-8">
+        <motion.h1 variants={item} className={cn('hero-title mt-7 text-balance text-white sm:mt-8', titleClassName)}>
           {title}
         </motion.h1>
-        <motion.p variants={item} className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-white/80 sm:mt-10 sm:text-xl">
+        <motion.p variants={item} className={cn('mt-8 text-pretty text-lg leading-relaxed text-white/80 sm:mt-10 sm:text-xl', subtitleClassName)}
+        >
           {subtitle}
         </motion.p>
       </motion.div>

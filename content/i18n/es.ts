@@ -108,11 +108,8 @@ export const es: Translation = {
       'El suministro internacional de productos regulados y peligrosos exige más que un buen precio. Gobernamos los riesgos que importan a la industria, para que cada embarque llegue en cumplimiento, dentro de la especificación y a tiempo.',
     'solutions.who.title': 'Pensada para ambos lados de la negociación',
 
-    'products.hero.title': 'Nuestro portafolio de productos',
-    'products.hero.subtitle': 'Principales productos que suministramos hoy.',
-    'products.intro.eyebrow': 'Crezcamos juntos',
-    'products.intro.title': 'Materias primas de excelencia para numerosos sectores industriales',
-    'products.intro.intro':
+    'products.hero.title': 'Materias primas de excelencia para numerosos sectores industriales',
+    'products.hero.subtitle':
       'Para estos productos contamos con experiencia comprobada y podemos ofrecer las mejores condiciones de importación. Trabajamos con fabricantes reconocidos y ofrecemos control de calidad confiable y apoyo financiero.',
     'products.onDemand.eyebrow': 'Sourcing a pedido',
     'products.onDemand.title': '¿Busca un producto que no figura en la lista?',
