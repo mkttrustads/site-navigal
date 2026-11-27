@@ -106,7 +106,7 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
       data-step={activeStep}
       style={headHeight !== null && isSticky ? ({ '--ns-head-h': `${headHeight}px` } as CSSProperties) : undefined}
     >
-      {/* "Palco" do mapa-fundo: título + passos. A frase de destaque fica abaixo dele, já sem mapa por trás. */}
+      {/* "Palco" do mapa-fundo: título + passos. */}
       <div className="ns-stage relative">
         <div ref={headRef} className="ns-head lg:pointer-events-auto">
           <SectionHeading
@@ -154,7 +154,6 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
           </div>
         </div>
       </div>
-      <p className="mt-6 max-w-3xl text-balance text-2xl font-semibold leading-snug text-preto md:mt-10 md:text-3xl">{t('home.network.highlight')}</p>
     </Section>
   )
 }
