@@ -143,15 +143,13 @@ const TRUST_GROUP_LOGO = {
 }
 
 /**
- * Big Numbers (About, logo abaixo de "Por que a Navigal existe"): sem título nem texto de apoio;
- * uma única faixa com cinco blocos, na ordem: logo do Trust Group + quatro indicadores (só número
- * e descrição, sem ícone, card, borda ou sombra). Todos os blocos são centralizados verticalmente
- * (`items-center`) e compartilham a mesma grade, então o espaçamento é uniforme.
- * Desktop (≥1024px): uma linha só, logo à esquerda (coluna fixa) e os 4 indicadores em colunas iguais.
- * Tablet (≥768px): logo centralizada acima de uma linha com os 4 indicadores.
- * Mobile: logo centralizada acima de uma grade de 2 colunas. Nos indicadores, o CSS global
- * (`.text-center` → esquerda em <640px, app/globals.css) alinha à esquerda, como nos demais blocos
- * do site; a logo é um flex centralizado (não depende de `text-align`).
+ * Big Numbers (About, logo abaixo de "Por que a Navigal existe"): sem título nem texto de apoio; logo do
+ * Trust Group centralizada no topo e, abaixo, os 7 indicadores (só número e descrição, sem ícone, card,
+ * borda ou sombra). Os indicadores vêm de `bigNumbers`, a única fonte desses números no site.
+ * Grade de 8 colunas em ≥768px: cada indicador ocupa 2, então a 1ª linha tem 4 e a 2ª tem 3, centralizada
+ * (o 5º item começa na coluna 2). Mobile: 2 colunas; o 7º indicador ocupa a linha inteira, para não sobrar
+ * um item solto. Em <640px o CSS global (`.text-center` → esquerda, app/globals.css) alinha os indicadores
+ * à esquerda, como nos demais blocos do site; a logo é um flex centralizado (não depende de `text-align`).
  * A nota do ranking, centralizada abaixo, é a mesma da seção de certificações.
  */
 export function BigNumbersSection() {
@@ -159,9 +157,9 @@ export function BigNumbersSection() {
     content: { bigNumbers, rankingFootnote },
   } = useI18n()
   return (
-    <Section tone="muted" className="py-8 sm:py-10">
-      <Reveal className="grid grid-cols-2 items-center gap-x-6 gap-y-6 md:grid-cols-4 lg:grid-cols-[9rem_repeat(4,minmax(0,1fr))] lg:gap-x-8">
-        <RevealItem className="col-span-2 flex items-center justify-center md:col-span-4 lg:col-span-1">
+    <Section tone="muted" className="py-10 sm:py-12">
+      <Reveal className="grid grid-cols-2 items-start gap-x-6 gap-y-8 md:grid-cols-8 md:gap-y-10 lg:gap-x-8">
+        <RevealItem className="col-span-2 flex items-center justify-center md:col-span-8">
           <Image
             src={TRUST_GROUP_LOGO.src}
             alt="Trust Group"
@@ -170,19 +168,24 @@ export function BigNumbersSection() {
             className={TRUST_GROUP_LOGO.className}
           />
         </RevealItem>
-        {bigNumbers.map((item) => (
-          <RevealItem key={item.id} className="flex flex-col items-center text-center">
+        {bigNumbers.map((item, index) => (
+          <RevealItem
+            key={item.id}
+            className={`flex flex-col items-center text-center md:col-span-2 ${index === 4 ? 'md:col-start-2' : ''} ${
+              index === bigNumbers.length - 1 ? 'col-span-2' : ''
+            }`}
+          >
             <CountUp
               to={item.count}
               prefix={item.prefix}
               suffix={item.suffix}
-              className="stat-numeral block text-[clamp(1.75rem,3.4vw,3rem)] font-bold leading-none tracking-tight text-cobalto md:whitespace-nowrap lg:text-[clamp(1.75rem,2.9vw,2.5rem)]"
+              className="stat-numeral block whitespace-nowrap text-[clamp(1.75rem,3.4vw,3rem)] font-bold leading-none tracking-tight text-cobalto lg:text-[clamp(1.75rem,2.9vw,2.5rem)]"
             />
             <p className="mt-2 max-w-[16rem] text-pretty text-sm leading-snug text-suave sm:text-base">{item.label}</p>
           </RevealItem>
         ))}
       </Reveal>
-      <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
+      <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
     </Section>
   )
 }
@@ -195,14 +198,14 @@ function SlideEyebrow({ children }: { children: string }) {
 }
 
 /**
- * "Parte do Trust Group": carrossel de 3 slides (contexto, números, empresas)
+ * "Parte do Trust Group": carrossel de 2 slides (contexto, empresas; os números ficam nos Big Numbers)
  * à esquerda e montagem de 3 fotos à direita (1 grande + 2 menores).
  * Mobile/tablet: carrossel primeiro, montagem depois.
  */
 export function TrustGroupSection() {
   const {
     t,
-    content: { rankingFootnote, trustGroupFacts, trustGroupLines },
+    content: { trustGroupLines },
   } = useI18n()
 
   const slides = [
@@ -220,21 +223,7 @@ export function TrustGroupSection() {
       />
     </div>,
 
-    // 2. Números e estrutura
-    <div key="facts">
-      <SlideEyebrow>{t('trust.eyebrow')}</SlideEyebrow>
-      <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3">
-        {trustGroupFacts.map((fact) => (
-          <div key={fact.id} className="flex flex-col">
-            <dt className="mt-1 text-sm leading-snug text-suave">{fact.label}</dt>
-            <dd className="stat-numeral order-first text-3xl font-bold text-preto">{fact.value}</dd>
-          </div>
-        ))}
-      </dl>
-      <p className="mt-6 text-xs leading-relaxed text-suave">{rankingFootnote}</p>
-    </div>,
-
-    // 3. Ecossistema de empresas
+    // 2. Ecossistema de empresas
     <div key="lines">
       <SlideEyebrow>{t('trust.eyebrow')}</SlideEyebrow>
       <h3 className="mt-4 text-lg leading-snug">{trustGroupLines.title}</h3>

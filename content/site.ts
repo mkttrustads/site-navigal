@@ -52,24 +52,11 @@ export const facts = {
 export const rankingFootnote =
   '*Among 8,200+ importers (FOB, US$), excluding pesticides and fuels. Public import data, Aug/25 to Jul/26.'
 
-// Seção "Part of Trust Group". A apresentação não traz o "14M+ investido em
-// tecnologia" (moeda indefinida), por isso não é publicado.
-export type TrustGroupFactId = 'years' | 'employees' | 'warehousing' | 'routes' | 'certifications' | 'ranking'
-export type TrustGroupFact = { id: TrustGroupFactId; value: string; label: string }
-export const trustGroupFacts: TrustGroupFact[] = [
-  { id: 'years', value: '20+', label: 'years in the market' },
-  { id: 'employees', value: '300+', label: 'employees' },
-  { id: 'warehousing', value: '80k+ m²', label: 'of warehousing' },
-  { id: 'routes', value: '65+', label: 'international routes' },
-  { id: 'certifications', value: '10+', label: 'certifications and seals' },
-  { id: 'ranking', value: 'Top 35*', label: 'chemical importers in Brazil (Trust Group)' },
-]
-
-// Big Numbers do topo da página About (logo abaixo da capa). Fonte: apresentação institucional.
+// Big Numbers da página About (logo abaixo de "Por que a Navigal existe"), já com os números que eram da seção "Parte do Trust Group". Fonte: apresentação institucional.
 // O número exibido é `prefix` + `count` + `suffix`; só `count` é animado (contagem ao entrar na tela).
 // `prefix`/`suffix` e `count` valem para os três idiomas; só o `label` é traduzido (content/i18n/*).
 // `footnote: true` marca o item que remete à nota do ranking (`rankingFootnote`, a mesma da seção de certificações).
-export type BigNumberId = 'years' | 'people' | 'ranking' | 'revenue'
+export type BigNumberId = 'years' | 'people' | 'warehousing' | 'routes' | 'certifications' | 'ranking' | 'revenue'
 export type BigNumber = {
   id: BigNumberId
   icon: string
@@ -82,6 +69,9 @@ export type BigNumber = {
 export const bigNumbers: BigNumber[] = [
   { id: 'years', icon: 'medal', prefix: '', count: 20, suffix: '+', label: 'Years in the market' },
   { id: 'people', icon: 'users', prefix: '', count: 300, suffix: '+', label: 'People across the group' },
+  { id: 'warehousing', icon: 'package', prefix: '', count: 80, suffix: 'k+ m²', label: 'Of warehousing' },
+  { id: 'routes', icon: 'route', prefix: '', count: 65, suffix: '+', label: 'International routes' },
+  { id: 'certifications', icon: 'badgeCheck', prefix: '', count: 10, suffix: '+', label: 'Certifications and seals' },
   { id: 'ranking', icon: 'trophy', prefix: 'Top ', count: 35, suffix: '', label: 'Chemical importers in Brazil*', footnote: true },
   { id: 'revenue', icon: 'barChart', prefix: 'US$ ', count: 100, suffix: 'M+', label: 'Trust Group revenue in 2024' },
 ]
