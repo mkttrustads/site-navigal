@@ -19,25 +19,24 @@ export default function WhatWeDo() {
   const { t } = useI18n()
 
   return (
-    <Section>
-      {/* Imagem à esquerda, conteúdo à direita a partir de lg. Abaixo disso a imagem vai para cima do texto. */}
-      <div className="grid items-stretch gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 xl:gap-20">
-        {/*
-          Mobile/tablet: proporção fixa (quadrada → 4:3 em telas médias). Em lg a coluna estica
-          até a altura do conteúdo; o recorte já vem enquadrado em navio + guindastes + contêineres,
-          e `object-cover` mantém o foco ao variar a proporção.
-        */}
-        <div className="relative aspect-square overflow-hidden rounded-card sm:aspect-[4/3] lg:aspect-auto lg:min-h-[26rem]">
+    <Section className="py-0 sm:py-0" containerClassName="!max-w-none !px-0">
+      {/*
+        Imagem "sangrada": ocupa a altura inteira da seção (topo ao fim) e encosta na borda esquerda da tela.
+        O conteúdo da direita mantém o alinhamento do container do site (`max-w-site` + `px-6`).
+        Abaixo de lg a imagem vai para cima do texto, em largura total.
+      */}
+      <div className="grid items-stretch lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="relative aspect-square overflow-hidden sm:aspect-[4/3] lg:aspect-auto lg:min-h-[28rem]">
           <Image
             src="/images/port-container-ship.webp"
             alt={t('home.what.imageAlt')}
             fill
-            sizes="(min-width: 1024px) 40vw, 100vw"
+            sizes="(min-width: 1024px) 42vw, 100vw"
             className="object-cover object-[40%_50%]"
           />
         </div>
 
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center px-6 py-16 sm:py-20 lg:py-28 lg:pl-14 lg:pr-[max(1.5rem,calc((100vw-76rem)/2+1.5rem))] xl:pl-20">
           <SectionHeading eyebrow={t('home.what.eyebrow')} title={t('home.what.title')} />
 
           <Reveal className="mt-10 grid gap-4">
