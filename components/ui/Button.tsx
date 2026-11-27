@@ -9,6 +9,8 @@ type BaseProps = {
   variant?: 'primary' | 'outline' | 'dark' | 'link'
   arrow?: boolean
   className?: string
+  /** Identificador para medição futura (ex.: "hero-supplier"). Só vira atributo `data-cta`; não instala nenhuma ferramenta. */
+  'data-cta'?: string
 }
 
 type ButtonAsLink = BaseProps & { href: string; onClick?: never }
@@ -25,7 +27,7 @@ const variantClasses: Record<NonNullable<BaseProps['variant']>, string> = {
 const baseClasses =
   'group inline-flex items-center justify-center gap-2 rounded-card px-7 py-3.5 font-body text-base font-semibold transition-colors duration-200'
 
-export default function Button({ children, variant = 'primary', arrow, className, href, ...rest }: ButtonProps) {
+export default function Button({ children, variant = 'primary', arrow, className, href, 'data-cta': dataCta, ...rest }: ButtonProps) {
   const classes = cn(baseClasses, variantClasses[variant], className)
   const content = (
     <>
@@ -39,14 +41,14 @@ export default function Button({ children, variant = 'primary', arrow, className
   if (href) {
     const isExternal = /^https?:\/\//.test(href)
     return (
-      <Link href={href} className={classes} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+      <Link href={href} className={classes} data-cta={dataCta} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         {content}
       </Link>
     )
   }
 
   return (
-    <button className={classes} {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}>
+    <button className={classes} data-cta={dataCta} {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}>
       {content}
     </button>
   )
