@@ -110,7 +110,6 @@ const latamFan: { dx: number; dy: number; bend: number }[] = [
   { dx: -7, dy: -7, bend: 0.1 },
   { dx: -8.5, dy: -1.5, bend: 0.1 },
   { dx: -6, dy: 5.5, bend: 0.1 },
-  { dx: -1.5, dy: 8.5, bend: 0.1 },
 ]
 
 const css = (vars: Record<string, string | number>) => vars as CSSProperties
