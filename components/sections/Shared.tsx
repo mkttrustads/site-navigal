@@ -370,11 +370,10 @@ export function TaglogSection() {
 
 /**
  * "Our commitment" (About): conteúdo institucional à esquerda (título, blocos Ética/Compliance e
- * Instituto Trust e faixa de selos) e foto vertical do Instituto Trust à direita. Mesma lógica da
- * "We handle the hard parts" (Home), espelhada: a foto é "sangrada", ocupa a altura inteira da
- * seção (topo ao fim) e encosta na borda direita da tela; o texto mantém o alinhamento do container
- * (`max-w-site` + `px-6`). A ordem do DOM é a do mobile (texto, selos e, por último, a foto, em
- * largura total); no desktop a foto fica na coluna da direita (lg:col-start-2).
+ * Instituto Trust e faixa de selos) e foto do Instituto Trust à direita, em formato quase quadrado,
+ * contida no container (`max-w-site` + `px-6`) e centralizada verticalmente em relação ao texto.
+ * A ordem do DOM é a do mobile (texto, selos e, por último, a foto, em largura total); no desktop
+ * a foto fica na coluna da direita (lg:col-start-2). O recorte (object-position) preserva as pessoas.
  */
 export function CommitmentSection() {
   const {
@@ -382,14 +381,14 @@ export function CommitmentSection() {
     content: { commitment, commitmentSeals },
   } = useI18n()
   return (
-    <Section className="py-0 sm:py-0" containerClassName="!max-w-none !px-0">
-      <div className="grid items-stretch lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="px-6 py-16 sm:py-20 lg:col-start-1 lg:row-start-1 lg:py-28 lg:pl-[max(1.5rem,calc((100vw-76rem)/2+1.5rem))] lg:pr-14 xl:pr-20">
+    <Section className="py-14 sm:py-16 lg:py-20">
+      <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] xl:gap-20">
+        <div className="lg:col-start-1 lg:row-start-1">
           <SectionHeading eyebrow={t('commitment.eyebrow')} title={t('commitment.title')} />
 
-          <Reveal className="mt-12 divide-y divide-linha border-y border-linha">
+          <Reveal className="mt-10 divide-y divide-linha border-y border-linha">
             {commitment.map((item) => (
-              <RevealItem key={item.id} className="grid gap-4 py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-6">
+              <RevealItem key={item.id} className="grid gap-4 py-6 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-6">
                 <span className="flex h-12 w-12 items-center justify-center rounded-card bg-cobalto/10 text-cobalto">
                   <Icon name={item.icon} className="h-6 w-6" />
                 </span>
@@ -404,7 +403,7 @@ export function CommitmentSection() {
               </RevealItem>
             ))}
           </Reveal>
-          <div className="mt-12 lg:flex lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-4">
+          <div className="mt-10 lg:flex lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-4">
             <p className="eyebrow shrink-0 text-suave">{t('commitment.sealsTitle')}</p>
             {/* Selos 30% menores que o original (4.5/5.25/5.75rem x 0,7) e agrupados à esquerda,
                 logo ao lado do rótulo, em vez de distribuídos pela largura da seção. */}
@@ -425,13 +424,13 @@ export function CommitmentSection() {
           </div>
         </div>
 
-        <div className="relative aspect-[5/6] overflow-hidden sm:aspect-[4/3] lg:col-start-2 lg:row-start-1 lg:aspect-auto lg:min-h-[28rem]">
+        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-card sm:aspect-[5/4] sm:max-w-lg lg:col-start-2 lg:row-start-1 lg:mx-0 lg:aspect-square lg:max-w-none">
           <Image
             src="/images/instituto-trust-criancas.webp"
             alt={t('commitment.imageAlt')}
             fill
-            sizes="(min-width: 1024px) 38vw, 100vw"
-            className="object-cover object-[40%_center]"
+            sizes="(min-width: 1280px) 416px, (min-width: 1024px) 352px, (min-width: 640px) 512px, 100vw"
+            className="object-cover object-[50%_32%]"
           />
         </div>
       </div>
