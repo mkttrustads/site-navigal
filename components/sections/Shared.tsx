@@ -436,10 +436,12 @@ export function TaglogSection() {
 }
 
 /**
- * "Our commitment" (About): conteúdo institucional à esquerda (título e blocos Ética/Compliance e
- * Instituto Trust), foto vertical do Instituto Trust à direita e, abaixo das duas colunas, a faixa
- * de selos. A ordem do DOM é a do mobile: título, blocos, selos e, por último, a foto; no desktop
- * a foto sobe para a coluna da direita (lg:col-start-2 / lg:row-start-1).
+ * "Our commitment" (About): conteúdo institucional à esquerda (título, blocos Ética/Compliance e
+ * Instituto Trust e faixa de selos) e foto vertical do Instituto Trust à direita. Mesma lógica da
+ * "We handle the hard parts" (Home), espelhada: a foto é "sangrada", ocupa a altura inteira da
+ * seção (topo ao fim) e encosta na borda direita da tela; o texto mantém o alinhamento do container
+ * (`max-w-site` + `px-6`). A ordem do DOM é a do mobile (texto, selos e, por último, a foto, em
+ * largura total); no desktop a foto fica na coluna da direita (lg:col-start-2).
  */
 export function CommitmentSection() {
   const {
@@ -447,9 +449,9 @@ export function CommitmentSection() {
     content: { commitment, commitmentSeals },
   } = useI18n()
   return (
-    <Section>
-      <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] xl:grid-cols-[minmax(0,1fr)_minmax(0,28rem)]">
-        <div className="lg:col-start-1 lg:row-start-1">
+    <Section className="py-0 sm:py-0" containerClassName="!max-w-none !px-0">
+      <div className="grid items-stretch lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="px-6 py-16 sm:py-20 lg:col-start-1 lg:row-start-1 lg:py-28 lg:pl-[max(1.5rem,calc((100vw-76rem)/2+1.5rem))] lg:pr-14 xl:pr-20">
           <SectionHeading eyebrow={t('commitment.eyebrow')} title={t('commitment.title')} />
 
           <Reveal className="mt-12 divide-y divide-linha border-y border-linha">
@@ -469,34 +471,33 @@ export function CommitmentSection() {
               </RevealItem>
             ))}
           </Reveal>
+          <div className="mt-12 lg:flex lg:flex-wrap lg:items-center lg:gap-x-8 lg:gap-y-4">
+            <p className="eyebrow shrink-0 text-suave">{t('commitment.sealsTitle')}</p>
+            {/* Selos 30% menores que o original (4.5/5.25/5.75rem x 0,7) e agrupados à esquerda,
+                logo ao lado do rótulo, em vez de distribuídos pela largura da seção. */}
+            <ul className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-5 [--seal-size:3.15rem] sm:gap-x-5 sm:[--seal-size:3.675rem] lg:mt-0 lg:[--seal-size:4.025rem]">
+              {commitmentSeals.map((seal) => (
+                <li key={seal.id} className="flex items-center">
+                  <Image
+                    src={seal.src}
+                    alt={seal.alt}
+                    width={seal.width}
+                    height={seal.height}
+                    sizes="(min-width: 1024px) 180px, 140px"
+                    style={{ height: `calc(var(--seal-size) * ${seal.scale})`, width: 'auto' }}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="lg:col-span-2 lg:row-start-2 lg:flex lg:items-center lg:gap-8">
-          <p className="eyebrow shrink-0 text-suave">{t('commitment.sealsTitle')}</p>
-          {/* Selos 30% menores que o original (4.5/5.25/5.75rem x 0,7) e agrupados à esquerda,
-              logo ao lado do rótulo, em vez de distribuídos pela largura da seção. */}
-          <ul className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-5 [--seal-size:3.15rem] sm:gap-x-5 sm:[--seal-size:3.675rem] lg:mt-0 lg:[--seal-size:4.025rem]">
-            {commitmentSeals.map((seal) => (
-              <li key={seal.id} className="flex items-center">
-                <Image
-                  src={seal.src}
-                  alt={seal.alt}
-                  width={seal.width}
-                  height={seal.height}
-                  sizes="(min-width: 1024px) 180px, 140px"
-                  style={{ height: `calc(var(--seal-size) * ${seal.scale})`, width: 'auto' }}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="relative mx-auto aspect-[5/6] w-full max-w-sm overflow-hidden rounded-card sm:max-w-md lg:col-start-2 lg:row-start-1 lg:mx-0 lg:aspect-auto lg:min-h-[28rem] lg:max-w-none">
+        <div className="relative aspect-[5/6] overflow-hidden sm:aspect-[4/3] lg:col-start-2 lg:row-start-1 lg:aspect-auto lg:min-h-[28rem]">
           <Image
             src="/images/instituto-trust-criancas.webp"
             alt={t('commitment.imageAlt')}
             fill
-            sizes="(min-width: 1280px) 448px, (min-width: 1024px) 384px, (min-width: 640px) 448px, 384px"
+            sizes="(min-width: 1024px) 38vw, 100vw"
             className="object-cover object-[40%_center]"
           />
         </div>
