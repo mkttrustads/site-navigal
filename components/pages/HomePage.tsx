@@ -3,7 +3,8 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import HomeHero from '@/components/sections/HomeHero'
-import { CtaBand, IndustriesCarousel } from '@/components/sections/Shared'
+import { CtaBand } from '@/components/sections/Shared'
+import { IndustriesMarquee } from '@/components/sections/IndustriesMarquee'
 import NetworkStory from '@/components/sections/NetworkStory'
 import WhatWeDo from '@/components/sections/WhatWeDo'
 import Section, { SectionHeading } from '@/components/ui/Section'
@@ -18,6 +19,11 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
   return (
     <>
       <HomeHero />
+
+      {/* Setores: faixa contínua logo abaixo da capa, de ponta a ponta (sem o container central). */}
+      <Section tone="muted" className="py-8 sm:py-10" containerClassName="!max-w-none !px-0">
+        <IndustriesMarquee />
+      </Section>
 
       <Section>
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
@@ -73,18 +79,6 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
       <NetworkStory map={routeMap} />
 
       <WhatWeDo />
-
-      <Section tone="muted">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow={t('common.industries')} title={t('home.industries.title')} />
-          <Button href="/products" variant="link" arrow className="shrink-0">
-            {t('home.industries.link')}
-          </Button>
-        </div>
-        <div className="mt-10">
-          <IndustriesCarousel />
-        </div>
-      </Section>
 
       <CtaBand
         title={t('home.cta.title')}

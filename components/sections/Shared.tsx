@@ -1,9 +1,7 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowUpRight, Check, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Check } from 'lucide-react'
 import Section, { SectionHeading } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import Carousel from '@/components/ui/Carousel'
@@ -36,117 +34,6 @@ export function SolutionsGrid({ limit }: { limit?: number }) {
         </RevealItem>
       ))}
     </Reveal>
-  )
-}
-
-const ARROW_CLASS =
-  'flex h-10 w-10 items-center justify-center rounded-card border border-preto/15 text-preto transition-colors hover:border-cobalto hover:bg-cobalto hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalto disabled:pointer-events-none disabled:opacity-35'
-
-/**
- * Setores em carrossel horizontal de uma linha (Home). Mesmos cards do antigo grid (cores, borda, ícone,
- * tipografia, contagem de produtos, hover e link para `/products?industry=`), agora numa faixa rolável.
- *
- * - Rolagem nativa com `scroll-snap`: o swipe no toque, a inércia e a acessibilidade vêm do navegador; as
- *   setas só chamam `scrollBy` (transição suave, sem autoplay) e ficam desabilitadas nas pontas.
- * - Cards visíveis: 1 (com "espiada" do próximo) no mobile estreito, 2 (≥480px), 3 (≥640px), 4 (≥768px)
- *   e 6 (≥1024px). Cada clique nas setas avança uma "página" (a quantidade visível naquele momento).
- * - Altura uniforme: os cards são flex items do mesmo contêiner (stretch) com `h-full` e `min-h` fixo.
- * - Setas abaixo dos cards, à direita, no mesmo estilo das setas do `Carousel` (Trust Group).
- */
-export function IndustriesCarousel() {
-  const {
-    t,
-    content: { industries, productsForIndustry },
-  } = useI18n()
-  const trackRef = useRef<HTMLUListElement>(null)
-  const [edges, setEdges] = useState({ start: true, end: false })
-
-  const updateEdges = useCallback(() => {
-    const track = trackRef.current
-    if (!track) return
-    const start = track.scrollLeft <= 1
-    const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1
-    setEdges((prev) => (prev.start === start && prev.end === end ? prev : { start, end }))
-  }, [])
-
-  useEffect(() => {
-    updateEdges()
-    window.addEventListener('resize', updateEdges)
-    return () => window.removeEventListener('resize', updateEdges)
-  }, [updateEdges])
-
-  function scrollPage(direction: 1 | -1) {
-    const track = trackRef.current
-    if (!track) return
-    const first = track.firstElementChild as HTMLElement | null
-    const second = first?.nextElementSibling as HTMLElement | null
-    const step = first && second ? second.offsetLeft - first.offsetLeft : first?.offsetWidth ?? 0
-    const visible = Math.max(1, Math.round((track.clientWidth + 1) / (step || 1)))
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    track.scrollBy({ left: direction * visible * step, behavior: reduce ? 'auto' : 'smooth' })
-  }
-
-  return (
-    <section aria-roledescription="carousel" aria-label={t('home.industries.carouselLabel')}>
-      <Reveal>
-        <RevealItem>
-          {/* `-m-1 p-1`: folga para o contorno de foco e o hover não serem cortados pelo overflow. */}
-          <ul
-            ref={trackRef}
-            onScroll={updateEdges}
-            className="-m-1 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain p-1 [--gap:0.75rem] [-ms-overflow-style:none] [scroll-padding-inline:0.25rem] [scrollbar-width:none] xl:gap-4 xl:[--gap:1rem] [&::-webkit-scrollbar]:hidden"
-          >
-            {industries.map((industry, index) => (
-              <li
-                key={industry.slug}
-                role="group"
-                aria-roledescription="slide"
-                aria-label={t('home.industries.slideLabel', { current: index + 1, total: industries.length })}
-                className="flex shrink-0 basis-[85%] snap-start min-[480px]:basis-[calc((100%-var(--gap))/2)] sm:basis-[calc((100%-var(--gap)*2)/3)] md:basis-[calc((100%-var(--gap)*3)/4)] lg:basis-[calc((100%-var(--gap)*5)/6)]"
-              >
-                <Link
-                  href={`/products?industry=${industry.slug}`}
-                  draggable={false}
-                  className="group flex h-full min-h-[11rem] w-full flex-col gap-6 rounded-card border border-linha bg-white p-6 transition-colors hover:border-cobalto hover:bg-cobalto hover:text-white lg:min-h-[12rem] lg:p-4 xl:p-5"
-                >
-                  <div className="flex items-start justify-between">
-                    <Icon name={industry.icon} className="h-8 w-8 text-cobalto transition-colors group-hover:text-white" />
-                    <ArrowUpRight aria-hidden="true" className="h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" />
-                  </div>
-                  <div className="flex flex-1 flex-col">
-                    <h3 className="flex-1 text-balance text-lg leading-snug lg:text-base xl:text-lg">{industry.name}</h3>
-                    <p className="mt-2 text-sm text-suave transition-colors group-hover:text-white/80">
-                      {t('common.productCount', { count: productsForIndustry(industry.slug).length })}
-                    </p>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </RevealItem>
-      </Reveal>
-
-      <div className="mt-6 flex items-center justify-end gap-2">
-        <button
-          type="button"
-          onClick={() => scrollPage(-1)}
-          disabled={edges.start}
-          aria-label={t('home.industries.prev')}
-          className={ARROW_CLASS}
-        >
-          <ChevronLeft aria-hidden="true" className="h-5 w-5" />
-        </button>
-        <button
-          type="button"
-          onClick={() => scrollPage(1)}
-          disabled={edges.end}
-          aria-label={t('home.industries.next')}
-          className={ARROW_CLASS}
-        >
-          <ChevronRight aria-hidden="true" className="h-5 w-5" />
-        </button>
-      </div>
-    </section>
   )
 }
 
