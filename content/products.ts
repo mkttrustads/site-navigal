@@ -233,10 +233,10 @@ export const products: Product[] = [
   },
 
   // Agribusiness & animal nutrition
-  { slug: 'fertilizer-urea', name: 'Fertilizer Urea', industries: ['agribusiness'] },
-  { slug: 'formic-acid', name: 'Formic Acid', industries: ['agribusiness'] },
+  { slug: 'fertilizer-urea', name: 'Fertilizer Urea', industries: ['agribusiness', 'animal-feed'] },
+  { slug: 'formic-acid', name: 'Formic Acid', industries: ['agribusiness', 'animal-feed'] },
   { slug: 'rock-phosphate', name: 'Rock Phosphate', industries: ['agribusiness'] },
-  { slug: 'potassium-chloride', name: 'Potassium Chloride (KCl)', industries: ['agribusiness'] },
+  { slug: 'potassium-chloride', name: 'Potassium Chloride (KCl)', industries: ['agribusiness', 'animal-feed'] },
   { slug: 'ammonium-sulfate', name: 'Ammonium Sulfate (SAM)', industries: ['agribusiness'] },
   { slug: 'tsp', name: 'Triple Superphosphate (TSP)', industries: ['agribusiness'] },
   { slug: 'potassium-hydroxide', name: 'Potassium Hydroxide (KOH)', industries: ['agribusiness', 'cosmetics-home-care'] },
@@ -257,11 +257,11 @@ export const products: Product[] = [
   { slug: 'labsa', name: 'Sulfonic Acid (LABSA)', grade: '90–96%', industries: ['cosmetics-home-care', 'water-treatment'] },
   { slug: 'sles', name: 'Sodium Lauryl Ether Sulfate (SLES)', grade: '70%', industries: ['cosmetics-home-care'] },
   { slug: 'mea', name: 'Monoethanolamine (MEA)', industries: ['cosmetics-home-care', 'automotive'] },
-  { slug: 'lactic-acid', name: 'Lactic Acid', grade: '85%', industries: ['cosmetics-home-care', 'food-pharma'] },
+  { slug: 'lactic-acid', name: 'Lactic Acid', grade: '85%', industries: ['cosmetics-home-care', 'food-pharma', 'animal-feed'] },
 
   // Water treatment
   { slug: 'sdic', name: 'SDIC (Sodium Dichloroisocyanurate)', grade: '56%', industries: ['water-treatment'] },
-  { slug: 'phosphoric-acid', name: 'Phosphoric Acid', grade: '85%', industries: ['water-treatment', 'food-pharma'] },
+  { slug: 'phosphoric-acid', name: 'Phosphoric Acid', grade: '85%', industries: ['water-treatment', 'food-pharma', 'animal-feed'] },
   { slug: 'stpp', name: 'STPP (Sodium Tripolyphosphate)', industries: ['water-treatment', 'ceramic-coating'] },
 
   // Food, supplements & pharma

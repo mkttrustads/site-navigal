@@ -7,6 +7,23 @@ import Button from '@/components/ui/Button'
 import Icon from '@/components/ui/Icon'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { useI18n } from '@/lib/i18n/I18nProvider'
+import type { UiKey } from '@/lib/i18n/translate'
+
+/**
+ * Os 8 setores do carrossel, na ordem de exibição. É uma seleção só da Home: o catálogo (`content/industries.ts`)
+ * continua com todas as categorias. `slug` é a categoria do catálogo para a qual o card aponta e de onde vem a
+ * contagem de produtos (nunca digitada à mão); o nome vem do dicionário de UI (EN/PT/ES).
+ */
+const SECTORS: { slug: string; icon: string; nameKey: UiKey }[] = [
+  { slug: 'agribusiness', icon: 'sprout', nameKey: 'home.sectors.agribusiness' },
+  { slug: 'animal-feed', icon: 'beef', nameKey: 'home.sectors.animalFeed' },
+  { slug: 'food-pharma', icon: 'pill', nameKey: 'home.sectors.foodPharma' },
+  { slug: 'water-treatment', icon: 'droplets', nameKey: 'home.sectors.waterTreatment' },
+  { slug: 'cosmetics-home-care', icon: 'sparkles', nameKey: 'home.sectors.cosmeticsHomeCare' },
+  { slug: 'plastics', icon: 'flaskConical', nameKey: 'home.sectors.resinsPlasticizers' },
+  { slug: 'paints-coatings', icon: 'paintbrush', nameKey: 'home.sectors.paints' },
+  { slug: 'automotive', icon: 'car', nameKey: 'home.sectors.automotive' },
+]
 
 const ARROW_CLASS =
   'flex h-10 w-10 items-center justify-center rounded-card border border-preto/15 text-preto transition-colors hover:border-cobalto hover:bg-cobalto hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalto'
@@ -21,8 +38,8 @@ const DRAG_SLOP = 6
 /**
  * Setores da Home em faixa contínua (marquee infinito), de ponta a ponta da tela.
  *
- * Os mesmos cards do antigo grid/carrossel (cores, borda, ícone, tipografia, contagem de produtos, hover e
- * link para `/products?industry=`), todos com a mesma largura e altura.
+ * Cards com cor, borda, ícone, tipografia, contagem de produtos, hover e link para `/products?industry=`,
+ * todos com a mesma largura e altura. Os setores exibidos estão em `SECTORS`.
  *
  * Como funciona:
  * - A lista é repetida `copies` vezes dentro de uma faixa que só se move por `transform` (sem `scrollLeft`, então
@@ -41,7 +58,7 @@ const DRAG_SLOP = 6
 export function IndustriesMarquee() {
   const {
     t,
-    content: { industries, productsForIndustry },
+    content: { productsForIndustry },
   } = useI18n()
 
   const viewportRef = useRef<HTMLDivElement>(null)
@@ -95,7 +112,7 @@ export function IndustriesMarquee() {
     observer.observe(viewport)
     observer.observe(firstSet)
     return () => observer.disconnect()
-  }, [render, industries.length])
+  }, [render])
 
   // Preferência de movimento reduzido (reage a mudanças em tempo real).
   useEffect(() => {
@@ -245,32 +262,32 @@ export function IndustriesMarquee() {
                   // n × (card + gap), o que torna a emenda do loop invisível.
                   className="flex shrink-0 gap-3 pr-3 [--gap:0.75rem] xl:gap-4 xl:pr-4"
                 >
-                  {industries.map((industry, index) => (
+                  {SECTORS.map((sector, index) => (
                     <li
-                      key={industry.slug}
+                      key={sector.slug}
                       role={copy === 0 ? 'group' : undefined}
                       aria-roledescription={copy === 0 ? 'slide' : undefined}
                       aria-label={
                         copy === 0
-                          ? t('home.industries.slideLabel', { current: index + 1, total: industries.length })
+                          ? t('home.industries.slideLabel', { current: index + 1, total: SECTORS.length })
                           : undefined
                       }
                       className="flex w-48 shrink-0 sm:w-52 lg:w-56"
                     >
                       <Link
-                        href={`/products?industry=${industry.slug}`}
+                        href={`/products?industry=${sector.slug}`}
                         draggable={false}
                         tabIndex={copy === 0 ? undefined : -1}
                         className="group flex h-full min-h-[11rem] w-full flex-col gap-6 rounded-card border border-linha bg-white p-6 transition-colors hover:border-cobalto hover:bg-cobalto hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cobalto lg:min-h-[12rem] lg:p-4 xl:p-5"
                       >
                         <div className="flex items-start justify-between">
-                          <Icon name={industry.icon} className="h-8 w-8 text-cobalto transition-colors group-hover:text-white" />
+                          <Icon name={sector.icon} className="h-8 w-8 text-cobalto transition-colors group-hover:text-white" />
                           <ArrowUpRight aria-hidden="true" className="h-5 w-5 opacity-0 transition-opacity group-hover:opacity-100" />
                         </div>
                         <div className="flex flex-1 flex-col">
-                          <h3 className="flex-1 text-balance text-lg leading-snug lg:text-base xl:text-lg">{industry.name}</h3>
+                          <h3 className="flex-1 text-balance text-lg leading-snug lg:text-base xl:text-lg">{t(sector.nameKey)}</h3>
                           <p className="mt-2 text-sm text-suave transition-colors group-hover:text-white/80">
-                            {t('common.productCount', { count: productsForIndustry(industry.slug).length })}
+                            {t('common.productCount', { count: productsForIndustry(sector.slug).length })}
                           </p>
                         </div>
                       </Link>

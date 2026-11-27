@@ -75,6 +75,14 @@ export const pt: Translation = {
     'home.industries.slideLabel': 'Setor {current} de {total}',
     'home.industries.prev': 'Setores anteriores',
     'home.industries.next': 'Próximos setores',
+    'home.sectors.agribusiness': 'Agronegócio',
+    'home.sectors.animalFeed': 'Nutrição animal',
+    'home.sectors.foodPharma': 'Alimentos e farma',
+    'home.sectors.waterTreatment': 'Tratamento de água',
+    'home.sectors.cosmeticsHomeCare': 'Cosméticos e home care',
+    'home.sectors.resinsPlasticizers': 'Resinas e plastificantes',
+    'home.sectors.paints': 'Tintas',
+    'home.sectors.automotive': 'Automotivo',
     'home.network.eyebrow': 'Rede global',
     'home.network.title': 'Um parceiro confiável para vender no Brasil',
     'home.network.subtitle':
@@ -580,6 +588,10 @@ export const pt: Translation = {
     'industrial-chemicals': {
       name: 'Vidro e Químicos Industriais',
       description: 'Barrilha, enxofre e químicos de base para a fabricação de vidro, síntese química e indústria em geral.',
+    },
+    'animal-feed': {
+      name: 'Nutrição Animal',
+      description: 'Acidificantes, conservantes, minerais e fontes de nutrientes para a indústria de rações.',
     },
   },
 
