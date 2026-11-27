@@ -48,66 +48,67 @@ export default function HomeHero() {
     return n ? [{ id, value: `${n.prefix}${n.count}${n.suffix}`, label: t(label) }] : []
   })
 
+  // Capa: 80svh de altura mínima no desktop; em celular cresce com o conteúdo (CTAs empilhados) e fica acima da
+  // dobra. `isolate` mantém a imagem e o overlay atrás do texto. A faixa de prova é uma banda própria logo abaixo
+  // da capa (fora da foto), na mesma cor do overlay, para os números não competirem com a imagem.
   return (
-    // 80svh de altura mínima no desktop; em celular a seção cresce com o conteúdo (CTAs empilhados + grade 2×2)
-    // e o bloco principal fica acima da dobra. `isolate` mantém a imagem e o overlay atrás do texto.
-    <section className="relative isolate flex min-h-[88svh] flex-col overflow-hidden bg-preto text-white lg:min-h-[80svh]">
-      <Image
-        src="/images/hero-port-truck.webp"
-        alt=""
-        aria-hidden="true"
-        fill
-        priority
-        sizes="100vw"
-        // Caminhão, carga (big bags) e portal ficam no centro-direita da foto (≈42–85% da largura). Em telas
-        // estreitas o recorte acompanha a carga e a traseira do caminhão; de lg para cima aparece quase toda.
-        className="-z-20 object-cover object-[78%_center] md:object-[72%_center] lg:object-center"
-      />
-      {/* Overlay azul-marinho (#071A33) local do hero: véu uniforme + degradê horizontal (texto à esquerda,
-          caminhão à direita) + degradê na base sob a faixa de prova. Calibrado para texto branco ≥ 4,5:1
-          (AA) em qualquer ponto sob o texto. Não usa CoverOverlay: aquele é compartilhado e mais claro no topo. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#071A33]/60" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(7,26,51,0.72)_0%,rgba(7,26,51,0.5)_50%,rgba(7,26,51,0.12)_100%)] max-md:bg-none max-md:bg-[#071A33]/30"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,rgba(7,26,51,0.9)_0%,rgba(7,26,51,0.55)_28%,rgba(7,26,51,0)_55%)]"
-      />
+    <>
+      <section className="relative isolate flex min-h-[88svh] flex-col overflow-hidden bg-preto text-white lg:min-h-[80svh]">
+        <Image
+          src="/images/hero-port-truck.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          sizes="100vw"
+          // Caminhão, carga (big bags) e portal ficam no centro-direita da foto (≈42–85% da largura). Em telas
+          // estreitas o recorte acompanha a carga e a traseira do caminhão; de lg para cima aparece quase toda.
+          className="-z-20 object-cover object-[78%_center] md:object-[72%_center] lg:object-center"
+        />
+        {/* Overlay azul-marinho (#071A33) local do hero: véu uniforme + degradê horizontal (texto à esquerda,
+            caminhão à direita). Calibrado para texto branco ≥ 4,5:1
+            (AA) em qualquer ponto sob o texto. Não usa CoverOverlay: aquele é compartilhado e mais claro no topo. */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[#071A33]/60" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(7,26,51,0.72)_0%,rgba(7,26,51,0.5)_50%,rgba(7,26,51,0.12)_100%)] max-md:bg-none max-md:bg-[#071A33]/30"
+        />
 
-      <div className="mx-auto flex w-full max-w-site flex-1 flex-col px-6 pt-28 sm:pt-32">
-        <div className="flex flex-1 flex-col justify-center py-10 sm:py-14">
-          <p className="eyebrow text-white/85">{t('home.hero.eyebrow')}</p>
+        <div className="mx-auto flex w-full max-w-site flex-1 flex-col px-6 pt-28 sm:pt-32">
+          <div className="flex flex-1 flex-col justify-center pb-14 pt-10 sm:pb-20 sm:pt-14">
+            <p className="eyebrow text-white/85">{t('home.hero.eyebrow')}</p>
 
-          <h1 className="hero-title-home mt-5 max-w-[16em] text-balance sm:mt-6">{t('home.hero.title')}</h1>
+            <h1 className="hero-title-home mt-5 max-w-[16em] text-balance sm:mt-6">{t('home.hero.title')}</h1>
 
-          <p className="mt-6 max-w-[66rem] text-pretty text-base leading-relaxed text-white/90 sm:mt-8 sm:text-lg">
-            {t('home.hero.subtitle')}
-          </p>
+            <p className="mt-6 max-w-[66rem] text-pretty text-base leading-relaxed text-white/90 sm:mt-8 sm:text-lg">
+              {t('home.hero.subtitle')}
+            </p>
 
-          {/* Mesma altura, mesma largura mínima e mesma borda: um é cheio e o outro vazado, nenhum "maior". */}
-          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
-            <Button
-              href="/suppliers"
-              data-cta="hero-supplier"
-              className={`w-full border border-cobalto sm:w-auto sm:min-w-[14rem] ${focusRing}`}
-            >
-              {t('home.hero.cta.supplier')}
-            </Button>
-            <Button
-              href="/contact?type=quote#contact-form"
-              variant="outline"
-              data-cta="hero-import"
-              className={`w-full sm:w-auto sm:min-w-[14rem] ${focusRing}`}
-            >
-              {t('home.hero.cta.import')}
-            </Button>
+            {/* Mesma altura, mesma largura mínima e mesma borda: um é cheio e o outro vazado, nenhum "maior". */}
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+              <Button
+                href="/suppliers"
+                data-cta="hero-supplier"
+                className={`w-full border border-cobalto sm:w-auto sm:min-w-[14rem] ${focusRing}`}
+              >
+                {t('home.hero.cta.supplier')}
+              </Button>
+              <Button
+                href="/contact?type=quote#contact-form"
+                variant="outline"
+                data-cta="hero-import"
+                className={`w-full sm:w-auto sm:min-w-[14rem] ${focusRing}`}
+              >
+                {t('home.hero.cta.import')}
+              </Button>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Faixa de prova: linha fina acima, 4 números (2×2 no celular), "Backed by" à direita (abaixo no celular). */}
-        <div className="border-t border-white/25 pb-10 pt-8 sm:pb-12">
+      <div className="bg-[#071A33] text-white">
+        {/* Faixa de prova: banda própria logo abaixo da capa (fora da foto). 4 números (2×2 no celular), "Backed by" à direita (abaixo no celular). */}
+        <div className="mx-auto w-full max-w-site px-6 py-10 sm:py-12">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
             <ul
               aria-label={t('home.hero.proof.label')}
@@ -141,6 +142,6 @@ export default function HomeHero() {
           <p className="mt-8 max-w-3xl text-xs leading-relaxed text-white/75">{rankingFootnote}</p>
         </div>
       </div>
-    </section>
+    </>
   )
 }
