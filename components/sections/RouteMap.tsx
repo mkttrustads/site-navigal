@@ -4,6 +4,7 @@ import { LocalizedSvg, T } from '@/components/ui/LocalizedText'
 import type { UiKey } from '@/lib/i18n/translate'
 import Flag, { hasFlag } from '@/components/ui/Flag'
 import { ORIGIN_NAMES } from '@/lib/network-story'
+import { GLOBE_BANDS, GLOBE_VIEWBOX } from '@/lib/globeBands'
 
 // Mapa-múndi pontilhado gerado no servidor (a biblioteca não vai para o
 // bundle do cliente) com as rotas em Azul Marítimo: a faixa curva usada como
@@ -119,6 +120,8 @@ const latamFan: { dx: number; dy: number; bend: number }[] = [
 const flagNudge: Partial<Record<string, Record<string, string>>> = {
   China: { '--ny': '-3px' },
   Taiwan: { '--ny': '3px' },
+  // Omã está a ~9 unidades do hub: abaixo de 1024px o selo da Navigal encostaria na bandeira.
+  Oman: { '--ox': '-5px', '--oy': '5px' },
 }
 
 const css = (vars: Record<string, string | number>) => vars as CSSProperties
@@ -227,7 +230,7 @@ export function RouteMapStory({ className }: { className?: string }) {
           <svg viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 h-full w-full">
             {/* Miami → Brasil: tracejada e discreta, igual nos 4 estados. */}
             <g data-group="miami">
-              <path d={`M${miami.x} ${miami.y} L${brazil.x} ${brazil.y}`} fill="none" stroke={routeBase} strokeOpacity={0.7} strokeWidth={0.3} strokeDasharray="1 1.1" />
+              <path d={`M${miami.x} ${miami.y} L${brazil.x} ${brazil.y}`} fill="none" stroke={routeBase} strokeOpacity={0.7} strokeWidth={0.18} strokeDasharray="1 1.1" />
               <circle {...dot(miami.x, miami.y)} r={1.6} fill={routeBase} fillOpacity={0.2} />
               <circle {...dot(miami.x, miami.y)} r={0.8} fill={routeBase} stroke="#FFFFFF" strokeWidth={0.25} />
             </g>
@@ -243,24 +246,19 @@ export function RouteMapStory({ className }: { className?: string }) {
             {/* Passo 2: as rotas se desenham até a base nos Emirados. */}
             <g data-group="routes-to-hub">
               {origins.map(({ point, bend }, index) => (
-                <path key={point.name} d={arc(point, hub, bend)} data-draw className="ns-draw" style={css({ '--i': index })} fill="none" stroke={routeBase} strokeWidth={0.5} strokeLinecap="round" />
+                <path key={point.name} d={arc(point, hub, bend)} data-draw className="ns-draw" style={css({ '--i': index })} fill="none" stroke={routeBase} strokeWidth={0.28} strokeLinecap="round" />
               ))}
-            </g>
-            <g data-group="hub">
-              <circle {...dot(hub.x, hub.y)} r={2.4} fill={routeBase} fillOpacity={0.2} />
-              <circle {...dot(hub.x, hub.y)} r={1.15} className="ns-hub-pulse" fill="none" stroke={routeBase} strokeWidth={0.35} />
-              <circle {...dot(hub.x, hub.y)} r={1.15} fill={routeBase} stroke="#FFFFFF" strokeWidth={0.25} />
             </g>
             {/* Passo 3: a rota única da base para o Brasil e o leque pela região. */}
             <g data-group="route-to-br">
-              <path d={arc(hub, brazil, 0.16)} data-draw className="ns-draw" fill="none" stroke={routeBase} strokeWidth={0.9} strokeLinecap="round" />
+              <path d={arc(hub, brazil, 0.16)} data-draw className="ns-draw" fill="none" stroke={routeBase} strokeWidth={0.5} strokeLinecap="round" />
             </g>
             <g data-group="latam-fan">
               {latamFan.map(({ dx, dy, bend }, index) => {
                 const end = { x: brazil.x + dx, y: brazil.y + dy }
                 return (
                   <g key={index} style={css({ '--i': index })}>
-                    <path d={arc(brazil, end, bend)} data-draw className="ns-draw" fill="none" stroke={routeBase} strokeWidth={0.4} strokeLinecap="round" />
+                    <path d={arc(brazil, end, bend)} data-draw className="ns-draw" fill="none" stroke={routeBase} strokeWidth={0.24} strokeLinecap="round" />
                     <circle {...dot(end.x, end.y)} r={0.5} className="ns-fan-end" fill={routeBase} />
                   </g>
                 )
@@ -285,6 +283,17 @@ export function RouteMapStory({ className }: { className?: string }) {
                 </span>
               ) : null
             )}
+            {/* Base da Navigal (UAE): o símbolo da logo substitui o marcador, centrado no ponto (tamanho fixo em px, ver --ns-hub). */}
+            <span data-group="hub" className="ns-hub-pos absolute" style={css({ left: pct(hub.x, width), top: pct(hub.y, height) })}>
+              <span className="ns-hub-pulse" />
+              <span className="ns-hub">
+                <svg viewBox={`0 0 ${GLOBE_VIEWBOX.width} ${GLOBE_VIEWBOX.height}`} focusable="false" className="ns-hub-mark">
+                  {GLOBE_BANDS.map((band, index) => (
+                    <path key={index} d={band.d} fill={band.accent ? routeBase : '#0D0D0D'} />
+                  ))}
+                </svg>
+              </span>
+            </span>
             {Object.values(points).map((point) => {
               const chip = storyLabels[point.name]
               const group = point.name === HUB.name ? 'hub' : point.name === DESTINATION.name ? 'br' : point.name === MIAMI.name ? 'miami' : 'origins'
@@ -300,6 +309,7 @@ export function RouteMapStory({ className }: { className?: string }) {
                     '--ns-o': placementOrigin[chip.placement],
                     // Origens: o rótulo se afasta do centro da bandeira (raio + respiro), não só do ponto.
                     ...(group === 'origins' && { '--ns-gap': 'calc(var(--ns-flag) / 2 + 5px)' }),
+                    ...(group === 'hub' && { '--ns-gap': 'calc(var(--ns-hub) / 2 + 6px)' }),
                   })}
                 >
                   <span className={chip.compact ? 'ns-label-text max-sm:hidden' : 'ns-label-text'}>
