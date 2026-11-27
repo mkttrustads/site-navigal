@@ -26,7 +26,7 @@ import type {
   Solution,
   SolutionId,
 } from '../solutions'
-import type { BigNumberId, company, NavId, TrustGroupFactId, TrustGroupLine, TrustGroupLineId } from '../site'
+import type { BigNumberId, company, NavId, TrustGroupLine, TrustGroupLineId } from '../site'
 import type { Datasheet } from '../products'
 import type { PageMeta, MetaPath, UiKey } from './en'
 
@@ -56,8 +56,6 @@ export type Translation = {
     rankingFootnote: string
     /** Rótulo de cada Big Number do topo do About, por id (`bigNumbers`). */
     bigNumbers: ById<BigNumberId, string>
-    /** Rótulo de cada número do Trust Group, por id (`trustGroupFacts`). */
-    trustGroupFacts: ById<TrustGroupFactId, string>
     trustGroupLines: {
       title: string
       items: ById<TrustGroupLineId, Pick2<TrustGroupLine, 'name' | 'description'>>

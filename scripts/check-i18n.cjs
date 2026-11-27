@@ -113,7 +113,6 @@ function diffShape(a, b, where, report, key = '') {
 const idLists = (tr) => [
   ['site.nav', en.site.primaryNav, tr.site.nav, null],
   ['site.bigNumbers', en.site.bigNumbers, tr.site.bigNumbers, null],
-  ['site.trustGroupFacts', en.site.trustGroupFacts, tr.site.trustGroupFacts, null],
   ['site.trustGroupLines.items', en.site.trustGroupLines.items, tr.site.trustGroupLines.items, ['name', 'description']],
   ['about.milestones', en.about.milestones, tr.about.milestones, ['label', 'title', 'description']],
   ['about.principles', en.about.principles, tr.about.principles, ['title', 'description']],

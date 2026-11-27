@@ -18,12 +18,12 @@ Branch: `fix/alinhamento-apresentacao-v4` (sem push, sem deploy). Lint e build p
 | **G** | — | Soda Ash (Dense), DMF e Polyacrylamide mantidos. Não estão na apresentação. |
 | **H** /products | `app/products/page.tsx`, `app/industries/page.tsx`, `app/solutions/page.tsx` | "Our product portfolio." / "Key products we supply today." e novo title/meta. "Winner Mix" removido de todos os textos públicos (restou só em comentários internos e no histórico do README). |
 | **I** Certificações | `content/credibility.ts`, `Shared.tsx` (`CertificationsSection`), `/about`, `/suppliers` | 3 itens (Top 35, Receita Federal, SASSMAQ/ISO 9001), cada um atribuído à empresa correta. IMO fora, por decisão do Marketing. |
-| **J** Trust Group | `content/site.ts`, `Shared.tsx` (`TrustGroupSection`) | Eyebrow "Part of Trust Group", 5 stats do prompt + Top 35, 5 linhas de negócio (slide 4). "80,000 m²" virou "80k+ m²" / "80,000+ m²". |
+| **J** Trust Group | `content/site.ts`, `Shared.tsx` (`TrustGroupSection`) | Eyebrow "Part of Trust Group", 5 linhas de negócio (slide 4). Os stats (5 do prompt + Top 35) hoje vivem em `bigNumbers`, na `BigNumbersSection`. "80,000 m²" virou "80k+ m²" / "80,000+ m²". |
 | **K** Taglog | `content/credibility.ts`, `Shared.tsx` (`TaglogSection`), `/suppliers` | 4 hubs + total + texto de licenciamento. |
 | **L** Menções | `app/suppliers/page.tsx`, `Shared.tsx` (`CommitmentSection`), `/about` | Trust Tech adicionado ao bloco "Your gateway". "Our commitment" no About. Os 6 diferenciais: ver pendências. |
 
 Decisões minhas que você pode reverter:
-- **Top 35 como 6ª estatística** da seção Trust Group. O item J lista 5 stats e o item C manda trocar o ranking onde ele aparece. Mantive os dois (grade 2×3). Para ficar só com os 5, remova a última linha de `trustGroupFacts`.
+- **Top 35 junto dos demais stats** na `BigNumbersSection`. O item J lista 5 stats e o item C manda trocar o ranking onde ele aparece. Mantive os dois. Para ficar só com os 5, remova o item `ranking` de `bigNumbers`.
 - **Card "Panama / Incorporated in 2008" removido** de `offices` (About). Ele contradiz a nova história (Navigal lançada em 2024).
 - **Parágrafo "We combine market intelligence…" removido** da Home, por ser parte da história antiga.
 - **Títulos que não vieram do prompt:** "Credentials that back every operation.", "Licensed warehousing across Brazil, through Taglog." e "Responsibility beyond the operation.". Descrições dos itens de certificação e compromisso são paráfrases do prompt (não tenho o texto dos slides 11–12).

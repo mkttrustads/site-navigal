@@ -286,16 +286,11 @@ export const pt: Translation = {
     bigNumbers: {
       'years': 'Anos de mercado',
       'people': 'Colaboradores no grupo',
+      'warehousing': 'De armazenagem',
+      'routes': 'Rotas internacionais',
+      'certifications': 'Certificações e selos',
       'ranking': 'Entre os maiores importadores químicos do Brasil*',
       'revenue': 'Faturamento do Trust Group em 2024',
-    },
-    trustGroupFacts: {
-      'years': 'anos no mercado',
-      'employees': 'colaboradores',
-      'warehousing': 'de armazenagem',
-      'routes': 'rotas internacionais',
-      'certifications': 'certificações e selos',
-      'ranking': 'importadores químicos do Brasil (Trust Group)',
     },
     trustGroupLines: {
       title: 'Cinco empresas trabalhando juntas para que toda operação funcione de ponta a ponta',
