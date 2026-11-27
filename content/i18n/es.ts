@@ -94,8 +94,6 @@ export const es: Translation = {
     'home.network.step2.text': 'Le compra a usted y vende en Brasil y en América Latina.',
     'home.network.step3.title': 'Clientes',
     'home.network.step3.text': 'Importa con soporte completo de Trust Group.',
-    'home.network.highlight':
-      'Usted vende a una sola empresa. Sus clientes reciben una importación simple y conforme.',
     'home.cta.title': 'Importe sus insumos con un socio global',
 
     'about.hero.title': 'Conectando el mundo con la industria latinoamericana',

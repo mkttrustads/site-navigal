@@ -87,8 +87,6 @@ export const ui = {
   'home.network.step2.text': 'Buys from you and sells in Brazil and LATAM.',
   'home.network.step3.title': 'Customers',
   'home.network.step3.text': 'Imports with full support from Trust Group.',
-  'home.network.highlight':
-    'You sell to one company. Your customers get a simple, compliant import.',
   'home.cta.title': 'Import your supplies with a global partner',
 
   // About
