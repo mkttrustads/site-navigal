@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import DottedMap from 'dotted-map'
 import { LocalizedSvg, T } from '@/components/ui/LocalizedText'
 import type { UiKey } from '@/lib/i18n/translate'
+import Flag, { hasFlag } from '@/components/ui/Flag'
 import { ORIGIN_NAMES } from '@/lib/network-story'
 
 // Mapa-múndi pontilhado gerado no servidor (a biblioteca não vai para o
@@ -76,7 +77,7 @@ const labelOffset: Record<string, { dx: number; dy: number; anchor: 'start' | 'e
 // ativo. O CSS fica em globals.css (bloco "Rede Global"); aqui só há estrutura.
 // ---------------------------------------------------------------------------
 
-// Rótulos só com o nome (sem bandeira nem ícone), em HTML sobre o mapa: posição em % do mapa, tamanho
+// Rótulos só com o nome (as origens ganham a bandeira como marcador, ver `Flag`), em HTML sobre o mapa: posição em % do mapa, tamanho
 // fixo em px, para continuar legível no mobile (o texto do SVG encolhe junto com o mapa).
 // `compact` esconde o nome abaixo de `sm`, onde as origens da Ásia colidiriam; os nomes seguem listados
 // em texto no passo 1.
@@ -94,11 +95,12 @@ const storyLabels: Record<string, { label: UiKey; placement: Placement; compact?
   Malaysia: { label: 'map.place.Malaysia', placement: 'right', compact: true },
 }
 
+// `--ns-gap` (só nas origens) = raio da bandeira + respiro; sem ele, valem os 8–9px dos escritórios.
 const placementTransform: Record<Placement, string> = {
-  top: 'translate(-50%, calc(-100% - 8px))',
-  bottom: 'translate(-50%, 8px)',
-  left: 'translate(calc(-100% - 9px), -50%)',
-  right: 'translate(9px, -50%)',
+  top: 'translate(-50%, calc(-100% - var(--ns-gap, 8px)))',
+  bottom: 'translate(-50%, var(--ns-gap, 8px))',
+  left: 'translate(calc(-100% - var(--ns-gap, 9px)), -50%)',
+  right: 'translate(var(--ns-gap, 9px), -50%)',
 }
 // Ponto do rótulo mais próximo do marcador: âncora do contra-zoom (o rótulo não cresce junto com o mapa).
 const placementOrigin: Record<Placement, string> = { top: '50% 100%', bottom: '50% 0', left: '100% 50%', right: '0 50%' }
@@ -111,6 +113,13 @@ const latamFan: { dx: number; dy: number; bend: number }[] = [
   { dx: -8.5, dy: -1.5, bend: 0.1 },
   { dx: -6, dy: 5.5, bend: 0.1 },
 ]
+
+// Só no celular (<640px), onde o mapa é pequeno: China e Taiwan ficam a ~12px e as bandeiras se tocariam;
+// afasta as duas alguns px na vertical (o halo e a rota seguem no ponto real). Ver `.ns-flag` em globals.css.
+const flagNudge: Partial<Record<string, Record<string, string>>> = {
+  China: { '--ny': '-3px' },
+  Taiwan: { '--ny': '3px' },
+}
 
 const css = (vars: Record<string, string | number>) => vars as CSSProperties
 const pct = (value: number, total: number) => `${(value / total) * 100}%`
@@ -226,8 +235,8 @@ export function RouteMapStory({ className }: { className?: string }) {
             <g data-group="origins">
               {origins.map(({ point }, index) => (
                 <g key={point.name} className="ns-origin" style={css({ '--i': index })}>
+                  {/* O marcador em si é a bandeira (HTML, camada abaixo); aqui fica só o halo. */}
                   <circle {...dot(point.x, point.y)} r={1.7} className="ns-origin-halo" fill={routeBase} fillOpacity={0.22} />
-                  <circle {...dot(point.x, point.y)} r={0.6} className="ns-origin-dot" />
                 </g>
               ))}
             </g>
@@ -263,6 +272,19 @@ export function RouteMapStory({ className }: { className?: string }) {
             </g>
           </svg>
           <div className="pointer-events-none absolute inset-0">
+            {/* Bandeiras das origens: marcador de cada país, centrado no ponto (tamanho fixo em px, ver --ns-flag). */}
+            {origins.map(({ point }, index) =>
+              hasFlag(point.name) ? (
+                <span
+                  key={point.name}
+                  data-group="origins"
+                  className="ns-flag-pos absolute"
+                  style={css({ left: pct(point.x, width), top: pct(point.y, height) })}
+                >
+                  <Flag country={point.name} className="ns-flag" style={css({ '--i': index, ...flagNudge[point.name] })} />
+                </span>
+              ) : null
+            )}
             {Object.values(points).map((point) => {
               const chip = storyLabels[point.name]
               const group = point.name === HUB.name ? 'hub' : point.name === DESTINATION.name ? 'br' : point.name === MIAMI.name ? 'miami' : 'origins'
@@ -271,7 +293,14 @@ export function RouteMapStory({ className }: { className?: string }) {
                   key={point.name}
                   data-group={group}
                   className="ns-label absolute"
-                  style={css({ left: pct(point.x, width), top: pct(point.y, height), transform: placementTransform[chip.placement], '--ns-o': placementOrigin[chip.placement] })}
+                  style={css({
+                    left: pct(point.x, width),
+                    top: pct(point.y, height),
+                    transform: placementTransform[chip.placement],
+                    '--ns-o': placementOrigin[chip.placement],
+                    // Origens: o rótulo se afasta do centro da bandeira (raio + respiro), não só do ponto.
+                    ...(group === 'origins' && { '--ns-gap': 'calc(var(--ns-flag) / 2 + 5px)' }),
+                  })}
                 >
                   <span className={chip.compact ? 'ns-label-text max-sm:hidden' : 'ns-label-text'}>
                     <T k={chip.label} />
@@ -288,7 +317,8 @@ export function RouteMapStory({ className }: { className?: string }) {
           <T k="map.legend.offices" />
         </li>
         <li className="flex items-center gap-2">
-          <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-suave" />
+          {/* Mini badge neutro: mesma moldura da bandeira (anel branco + sombra), sem favorecer nenhum país. */}
+          <span aria-hidden="true" className="h-3 w-3 rounded-full bg-suave shadow-[0_0_0_1.5px_#FFFFFF,0_1px_3px_rgba(13,13,13,0.3)]" />
           <T k="map.legend.origins" />
         </li>
         <li className="flex items-center gap-2">
