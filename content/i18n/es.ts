@@ -70,6 +70,7 @@ export const es: Translation = {
     'home.what.item2': 'Desarrollo de proveedores en Asia, Europa y Oriente Medio.',
     'home.what.item3': 'Equipo comercial local y cartera de clientes en América Latina.',
     'home.what.link': 'Conoce nuestras soluciones',
+    'home.what.imageAlt': 'Buque portacontenedores atracado en una terminal portuaria al atardecer',
     'home.industries.title': 'Materias primas para sectores con altos estándares técnicos y regulatorios',
     'home.industries.link': 'Portafolio completo',
     'home.network.eyebrow': 'Red global',
