@@ -55,7 +55,7 @@ const KEEP = new RegExp(
       'Navigal', 'Trust Group', 'Trust Tech', 'Taglog', 'Instituto Trust', 'Trust Comércio Exterior',
       'Navigal Trading Solutions Limited', 'TRADING SOLUTIONS LIMITED', 'Global Brands Management',
       'Top 35\\*', 'NCM', 'EDTA', 'DOTP, DOP, DINP', 'WhatsApp', 'Trader', 'Miami', 'China', 'Total:',
-      'Error 404', 'sales@navigal-ts\\.com', 'Al Hamra Industrial Zone FZ',
+      'Error 404', 'contact@navigal-ts\\.com', 'Al Hamra Industrial Zone FZ',
       'RAKEZ Amenity Center, Al Hamra Industrial Zone FZ, Ras Al Khaimah',
       'Trading company, UAE', 'Garuva, SC', 'Sumaré, SP', 'Cabo de Santo Agostinho, PE', 'ISO 9001', 'SASSMAQ e ISO 9001',
       'PP, PE, PVC (e|y) PET', '200 mesh', 'Brazil', 'Taiwan', 'Vietnam', 'Taglog Logística Integrada.*',

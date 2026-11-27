@@ -13,7 +13,7 @@ export const company = {
   // Ano de lançamento da Navigal (2024). Alimenta o foundingDate do JSON-LD e
   // deve ficar igual a facts.launched e à linha do tempo do About.
   founded: 2024,
-  email: 'sales@navigal-ts.com',
+  email: 'contact@navigal-ts.com',
   // Número único, igual em todos os idiomas (sem rótulo de região).
   phones: [{ display: '+55 (47) 98844-9269', href: 'tel:+5547988449269' }],
   address: {
