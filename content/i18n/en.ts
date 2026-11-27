@@ -84,7 +84,6 @@ export const ui = {
   'about.hero.title': 'Connecting the world to Latin American industry',
   'about.hero.subtitle':
     'We structure international supply chains and trade strategic raw materials, connecting the world’s key trade hubs to practical, secure execution.',
-  'about.bigNumbers.backedBy': 'Backed by',
   'about.story.trustLink': 'Discover Trust Group',
   'about.imageAlt': 'Rio de Janeiro bay with Sugarloaf Mountain',
   'about.presence.eyebrow': 'Global presence',

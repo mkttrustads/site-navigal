@@ -30,7 +30,7 @@ export default function AboutPage() {
       />
 
       <Section>
-        <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
+        <div className="grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-20">
           <SectionHeading
             eyebrow={story.eyebrow}
             title={story.title}
@@ -51,13 +51,20 @@ export default function AboutPage() {
               </>
             }
           />
-          <Reveal className="relative border-l border-linha pl-8 sm:pl-10">
-            {milestones.map((milestone) => (
+          {/* Sem `border-l` no contêiner: o traço é desenhado por marco (ponto + segmento até o próximo
+              ponto), então vai do primeiro ao último marco, sem prolongar além deles. */}
+          <Reveal className="relative pl-8 sm:pl-10">
+            {milestones.map((milestone, index) => (
               <RevealItem key={milestone.id} className="relative pb-10 last:pb-0">
                 <span
                   aria-hidden="true"
-                  className="absolute -left-[2.35rem] top-1 h-3 w-3 rounded-full border-2 border-white bg-cobalto ring-1 ring-cobalto sm:-left-[2.85rem]"
-                />
+                  className={`absolute -left-[2.35rem] top-1 flex flex-col items-center sm:-left-[2.85rem] ${
+                    index < milestones.length - 1 ? '-bottom-1' : ''
+                  }`}
+                >
+                  <span className="h-3 w-3 shrink-0 rounded-full border-2 border-white bg-cobalto ring-1 ring-cobalto" />
+                  {index < milestones.length - 1 && <span className="w-px flex-1 bg-linha" />}
+                </span>
                 <p className="eyebrow text-cobalto">{milestone.label}</p>
                 <h3 className="mt-2 text-xl">{milestone.title}</h3>
                 <p className="mt-2 text-base leading-relaxed text-suave">{milestone.description}</p>
