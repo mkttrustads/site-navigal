@@ -11,8 +11,22 @@
  * - `text`: capas das páginas internas (`PageHero`). Mesmo azul (#071A33), mas com degradê horizontal
  *   ancorado no bloco de texto (breadcrumb, título e descrição) e foto mais livre no restante. As
  *   opacidades ficam em `.cover-overlay-text` (app/globals.css).
+ * - `band`: banners de CTA com foto (`CtaBand`). Mesmo azul (#071A33), porém cobrindo a seção inteira:
+ *   véu azul uniforme (a foto continua legível, tingida de azul) + degradê horizontal mais fechado sob
+ *   o bloco de texto (esquerda), onde ficam título, parágrafo e botões.
  */
-export default function CoverOverlay({ variant = 'default' }: { variant?: 'default' | 'text' }) {
+export default function CoverOverlay({ variant = 'default' }: { variant?: 'default' | 'text' | 'band' }) {
+  if (variant === 'band') {
+    return (
+      <>
+        <div aria-hidden="true" className="absolute inset-0 bg-[#071A33]/70" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(to_right,rgba(7,26,51,0.3)_0%,rgba(7,26,51,0.15)_55%,rgba(7,26,51,0)_100%)] max-sm:bg-[#071A33]/20"
+        />
+      </>
+    )
+  }
   if (variant === 'text') {
     return <div aria-hidden="true" className="cover-overlay-text absolute inset-0" />
   }

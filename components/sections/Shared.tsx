@@ -256,7 +256,7 @@ export function CtaBand({
   body?: string
   image?: string
   imageClassName?: string
-  /** `photo` (padrão): foto + overlay. `blue`: fundo azul institucional sólido (#071A33, mesmo azul das capas), sem foto. */
+  /** `photo` (padrão): foto + overlay azul (`CoverOverlay variant="band"`). `blue`: fundo azul institucional sólido (#071A33, mesmo azul das capas), sem foto. */
   tone?: 'photo' | 'blue'
 }) {
   const {
@@ -268,7 +268,7 @@ export function CtaBand({
       {tone === 'photo' && (
         <>
           <Image src={image} alt="" aria-hidden="true" fill sizes="100vw" className={imageClassName} />
-          <CoverOverlay />
+          <CoverOverlay variant="band" />
         </>
       )}
       <div className="relative mx-auto max-w-site px-6 py-24 sm:py-28">
