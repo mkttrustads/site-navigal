@@ -71,13 +71,10 @@ export const ui = {
   'home.network.subtitle':
     'Navigal buys from you and sells to Brazilian industry. Trust Group supports the import.',
   'home.network.step1.title': 'Global supplier',
-  'home.network.step1.role': 'You',
   'home.network.step1.text': 'Sell and ship to one counterpart.',
   'home.network.step2.title': 'Navigal',
-  'home.network.step2.role': 'Trading company, UAE',
   'home.network.step2.text': 'Buys from you and sells in Brazil and LATAM.',
   'home.network.step3.title': 'Customers',
-  'home.network.step3.role': 'Brazilian industry',
   'home.network.step3.text': 'Imports with full support from Trust Group.',
   'home.network.highlight':
     'You sell to one company. Your customers get a simple, compliant import.',

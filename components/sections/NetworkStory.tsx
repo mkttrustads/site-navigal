@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from 'react'
 import { useI18n } from '@/lib/i18n/I18nProvider'
 import type { UiKey } from '@/lib/i18n/translate'
 import Section, { SectionHeading } from '@/components/ui/Section'
-import { NETWORK_STEPS, ORIGIN_NAMES, STEP_BAND, STORY_MOBILE_QUERY, STORY_STATIC_QUERY } from '@/lib/network-story'
+import { NETWORK_STEPS, ORIGIN_NAMES, STEP_BAND, STORY_MOBILE_QUERY, STORY_STATIC_QUERY, STORY_STICKY_QUERY } from '@/lib/network-story'
 
 function useMediaQuery(query: string) {
   return useSyncExternalStore(
@@ -29,9 +29,12 @@ function useMediaQuery(query: string) {
 export default function NetworkStory({ map }: { map: ReactNode }) {
   const { t } = useI18n()
   const rootRef = useRef<HTMLDivElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
   const [observedStep, setObservedStep] = useState(0)
+  const [headHeight, setHeadHeight] = useState<number | null>(null)
   const isMobile = useMediaQuery(STORY_MOBILE_QUERY)
   const isStatic = useMediaQuery(STORY_STATIC_QUERY)
+  const isSticky = useMediaQuery(STORY_STICKY_QUERY)
   // Sem espaço para o mapa fixo (celular deitado): mapa estático no estado final.
   const activeStep = isStatic ? NETWORK_STEPS.length : observedStep
 
@@ -41,6 +44,18 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
       path.style.setProperty('--len', String(Math.ceil(path.getTotalLength())))
     })
   }, [])
+
+  // Altura real do cabeçalho (label + título + subtítulo): varia com idioma e largura. Alimenta o CSS do
+  // cabeçalho fixo (--ns-head-h): liberação sincronizada com o mapa e folga final dos passos.
+  useEffect(() => {
+    const head = headRef.current
+    if (!head || !isSticky) return
+    const measure = () => setHeadHeight(Math.ceil(head.getBoundingClientRect().height))
+    measure()
+    const resizeObserver = new ResizeObserver(measure)
+    resizeObserver.observe(head)
+    return () => resizeObserver.disconnect()
+  }, [isSticky])
 
   // Passo ativo = o que ocupa a faixa de leitura (rootMargin), sem listener de scroll.
   // Um 2º observer, sobre o 1º passo, diz se a lista já começou (o passo 1 está acima da base da faixa):
@@ -89,17 +104,18 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
       className="network-story overflow-clip [container-type:inline-size]"
       containerClassName="lg:pointer-events-none"
       data-step={activeStep}
+      style={headHeight !== null && isSticky ? ({ '--ns-head-h': `${headHeight}px` } as CSSProperties) : undefined}
     >
       {/* "Palco" do mapa-fundo: título + passos. A frase de destaque fica abaixo dele, já sem mapa por trás. */}
-      <div className="relative">
-        <div className="lg:pointer-events-auto lg:relative lg:z-10">
+      <div className="ns-stage relative">
+        <div ref={headRef} className="ns-head lg:pointer-events-auto">
           <SectionHeading
             eyebrow={t('home.network.eyebrow')}
             title={t('home.network.title')}
             intro={<p className="font-semibold text-cobalto">{t('home.network.subtitle')}</p>}
           />
         </div>
-        <div ref={rootRef} className="mt-6 grid lg:-mt-12">
+        <div ref={rootRef} className="ns-grid mt-6 grid">
           <ol className="ns-steps lg:pointer-events-auto lg:relative lg:z-10 lg:max-w-[25rem]">
             {NETWORK_STEPS.map((step, index) => (
               <li
@@ -119,7 +135,6 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
                   <h3 className="text-2xl font-normal leading-tight transition-[font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold md:text-3xl">
                     {t(`home.network.${step}.title` as UiKey)}
                   </h3>
-                  <p className="mt-1.5 text-base font-semibold group-data-[active=true]:text-cobalto">{t(`home.network.${step}.role` as UiKey)}</p>
                   <p className="mt-2 text-base leading-relaxed group-data-[active=true]:text-suave">{t(`home.network.${step}.text` as UiKey)}</p>
                   {index === 0 && (
                     <p className="mt-3 text-sm leading-relaxed tracking-wide">{ORIGIN_NAMES.map((name) => t(`map.place.${name}` as UiKey)).join(' · ')}</p>
