@@ -70,7 +70,6 @@ export const pt: Translation = {
     'home.what.item3': 'Equipe comercial local e carteira de clientes na América Latina.',
     'home.what.link': 'Conheça nossas soluções',
     'home.what.imageAlt': 'Navio porta-contêineres atracado em terminal portuário ao entardecer',
-    'home.industries.title': 'Matérias-primas para setores com altos padrões técnicos e regulatórios',
     'home.industries.link': 'Portfólio completo',
     'home.industries.carouselLabel': 'Setores atendidos',
     'home.industries.slideLabel': 'Setor {current} de {total}',

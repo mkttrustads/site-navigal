@@ -64,7 +64,6 @@ export const ui = {
   'home.what.item3': 'Local sales force and customer base in Latin America.',
   'home.what.link': 'Explore our solutions',
   'home.what.imageAlt': 'Container ship berthed at a port terminal at dusk',
-  'home.industries.title': 'Raw materials for sectors with demanding technical and regulatory standards',
   'home.industries.link': 'Full portfolio',
   'home.industries.carouselLabel': 'Industries we serve',
   'home.industries.slideLabel': 'Industry {current} of {total}',
