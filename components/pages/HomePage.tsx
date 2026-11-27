@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import HomeHero from '@/components/sections/HomeHero'
-import { CtaBand, IndustriesGrid } from '@/components/sections/Shared'
+import { CtaBand, IndustriesCarousel } from '@/components/sections/Shared'
 import NetworkStory from '@/components/sections/NetworkStory'
 import WhatWeDo from '@/components/sections/WhatWeDo'
 import Section, { SectionHeading } from '@/components/ui/Section'
@@ -81,8 +81,8 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
             {t('home.industries.link')}
           </Button>
         </div>
-        <div className="mt-14">
-          <IndustriesGrid />
+        <div className="mt-10">
+          <IndustriesCarousel />
         </div>
       </Section>
 

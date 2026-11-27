@@ -66,6 +66,10 @@ export const ui = {
   'home.what.imageAlt': 'Container ship berthed at a port terminal at dusk',
   'home.industries.title': 'Raw materials for sectors with demanding technical and regulatory standards',
   'home.industries.link': 'Full portfolio',
+  'home.industries.carouselLabel': 'Industries we serve',
+  'home.industries.slideLabel': 'Industry {current} of {total}',
+  'home.industries.prev': 'Previous industries',
+  'home.industries.next': 'Next industries',
   'home.network.eyebrow': 'Global network',
   'home.network.title': 'A reliable partner to sell in Brazil',
   'home.network.subtitle':
