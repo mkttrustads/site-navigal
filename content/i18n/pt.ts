@@ -72,6 +72,10 @@ export const pt: Translation = {
     'home.what.imageAlt': 'Navio porta-contêineres atracado em terminal portuário ao entardecer',
     'home.industries.title': 'Matérias-primas para setores com altos padrões técnicos e regulatórios',
     'home.industries.link': 'Portfólio completo',
+    'home.industries.carouselLabel': 'Setores atendidos',
+    'home.industries.slideLabel': 'Setor {current} de {total}',
+    'home.industries.prev': 'Setores anteriores',
+    'home.industries.next': 'Próximos setores',
     'home.network.eyebrow': 'Rede global',
     'home.network.title': 'Um parceiro confiável para vender no Brasil',
     'home.network.subtitle':
