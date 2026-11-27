@@ -134,16 +134,12 @@ export function AudienceSplit() {
   )
 }
 
-/**
- * Logo do Trust Group da assinatura institucional dos Big Numbers.
- * Para trocar pela versão vertical: coloque o arquivo em `public/brand/` e ajuste `src`,
- * `width` e `height` (proporção real do arquivo, evita distorção e salto de layout) e `className`.
- */
+/** Logo vertical do Trust Group (recortada nas bordas) da assinatura institucional dos Big Numbers. */
 const BACKED_BY_LOGO = {
-  src: '/brand/trust-group-horizontal.png',
-  width: 1134,
-  height: 294,
-  className: 'h-7 w-auto sm:h-8',
+  src: '/brand/trust-group-vertical.png',
+  width: 799,
+  height: 606,
+  className: 'h-10 w-auto sm:h-12',
 }
 
 /**
