@@ -135,7 +135,6 @@ export default function NetworkStory({ map }: { map: ReactNode }) {
                   <h3 className="text-2xl font-normal leading-tight transition-[font-weight] duration-300 motion-reduce:transition-none group-data-[active=true]:font-semibold md:text-3xl">
                     {t(`home.network.${step}.title` as UiKey)}
                   </h3>
-                  <p className="mt-1.5 text-base font-semibold group-data-[active=true]:text-cobalto">{t(`home.network.${step}.role` as UiKey)}</p>
                   <p className="mt-2 text-base leading-relaxed group-data-[active=true]:text-suave">{t(`home.network.${step}.text` as UiKey)}</p>
                   {index === 0 && (
                     <p className="mt-3 text-sm leading-relaxed tracking-wide">{ORIGIN_NAMES.map((name) => t(`map.place.${name}` as UiKey)).join(' · ')}</p>
