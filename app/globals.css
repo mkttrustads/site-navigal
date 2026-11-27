@@ -282,6 +282,68 @@ html[data-i18n-pending] body {
   }
 }
 
+/* Cabeçalho da seção (≥1024px): acima do mapa-fundo; o primeiro passo sobe 3rem para ficar colado ao subtítulo. */
+@media (min-width: 1024px) {
+  .ns-head {
+    position: relative;
+    z-index: 10;
+  }
+  .ns-grid {
+    margin-top: -3rem;
+  }
+}
+
+/* ---- Cabeçalho fixo (label + título + subtítulo) ----------------------------------------------------
+   Notebook/monitor com altura suficiente (mantenha em sincronia com STORY_STICKY_QUERY e STICKY_HEAD em
+   lib/network-story.ts): o cabeçalho fica fixo (sticky) logo abaixo do menu, dentro do palco da seção, enquanto
+   os passos rolam por baixo dele; atrás dele, um fundo (cor da seção) esconde os passos que sobem e se esvai na base.
+   --ns-head-h = altura medida do cabeçalho (JS); o valor padrão cobre o primeiro render, antes da medição.
+   Liberação sincronizada: o cabeçalho ganha margem inferior M e a grade sobe M (efeito líquido zero no fluxo);
+   como a margem conta na caixa do sticky, ele se solta quando a base do palco chega à base da viewport, no mesmo
+   instante em que o mapa fixo se solta, com o último passo já na faixa de leitura. */
+@media (min-width: 1024px) and (min-height: 700px) {
+  .network-story {
+    --ns-stick: calc(var(--ns-top) + 1.25rem); /* topo do cabeçalho fixo: abaixo do menu, com respiro */
+    --ns-head-hh: var(--ns-head-h, 13rem);
+    --ns-read-top: calc(var(--ns-stick) + var(--ns-head-hh) + 1.5rem); /* topo da área livre dos passos */
+    --ns-head-m: calc(100vh - var(--ns-stick) - var(--ns-head-hh));
+  }
+  .ns-stage {
+    display: flex; /* sem colapso de margens entre o cabeçalho e a grade */
+    flex-direction: column;
+  }
+  .ns-head {
+    position: sticky;
+    top: var(--ns-stick);
+    z-index: 20;
+    margin-bottom: var(--ns-head-m);
+  }
+  .ns-grid {
+    margin-top: calc(-3rem - var(--ns-head-m));
+  }
+  /* Fundo do cabeçalho: do canto esquerdo da seção até 56rem do conteúdo (a largura do texto), opaco até 34rem (coluna dos
+     passos, 25rem, + folga) e esvaindo dali; o mapa à direita continua intacto, e o texto não disputa com pontos do mapa.
+     Esvai também na base, para os passos sumirem sem corte seco. */
+  .ns-head::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    top: -1.25rem;
+    bottom: -1.5rem;
+    left: calc(50% - 50cqw);
+    right: calc(100% - 56rem);
+    background: linear-gradient(to bottom, #f7f9f8 calc(100% - 1.5rem), rgba(247, 249, 248, 0));
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 22rem), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 22rem), transparent);
+  }
+  /* Folga inferior para o último passo ficar centrado na área livre (abaixo do cabeçalho) quando o mapa se solta:
+     24vh do layout original menos metade do que o cabeçalho ocupa. */
+  .ns-steps {
+    padding-bottom: max(0px, calc(24vh - var(--ns-read-top) / 2));
+  }
+}
+
 /* Moldura com proporção reservada (sem CLS), sem borda nem fundo: o mapa se integra à seção.
    <1024px: centralizada e limitada pela altura da faixa fixa; as bordas se desfazem em máscara,
    porque o zoom do passo 2 é recortado pela moldura. */

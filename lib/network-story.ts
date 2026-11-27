@@ -21,3 +21,10 @@ export const STEP_BAND = { desktop: { top: '-40%', bottom: '-40%' }, mobile: { t
 export const STORY_MOBILE_QUERY = '(max-width: 1023px)'
 /** Tela baixa (celular deitado): o mapa fixo ocuparia a tela toda, então vira estático no estado final. */
 export const STORY_STATIC_QUERY = '(max-width: 1023px) and (max-height: 520px)'
+
+/**
+ * Cabeçalho da seção (label, título, subtítulo) fixo durante os passos: só em notebooks/monitores, e com altura de
+ * tela suficiente para o cabeçalho + um passo caberem juntos. Abaixo disso (tablet, celular, janela baixa) a rolagem
+ * é natural. Mantenha em sincronia com o bloco "Cabeçalho fixo" de globals.css.
+ */
+export const STORY_STICKY_QUERY = '(min-width: 1024px) and (min-height: 700px)'
