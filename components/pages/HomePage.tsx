@@ -80,11 +80,7 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
         <IndustriesMarquee />
       </Section>
 
-      <CtaBand
-        title={t('home.cta.title')}
-        image="/images/cta-chemical-drums.webp"
-        imageClassName="object-cover object-[82%_62%] sm:object-[50%_62%]"
-      />
+      <CtaBand title={t('home.cta.title')} tone="blue" />
     </>
   )
 }
