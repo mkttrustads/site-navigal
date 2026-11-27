@@ -134,12 +134,22 @@ export function AudienceSplit() {
   )
 }
 
+/** Logo vertical do Trust Group (recortada nas bordas) da assinatura institucional dos Big Numbers. */
+const BACKED_BY_LOGO = {
+  src: '/brand/trust-group-vertical.png',
+  width: 799,
+  height: 606,
+  className: 'h-10 w-auto sm:h-12',
+}
+
 /**
- * Big Numbers (topo da página About, logo abaixo da capa): título centralizado no padrão dos demais
- * títulos de seção e quatro indicadores sem card/borda/sombra. Desktop: 1 linha de 4; tablet e
- * mobile: grade de 2 colunas. A nota do ranking é a mesma da seção de certificações.
+ * Big Numbers (About, logo abaixo de "Por que a Navigal existe"): sem título; no topo, uma
+ * assinatura discreta ("Com o respaldo do" + logo do Trust Group) centralizada, e abaixo quatro
+ * indicadores só com número e descrição, sem ícone, card, borda ou sombra. Desktop: 1 linha de 4;
+ * tablet e mobile: grade de 2 colunas. A nota do ranking é a mesma da seção de certificações.
  * Alinhamento: em ≥640px os indicadores ficam centralizados; no mobile o CSS global
- * (`.text-center` → esquerda, app/globals.css) alinha à esquerda, como nos demais blocos do site.
+ * (`.text-center` → esquerda, app/globals.css) alinha à esquerda, como nos demais blocos do site;
+ * a assinatura é um flex centralizado (não depende de `text-align`) e fica centralizada em todos os tamanhos.
  */
 export function BigNumbersSection() {
   const {
@@ -147,23 +157,33 @@ export function BigNumbersSection() {
     content: { bigNumbers, rankingFootnote },
   } = useI18n()
   return (
-    <Section tone="muted" className="py-12 sm:py-16">
-      <SectionHeading title={t('about.bigNumbers.title')} align="center" />
-      <Reveal className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:mt-12 lg:grid-cols-4 lg:gap-x-8">
+    <Section tone="muted" className="py-10 sm:py-12">
+      <Reveal className="flex items-center justify-center gap-3 sm:gap-4">
+        <RevealItem className="text-sm font-medium text-suave sm:text-base">{t('about.bigNumbers.backedBy')}</RevealItem>
+        <RevealItem className="flex items-center">
+          <Image
+            src={BACKED_BY_LOGO.src}
+            alt="Trust Group"
+            width={BACKED_BY_LOGO.width}
+            height={BACKED_BY_LOGO.height}
+            className={BACKED_BY_LOGO.className}
+          />
+        </RevealItem>
+      </Reveal>
+      <Reveal className="mt-7 grid grid-cols-2 gap-x-6 gap-y-7 sm:mt-8 lg:grid-cols-4 lg:gap-x-8">
         {bigNumbers.map((item) => (
           <RevealItem key={item.id} className="flex flex-col items-center text-center">
-            <Icon name={item.icon} className="h-9 w-9 text-cobalto sm:h-10 sm:w-10" />
             <CountUp
               to={item.count}
               prefix={item.prefix}
               suffix={item.suffix}
-              className="stat-numeral mt-4 block text-[clamp(1.875rem,3.6vw,3rem)] font-bold leading-none tracking-tight text-cobalto"
+              className="stat-numeral block text-[clamp(1.875rem,3.6vw,3rem)] font-bold leading-none tracking-tight text-cobalto"
             />
-            <p className="mt-3 max-w-[16rem] text-pretty text-sm leading-snug text-suave sm:text-base">{item.label}</p>
+            <p className="mt-2 max-w-[16rem] text-pretty text-sm leading-snug text-suave sm:text-base">{item.label}</p>
           </RevealItem>
         ))}
       </Reveal>
-      <p className="mx-auto mt-10 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
+      <p className="mx-auto mt-7 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
     </Section>
   )
 }

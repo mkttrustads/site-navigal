@@ -92,7 +92,7 @@ export const pt: Translation = {
     'about.hero.title': 'Conectando o mundo à indústria latino-americana',
     'about.hero.subtitle':
       'Estruturamos cadeias de suprimento internacionais e negociamos matérias-primas estratégicas, conectando os principais polos comerciais do mundo a uma execução prática e segura.',
-    'about.bigNumbers.title': 'Navigal: uma empresa do Trust Group',
+    'about.bigNumbers.backedBy': 'Com o respaldo do',
     'about.story.trustLink': 'Conheça o Trust Group',
     'about.imageAlt': 'Baía do Rio de Janeiro com o Pão de Açúcar',
     'about.presence.eyebrow': 'Presença global',
