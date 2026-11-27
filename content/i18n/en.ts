@@ -45,7 +45,7 @@ export const ui = {
 
   // Home
   'home.hero.eyebrow': 'Navigal Trading Solutions · A Trust Group company',
-  'home.hero.title': 'We buy from global suppliers and sell to Brazilian industry.',
+  'home.hero.title': 'Connecting global markets to Brazilian industry',
   'home.hero.subtitle':
     'Navigal is the trading company of Trust Group. We buy from you, develop demand with manufacturers and distributors in Brazil and LATAM, and Trust Group handles the import.',
   'home.hero.cta.supplier': 'I’m a supplier',

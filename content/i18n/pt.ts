@@ -51,7 +51,7 @@ export const pt: Translation = {
     'footer.rights': 'Todos os direitos reservados.',
 
     'home.hero.eyebrow': 'Navigal Trading Solutions · Uma empresa do Trust Group',
-    'home.hero.title': 'Compramos de fornecedores globais e vendemos para a indústria brasileira.',
+    'home.hero.title': 'Conectando mercados globais à indústria brasileira',
     'home.hero.subtitle':
       'A Navigal é a trading do Trust Group. Compramos de você, desenvolvemos demanda com fabricantes e distribuidores no Brasil e na LATAM, e o Trust Group cuida da importação.',
     'home.hero.cta.supplier': 'Sou fornecedor',
