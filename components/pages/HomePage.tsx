@@ -20,11 +20,6 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
     <>
       <HomeHero />
 
-      {/* Setores: faixa contínua logo abaixo da capa, de ponta a ponta (sem o container central). */}
-      <Section tone="muted" className="py-8 sm:py-10" containerClassName="!max-w-none !px-0">
-        <IndustriesMarquee />
-      </Section>
-
       <Section>
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
           <Reveal>
@@ -79,6 +74,11 @@ export default function HomePage({ routeMap }: { routeMap: ReactNode }) {
       <NetworkStory map={routeMap} />
 
       <WhatWeDo />
+
+      {/* Setores: faixa contínua logo abaixo de "O que fazemos", de ponta a ponta (sem o container central). */}
+      <Section tone="muted" className="py-8 sm:py-10" containerClassName="!max-w-none !px-0">
+        <IndustriesMarquee />
+      </Section>
 
       <CtaBand
         title={t('home.cta.title')}

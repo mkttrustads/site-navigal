@@ -77,6 +77,13 @@ export const industries: Industry[] = [
     icon: 'factory',
     description: 'Soda ash, sulfur and base chemicals for glassmaking, chemical synthesis and general industry.',
   },
+  // Fica no fim da lista: o rodapé mostra só os 6 primeiros setores.
+  {
+    slug: 'animal-feed',
+    name: 'Animal Feed',
+    icon: 'beef',
+    description: 'Acidifiers, preservatives, minerals and nutrient sources for the animal feed industry.',
+  },
 ]
 
 export function getIndustry(slug: string) {

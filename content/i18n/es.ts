@@ -76,6 +76,14 @@ export const es: Translation = {
     'home.industries.slideLabel': 'Sector {current} de {total}',
     'home.industries.prev': 'Sectores anteriores',
     'home.industries.next': 'Siguientes sectores',
+    'home.sectors.agribusiness': 'Agroindustria',
+    'home.sectors.animalFeed': 'Nutrición animal',
+    'home.sectors.foodPharma': 'Alimentos y farma',
+    'home.sectors.waterTreatment': 'Tratamiento de agua',
+    'home.sectors.cosmeticsHomeCare': 'Cosméticos y home care',
+    'home.sectors.resinsPlasticizers': 'Resinas y plastificantes',
+    'home.sectors.paints': 'Pinturas',
+    'home.sectors.automotive': 'Automotriz',
     'home.network.eyebrow': 'Red global',
     'home.network.title': 'Un socio confiable para vender en Brasil',
     'home.network.subtitle':
@@ -581,6 +589,10 @@ export const es: Translation = {
     'industrial-chemicals': {
       name: 'Vidrio y Químicos Industriales',
       description: 'Carbonato de sodio, azufre y químicos de base para la fabricación de vidrio, la síntesis química y la industria en general.',
+    },
+    'animal-feed': {
+      name: 'Nutrición Animal',
+      description: 'Acidificantes, conservantes, minerales y fuentes de nutrientes para la industria de alimentos balanceados.',
     },
   },
 
