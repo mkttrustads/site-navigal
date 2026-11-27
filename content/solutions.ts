@@ -131,7 +131,7 @@ type Audience<K extends AudienceKey> = {
 export const audiences: { [K in AudienceKey]: Audience<K> } = {
   buyers: {
     eyebrow: 'For industry & distributors',
-    title: 'Import your own product line with a global partner',
+    title: 'Import your industrial inputs with a global partner',
     items: [
       { id: 'new-origins', text: 'Access to new origins and products from qualified suppliers' },
       { id: 'demanding-sectors', text: 'Inputs for sectors with demanding technical and regulatory requirements' },

@@ -515,7 +515,7 @@ export const es: Translation = {
     audiences: {
       buyers: {
         eyebrow: 'Para industrias y distribuidores',
-        title: 'Importe su propia línea de productos con un socio global',
+        title: 'Importa tus insumos con un socio global',
         items: {
           'new-origins': 'Acceso a nuevos orígenes y productos de proveedores calificados',
           'demanding-sectors': 'Insumos para sectores con exigencias técnicas y regulatorias rigurosas',
