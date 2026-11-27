@@ -51,9 +51,17 @@ export const es: Translation = {
     'footer.contact': 'Contacto',
     'footer.rights': 'Todos los derechos reservados.',
 
-    'home.hero.lead':
-      'Estructuramos cadenas de suministro internacionales y comercializamos materias primas estratégicas para la industria latinoamericana: desde proveedores calificados en origen hasta la entrega en su planta, con cada riesgo gobernado a lo largo del camino.',
-    'home.hero.explore': 'Conozca nuestro portafolio',
+    'home.hero.eyebrow': 'Navigal Trading Solutions · Una empresa de Trust Group',
+    'home.hero.title': 'Compramos de proveedores globales y vendemos a la industria brasileña.',
+    'home.hero.subtitle':
+      'Navigal es la empresa de trading de Trust Group. Le compramos a usted, desarrollamos demanda con fabricantes y distribuidores en Brasil y LATAM, y Trust Group se encarga de la importación.',
+    'home.hero.cta.supplier': 'Soy proveedor',
+    'home.hero.cta.import': 'Quiero importar',
+    'home.hero.proof.label': 'Trust Group en cifras',
+    'home.hero.proof.ranking': 'importador químico de Brasil*',
+    'home.hero.proof.years': 'años en el mercado (Trust Group)',
+    'home.hero.proof.warehousing': 'de almacenamiento en todo Brasil',
+    'home.hero.proof.people': 'personas en el grupo',
     'home.imageAlt': 'Materia prima a granel cargándose en la bodega de un buque',
     'home.about.eyebrow': 'Quiénes somos',
     'home.about.title': 'Conectamos proveedores globales con la industria latinoamericana',

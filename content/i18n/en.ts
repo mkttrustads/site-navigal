@@ -44,9 +44,17 @@ export const ui = {
   'footer.rights': 'All rights reserved.',
 
   // Home
-  'home.hero.lead':
-    'We structure international supply chains and trade strategic raw materials for Latin American industry: from qualified suppliers at origin to delivery at your plant, with every risk governed along the way.',
-  'home.hero.explore': 'Explore our portfolio',
+  'home.hero.eyebrow': 'Navigal Trading Solutions · A Trust Group company',
+  'home.hero.title': 'We buy from global suppliers and sell to Brazilian industry.',
+  'home.hero.subtitle':
+    'Navigal is the trading company of Trust Group. We buy from you, develop demand with manufacturers and distributors in Brazil and LATAM, and Trust Group handles the import.',
+  'home.hero.cta.supplier': 'I’m a supplier',
+  'home.hero.cta.import': 'I want to import',
+  'home.hero.proof.label': 'Trust Group in numbers',
+  'home.hero.proof.ranking': 'chemical importer in Brazil*',
+  'home.hero.proof.years': 'years in the market (Trust Group)',
+  'home.hero.proof.warehousing': 'of warehousing across Brazil',
+  'home.hero.proof.people': 'people across the group',
   'home.imageAlt': "Bulk raw material being loaded into a vessel's hold",
   'home.about.eyebrow': 'Who we are',
   'home.about.title': 'We connect global suppliers to Latin American industry',

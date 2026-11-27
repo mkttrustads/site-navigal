@@ -45,12 +45,14 @@
   }
 
   /* H1 da Hero da Home: versão ampliada de .hero-title (só a Home usa; PageHero e
-     404 continuam em .hero-title). Fluido de ~41px (360–390px) a 84px (≥1280px),
-     com entrelinha e tracking mais fechados, que o corpo grande pede. */
+     404 continuam em .hero-title). Fluido de ~29px (360px) a 68px (≥1280px). O texto é
+     uma frase completa (modelo de negócio), então a escala é menor que a do antigo slogan
+     para o título caber em 2 linhas no desktop (até 4 no celular) sem empurrar os CTAs
+     para baixo da dobra. Entrelinha e tracking fechados, como o corpo grande pede. */
   .hero-title-home {
-    font-size: clamp(2.5rem, 1.2rem + 5.6vw, 5.25rem);
+    font-size: clamp(1.8rem, 0.95rem + 3.9vw, 4.25rem);
     font-weight: var(--heading-weight);
-    line-height: 1.05;
+    line-height: 1.06;
     letter-spacing: -0.025em;
   }
 
