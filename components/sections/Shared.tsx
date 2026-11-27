@@ -134,56 +134,55 @@ export function AudienceSplit() {
   )
 }
 
-/** Logo vertical do Trust Group (recortada nas bordas) da assinatura institucional dos Big Numbers. */
-const BACKED_BY_LOGO = {
+/** Logo vertical do Trust Group (recortada nas bordas): primeiro bloco da faixa de Big Numbers. */
+const TRUST_GROUP_LOGO = {
   src: '/brand/trust-group-vertical.png',
   width: 799,
   height: 606,
-  className: 'h-10 w-auto sm:h-12',
+  className: 'h-14 w-auto sm:h-16 lg:h-[4.5rem]',
 }
 
 /**
- * Big Numbers (About, logo abaixo de "Por que a Navigal existe"): sem título; no topo, uma
- * assinatura discreta ("Com o respaldo do" + logo do Trust Group) centralizada, e abaixo quatro
- * indicadores só com número e descrição, sem ícone, card, borda ou sombra. Desktop: 1 linha de 4;
- * tablet e mobile: grade de 2 colunas. A nota do ranking é a mesma da seção de certificações.
- * Alinhamento: em ≥640px os indicadores ficam centralizados; no mobile o CSS global
- * (`.text-center` → esquerda, app/globals.css) alinha à esquerda, como nos demais blocos do site;
- * a assinatura é um flex centralizado (não depende de `text-align`) e fica centralizada em todos os tamanhos.
+ * Big Numbers (About, logo abaixo de "Por que a Navigal existe"): sem título nem texto de apoio;
+ * uma única faixa com cinco blocos, na ordem: logo do Trust Group + quatro indicadores (só número
+ * e descrição, sem ícone, card, borda ou sombra). Todos os blocos são centralizados verticalmente
+ * (`items-center`) e compartilham a mesma grade, então o espaçamento é uniforme.
+ * Desktop (≥1024px): uma linha só, logo à esquerda (coluna fixa) e os 4 indicadores em colunas iguais.
+ * Tablet (≥768px): logo centralizada acima de uma linha com os 4 indicadores.
+ * Mobile: logo centralizada acima de uma grade de 2 colunas. Nos indicadores, o CSS global
+ * (`.text-center` → esquerda em <640px, app/globals.css) alinha à esquerda, como nos demais blocos
+ * do site; a logo é um flex centralizado (não depende de `text-align`).
+ * A nota do ranking, centralizada abaixo, é a mesma da seção de certificações.
  */
 export function BigNumbersSection() {
   const {
-    t,
     content: { bigNumbers, rankingFootnote },
   } = useI18n()
   return (
-    <Section tone="muted" className="py-10 sm:py-12">
-      <Reveal className="flex items-center justify-center gap-3 sm:gap-4">
-        <RevealItem className="text-sm font-medium text-suave sm:text-base">{t('about.bigNumbers.backedBy')}</RevealItem>
-        <RevealItem className="flex items-center">
+    <Section tone="muted" className="py-8 sm:py-10">
+      <Reveal className="grid grid-cols-2 items-center gap-x-6 gap-y-6 md:grid-cols-4 lg:grid-cols-[9rem_repeat(4,minmax(0,1fr))] lg:gap-x-8">
+        <RevealItem className="col-span-2 flex items-center justify-center md:col-span-4 lg:col-span-1">
           <Image
-            src={BACKED_BY_LOGO.src}
+            src={TRUST_GROUP_LOGO.src}
             alt="Trust Group"
-            width={BACKED_BY_LOGO.width}
-            height={BACKED_BY_LOGO.height}
-            className={BACKED_BY_LOGO.className}
+            width={TRUST_GROUP_LOGO.width}
+            height={TRUST_GROUP_LOGO.height}
+            className={TRUST_GROUP_LOGO.className}
           />
         </RevealItem>
-      </Reveal>
-      <Reveal className="mt-7 grid grid-cols-2 gap-x-6 gap-y-7 sm:mt-8 lg:grid-cols-4 lg:gap-x-8">
         {bigNumbers.map((item) => (
           <RevealItem key={item.id} className="flex flex-col items-center text-center">
             <CountUp
               to={item.count}
               prefix={item.prefix}
               suffix={item.suffix}
-              className="stat-numeral block text-[clamp(1.875rem,3.6vw,3rem)] font-bold leading-none tracking-tight text-cobalto"
+              className="stat-numeral block text-[clamp(1.75rem,3.4vw,3rem)] font-bold leading-none tracking-tight text-cobalto md:whitespace-nowrap lg:text-[clamp(1.75rem,2.9vw,2.5rem)]"
             />
             <p className="mt-2 max-w-[16rem] text-pretty text-sm leading-snug text-suave sm:text-base">{item.label}</p>
           </RevealItem>
         ))}
       </Reveal>
-      <p className="mx-auto mt-7 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
+      <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-relaxed text-suave">{rankingFootnote}</p>
     </Section>
   )
 }
