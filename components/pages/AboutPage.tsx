@@ -29,8 +29,6 @@ export default function AboutPage() {
         ]}
       />
 
-      <BigNumbersSection />
-
       <Section>
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <SectionHeading
@@ -68,6 +66,8 @@ export default function AboutPage() {
           </Reveal>
         </div>
       </Section>
+
+      <BigNumbersSection />
 
       <section className="relative isolate overflow-hidden bg-preto text-white">
         <div className="relative mx-auto grid max-w-site gap-12 px-6 py-24 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:py-28">
